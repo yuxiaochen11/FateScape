@@ -1,0 +1,6 @@
+*.pdf   linguist-generated=true
+*.eps   linguist-generated=true
+*.ps    linguist-generated=true
+
+docs/**    linguist-vendored=true
+vignettes/** linguist-vendored=true
