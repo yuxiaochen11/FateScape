@@ -1,6 +1,12 @@
-*.pdf   linguist-generated=true
-*.eps   linguist-generated=true
-*.ps    linguist-generated=true
+*.pdf        linguist-generated=true
+*.eps        linguist-generated=true
+*.ps         linguist-generated=true
+docs/**      linguist-generated=true
+vignettes/** linguist-generated=true
 
-docs/**    linguist-vendored=true
-vignettes/** linguist-vendored=true
+
+# docs/**  linguist-vendored=true
+
+*.html       linguist-generated=true
+*.js         linguist-generated=true
+*.css        linguist-generated=true
