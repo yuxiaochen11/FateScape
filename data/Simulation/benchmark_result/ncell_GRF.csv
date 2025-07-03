@@ -1,0 +1,64 @@
+Number of cells,Methods,Information based distance
+512,LineageCast,0.5019
+512,LineageCast,0.5317
+512,LineageCast,0.5381
+1024,LineageCast,0.5143
+1024,LineageCast,0.4871
+1024,LineageCast,0.562
+2048,LineageCast,0.5299
+2048,LineageCast,0.5613
+2048,LineageCast,0.5717
+512,LineageCast_slingshot,0.5578
+512,LineageCast_slingshot,0.5607
+512,LineageCast_slingshot,0.5645
+1024,LineageCast_slingshot,0.5995
+1024,LineageCast_slingshot,0.5224
+1024,LineageCast_slingshot,0.6132
+2048,LineageCast_slingshot,0.6111
+2048,LineageCast_slingshot,0.5572
+2048,LineageCast_slingshot,0.5618
+512,LineageCast_monocle,0.5541
+512,LineageCast_monocle,0.5834
+512,LineageCast_monocle,0.5843
+1024,LineageCast_monocle,0.6046
+1024,LineageCast_monocle,0.5153
+1024,LineageCast_monocle,0.5852
+2048,LineageCast_monocle,0.5593
+2048,LineageCast_monocle,0.5635
+2048,LineageCast_monocle,0.5841
+512,LinRace,0.5833
+512,LinRace,0.5986
+512,LinRace,0.633
+1024,LinRace,0.6708
+1024,LinRace,0.6017
+1024,LinRace,0.5634
+2048,LinRace,0.637
+2048,LinRace,0.6232
+2048,LinRace,0.6401
+512,LinTIMaT,0.8073
+512,LinTIMaT,0.7773
+512,LinTIMaT,0.8271
+1024,LinTIMaT,0.8324
+1024,LinTIMaT,0.8319
+1024,LinTIMaT,0.8444
+2048,LinTIMaT,0.8048
+2048,LinTIMaT,0.8587
+2048,LinTIMaT,0.8552
+512,NJ method,0.5932
+512,NJ method,0.6681
+512,NJ method,0.5716
+1024,NJ method,0.6679
+1024,NJ method,0.6355
+1024,NJ method,0.673
+2048,NJ method,0.6565
+2048,NJ method,0.6958
+2048,NJ method,0.6509
+512,Cassiopeia,0.6107966
+512,Cassiopeia,0.6448579
+512,Cassiopeia,0.6083997
+1024,Cassiopeia,0.5914546
+1024,Cassiopeia,0.6487219
+1024,Cassiopeia,0.6751942
+2048,Cassiopeia,0.7796867
+2048,Cassiopeia,0.6700382
+2048,Cassiopeia,0.6339588

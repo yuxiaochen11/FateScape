@@ -1,0 +1,373 @@
+---
+title: "C.elegans"
+output: html_document
+date: "2024-06-08"
+---
+
+```{r setup, include=FALSE}
+# Load package functions and required libraries
+library(LineageCast)
+devtools::load_all("D:/Downloads/TedSim")
+library(TedSim)
+library(igraph)
+library(ape)
+library(mclust, quietly = TRUE)
+library(RColorBrewer)
+library(TreeTools)
+library(slingshot)
+library(monocle3)
+library(monocle)
+library(qlcMatrix)
+library(PATH)
+library(expm)
+library(ggplot2)
+library(ggtree)
+library(ggtreeExtra)
+library(tidytree)
+library(Matrix)
+library(patchwork)
+library(phangorn)
+library(TreeDist)
+```
+
+# Input Real Cell Division Tree and RNA Read Counts
+## Load Tree Graph and Metadata
+
+```{r}
+setwd("D:/projects/LineageCast/LineageCast")
+graph <- read_graph("data/C.elegans/cell_lineage_tree.gml", format = "gml")
+MetaData <- read.csv("data/C.elegans/MetaData.csv")
+```
+
+## Extract Tip Labels and Edges
+
+```{r}
+# Extract tip labels at time == 2000
+TipLabels <- V(graph)$name[V(graph)$time == 2000]
+
+# Get raw edge list from the graph
+raw_edges <- get.edgelist(graph, names = TRUE)
+
+# Remove nodes with only one child (if applicable)
+for (i in seq_along(unique(raw_edges[,1]))) {
+  par <- unique(raw_edges[,1])[i]
+  child <- raw_edges[raw_edges[,1] == par, 2]
+  if (length(child) == 1) {
+    index <- raw_edges[,1] != par
+  }
+}
+edges <- raw_edges[index, ]
+```
+
+## Construct real Phylogenetic Tree from Graph
+
+```{r}
+# Set root time and extract time vector
+V(graph)$time_to_parent[1] <- 0
+Time <- V(graph)$time_to_parent
+
+# Generate Newick tree text and read the tree
+newick_text <- paste0(LineageCast:::format_tree_newick("P0", edges), ";")
+phy_tree <- ape::read.tree(text = newick_text)
+
+newick_text <- paste0(LineageCast:::format_tree_newick_time("P0", edges, Time), ";")
+phy_tree <- ape::read.tree(text = newick_text)
+```
+
+## Filter and Process RNA-Seq Data
+
+```{r}
+# Filter tree tips based on MetaData
+ML <- MetaData$random_precise_lineage
+tips <- phy_tree$tip.label
+drops <- tips[!tips %in% ML]
+Celegans_tree <- drop.tip(phy_tree, drops)
+Celegans_tree <- chronos(Celegans_tree)
+
+# Process RNA-Seq counts
+ncells <- length(Celegans_tree$tip.label)
+ngenes <- 500
+Leaves <- Celegans_tree$tip.label
+
+# Standardize tip labels
+Celegans_tree$tip.label <- paste("cell", 1:ncells, sep = "_")
+tree_ct <- Celegans_tree
+
+# Create name index mapping original tip names to standardized IDs
+name_index <- data.frame(name = Leaves, id = paste("cell", 1:ncells, sep = "_"))
+
+for (i in 1:nrow(name_index)) {
+  a <- MetaData$cell.type[MetaData$random_precise_lineage == name_index$name[i]]
+  name_index$cell_type[i] <- names(table(a))[which.max(table(a))]
+}
+name_index$cell_type <- ifelse(name_index$cell_type == "", NA, name_index$cell_type)
+```
+
+## Loading and Process Count Matrix
+
+```{r}
+setwd("D:/projects/LineageCast/LineageCast")
+CountMatrix <- read.table("data/C.elegans/RNASeqData.csv", sep = ",")
+Count <- CountMatrix[2:nrow(CountMatrix), 4:ncol(CountMatrix)]
+CellType <- CountMatrix$V3[2:nrow(CountMatrix)]
+CellName <- CountMatrix$V2[2:nrow(CountMatrix)]
+
+Counts <- Count[match(Leaves, CellName), ]
+CellTypes <- CellType[match(Leaves, CellName)]
+rownames(Counts) <- paste("cell", 1:ncells, sep = "_")
+colnames(Counts) <- paste("gene", 1:ngenes, sep = "_")
+gene <- t(Counts)
+```
+
+# Constructing Cell State Tree (Slingshot)
+## Defining State Lineages and Prepare Data
+
+```{r}
+sce=SingleCellExperiment(assays=List(counts=gene))
+pca=prcomp(log1p(Counts), scale. = FALSE) #log1p(x)=log(1+x)
+rd1=pca$x[,1:2]
+cl1=Mclust(rd1)$classification
+reducedDims(sce)=SimpleList(PCA = rd1)
+colData(sce)$GMM=cl1
+sce=slingshot(sce, clusterLabels = 'GMM', reducedDim = 'PCA')
+state_lineages=slingLineages(sce)
+for (l in 1:length(state_lineages)) {
+  names(state_lineages)[l]=paste0("L",l)
+}
+state_slingshot=data.frame(cell_id=paste("cell",1:ncells,sep="_"),cluster=as.character(cl1))
+```
+
+## visualization
+
+```{r}
+# Plot PCA/UMAP with clusters and trajectory lines
+plot(reducedDims(sce)$PCA, col = brewer.pal(9, "Set1")[sce$GMM], pch = 16, asp = 1)
+lines(SlingshotDataSet(sce), lwd = 2, col = "black")
+
+plot(reducedDims(sce)$PCA, col = brewer.pal(9, "Set1")[sce$GMM], pch = 16, asp = 1)
+lines(SlingshotDataSet(sce), lwd = 2, type = "lineages", col = "black")
+```
+
+# Constructing Cell State Tree (Monocle)
+## Setting Up Monocle Data Structures
+
+```{r}
+pd <- new("AnnotatedDataFrame", data = data.frame(cell_id = colnames(gene), row.names = colnames(gene)))
+fData <- data.frame(gene_short_name = rownames(gene), row.names = rownames(gene))
+fd <- new("AnnotatedDataFrame", data = fData)
+
+HSMM <- newCellDataSet(as.matrix(gene),
+                       phenoData = pd,
+                       featureData = fd,
+                       lowerDetectionLimit = 0.5,
+                      expressionFamily = negbinomial.size())
+
+```
+
+## Processing Data with Monocle
+
+```{r}
+HSMM <- estimateSizeFactors(HSMM)
+HSMM <- estimateDispersions(HSMM)
+HSMM <- detectGenes(HSMM, min_expr = 0.1)
+disp_table <- dispersionTable(HSMM)
+unsup_clustering_genes <- subset(disp_table, mean_expression >= 0.1)
+HSMM_myo <- setOrderingFilter(HSMM, unsup_clustering_genes$gene_id)
+HSMM_myo <- reduceDimension(HSMM_myo, method = "DDRTree")
+HSMM_myo <- orderCells(HSMM_myo)
+
+```
+
+## Plotting Monocle Trajectories
+
+```{r}
+
+p_state <- plot_cell_trajectory(HSMM_myo, color_by = "State", cell_size = 0.75)
+p_time <- plot_cell_trajectory(HSMM_myo, color_by = "Pseudotime", cell_size = 0.75)
+p_state
+p_time
+
+
+state_monocle <- data.frame(cell_id = HSMM_myo$colnames.gene., cluster = as.character(HSMM_myo$State))
+```
+
+# Generating Lineage Barcodes Using TedSim
+## Simulation Parameters Setting
+
+```{r}
+# Changeable parameters
+p_ds <- 0.2  # Stochastic dropout rate
+mu <- 0.2    # Mutation rate
+
+# Other parameters
+N_char <- 12
+N_nodes <- 2 * ncells - 2
+ngenes <- 500
+max_walk <- 8
+p_a <- 0.8
+n_cif <- 30
+n_diff <- 20
+cif_step <- 1
+p_d <- 0.05
+r_n <- ceiling(N_char * 0.7)
+psu_cell_state_tree_text <- "(n1:1)n2;"
+cell_state_tree <- read.tree(text = psu_cell_state_tree_text)
+```
+
+## Simulating Intermediate Features and CIFs
+
+```{r}
+returnlist <- SIFGenerate(cell_state_tree, n_diff, step = cif_step)
+cifs <- SimulateCIFs(ncells, cell_state_tree, p_a = p_a, n_CIF = n_cif, n_diff = n_diff,
+                     step = cif_step, p_d = p_d, Sigma = 0.5, mu = mu, N_char = N_char,
+                    max_walk = max_walk, SIF_res = returnlist, unif_on = FALSE,
+                    lambda = 0.05, T_cell = tree_ct)
+#load('data/C.elegans/cifs.RData')
+```
+
+## Processing Simulated Barcode Data
+
+```{r}
+barcodes_all <- cifs[[7]]
+barcodes_initial <- barcodes_all[1:ncells, ]
+rownames(barcodes_initial) <- paste("cell", 1:ncells, sep = "_")
+barcodes_dropout <- LineageCast:::stochastic_dropout(barcodes_initial, p_ds)
+```
+
+# Barcode Imputation and Grouping by State Lineage
+
+```{r}
+barcodes <- imputation_dropout_alter(barcodes_dropout, N_char, ncells, ceiling(N_char * 0.8))
+state <- state_slingshot
+
+sl_info <- state_lineage_info(state_lineages, ncells, state, barcodes)
+state_lineage <- sl_info[[1]]
+cell_lineages <- sl_info[[2]]
+barcodes_lineages <- sl_info[[3]]
+state_labels_lineages <- sl_info[[4]]
+```
+
+# Reconstructing Sub-Cell Division Trees
+
+```{r}
+Trees_initial <- initial_tree_construction(state_lineages, barcodes_lineages)
+refined_subtree <- subtree_refinement(Trees_initial, state_lineages, barcodes_lineages,
+                                        N_char, state_labels_lineages,
+                                        lambda1 = 0.1, lambda2 = 0.9,
+                                        maxIter = 100, repeat_time = 10)
+bestsubtree <- refined_subtree[[1]]
+bestsubtree <- drop_duplicated_tips(bestsubtree, barcodes_lineages, cell_lineages,
+                                    state_lineage, alpha = 1.5, beta = 1.5)
+```
+
+# Decomposition and reassembly of subtrees
+
+```{r}
+subtrees_rootbar <- get_subtree_root_barcodes(bestsubtree, state, barcodes, length(state_lineages))
+CM <- common_mutation_matrix(subtrees_rootbar)
+Nodes_rank <- subtrees_rank(CM)[[1]]
+Nodes_weight <- subtrees_rank(CM)[[2]]
+
+subsubtrees <- decompose_subtrees(bestsubtree, state_slingshot, barcodes, length(state_lineages))
+Tree_Merge <- merge_subcell_trees_ordered(CM, Nodes_rank, Nodes_weight, subsubtrees,
+                                          bind_tree_list = list(), nsubtree = 1)
+Tree_Groups <- group_subcell_trees(CM, Nodes_rank, Nodes_weight, subsubtrees,
+                                   bind_tree_list = list(), nsubtree = 1)
+```
+
+# Evaluation
+
+```{r}
+cat("Nye Similarity (higher is better): ", NyeSimilarity(tree_ct, Tree_Merge, normalize = TRUE), "\n")
+cat("Tree Distance (lower is better): ", TreeDistance(tree_ct, Tree_Merge), "\n")
+cat("RF Distance (lower is better): ", RF.dist(tree_ct, Tree_Merge, normalize = TRUE), "\n")
+
+```
+
+# Downstream Analysis
+
+```{r}
+tree <- phylogenetic_tree(Tree_Merge, N_char, barcodes[match(Tree_Merge$tip.label, rownames(barcodes)), ],
+                           ncells = NULL, Nnodes = NULL, edges = NULL)
+
+```
+
+# Mapping Cell States and Visualize
+
+```{r}
+tree$states_chr <- name_index$cell_type[match(tree$tip.label, state_slingshot$cell_id)]
+tree$states <- as.numeric(factor(name_index$cell_type[match(tree$tip.label, state_slingshot$cell_id)]))
+tree$states[is.na(tree$states)] <- max(tree$states, na.rm = TRUE) + 1
+
+tree_tidy <- full_join(Tree_Merge, tibble(label = tree$tip.label, state = as.factor(tree$states_chr)), by = "label")
+tree_tidy@phylo$edge.length <- tree$edge.length
+
+p <- ggtree(tree_tidy, layout = "circular", size = 0.1) +
+  geom_fruit(geom = geom_tile, aes(fill = state),
+             col = "white", offset = 0.1,
+             width = 0.1, lwd = 0) +
+  ggtitle("C.elegans Phylogeny") +
+  labs(fill = "Cell state")
+p
+
+```
+
+# Plotting Tree in Fan Layout and Highlight Tips
+
+```{r}
+plot(Tree_Merge, type = "fan", show.tip.label = FALSE)
+tiplabels(pch = 20, col = ifelse(Tree_Merge$tip.label %in% subsubtrees[[Tree_Groups[[2]][2]]]$tip.label, "red", "black"), cex = 0.1)
+```
+
+# Phylogenetic Auto-correlation Analysis
+
+```{r}
+W <- one_node_tree_dist(tree)
+X <- catMat(tree$states)
+treexcor <- xcor(X, W)
+tree_phy_cor <- treexcor$phy_cor
+Idf <- reshape2::melt(tree_phy_cor, value.name = "I")
+Zdf <- reshape2::melt(treexcor$Z.score, value.name = "Z")
+df <- full_join(Idf, Zdf, by = c("Var1", "Var2"))
+df <- df %>% mutate(Var1 = as.factor(Var1), Var2 = as.factor(Var2))
+```
+
+# Generating Heritability Bar Plots
+
+```{r}
+herit1 <- df %>%
+  filter(Var1 == Var2) %>%
+  ggplot(aes(x = Var1, y = I, fill = Var1)) +
+  geom_bar(stat = "identity") +
+  ylim(c(-0.07, 1.45)) +
+  theme_classic() +
+  labs(fill = "Cell state", y = "Phylogenetic auto-correlation", x = "Cell state") +
+  ggtitle("Cell state heritability", subtitle = "auto-correlation")
+
+maxz <- max(abs(df$Z))
+herit2 <- df %>%
+  filter(Var1 == Var2) %>%
+  ggplot(aes(x = Var1, y = Z, fill = Var1)) +
+  geom_bar(stat = "identity") +
+  ylim(c(-maxz, maxz)) +
+  theme_classic() +
+  labs(fill = "Cell state", y = "Phylogenetic auto-correlation\n(z score)", x = "Cell state") +
+  geom_hline(yintercept = qnorm(0.05, lower.tail = FALSE), col = "black", lty = 2) +
+  ggtitle("Cell state heritability", subtitle = "z score")
+
+herit1 + herit2 + plot_layout(guides = "collect")
+```
+
+# Plotting Heatmap of Phylogenetic Correlation
+
+```{r}
+df %>%
+  ggplot(aes(x = Var1, y = Var2, fill = I)) +
+  geom_tile(col = "white") +
+  scale_fill_distiller(palette = 5, type = "div", limits = c(-1, 1.5)) +
+  theme_classic() +
+  scale_y_discrete(limits = rev) +
+  labs(fill = "Phylogenetic\ncorrelation", x = "Cell state", y = "Cell state") +
+  theme(aspect.ratio = 1)
+```
+

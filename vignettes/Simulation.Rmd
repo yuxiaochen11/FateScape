@@ -1,0 +1,139 @@
+---
+title: "Simulation"
+output: html_document
+date: "2025-04-02"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = "D:/projects/LineageCast/LineageCast/")
+knitr::opts_chunk$set(warning = FALSE)
+```
+
+## Loading package functions 
+
+```{r, message=FALSE}
+library(LineageCast)
+library(phangorn)
+library(TreeTools)
+```
+
+## Loading Lineage Barcodes and Cell States
+
+```{r}
+# Load simulated data
+load('data/Simulation/cifs.RData')
+
+# Extract barcode data (all barcodes)
+barcodes_all <- cifs[[7]]
+ncells <- 512  
+N_char <- 12
+p_ds <- 0.2
+r_n <- ceiling(N_char * 0.7)
+
+# Extract barcode data for leaves (raw cell barcodes)
+cif_leaves <- list()
+for (i in 1:3) {
+  cif_leaves[[i]] <- cifs[[1]][[i]][1:ncells, ]
+}
+
+# Load true counts for RNA data
+load('data/Simulation/counts.RData')
+
+# Extract cell state information from simulation results
+states_leaves <- cifs[[2]][1:ncells, ]
+state <- data.frame(cell_id = paste("cell", states_leaves[,"cellID"], sep = "_"),
+                    cluster = as.character(states_leaves[,"cluster"]))
+
+# Process ground truth cell division tree
+tree_ct <- cifs[[4]]
+for (i in 1:ncells) {
+  tree_ct$tip.label[i] <- paste("cell", substr(tree_ct$tip.label[i], 2, nchar(tree_ct$tip.label[i])), sep = "_")
+}
+```
+
+# Preprocessing Lineage Barcodes
+
+```{r}
+# Extract initial barcode matrix for cells
+barcodes_initial <- barcodes_all[1:ncells, ]
+rownames(barcodes_initial) <- paste("cell", states_leaves[, 4], sep = "_")
+
+# Introduce stochastic dropout to simulate missing barcode data
+barcodes_dropout <- stochastic_dropout(barcodes_initial, p_ds)
+
+# Impute missing values in barcode data
+barcodes <- dropout_imputation_alter(barcodes_dropout, N_char, ncells, r_n)
+# Optionally: Check the number of unique barcodes
+# sum(!duplicated(barcodes))
+```
+
+# Grouping Cells by State Lineage
+
+```{r}
+# Set state lineage
+state_lineages <- list()
+state_lineages[["L1"]] <- c(4, 5, 6, 7, 8, 9, 1)
+state_lineages[["L2"]] <- c(4, 5, 6, 7, 8, 10, 2)
+state_lineages[["L3"]] <- c(4, 5, 6, 11, 12, 13, 3)
+
+# Generate state lineage information using simulated cell states and imputed barcodes
+sl_info <- state_lineage_info(state_lineages, ncells, state, barcodes)
+state_lineage <- sl_info[[1]]
+cell_lineages <- sl_info[[2]]
+barcodes_lineages <- sl_info[[3]]
+state_labels_lineages <- sl_info[[4]]
+```
+
+# Reconstructing Sub-Cell Division Trees
+
+```{r}
+# Record simulation start time for performance tracking
+start_time <- proc.time()
+
+# Construct initial sub-cell division trees based on state lineages and barcode data
+Trees_initial <- initial_tree_construction(state_lineages, barcodes_lineages)
+
+# Refine subtrees using maximum likelihood and subtree exchanges
+LiterateRefine <- subtree_refinement(Trees_initial, state_lineages, barcodes_lineages,
+                                     N_char, state_labels_lineages,
+                                     lambda1 = 0.1, lambda2 = 0.9,
+                                     maxIter = 100, repeat_time = 10)
+bestsubtree <- LiterateRefine[[1]]
+
+# Remove duplicated leaf nodes from the refined subtrees
+bestsubtree <- drop_duplicated_tips(bestsubtree, barcodes_lineages, cell_lineages,
+                                    state_lineage, alpha = 1.5, beta = 1.5)
+```
+
+
+# Integrating Sub-Cell Division Trees
+
+```{r}
+# Generate root barcodes for each refined subtree
+subtrees_rootbar <- get_subtree_root_barcodes(bestsubtree, state, barcodes, length(state_lineages))
+
+# Compute the common mutation matrix among subtree root barcodes
+CM <- common_mutation_matrix(subtrees_rootbar)
+Nodes_rank <- subtrees_rank(CM)[[1]]
+Nodes_weight <- subtrees_rank(CM)[[2]]
+
+# Decompose refined subtrees into sub-subtrees
+subsubtrees <- decompose_subtrees(bestsubtree, state, barcodes, length(state_lineages))
+
+# Merge sub-cell division trees using ordered merging
+Tree_Merge <- merge_subcell_trees_ordered(CM, Nodes_rank, Nodes_weight, subsubtrees,
+                                          bind_tree_list = list(), nsubtree = 1)
+
+# Record total processing time
+LineageCast_totaltime <- proc.time() - start_time
+
+```
+
+# Evaluating the Reconstructed Tree
+
+```{r}
+# Evaluate the merged tree against the ground truth tree
+cat("Nye Similarity (higher is better): ", TreeDist::NyeSimilarity(tree_ct, Tree_Merge, normalize = TRUE), "\n")
+cat("Tree Distance (lower is better): ", TreeDist::TreeDistance(tree_ct, Tree_Merge), "\n")
+cat("RF Distance (lower is better): ", RF.dist(tree_ct, Tree_Merge, normalize = TRUE), "\n")
+```

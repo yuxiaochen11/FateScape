@@ -1,0 +1,78 @@
+# _pkgdown.yml
+home:
+  title: "LineageCast"
+  tagline: "LineageCast Documentary"
+
+navbar:
+  structure:
+    left: [home, reference, articles, news]
+
+template:
+  bootstrap: 5
+
+url:
+  url: http://localhost/LineageCast
+
+build:
+  vignettes: true
+
+
+reference:
+  - title: "Dropout imputation"
+    desc: "Refining the lineage barcodes data with stochastic dropout"
+    contents:
+      - barcodes_grouping
+      - lable_imputation
+      - remaining_sites_imputation
+      - stochastic_dropout
+      - dropout_imputation
+      - dropout_imputation_alter
+
+  - title: "Sub-cell division tree reconstruction"
+    desc: "Reconstructing the sub-cell division tree for each state lineage"
+    contents:
+      - state_lineage_info
+      - nodes_clustering
+      - initial_tree_construction
+      - ancestor_inference
+      - ancestor_inference_time_scale
+      - state_transition_likelihood
+      - barcode_similarity_likelihood
+      - combined_likelihood
+      - nodes_sampling
+      - subtrees_swapping
+      - subtree_refinement
+
+  - title: "Sub-cell division tree integration"
+    desc: "Integrating the sub-cell division to a comprehensive cell division tree"
+    contents:
+      - sibling_cells_distance
+      - drop_non_minimum_tips
+      - drop_duplicated_tips
+      - get_first_element
+      - subtree_root_bar
+      - get_root_barcode
+      - get_subtree_root_barcodes
+      - count_common_mutations
+      - count_uncommon_mutations
+      - common_mutation_matrix
+      - group_subcell_trees
+      - subtrees_rank
+      - prune_cell_tree
+      - decompose_subtrees
+      - get_subtree_celltypes
+      - get_tips
+      - get_unique_celltypes
+      - merge_subcell_trees_ordered
+      - merge_subcell_trees_ward
+      - phylogenetic_tree
+
+  - title: "Utilities"
+    desc: "Utility functions"
+    contents:
+      - hamming_distance
+      - improved_hamming_distance
+      - distance_with_dropout
+      - format_tree_newick
+      - format_tree_newick_time
+      - find_node_depth

@@ -1,0 +1,64 @@
+Mutation rate,Methods,Nye Similarity Score
+0.05,LineageCast,0.5611
+0.05,LineageCast,0.6205
+0.05,LineageCast,0.6138
+0.1,LineageCast,0.6822
+0.1,LineageCast,0.6571
+0.1,LineageCast,0.6967
+0.2,LineageCast,0.6067
+0.2,LineageCast,0.6361
+0.2,LineageCast,0.6014
+0.05,LineageCast_slingshot,0.5591
+0.05,LineageCast_slingshot,0.5951
+0.05,LineageCast_slingshot,0.6003
+0.1,LineageCast_slingshot,0.6579
+0.1,LineageCast_slingshot,0.6534
+0.1,LineageCast_slingshot,0.654
+0.2,LineageCast_slingshot,0.5706
+0.2,LineageCast_slingshot,0.5918
+0.2,LineageCast_slingshot,0.6006
+0.05,LineageCast_monocle,0.5598
+0.05,LineageCast_monocle,0.5309
+0.05,LineageCast_monocle,0.6075
+0.1,LineageCast_monocle,0.6669
+0.1,LineageCast_monocle,0.654
+0.1,LineageCast_monocle,0.6933
+0.2,LineageCast_monocle,0.592
+0.2,LineageCast_monocle,0.5731
+0.2,LineageCast_monocle,0.6075
+0.05,LinRace,0.5338
+0.05,LinRace,0.598
+0.05,LinRace,0.5907
+0.1,LinRace,0.6575
+0.1,LinRace,0.6366
+0.1,LinRace,0.6603
+0.2,LinRace,0.5781
+0.2,LinRace,0.5889
+0.2,LinRace,0.5752
+0.05,LinTIMaT,0.4614728
+0.05,LinTIMaT,0.436701
+0.05,LinTIMaT,0.4099607
+0.1,LinTIMaT,0.4645244
+0.1,LinTIMaT,0.4961061
+0.1,LinTIMaT,0.4836416
+0.2,LinTIMaT,0.4221243
+0.2,LinTIMaT,0.4890901
+0.2,LinTIMaT,0.4631965
+0.05,NJ method,0.5606
+0.05,NJ method,0.6164
+0.05,NJ method,0.6016
+0.1,NJ method,0.6648
+0.1,NJ method,0.6504
+0.1,NJ method,0.6668
+0.2,NJ method,0.6079
+0.2,NJ method,0.6188
+0.2,NJ method,0.5925
+0.05,Cassiopeia,0.5308465
+0.05,Cassiopeia,0.4794743
+0.05,Cassiopeia,0.4873691
+0.1,Cassiopeia,0.580254
+0.1,Cassiopeia,0.5732642
+0.1,Cassiopeia,0.5178156
+0.2,Cassiopeia,0.4897168
+0.2,Cassiopeia,0.4815487
+0.2,Cassiopeia,0.4363169

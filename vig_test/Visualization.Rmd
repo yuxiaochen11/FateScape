@@ -1,0 +1,1109 @@
+---
+title: "plotting"
+output: html_document
+date: "2024-06-08"
+---
+
+```{r}
+library(tidyverse)
+library(readxl)
+library(lubridate)
+library(ggplot2)
+library(cowplot)
+```
+
+
+
+```{r}
+data_1 <- read.csv("D:/projects/LineageCast/LineageCast/data/Simulation/benchmark_result/mu_Nye.csv")
+data_1$Mutation.rate <- factor(data_1$Mutation.rate, levels = c("0.1", "0.2", "0.3"))
+data_1$Methods <- factor(
+  data_1$Methods, 
+  levels = c("LineageCast", "LineageCast_slingshot", "LineageCast_monocle", 
+             "LinRace", "LinTIMaT", "NJ method", "Cassiopeia")
+)
+
+p_1 <- ggplot(data_1, aes(x = Mutation.rate, y = Nye.Similarity.Score, fill = Methods)) +
+
+  geom_rect(aes(xmin = 0.5, xmax = 1.5, ymin = -Inf, ymax = Inf),
+            fill = "#54BCCD", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 1.5, xmax = 2.5, ymin = -Inf, ymax = Inf),
+            fill = "#EA5514", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 2.5, xmax = 3.5, ymin = -Inf, ymax = Inf),
+            fill = "#A5B960", alpha = 0.003, inherit.aes = FALSE) +
+  
+
+  geom_boxplot(width = 0.9, alpha = 0.8, size = 0.3, fatten = 1) +
+
+  scale_fill_manual(values = c('#E71F19','#804798','#E62082','#F1EC4A','#23ACDB','#81C035','#FBFAD6')) +
+  
+
+  scale_y_continuous(
+    name   = "Nye similarity score",
+    breaks = seq(0.2, 0.5, 0.1),
+    limits = c(0.2, 0.5)
+  ) +
+  scale_x_discrete(name = "Mutation rate") +
+  
+
+  theme(
+    text = element_text(face = "plain"),        
+    axis.title = element_text(size = 6),        
+    axis.text  = element_text(size = 5.5),      
+    panel.background = element_blank(),                           
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    axis.line.x = element_line(color = "black", size = 0.5),      
+    axis.line.y = element_line(color = "black", size = 0.5),      
+    legend.text = element_text(size = 5.5),    
+    legend.title = element_text(size = 6),    
+    legend.background = element_blank(),                          
+    legend.key = element_blank(),
+    legend.key.size = unit(0.3, "cm")                            
+  )
+
+ggsave("D:/projects/LineageCast/LineageCast/plot/box_plot/Nye_mu.pdf", p_1,
+       device = cairo_pdf,
+       width = 8, height = 4.5, units = "cm")
+```
+
+
+```{r}
+data_2 <- read.csv("D:/projects/LineageCast/LineageCast/data/Simulation/benchmark_result/mu_GRF.csv")
+data_2$Mutation.rate <- factor(data_2$Mutation.rate, levels = c("0.1", "0.2", "0.3"))
+data_2$Methods <- factor(
+  data_2$Methods, 
+  levels = c("LineageCast", "LineageCast_slingshot", "LineageCast_monocle", 
+             "LinRace", "LinTIMaT", "NJ method", "Cassiopeia")
+)
+
+p_2 <- ggplot(data_2, aes(x = Mutation.rate, y = Information.based.distance, fill = Methods)) +
+
+  geom_rect(aes(xmin = 0.5, xmax = 1.5, ymin = -Inf, ymax = Inf),
+            fill = "#54BCCD", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 1.5, xmax = 2.5, ymin = -Inf, ymax = Inf),
+            fill = "#EA5514", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 2.5, xmax = 3.5, ymin = -Inf, ymax = Inf),
+            fill = "#A5B960", alpha = 0.003, inherit.aes = FALSE) +
+  geom_boxplot(width = 0.9, alpha = 0.8, size = 0.3, fatten = 1) +
+  scale_fill_manual(values = c('#E71F19','#804798','#E62082','#F1EC4A','#23ACDB','#81C035','#FBFAD6')) +
+  
+
+  scale_y_continuous(
+    name   = "Generalized RF distance",
+    breaks = seq(0.4, 0.9, 0.1),
+    limits = c(0.4, 0.9)
+  ) +
+  scale_x_discrete(name = "Mutation rate") +
+  
+
+  theme(
+    text = element_text(face = "plain"),        
+    axis.title = element_text(size = 6),        
+    axis.text  = element_text(size = 5.5),      
+    panel.background = element_blank(),                           
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    axis.line.x = element_line(color = "black", size = 0.5),      
+    axis.line.y = element_line(color = "black", size = 0.5),      
+    legend.text = element_text(size = 5.5),    
+    legend.title = element_text(size = 6),    
+    legend.background = element_blank(),                          
+    legend.key = element_blank(),
+    legend.key.size = unit(0.3, "cm")                            
+  )
+
+ggsave("D:/projects/LineageCast/LineageCast/plot/box_plot/GRF_mu.pdf", p_2,
+       device = cairo_pdf,
+       width = 8, height = 4.5, units = "cm")
+```
+
+
+```{r}
+data_3 <- read.csv("D:/projects/LineageCast/LineageCast/data/Simulation/benchmark_result/mu_RF.csv")
+data_3$Mutation.rate <- factor(data_3$Mutation.rate, levels = c("0.1", "0.2", "0.3"))
+data_3$Methods <- factor(
+  data_3$Methods, 
+  levels = c("LineageCast", "LineageCast_slingshot", "LineageCast_monocle", 
+             "LinRace", "LinTIMaT", "NJ method", "Cassiopeia")
+)
+
+p_3 <- ggplot(data_3, aes(x = Mutation.rate, y = RF.distance, fill = Methods)) +
+
+  geom_rect(aes(xmin = 0.5, xmax = 1.5, ymin = -Inf, ymax = Inf),
+            fill = "#54BCCD", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 1.5, xmax = 2.5, ymin = -Inf, ymax = Inf),
+            fill = "#EA5514", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 2.5, xmax = 3.5, ymin = -Inf, ymax = Inf),
+            fill = "#A5B960", alpha = 0.003, inherit.aes = FALSE) +
+  geom_boxplot(width = 0.9, alpha = 0.8, size = 0.3, fatten = 1) +
+  scale_fill_manual(values = c('#E71F19','#804798','#E62082','#F1EC4A','#23ACDB','#81C035','#FBFAD6')) +
+  
+
+  scale_y_continuous(
+    name   = "RF distance",
+    breaks = seq(0.75, 1, 0.05),
+    limits = c(0.75, 1)
+  ) +
+  scale_x_discrete(name = "Mutation rate") +
+  
+
+  theme(
+    text = element_text(face = "plain"),        
+    axis.title = element_text(size = 6),        
+    axis.text  = element_text(size = 5.5),      
+    panel.background = element_blank(),                           
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    axis.line.x = element_line(color = "black", size = 0.5),      
+    axis.line.y = element_line(color = "black", size = 0.5),      
+    legend.text = element_text(size = 5.5),    
+    legend.title = element_text(size = 6),    
+    legend.background = element_blank(),                          
+    legend.key = element_blank(),
+    legend.key.size = unit(0.3, "cm")                            
+  )
+
+ggsave("D:/projects/LineageCast/LineageCast/plot/box_plot/RF_mu.pdf", p_3,
+       device = cairo_pdf,
+       width = 8, height = 4.5, units = "cm")
+```
+
+
+```{r}
+data_4 <- read.csv("D:/projects/LineageCast/LineageCast/data/Simulation/benchmark_result/dps_Nye.csv")
+data_4$Stochastic.dropout.rate <- factor(data_4$Stochastic.dropout.rate, levels = c("0.1", "0.2", "0.3"))
+data_4$Methods <- factor(
+  data_4$Methods, 
+  levels = c("LineageCast", "LineageCast_slingshot", "LineageCast_monocle", 
+             "LinRace", "LinTIMaT", "NJ method", "Cassiopeia")
+)
+
+p_4 <- ggplot(data_4, aes(x = Stochastic.dropout.rate, y = Nye.Similarity.Score, fill = Methods)) +
+
+  geom_rect(aes(xmin = 0.5, xmax = 1.5, ymin = -Inf, ymax = Inf),
+            fill = "#54BCCD", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 1.5, xmax = 2.5, ymin = -Inf, ymax = Inf),
+            fill = "#EA5514", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 2.5, xmax = 3.5, ymin = -Inf, ymax = Inf),
+            fill = "#A5B960", alpha = 0.003, inherit.aes = FALSE) +
+  
+
+  geom_boxplot(width = 0.9, alpha = 0.8, size = 0.3, fatten = 1) +
+
+  scale_fill_manual(values = c('#E71F19','#804798','#E62082','#F1EC4A','#23ACDB','#81C035','#FBFAD6')) +
+  
+
+  scale_y_continuous(
+    name   = "Nye similarity score",
+    breaks = seq(0.2, 0.5, 0.1),
+    limits = c(0.2, 0.5)
+  ) +
+  scale_x_discrete(name = "Stochastical dropout rate") +
+  
+
+  theme(
+    text = element_text(face = "plain"),        
+    axis.title = element_text(size = 6),        
+    axis.text  = element_text(size = 5.5),      
+    panel.background = element_blank(),                           
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    axis.line.x = element_line(color = "black", size = 0.5),      
+    axis.line.y = element_line(color = "black", size = 0.5),      
+    legend.text = element_text(size = 5.5),    
+    legend.title = element_text(size = 6),    
+    legend.background = element_blank(),                          
+    legend.key = element_blank(),
+    legend.key.size = unit(0.3, "cm")                            
+  )
+
+ggsave("D:/projects/LineageCast/LineageCast/plot/box_plot/Nye_dps.pdf", p_4,
+       device = cairo_pdf,
+       width = 8, height = 4.5, units = "cm")
+```
+
+
+```{r}
+data_5 <- read.csv("D:/projects/LineageCast/LineageCast/data/Simulation/benchmark_result/dps_GRF.csv")
+data_5$Stochastic.dropout.rate <- factor(data_5$Stochastic.dropout.rate, levels = c("0.1", "0.2", "0.3"))
+data_5$Methods <- factor(
+  data_5$Methods, 
+  levels = c("LineageCast", "LineageCast_slingshot", "LineageCast_monocle", 
+             "LinRace", "LinTIMaT", "NJ method", "Cassiopeia")
+)
+
+p_5 <- ggplot(data_5, aes(x = Stochastic.dropout.rate, y = Information.based.distance, fill = Methods)) +
+
+  geom_rect(aes(xmin = 0.5, xmax = 1.5, ymin = -Inf, ymax = Inf),
+            fill = "#54BCCD", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 1.5, xmax = 2.5, ymin = -Inf, ymax = Inf),
+            fill = "#EA5514", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 2.5, xmax = 3.5, ymin = -Inf, ymax = Inf),
+            fill = "#A5B960", alpha = 0.003, inherit.aes = FALSE) +
+  geom_boxplot(width = 0.9, alpha = 0.8, size = 0.3, fatten = 1) +
+  scale_fill_manual(values = c('#E71F19','#804798','#E62082','#F1EC4A','#23ACDB','#81C035','#FBFAD6')) +
+  
+
+  scale_y_continuous(
+    name   = "Generalized RF distance",
+    breaks = seq(0.4, 0.9, 0.1),
+    limits = c(0.4, 0.9)
+  ) +
+  scale_x_discrete(name = "Stochastical dropout rate") +
+  
+
+  theme(
+    text = element_text(face = "plain"),        
+    axis.title = element_text(size = 6),        
+    axis.text  = element_text(size = 5.5),      
+    panel.background = element_blank(),                           
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    axis.line.x = element_line(color = "black", size = 0.5),      
+    axis.line.y = element_line(color = "black", size = 0.5),      
+    legend.text = element_text(size = 5.5),    
+    legend.title = element_text(size = 6),    
+    legend.background = element_blank(),                          
+    legend.key = element_blank(),
+    legend.key.size = unit(0.3, "cm")                            
+  )
+
+ggsave("D:/projects/LineageCast/LineageCast/plot/box_plot/GRF_dps.pdf", p_5,
+       device = cairo_pdf,
+       width = 8, height = 4.5, units = "cm")
+```
+
+
+```{r}
+data_6 <- read.csv("D:/projects/LineageCast/LineageCast/data/Simulation/benchmark_result/dps_RF.csv")
+data_6$Stochastic.dropout.rate <- factor(data_6$Stochastic.dropout.rate, levels = c("0.1", "0.2", "0.3"))
+data_6$Methods <- factor(
+  data_6$Methods, 
+  levels = c("LineageCast", "LineageCast_slingshot", "LineageCast_monocle", 
+             "LinRace", "LinTIMaT", "NJ method", "Cassiopeia")
+)
+
+p_6 <- ggplot(data_6, aes(x = Stochastic.dropout.rate, y = RF.distance, fill = Methods)) +
+
+  geom_rect(aes(xmin = 0.5, xmax = 1.5, ymin = -Inf, ymax = Inf),
+            fill = "#54BCCD", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 1.5, xmax = 2.5, ymin = -Inf, ymax = Inf),
+            fill = "#EA5514", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 2.5, xmax = 3.5, ymin = -Inf, ymax = Inf),
+            fill = "#A5B960", alpha = 0.003, inherit.aes = FALSE) +
+  geom_boxplot(width = 0.9, alpha = 0.8, size = 0.3, fatten = 1) +
+  scale_fill_manual(values = c('#E71F19','#804798','#E62082','#F1EC4A','#23ACDB','#81C035','#FBFAD6')) +
+  
+
+  scale_y_continuous(
+    name   = "RF distance",
+    breaks = seq(0.75, 1, 0.05),
+    limits = c(0.75, 1)
+  ) +
+  scale_x_discrete(name = "Stochastical dropout rate") +
+  
+
+  theme(
+    text = element_text(face = "plain"),        
+    axis.title = element_text(size = 6),        
+    axis.text  = element_text(size = 5.5),      
+    panel.background = element_blank(),                           
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    axis.line.x = element_line(color = "black", size = 0.5),      
+    axis.line.y = element_line(color = "black", size = 0.5),      
+    legend.text = element_text(size = 5.5),    
+    legend.title = element_text(size = 6),    
+    legend.background = element_blank(),                          
+    legend.key = element_blank(),
+    legend.key.size = unit(0.3, "cm")                            
+  )
+
+ggsave("D:/projects/LineageCast/LineageCast/plot/box_plot/RF_dps.pdf", p_6,
+       device = cairo_pdf,
+       width = 8, height = 4.5, units = "cm")
+```
+
+
+
+```{r}
+data_7 <- read.csv("D:/projects/LineageCast/LineageCast/data/Simulation/benchmark_result/dps0_Nye.csv")
+data_7$Mutation.rate <- factor(data_7$Mutation.rate, levels = c("0.05", "0.1", "0.2"))
+data_7$Methods <- factor(
+  data_7$Methods, 
+  levels = c("LineageCast", "LineageCast_slingshot", "LineageCast_monocle", 
+             "LinRace", "LinTIMaT", "NJ method", "Cassiopeia")
+)
+
+p_7 <- ggplot(data_7, aes(x = Mutation.rate, y = Nye.Similarity.Score, fill = Methods)) +
+
+  geom_rect(aes(xmin = 0.5, xmax = 1.5, ymin = -Inf, ymax = Inf),
+            fill = "#54BCCD", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 1.5, xmax = 2.5, ymin = -Inf, ymax = Inf),
+            fill = "#EA5514", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 2.5, xmax = 3.5, ymin = -Inf, ymax = Inf),
+            fill = "#A5B960", alpha = 0.003, inherit.aes = FALSE) +
+  
+
+  geom_boxplot(width = 0.9, alpha = 0.8, size = 0.3, fatten = 1) +
+
+  scale_fill_manual(values = c('#E71F19','#804798','#E62082','#F1EC4A','#23ACDB','#81C035','#FBFAD6')) +
+  
+
+  scale_y_continuous(
+    name   = "Nye similarity score",
+    breaks = seq(0.3, 0.7, 0.1),
+    limits = c(0.3, 0.7)
+  ) +
+  scale_x_discrete(name = "Mutation rate") +
+  
+
+  theme(
+    text = element_text(face = "plain"),        
+    axis.title = element_text(size = 6),        
+    axis.text  = element_text(size = 5.5),      
+    panel.background = element_blank(),                           
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    axis.line.x = element_line(color = "black", size = 0.5),      
+    axis.line.y = element_line(color = "black", size = 0.5),      
+    legend.text = element_text(size = 5.5),    
+    legend.title = element_text(size = 6),    
+    legend.background = element_blank(),                          
+    legend.key = element_blank(),
+    legend.key.size = unit(0.3, "cm")                            
+  )
+
+ggsave("D:/projects/LineageCast/LineageCast/plot/box_plot/Nye_dps0.pdf", p_7,
+       device = cairo_pdf,
+       width = 8, height = 4.5, units = "cm")
+```
+
+
+```{r}
+data_8 <- read.csv("D:/projects/LineageCast/LineageCast/data/Simulation/benchmark_result/dps0_GRF.csv")
+data_8$Mutation.rate <- factor(data_8$Mutation.rate, levels = c("0.05", "0.1", "0.2"))
+data_8$Methods <- factor(
+  data_8$Methods, 
+  levels = c("LineageCast", "LineageCast_slingshot", "LineageCast_monocle", 
+             "LinRace", "LinTIMaT", "NJ method", "Cassiopeia")
+)
+
+p_8 <- ggplot(data_8, aes(x = Mutation.rate, y = Information.based.distance, fill = Methods)) +
+
+  geom_rect(aes(xmin = 0.5, xmax = 1.5, ymin = -Inf, ymax = Inf),
+            fill = "#54BCCD", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 1.5, xmax = 2.5, ymin = -Inf, ymax = Inf),
+            fill = "#EA5514", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 2.5, xmax = 3.5, ymin = -Inf, ymax = Inf),
+            fill = "#A5B960", alpha = 0.003, inherit.aes = FALSE) +
+  geom_boxplot(width = 0.9, alpha = 0.8, size = 0.3, fatten = 1) +
+  scale_fill_manual(values = c('#E71F19','#804798','#E62082','#F1EC4A','#23ACDB','#81C035','#FBFAD6')) +
+  
+
+  scale_y_continuous(
+    name   = "Generalized RF distance",
+    breaks = seq(0.3, 0.9, 0.1),
+    limits = c(0.3, 0.9)
+  ) +
+  scale_x_discrete(name = "Mutation rate") +
+  
+
+  theme(
+    text = element_text(face = "plain"),        
+    axis.title = element_text(size = 6),        
+    axis.text  = element_text(size = 5.5),      
+    panel.background = element_blank(),                           
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    axis.line.x = element_line(color = "black", size = 0.5),      
+    axis.line.y = element_line(color = "black", size = 0.5),      
+    legend.text = element_text(size = 5.5),    
+    legend.title = element_text(size = 6),    
+    legend.background = element_blank(),                          
+    legend.key = element_blank(),
+    legend.key.size = unit(0.3, "cm")                            
+  )
+
+ggsave("D:/projects/LineageCast/LineageCast/plot/box_plot/GRF_dps0.pdf", p_8,
+       device = cairo_pdf,
+       width = 8, height = 4.5, units = "cm")
+```
+
+
+```{r}
+data_9 <- read.csv("D:/projects/LineageCast/LineageCast/data/Simulation/benchmark_result/dps0_RF.csv")
+data_9$Mutation.rate <- factor(data_9$Mutation.rate, levels = c("0.05", "0.1", "0.2"))
+data_9$Methods <- factor(
+  data_9$Methods, 
+  levels = c("LineageCast", "LineageCast_slingshot", "LineageCast_monocle", 
+             "LinRace", "LinTIMaT", "NJ method", "Cassiopeia")
+)
+
+p_9 <- ggplot(data_9, aes(x = Mutation.rate, y = RF.distance, fill = Methods)) +
+
+  geom_rect(aes(xmin = 0.5, xmax = 1.5, ymin = -Inf, ymax = Inf),
+            fill = "#54BCCD", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 1.5, xmax = 2.5, ymin = -Inf, ymax = Inf),
+            fill = "#EA5514", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 2.5, xmax = 3.5, ymin = -Inf, ymax = Inf),
+            fill = "#A5B960", alpha = 0.003, inherit.aes = FALSE) +
+  geom_boxplot(width = 0.9, alpha = 0.8, size = 0.3, fatten = 1) +
+  scale_fill_manual(values = c('#E71F19','#804798','#E62082','#F1EC4A','#23ACDB','#81C035','#FBFAD6')) +
+  
+
+  scale_y_continuous(
+    name   = "RF distance",
+    breaks = seq(0.5, 1, 0.1),
+    limits = c(0.5, 1)
+  ) +
+  scale_x_discrete(name = "Mutation rate") +
+  
+
+  theme(
+    text = element_text(face = "plain"),        
+    axis.title = element_text(size = 6),        
+    axis.text  = element_text(size = 5.5),      
+    panel.background = element_blank(),                           
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    axis.line.x = element_line(color = "black", size = 0.5),      
+    axis.line.y = element_line(color = "black", size = 0.5),      
+    legend.text = element_text(size = 5.5),    
+    legend.title = element_text(size = 6),    
+    legend.background = element_blank(),                          
+    legend.key = element_blank(),
+    legend.key.size = unit(0.3, "cm")                            
+  )
+
+ggsave("D:/projects/LineageCast/LineageCast/plot/box_plot/RF_dps0.pdf", p_9,
+       device = cairo_pdf,
+       width = 8, height = 4.5, units = "cm")
+```
+
+
+```{r}
+data_10 <- read.csv("D:/projects/LineageCast/LineageCast/data/Simulation/benchmark_result/Nchar_Nye.csv")
+data_10$Number.of.sites <- factor(data_10$Number.of.sites, levels = c("8", "12", "16"))
+data_10$Methods <- factor(
+  data_10$Methods, 
+  levels = c("LineageCast", "LineageCast_slingshot", "LineageCast_monocle", 
+             "LinRace", "LinTIMaT", "NJ method", "Cassiopeia")
+)
+
+p_10 <- ggplot(data_10, aes(x = Number.of.sites, y = Nye.Similarity.Score, fill = Methods)) +
+
+  geom_rect(aes(xmin = 0.5, xmax = 1.5, ymin = -Inf, ymax = Inf),
+            fill = "#54BCCD", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 1.5, xmax = 2.5, ymin = -Inf, ymax = Inf),
+            fill = "#EA5514", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 2.5, xmax = 3.5, ymin = -Inf, ymax = Inf),
+            fill = "#A5B960", alpha = 0.003, inherit.aes = FALSE) +
+  
+
+  geom_boxplot(width = 0.9, alpha = 0.8, size = 0.3, fatten = 1) +
+
+  scale_fill_manual(values = c('#E71F19','#804798','#E62082','#F1EC4A','#23ACDB','#81C035','#FBFAD6')) +
+  
+
+  scale_y_continuous(
+    name   = "Nye similarity score",
+    breaks = seq(0.2, 0.5, 0.1),
+    limits = c(0.2, 0.5)
+  ) +
+  scale_x_discrete(name = "Number of target sites") +
+  
+
+  theme(
+    text = element_text(face = "plain"),        
+    axis.title = element_text(size = 6),        
+    axis.text  = element_text(size = 5.5),      
+    panel.background = element_blank(),                           
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    axis.line.x = element_line(color = "black", size = 0.5),      
+    axis.line.y = element_line(color = "black", size = 0.5),      
+    legend.text = element_text(size = 5.5),    
+    legend.title = element_text(size = 6),    
+    legend.background = element_blank(),                          
+    legend.key = element_blank(),
+    legend.key.size = unit(0.3, "cm")                            
+  )
+
+ggsave("D:/projects/LineageCast/LineageCast/plot/box_plot/Nye_Nchar.pdf", p_10,
+       device = cairo_pdf,
+       width = 8, height = 4.5, units = "cm")
+```
+
+
+```{r}
+data_11 <- read.csv("D:/projects/LineageCast/LineageCast/data/Simulation/benchmark_result/Nchar_GRF.csv")
+data_11$Number.of.sites <- factor(data_11$Number.of.sites, levels = c("8", "12", "16"))
+data_11$Methods <- factor(
+  data_11$Methods, 
+  levels = c("LineageCast", "LineageCast_slingshot", "LineageCast_monocle", 
+             "LinRace", "LinTIMaT", "NJ method", "Cassiopeia")
+)
+
+p_11 <- ggplot(data_11, aes(x = Number.of.sites, y = Information.based.distance, fill = Methods)) +
+
+  geom_rect(aes(xmin = 0.5, xmax = 1.5, ymin = -Inf, ymax = Inf),
+            fill = "#54BCCD", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 1.5, xmax = 2.5, ymin = -Inf, ymax = Inf),
+            fill = "#EA5514", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 2.5, xmax = 3.5, ymin = -Inf, ymax = Inf),
+            fill = "#A5B960", alpha = 0.003, inherit.aes = FALSE) +
+  geom_boxplot(width = 0.9, alpha = 0.8, size = 0.3, fatten = 1) +
+  scale_fill_manual(values = c('#E71F19','#804798','#E62082','#F1EC4A','#23ACDB','#81C035','#FBFAD6')) +
+  
+
+  scale_y_continuous(
+    name   = "Generalized RF distance",
+    breaks = seq(0.4, 0.9, 0.1),
+    limits = c(0.4, 0.9)
+  ) +
+  scale_x_discrete(name = "Number of target sites") +
+  
+
+  theme(
+    text = element_text(face = "plain"),        
+    axis.title = element_text(size = 6),        
+    axis.text  = element_text(size = 5.5),      
+    panel.background = element_blank(),                           
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    axis.line.x = element_line(color = "black", size = 0.5),      
+    axis.line.y = element_line(color = "black", size = 0.5),      
+    legend.text = element_text(size = 5.5),    
+    legend.title = element_text(size = 6),    
+    legend.background = element_blank(),                          
+    legend.key = element_blank(),
+    legend.key.size = unit(0.3, "cm")                            
+  )
+
+ggsave("D:/projects/LineageCast/LineageCast/plot/box_plot/GRF_Nchar.pdf", p_11,
+       device = cairo_pdf,
+       width = 8, height = 4.5, units = "cm")
+```
+
+
+```{r}
+data_12 <- read.csv("D:/projects/LineageCast/LineageCast/data/Simulation/benchmark_result/Nchar_RF.csv")
+data_12$Number.of.sites <- factor(data_12$Number.of.sites, levels = c("8", "12", "16"))
+data_12$Methods <- factor(
+  data_12$Methods, 
+  levels = c("LineageCast", "LineageCast_slingshot", "LineageCast_monocle", 
+             "LinRace", "LinTIMaT", "NJ method", "Cassiopeia")
+)
+
+p_12 <- ggplot(data_12, aes(x = Number.of.sites, y = RF.distance, fill = Methods)) +
+
+  geom_rect(aes(xmin = 0.5, xmax = 1.5, ymin = -Inf, ymax = Inf),
+            fill = "#54BCCD", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 1.5, xmax = 2.5, ymin = -Inf, ymax = Inf),
+            fill = "#EA5514", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 2.5, xmax = 3.5, ymin = -Inf, ymax = Inf),
+            fill = "#A5B960", alpha = 0.003, inherit.aes = FALSE) +
+  geom_boxplot(width = 0.9, alpha = 0.8, size = 0.3, fatten = 1) +
+  scale_fill_manual(values = c('#E71F19','#804798','#E62082','#F1EC4A','#23ACDB','#81C035','#FBFAD6')) +
+  
+
+  scale_y_continuous(
+    name   = "RF distance",
+    breaks = seq(0.75, 1, 0.05),
+    limits = c(0.75, 1)
+  ) +
+  scale_x_discrete(name = "Number of target sites") +
+  
+
+  theme(
+    text = element_text(face = "plain"),        
+    axis.title = element_text(size = 6),        
+    axis.text  = element_text(size = 5.5),      
+    panel.background = element_blank(),                           
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    axis.line.x = element_line(color = "black", size = 0.5),      
+    axis.line.y = element_line(color = "black", size = 0.5),      
+    legend.text = element_text(size = 5.5),    
+    legend.title = element_text(size = 6),    
+    legend.background = element_blank(),                          
+    legend.key = element_blank(),
+    legend.key.size = unit(0.3, "cm")                            
+  )
+
+ggsave("D:/projects/LineageCast/LineageCast/plot/box_plot/RF_Nchar.pdf", p_12,
+       device = cairo_pdf,
+       width = 8, height = 4.5, units = "cm")
+```
+
+```{r}
+data_13 <- read.csv("D:/projects/LineageCast/LineageCast/data/Simulation/benchmark_result/ncell_Nye.csv")
+data_13$Number.of.cells <- factor(data_13$Number.of.cells, levels = c("512", "1024", "2048"))
+data_13$Methods <- factor(
+  data_13$Methods, 
+  levels = c("LineageCast", "LineageCast_slingshot", "LineageCast_monocle", 
+             "LinRace", "LinTIMaT", "NJ method", "Cassiopeia")
+)
+
+p_13 <- ggplot(data_13, aes(x = Number.of.cells, y = Nye.Similarity.Score, fill = Methods)) +
+
+  geom_rect(aes(xmin = 0.5, xmax = 1.5, ymin = -Inf, ymax = Inf),
+            fill = "#54BCCD", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 1.5, xmax = 2.5, ymin = -Inf, ymax = Inf),
+            fill = "#EA5514", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 2.5, xmax = 3.5, ymin = -Inf, ymax = Inf),
+            fill = "#A5B960", alpha = 0.003, inherit.aes = FALSE) +
+  
+
+  geom_boxplot(width = 0.9, alpha = 0.8, size = 0.3, fatten = 1) +
+
+  scale_fill_manual(values = c('#E71F19','#804798','#E62082','#F1EC4A','#23ACDB','#81C035','#FBFAD6')) +
+  
+
+  scale_y_continuous(
+    name   = "Nye similarity score",
+    breaks = seq(0.2, 0.5, 0.1),
+    limits = c(0.2, 0.5)
+  ) +
+  scale_x_discrete(name = "Number of cells") +
+  
+
+  theme(
+    text = element_text(face = "plain"),        
+    axis.title = element_text(size = 6),        
+    axis.text  = element_text(size = 5.5),      
+    panel.background = element_blank(),                           
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    axis.line.x = element_line(color = "black", size = 0.5),      
+    axis.line.y = element_line(color = "black", size = 0.5),      
+    legend.text = element_text(size = 5.5),    
+    legend.title = element_text(size = 6),    
+    legend.background = element_blank(),                          
+    legend.key = element_blank(),
+    legend.key.size = unit(0.3, "cm")                            
+  )
+
+ggsave("D:/projects/LineageCast/LineageCast/plot/box_plot/Nye_ncell.pdf", p_13,
+       device = cairo_pdf,
+       width = 8, height = 4.5, units = "cm")
+```
+
+
+```{r}
+data_14 <- read.csv("D:/projects/LineageCast/LineageCast/data/Simulation/benchmark_result/ncell_GRF.csv")
+data_14$Number.of.cells <- factor(data_14$Number.of.cells, levels = c("512", "1024", "2048"))
+data_14$Methods <- factor(
+  data_14$Methods, 
+  levels = c("LineageCast", "LineageCast_slingshot", "LineageCast_monocle", 
+             "LinRace", "LinTIMaT", "NJ method", "Cassiopeia")
+)
+
+p_14 <- ggplot(data_14, aes(x = Number.of.cells, y = Information.based.distance, fill = Methods)) +
+
+  geom_rect(aes(xmin = 0.5, xmax = 1.5, ymin = -Inf, ymax = Inf),
+            fill = "#54BCCD", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 1.5, xmax = 2.5, ymin = -Inf, ymax = Inf),
+            fill = "#EA5514", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 2.5, xmax = 3.5, ymin = -Inf, ymax = Inf),
+            fill = "#A5B960", alpha = 0.003, inherit.aes = FALSE) +
+  geom_boxplot(width = 0.9, alpha = 0.8, size = 0.3, fatten = 1) +
+  scale_fill_manual(values = c('#E71F19','#804798','#E62082','#F1EC4A','#23ACDB','#81C035','#FBFAD6')) +
+  
+
+  scale_y_continuous(
+    name   = "Generalized RF distance",
+    breaks = seq(0.4, 0.9, 0.1),
+    limits = c(0.4, 0.9)
+  ) +
+  scale_x_discrete(name = "Number of cells") +
+  
+
+  theme(
+    text = element_text(face = "plain"),        
+    axis.title = element_text(size = 6),        
+    axis.text  = element_text(size = 5.5),      
+    panel.background = element_blank(),                           
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    axis.line.x = element_line(color = "black", size = 0.5),      
+    axis.line.y = element_line(color = "black", size = 0.5),      
+    legend.text = element_text(size = 5.5),    
+    legend.title = element_text(size = 6),    
+    legend.background = element_blank(),                          
+    legend.key = element_blank(),
+    legend.key.size = unit(0.3, "cm")                            
+  )
+
+ggsave("D:/projects/LineageCast/LineageCast/plot/box_plot/GRF_ncell.pdf", p_14,
+       device = cairo_pdf,
+       width = 8, height = 4.5, units = "cm")
+```
+
+
+```{r}
+data_15 <- read.csv("D:/projects/LineageCast/LineageCast/data/Simulation/benchmark_result/ncell_RF.csv")
+data_15$Number.of.cells <- factor(data_15$Number.of.cells, levels = c("512", "1024", "2048"))
+data_15$Methods <- factor(
+  data_15$Methods, 
+  levels = c("LineageCast", "LineageCast_slingshot", "LineageCast_monocle", 
+             "LinRace", "LinTIMaT", "NJ method", "Cassiopeia")
+)
+
+p_15 <- ggplot(data_15, aes(x = Number.of.cells, y = RF.distance, fill = Methods)) +
+
+  geom_rect(aes(xmin = 0.5, xmax = 1.5, ymin = -Inf, ymax = Inf),
+            fill = "#54BCCD", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 1.5, xmax = 2.5, ymin = -Inf, ymax = Inf),
+            fill = "#EA5514", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 2.5, xmax = 3.5, ymin = -Inf, ymax = Inf),
+            fill = "#A5B960", alpha = 0.003, inherit.aes = FALSE) +
+  geom_boxplot(width = 0.9, alpha = 0.8, size = 0.3, fatten = 1) +
+  scale_fill_manual(values = c('#E71F19','#804798','#E62082','#F1EC4A','#23ACDB','#81C035','#FBFAD6')) +
+  
+
+  scale_y_continuous(
+    name   = "RF distance",
+    breaks = seq(0.75, 1, 0.05),
+    limits = c(0.75, 1)
+  ) +
+  scale_x_discrete(name = "Number of cells") +
+  
+
+  theme(
+    text = element_text(face = "plain"),        
+    axis.title = element_text(size = 6),        
+    axis.text  = element_text(size = 5.5),      
+    panel.background = element_blank(),                           
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    axis.line.x = element_line(color = "black", size = 0.5),      
+    axis.line.y = element_line(color = "black", size = 0.5),      
+    legend.text = element_text(size = 5.5),    
+    legend.title = element_text(size = 6),    
+    legend.background = element_blank(),                          
+    legend.key = element_blank(),
+    legend.key.size = unit(0.3, "cm")                            
+  )
+
+ggsave("D:/projects/LineageCast/LineageCast/plot/box_plot/RF_ncell.pdf", p_15,
+       device = cairo_pdf,
+       width = 8, height = 4.5, units = "cm")
+```
+
+
+# C.elegans
+
+
+```{r}
+data_16 <- read.csv("D:/projects/LineageCast/LineageCast/data/C.elegans/benchmark_result/mu_Nye.csv")
+data_16$Mutation.rate <- factor(data_16$Mutation.rate, levels = c("0.1", "0.2", "0.3"))
+data_16$Methods <- factor(
+  data_16$Methods, 
+  levels = c( "LineageCast_slingshot", "LineageCast_monocle", 
+             "LinRace", "LinTIMaT", "NJ method", "Cassiopeia")
+)
+
+p_16 <- ggplot(data_16, aes(x = Mutation.rate, y = Nye.Similarity.Score, fill = Methods)) +
+
+  geom_rect(aes(xmin = 0.5, xmax = 1.5, ymin = -Inf, ymax = Inf),
+            fill = "#54BCCD", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 1.5, xmax = 2.5, ymin = -Inf, ymax = Inf),
+            fill = "#EA5514", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 2.5, xmax = 3.5, ymin = -Inf, ymax = Inf),
+            fill = "#A5B960", alpha = 0.003, inherit.aes = FALSE) +
+  
+
+  geom_boxplot(width = 0.9, alpha = 0.8, size = 0.3, fatten = 1) +
+
+  scale_fill_manual(values = c('#804798','#E62082','#F1EC4A','#23ACDB','#81C035','#FBFAD6')) +
+  
+
+  scale_y_continuous(
+    name   = "Nye similarity score",
+    breaks = seq(0.25, 0.65, 0.05),
+    limits = c(0.25, 0.65)
+  ) +
+  scale_x_discrete(name = "Mutation rate") +
+  
+
+  theme(
+    text = element_text(face = "plain"),        
+    axis.title = element_text(size = 6),        
+    axis.text  = element_text(size = 5.5),      
+    panel.background = element_blank(),                           
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    axis.line.x = element_line(color = "black", size = 0.5),      
+    axis.line.y = element_line(color = "black", size = 0.5),      
+    legend.text = element_text(size = 5.5),    
+    legend.title = element_text(size = 6),    
+    legend.background = element_blank(),                          
+    legend.key = element_blank(),
+    legend.key.size = unit(0.3, "cm")                            
+  )
+
+ggsave("D:/projects/LineageCast/LineageCast/plot/box_plot/Nye_mu_Celegans.pdf", p_16,
+       device = cairo_pdf,
+       width = 8, height = 4.5, units = "cm")
+```
+
+
+```{r}
+data_17 <- read.csv("D:/projects/LineageCast/LineageCast/data/C.elegans/benchmark_result/mu_GRF.csv")
+data_17$Mutation.rate <- factor(data_17$Mutation.rate, levels = c("0.1", "0.2", "0.3"))
+data_17$Methods <- factor(
+  data_17$Methods, 
+  levels = c("LineageCast_slingshot", "LineageCast_monocle", 
+             "LinRace", "LinTIMaT", "NJ method", "Cassiopeia")
+)
+
+p_17 <- ggplot(data_17, aes(x = Mutation.rate, y = Information.based.distance, fill = Methods)) +
+
+  geom_rect(aes(xmin = 0.5, xmax = 1.5, ymin = -Inf, ymax = Inf),
+            fill = "#54BCCD", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 1.5, xmax = 2.5, ymin = -Inf, ymax = Inf),
+            fill = "#EA5514", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 2.5, xmax = 3.5, ymin = -Inf, ymax = Inf),
+            fill = "#A5B960", alpha = 0.003, inherit.aes = FALSE) +
+  geom_boxplot(width = 0.9, alpha = 0.8, size = 0.3, fatten = 1) +
+  scale_fill_manual(values = c('#804798','#E62082','#F1EC4A','#23ACDB','#81C035','#FBFAD6')) +
+  
+
+  scale_y_continuous(
+    name   = "Generalized RF distance",
+    breaks = seq(0.4, 0.9, 0.1),
+    limits = c(0.4, 0.9)
+  ) +
+  scale_x_discrete(name = "Mutation rate") +
+  
+
+  theme(
+    text = element_text(face = "plain"),        
+    axis.title = element_text(size = 6),        
+    axis.text  = element_text(size = 5.5),      
+    panel.background = element_blank(),                           
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    axis.line.x = element_line(color = "black", size = 0.5),      
+    axis.line.y = element_line(color = "black", size = 0.5),      
+    legend.text = element_text(size = 5.5),    
+    legend.title = element_text(size = 6),    
+    legend.background = element_blank(),                          
+    legend.key = element_blank(),
+    legend.key.size = unit(0.3, "cm")                            
+  )
+
+ggsave("D:/projects/LineageCast/LineageCast/plot/box_plot/GRF_mu_Celegans.pdf", p_17,
+       device = cairo_pdf,
+       width = 8, height = 4.5, units = "cm")
+```
+
+
+```{r}
+data_18 <- read.csv("D:/projects/LineageCast/LineageCast/data/C.elegans/benchmark_result/mu_RF.csv")
+data_18$Mutation.rate <- factor(data_18$Mutation.rate, levels = c("0.1", "0.2", "0.3"))
+data_18$Methods <- factor(
+  data_18$Methods, 
+  levels = c("LineageCast_slingshot", "LineageCast_monocle", 
+             "LinRace", "LinTIMaT", "NJ method", "Cassiopeia")
+)
+
+p_18 <- ggplot(data_18, aes(x = Mutation.rate, y = RF.distance, fill = Methods)) +
+
+  geom_rect(aes(xmin = 0.5, xmax = 1.5, ymin = -Inf, ymax = Inf),
+            fill = "#54BCCD", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 1.5, xmax = 2.5, ymin = -Inf, ymax = Inf),
+            fill = "#EA5514", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 2.5, xmax = 3.5, ymin = -Inf, ymax = Inf),
+            fill = "#A5B960", alpha = 0.003, inherit.aes = FALSE) +
+  geom_boxplot(width = 0.9, alpha = 0.8, size = 0.3, fatten = 1) +
+  scale_fill_manual(values = c('#804798','#E62082','#F1EC4A','#23ACDB','#81C035','#FBFAD6')) +
+  
+
+  scale_y_continuous(
+    name   = "RF distance",
+    breaks = seq(0.7, 1, 0.1),
+    limits = c(0.7, 1)
+  ) +
+  scale_x_discrete(name = "Mutation rate") +
+  
+
+  theme(
+    text = element_text(face = "plain"),        
+    axis.title = element_text(size = 6),        
+    axis.text  = element_text(size = 5.5),      
+    panel.background = element_blank(),                           
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    axis.line.x = element_line(color = "black", size = 0.5),      
+    axis.line.y = element_line(color = "black", size = 0.5),      
+    legend.text = element_text(size = 5.5),    
+    legend.title = element_text(size = 6),    
+    legend.background = element_blank(),                          
+    legend.key = element_blank(),
+    legend.key.size = unit(0.3, "cm")                            
+  )
+
+ggsave("D:/projects/LineageCast/LineageCast/plot/box_plot/RF_mu_Celegans.pdf", p_18,
+       device = cairo_pdf,
+       width = 8, height = 4.5, units = "cm")
+```
+
+
+```{r}
+data_19 <- read.csv("D:/projects/LineageCast/LineageCast/data/C.elegans/benchmark_result/dps_Nye.csv")
+data_19$Stochastic.dropout.rate <- factor(data_19$Stochastic.dropout.rate, levels = c("0.1", "0.2", "0.3"))
+data_19$Methods <- factor(
+  data_19$Methods, 
+  levels = c("LineageCast_slingshot", "LineageCast_monocle", 
+             "LinRace", "LinTIMaT", "NJ method", "Cassiopeia")
+)
+
+p_19 <- ggplot(data_19, aes(x = Stochastic.dropout.rate, y = Nye.Similarity.Score, fill = Methods)) +
+
+  geom_rect(aes(xmin = 0.5, xmax = 1.5, ymin = -Inf, ymax = Inf),
+            fill = "#54BCCD", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 1.5, xmax = 2.5, ymin = -Inf, ymax = Inf),
+            fill = "#EA5514", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 2.5, xmax = 3.5, ymin = -Inf, ymax = Inf),
+            fill = "#A5B960", alpha = 0.003, inherit.aes = FALSE) +
+  
+
+  geom_boxplot(width = 0.9, alpha = 0.8, size = 0.3, fatten = 1) +
+
+  scale_fill_manual(values = c('#804798','#E62082','#F1EC4A','#23ACDB','#81C035','#FBFAD6')) +
+  
+
+  scale_y_continuous(
+    name   = "Nye similarity score",
+    breaks = seq(0.25, 0.65, 0.05),
+    limits = c(0.25, 0.65)
+  ) +
+  scale_x_discrete(name = "Stochastical dropout rate") +
+  
+
+  theme(
+    text = element_text(face = "plain"),        
+    axis.title = element_text(size = 6),        
+    axis.text  = element_text(size = 5.5),      
+    panel.background = element_blank(),                           
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    axis.line.x = element_line(color = "black", size = 0.5),      
+    axis.line.y = element_line(color = "black", size = 0.5),      
+    legend.text = element_text(size = 5.5),    
+    legend.title = element_text(size = 6),    
+    legend.background = element_blank(),                          
+    legend.key = element_blank(),
+    legend.key.size = unit(0.3, "cm")                            
+  )
+
+ggsave("D:/projects/LineageCast/LineageCast/plot/box_plot/Nye_dps_Celegans.pdf", p_19,
+       device = cairo_pdf,
+       width = 8, height = 4.5, units = "cm")
+```
+
+
+```{r}
+data_20 <- read.csv("D:/projects/LineageCast/LineageCast/data/C.elegans/benchmark_result/dps_GRF.csv")
+data_20$Stochastic.dropout.rate <- factor(data_20$Stochastic.dropout.rate, levels = c("0.1", "0.2", "0.3"))
+data_20$Methods <- factor(
+  data_20$Methods, 
+  levels = c("LineageCast_slingshot", "LineageCast_monocle", 
+             "LinRace", "LinTIMaT", "NJ method", "Cassiopeia")
+)
+
+p_20 <- ggplot(data_20, aes(x = Stochastic.dropout.rate, y = Information.based.distance, fill = Methods)) +
+
+  geom_rect(aes(xmin = 0.5, xmax = 1.5, ymin = -Inf, ymax = Inf),
+            fill = "#54BCCD", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 1.5, xmax = 2.5, ymin = -Inf, ymax = Inf),
+            fill = "#EA5514", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 2.5, xmax = 3.5, ymin = -Inf, ymax = Inf),
+            fill = "#A5B960", alpha = 0.003, inherit.aes = FALSE) +
+  geom_boxplot(width = 0.9, alpha = 0.8, size = 0.3, fatten = 1) +
+  scale_fill_manual(values = c('#804798','#E62082','#F1EC4A','#23ACDB','#81C035','#FBFAD6')) +
+  
+
+  scale_y_continuous(
+    name   = "Generalized RF distance",
+    breaks = seq(0.4, 0.9, 0.1),
+    limits = c(0.4, 0.9)
+  ) +
+  scale_x_discrete(name = "Stochastical dropout rate") +
+  
+
+  theme(
+    text = element_text(face = "plain"),        
+    axis.title = element_text(size = 6),        
+    axis.text  = element_text(size = 5.5),      
+    panel.background = element_blank(),                           
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    axis.line.x = element_line(color = "black", size = 0.5),      
+    axis.line.y = element_line(color = "black", size = 0.5),      
+    legend.text = element_text(size = 5.5),    
+    legend.title = element_text(size = 6),    
+    legend.background = element_blank(),                          
+    legend.key = element_blank(),
+    legend.key.size = unit(0.3, "cm")                            
+  )
+
+ggsave("D:/projects/LineageCast/LineageCast/plot/box_plot/GRF_dps_Celegans.pdf", p_20,
+       device = cairo_pdf,
+       width = 8, height = 4.5, units = "cm")
+```
+
+
+```{r}
+data_21 <- read.csv("D:/projects/LineageCast/LineageCast/data/C.elegans/benchmark_result/dps_RF.csv")
+data_21$Stochastic.dropout.rate <- factor(data_21$Stochastic.dropout.rate, levels = c("0.1", "0.2", "0.3"))
+data_21$Methods <- factor(
+  data_21$Methods, 
+  levels = c( "LineageCast_slingshot", "LineageCast_monocle", 
+             "LinRace", "LinTIMaT", "NJ method", "Cassiopeia")
+)
+
+p_21 <- ggplot(data_21, aes(x = Stochastic.dropout.rate, y = RF.distance, fill = Methods)) +
+
+  geom_rect(aes(xmin = 0.5, xmax = 1.5, ymin = -Inf, ymax = Inf),
+            fill = "#54BCCD", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 1.5, xmax = 2.5, ymin = -Inf, ymax = Inf),
+            fill = "#EA5514", alpha = 0.003, inherit.aes = FALSE) +
+  geom_rect(aes(xmin = 2.5, xmax = 3.5, ymin = -Inf, ymax = Inf),
+            fill = "#A5B960", alpha = 0.003, inherit.aes = FALSE) +
+  geom_boxplot(width = 0.9, alpha = 0.8, size = 0.3, fatten = 1) +
+  scale_fill_manual(values = c('#804798','#E62082','#F1EC4A','#23ACDB','#81C035','#FBFAD6')) +
+  
+
+  scale_y_continuous(
+    name   = "RF distance",
+    breaks = seq(0.7, 1, 0.1),
+    limits = c(0.7, 1)
+  ) +
+  scale_x_discrete(name = "Stochastical dropout rate") +
+  
+
+  theme(
+    text = element_text(face = "plain"),        
+    axis.title = element_text(size = 6),        
+    axis.text  = element_text(size = 5.5),      
+    panel.background = element_blank(),                           
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(),
+    axis.line.x = element_line(color = "black", size = 0.5),      
+    axis.line.y = element_line(color = "black", size = 0.5),      
+    legend.text = element_text(size = 5.5),    
+    legend.title = element_text(size = 6),    
+    legend.background = element_blank(),                          
+    legend.key = element_blank(),
+    legend.key.size = unit(0.3, "cm")                            
+  )
+
+ggsave("D:/projects/LineageCast/LineageCast/plot/box_plot/RF_dps_Celegans.pdf", p_21,
+       device = cairo_pdf,
+       width = 8, height = 4.5, units = "cm")
+```

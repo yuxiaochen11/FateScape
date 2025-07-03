@@ -1,0 +1,70 @@
+# LineageCast
+
+LineageCast leverages multimodal single-cell sequencing to infer cell division trees using a maximum likelihood framework. By combining CRISPR/Cas9-based lineage tracing technology with single-cell transcriptome sequencing data, LineageCast can reconstruct cell division history and infer the plasticity and inheritance of cell states.
+
+## Introduction
+
+This repository provides a comprehensive suite of R functions for reconstructing cell division trees. The tools in this repository enable users to:
+
+-   Refine lineage barcodes by addressing stochastic dropout issues.
+-   Construct sub-cell division trees along different state lineages.
+-   Optimize sub-cell division trees using a maximum likelihood framework combined with subtree exchanges.
+-   Integrate sub-cell division trees into a complete cell division tree.
+-   Infer the plasticity and heritability of cell states.
+
+These functions are designed to help researchers analyze single-cell lineage data, explore cell lineage evolution, and gain insights into cell division patterns.
+
+##  Installation
+
+To install and use these functions, follow these steps:
+
+``` bash
+devtools::install_github('ZhangLab/LineageCast')
+```
+
+##  Quick start
+
+If you have a object with paired single-cell gene expression and lineage barcodes data, you can start right away with inferring the regulatory network:
+
+``` r
+# Load required libraries
+library(LineageCast)
+library(PATH)
+
+# Load scRNA-seq data
+load("RNA_object.RData")
+
+# Load lineage barcode data
+load("barcode_object.RData")
+
+# psedo-trajectory inference
+umap_res <- Embeddings(RNA_object, reduction = "umap")
+labels_new <- as.character(RNA_object$cell_states)
+
+sce <- slingshot(data = umap_res,clusterLabels = labels_new, dist.method = "simple",start.clus = "Ectoderm")
+state_lineages <- slingLineages(sce)
+
+# Barcode imputation
+barcodes <- imputation_dropout_alter(as.matrix(barcode_object), ...)
+
+#Construction of the  sub-cell division trees 
+Trees_initial <- initial_tree_construction(state_lineages, barcodes)
+bestsubtree <- subtree_refinement(Trees_initial, ...)
+
+#Removing duplicated leaf nodes across sub-cell division trees
+bestsubtree <- drop_duplicated_tips(bestsubtree,...)
+
+#Decomposition and reassembly of sub-cell division trees
+subtrees_rootbar <- get_subtree_root_barcodes(bestsubtree, ...)
+decomposed_subtrees <- decompose_subtrees(bestsubtree, ...)
+
+# Integration of the sub-cell division trees
+cell_division_tree <- merge_subcell_trees_ward(subtrees_rootbar, decomposed_subtrees)
+```
+
+## Citation
+
+If you find this code useful for your research, please cite it as follows
+
+Yu, et al. (2025). XXXXXXXXXXXXXXXXX in R. GitHub repository, https://github.com/ZhangLab/LineageCast.
+

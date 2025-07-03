@@ -1,0 +1,55 @@
+Stochastic dropout rate,Methods,Information based distance
+0.1,LineageCast_slingshot,0.4893
+0.1,LineageCast_slingshot,0.5158
+0.1,LineageCast_slingshot,0.4178
+0.2,LineageCast_slingshot,0.5892
+0.2,LineageCast_slingshot,0.5532
+0.2,LineageCast_slingshot,0.6281
+0.3,LineageCast_slingshot,0.6513
+0.3,LineageCast_slingshot,0.6062
+0.3,LineageCast_slingshot,0.6534
+0.1,LineageCast_monocle,0.4204
+0.1,LineageCast_monocle,0.4413
+0.1,LineageCast_monocle,0.4521
+0.2,LineageCast_monocle,0.4732
+0.2,LineageCast_monocle,0.5227
+0.2,LineageCast_monocle,0.4131
+0.3,LineageCast_monocle,0.6284
+0.3,LineageCast_monocle,0.6427
+0.3,LineageCast_monocle,0.6021
+0.1,LinRace,0.4688
+0.1,LinRace,0.4786
+0.1,LinRace,0.461
+0.2,LinRace,0.5874
+0.2,LinRace,0.5712
+0.2,LinRace,0.6531
+0.3,LinRace,0.7255
+0.3,LinRace,0.656
+0.3,LinRace,0.6929
+0.1,LinTIMaT,0.7475555
+0.1,LinTIMaT,0.7200226
+0.1,LinTIMaT,0.6692409
+0.2,LinTIMaT,0.7477393
+0.2,LinTIMaT,0.7622941
+0.2,LinTIMaT,0.7898206
+0.3,LinTIMaT,0.8059405
+0.3,LinTIMaT,0.7951317
+0.3,LinTIMaT,0.7902007
+0.1,NJ method,0.4764
+0.1,NJ method,0.5041
+0.1,NJ method,0.428
+0.2,NJ method,0.5841
+0.2,NJ method,0.5984
+0.2,NJ method,0.5914
+0.3,NJ method,0.7093
+0.3,NJ method,0.6127
+0.3,NJ method,0.6925
+0.1,Cassiopeia,0.4302318
+0.1,Cassiopeia,0.5418156
+0.1,Cassiopeia,0.5562442
+0.2,Cassiopeia,0.5855385
+0.2,Cassiopeia,0.5897167
+0.2,Cassiopeia,0.5341393
+0.3,Cassiopeia,0.6027632
+0.3,Cassiopeia,0.5782785
+0.3,Cassiopeia,0.6118499

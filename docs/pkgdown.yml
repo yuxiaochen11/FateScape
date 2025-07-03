@@ -1,0 +1,11 @@
+pandoc: 3.1.1
+pkgdown: 2.1.1
+pkgdown_sha: ~
+articles:
+  C.elegans: C.elegans.html
+  Mouse_embroy: Mouse_embroy.html
+  Simulation: Simulation.html
+last_built: 2025-04-03T14:04Z
+urls:
+  reference: http://localhost/LineageCast/reference
+  article: http://localhost/LineageCast/articles

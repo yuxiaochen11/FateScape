@@ -1,0 +1,64 @@
+Number of sites,Methods,Nye Similarity Score
+8,LineageCast,0.4001
+8,LineageCast,0.394
+8,LineageCast,0.3898
+12,LineageCast,0.4808
+12,LineageCast,0.4795
+12,LineageCast,0.437
+16,LineageCast,0.4572
+16,LineageCast,0.4931
+16,LineageCast,0.4405
+8,LineageCast_slingshot,0.3744
+8,LineageCast_slingshot,0.3766
+8,LineageCast_slingshot,0.3798
+12,LineageCast_slingshot,0.4314
+12,LineageCast_slingshot,0.4522
+12,LineageCast_slingshot,0.4155
+16,LineageCast_slingshot,0.4511
+16,LineageCast_slingshot,0.4552
+16,LineageCast_slingshot,0.4519
+8,LineageCast_monocle,0.3767
+8,LineageCast_monocle,0.3883
+8,LineageCast_monocle,0.3513
+12,LineageCast_monocle,0.4337
+12,LineageCast_monocle,0.4582
+12,LineageCast_monocle,0.4163
+16,LineageCast_monocle,0.4514
+16,LineageCast_monocle,0.4644
+16,LineageCast_monocle,0.4512
+8,LinRace,0.3276
+8,LinRace,0.3463
+8,LinRace,0.3395
+12,LinRace,0.3533
+12,LinRace,0.3668
+12,LinRace,0.36
+16,LinRace,0.3811
+16,LinRace,0.3996
+16,LinRace,0.3545
+8,LinTIMaT,0.256
+8,LinTIMaT,0.2815
+8,LinTIMaT,0.2686
+12,LinTIMaT,0.281
+12,LinTIMaT,0.268
+12,LinTIMaT,0.2808
+16,LinTIMaT,0.278
+16,LinTIMaT,0.2784
+16,LinTIMaT,0.2749
+8,NJ method,0.3373
+8,NJ method,0.3358
+8,NJ method,0.3334
+12,NJ method,0.3481
+12,NJ method,0.3684
+12,NJ method,0.331
+16,NJ method,0.3713
+16,NJ method,0.3786
+16,NJ method,0.3508
+8,Cassiopeia,0.2646126
+8,Cassiopeia,0.3201106
+8,Cassiopeia,0.2922107
+12,Cassiopeia,0.3416458
+12,Cassiopeia,0.3084584
+12,Cassiopeia,0.3321243
+16,Cassiopeia,0.4420811
+16,Cassiopeia,0.362197
+16,Cassiopeia,0.4512572

@@ -1,0 +1,64 @@
+Number of sites,Methods,Information based distance
+8,LineageCast,0.634
+8,LineageCast,0.5834
+8,LineageCast,0.6384
+12,LineageCast,0.5143
+12,LineageCast,0.4871
+12,LineageCast,0.562
+16,LineageCast,0.5194
+16,LineageCast,0.4871
+16,LineageCast,0.5464
+8,LineageCast_slingshot,0.5995
+8,LineageCast_slingshot,0.5224
+8,LineageCast_slingshot,0.6132
+12,LineageCast_slingshot,0.5995
+12,LineageCast_slingshot,0.5224
+12,LineageCast_slingshot,0.6132
+16,LineageCast_slingshot,0.5986
+16,LineageCast_slingshot,0.5384
+16,LineageCast_slingshot,0.5199
+8,LineageCast_monocle,0.6046
+8,LineageCast_monocle,0.5153
+8,LineageCast_monocle,0.5852
+12,LineageCast_monocle,0.6046
+12,LineageCast_monocle,0.5153
+12,LineageCast_monocle,0.5852
+16,LineageCast_monocle,0.5233
+16,LineageCast_monocle,0.5547
+16,LineageCast_monocle,0.5766
+8,LinRace,0.6708
+8,LinRace,0.6017
+8,LinRace,0.5634
+12,LinRace,0.6708
+12,LinRace,0.6017
+12,LinRace,0.5634
+16,LinRace,0.5651
+16,LinRace,0.5942
+16,LinRace,0.6226
+8,LinTIMaT,0.8324
+8,LinTIMaT,0.8319
+8,LinTIMaT,0.8444
+12,LinTIMaT,0.8324
+12,LinTIMaT,0.8319
+12,LinTIMaT,0.8444
+16,LinTIMaT,0.8284
+16,LinTIMaT,0.8381
+16,LinTIMaT,0.8504
+8,NJ method,0.6679
+8,NJ method,0.6355
+8,NJ method,0.673
+12,NJ method,0.6679
+12,NJ method,0.6355
+12,NJ method,0.673
+16,NJ method,0.6287
+16,NJ method,0.6243
+16,NJ method,0.6491
+8,Cassiopeia,0.5914546
+8,Cassiopeia,0.6487219
+8,Cassiopeia,0.6751942
+12,Cassiopeia,0.5914546
+12,Cassiopeia,0.6487219
+12,Cassiopeia,0.6751942
+16,Cassiopeia,0.5645841
+16,Cassiopeia,0.6372004
+16,Cassiopeia,0.5544846

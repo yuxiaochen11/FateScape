@@ -1,0 +1,55 @@
+Mutation rate,Methods,RF distance
+0.1,LineageCast_slingshot,0.8611
+0.1,LineageCast_slingshot,0.8527
+0.1,LineageCast_slingshot,0.8388
+0.2,LineageCast_slingshot,0.8944
+0.2,LineageCast_slingshot,0.8638
+0.2,LineageCast_slingshot,0.8532
+0.3,LineageCast_slingshot,0.8388
+0.3,LineageCast_slingshot,0.8638
+0.3,LineageCast_slingshot,0.8972
+0.1,LineageCast_monocle,0.8583
+0.1,LineageCast_monocle,0.8972
+0.1,LineageCast_monocle,0.8277
+0.2,LineageCast_monocle,0.8722
+0.2,LineageCast_monocle,0.85
+0.2,LineageCast_monocle,0.8166
+0.3,LineageCast_monocle,0.8888
+0.3,LineageCast_monocle,0.8805
+0.3,LineageCast_monocle,0.8722
+0.1,LinRace,0.9054
+0.1,LinRace,0.8838
+0.1,LinRace,0.8966
+0.2,LinRace,0.9527
+0.2,LinRace,0.9277
+0.2,LinRace,0.9194
+0.3,LinRace,0.9022
+0.3,LinRace,0.9381
+0.3,LinRace,0.9305
+0.1,LinTIMaT,0.9583333
+0.1,LinTIMaT,0.9277778
+0.1,LinTIMaT,0.9194444
+0.2,LinTIMaT,0.9472222
+0.2,LinTIMaT,0.9555556
+0.2,LinTIMaT,0.9555556
+0.3,LinTIMaT,0.9555556
+0.3,LinTIMaT,0.975
+0.3,LinTIMaT,0.9638889
+0.1,NJ method,0.9055
+0.1,NJ method,0.8666
+0.1,NJ method,0.8987
+0.2,NJ method,0.95
+0.2,NJ method,0.9472
+0.2,NJ method,0.9
+0.3,NJ method,0.9014
+0.3,NJ method,0.9444
+0.3,NJ method,0.95
+0.1,Cassiopeia,0.8524871
+0.1,Cassiopeia,0.8504983
+0.1,Cassiopeia,0.9141914
+0.2,Cassiopeia,0.8754325
+0.2,Cassiopeia,0.887522
+0.2,Cassiopeia,0.8477157
+0.3,Cassiopeia,0.9185059
+0.3,Cassiopeia,0.9407666
+0.3,Cassiopeia,0.9607843

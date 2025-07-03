@@ -1,0 +1,64 @@
+Mutation rate,Methods,Information based distance
+0.1,LineageCast,0.5467
+0.1,LineageCast,0.5155
+0.1,LineageCast,0.4981
+0.2,LineageCast,0.5143
+0.2,LineageCast,0.4871
+0.2,LineageCast,0.562
+0.3,LineageCast,0.6289
+0.3,LineageCast,0.5304
+0.3,LineageCast,0.5908
+0.1,LineageCast_slingshot,0.5608
+0.1,LineageCast_slingshot,0.5346
+0.1,LineageCast_slingshot,0.5594
+0.2,LineageCast_slingshot,0.5995
+0.2,LineageCast_slingshot,0.5224
+0.2,LineageCast_slingshot,0.6132
+0.3,LineageCast_slingshot,0.6396
+0.3,LineageCast_slingshot,0.5816
+0.3,LineageCast_slingshot,0.6042
+0.1,LineageCast_monocle,0.6195
+0.1,LineageCast_monocle,0.6036
+0.1,LineageCast_monocle,0.5554
+0.2,LineageCast_monocle,0.6046
+0.2,LineageCast_monocle,0.5153
+0.2,LineageCast_monocle,0.5852
+0.3,LineageCast_monocle,0.635
+0.3,LineageCast_monocle,0.5811
+0.3,LineageCast_monocle,0.5878
+0.1,LinRace,0.6853
+0.1,LinRace,0.6715
+0.1,LinRace,0.6067
+0.2,LinRace,0.6708
+0.2,LinRace,0.6017
+0.2,LinRace,0.5634
+0.3,LinRace,0.6939
+0.3,LinRace,0.5814
+0.3,LinRace,0.6623
+0.1,LinTIMaT,0.8268
+0.1,LinTIMaT,0.8008
+0.1,LinTIMaT,0.848
+0.2,LinTIMaT,0.8324
+0.2,LinTIMaT,0.8319
+0.2,LinTIMaT,0.8444
+0.3,LinTIMaT,0.8504
+0.3,LinTIMaT,0.8293
+0.3,LinTIMaT,0.7908
+0.1,NJ method,0.606
+0.1,NJ method,0.5683
+0.1,NJ method,0.5877
+0.2,NJ method,0.6679
+0.2,NJ method,0.6355
+0.2,NJ method,0.673
+0.3,NJ method,0.6534
+0.3,NJ method,0.6323
+0.3,NJ method,0.6997
+0.1,Cassiopeia,0.6044755
+0.1,Cassiopeia,0.5884079
+0.1,Cassiopeia,0.60204
+0.2,Cassiopeia,0.5914546
+0.2,Cassiopeia,0.6487219
+0.2,Cassiopeia,0.6751942
+0.3,Cassiopeia,0.6385407
+0.3,Cassiopeia,0.6350228
+0.3,Cassiopeia,0.6564568
