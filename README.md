@@ -19,7 +19,7 @@ These functions are designed to help researchers analyze single-cell lineage dat
 To install and use these functions, follow these steps:
 
 ``` bash
-devtools::install_github('ZhangLab/LineageCast')
+devtools::install_github(‘yuxiaochen11/LineageCast')
 ```
 
 ##  Quick start
@@ -64,7 +64,19 @@ cell_division_tree <- merge_subcell_trees_ward(subtrees_rootbar, decomposed_subt
 
 ## Citation
 
-If you find this code useful for your research, please cite it as follows
+If you use **LineageCast** in your research, please cite the accompanying paper:
 
-Yu, et al. (2025). XXXXXXXXXXXXXXXXX in R. GitHub repository, https://github.com/ZhangLab/LineageCast.
+> Yu, Xiaochen (2025). _LineageCast: Reconstructing cell division history and phenotypic dynamics from single-cell barcode and transcriptomic data_. GitHub. https://github.com/yuxiaochen11/LineageCast
+
+Or use the following BibTeX entry:
+
+```bibtex
+@software{Yu2025LineageCast,
+  author  = {Yu, Xiaochen},
+  title   = {LineageCast: Reconstructing cell division history and phenotypic dynamics from single-cell barcode and transcriptomic data},
+  year    = {2025},
+  url     = {https://github.com/yuxiaochen11/LineageCast},
+}
+
+
 

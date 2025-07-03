@@ -26,7 +26,11 @@ Description: LineageCast groups cells belonging to the same state lineage into a
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-URL: http://localhost/LineageCast
+URL: 
+  https://github.com/yuxiaochen11/LineageCast,
+  https://yuxiaochen11.github.io/LineageCast/
+BugReports: https://github.com/yuxiaochen11/LineageCast/issues
+
 Imports: 
     ape,
     DCLEAR,
