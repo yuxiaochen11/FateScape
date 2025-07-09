@@ -108,4 +108,3 @@ ancestor_inference_time_scale <- function(tree, N_char, barcodes) {
   return(barcodes_matrix)
 }
 
-

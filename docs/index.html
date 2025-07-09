@@ -45,6 +45,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
+<li class="nav-item"><a class="nav-link" href="https://github.com/yuxiaochen11/LineageCast/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -73,7 +74,7 @@
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>To install and use these functions, follow these steps:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">devtools::install_github</span><span class="er">(</span><span class="st">'ZhangLab/LineageCast'</span><span class="kw">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">devtools::install_github</span><span class="er">(</span><span class="ex">‘yuxiaochen11/LineageCast</span><span class="st">')</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="quick-start">Quick start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
@@ -81,7 +82,7 @@
 <p>If you have a object with paired single-cell gene expression and lineage barcodes data, you can start right away with inferring the regulatory network:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load required libraries</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://localhost/LineageCast">LineageCast</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yuxiaochen11/LineageCast">LineageCast</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">PATH</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Load scRNA-seq data</span></span>
@@ -115,13 +116,34 @@
 <span><span class="va">cell_division_tree</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/merge_subcell_trees_ward.html">merge_subcell_trees_ward</a></span><span class="op">(</span><span class="va">subtrees_rootbar</span>, <span class="va">decomposed_subtrees</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
+<h2 id="more">More<a class="anchor" aria-label="anchor" href="#more"></a>
+</h2>
+<p>More info about LineageCast can be found on our <a href="https://yuxiaochen11.github.io/LineageCast/" class="external-link">website</a>. There you can find an API reference and a number of tutorial vignettes that give an introduction on how to use LineageCast most effectively.</p>
+</div>
+<div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
-<p>If you find this code useful for your research, please cite it as follows</p>
-<p>Yu, et al. (2025). XXXXXXXXXXXXXXXXX in R. GitHub repository, <a href="https://github.com/ZhangLab/LineageCast" class="external-link uri">https://github.com/ZhangLab/LineageCast</a>.</p>
+<p>If you use <strong>LineageCast</strong> in your research, please cite the accompanying paper:</p>
+<blockquote>
+<p>Yu, Xiaochen (2025). <em>LineageCast: Reconstructing cell division history and phenotypic dynamics from single-cell barcode and transcriptomic data</em>. GitHub. <a href="https://github.com/yuxiaochen11/LineageCast" class="uri">https://github.com/yuxiaochen11/LineageCast</a></p>
+</blockquote>
+<p>Or use the following BibTeX entry:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co">@software{LineageCast,</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="co">  author  = {Yu, Xiaochen},</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="co">  title   = {LineageCast: Reconstructing cell division history and phenotypic dynamics from single-cell barcode and transcriptomic data},</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co">  year    = {2025},</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co">  url     = {https://github.com/yuxiaochen11/LineageCast},</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="co">}</span></span></code></pre></div>
 </div>
 </div>
-  </main><aside class="col-md-3"><div class="license">
+  </main><aside class="col-md-3"><div class="links">
+<h2 data-toc-skip>Links</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/yuxiaochen11/LineageCast/">Browse source code</a></li>
+</ul>
+</div>
+
+<div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled"><li>
 </li></ul>

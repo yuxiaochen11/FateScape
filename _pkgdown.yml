@@ -11,7 +11,7 @@ template:
   bootstrap: 5
 
 url:
-  url: http://localhost/LineageCast
+  url: https://github.com/yuxiaochen11/LineageCast
 
 build:
   vignettes: true
@@ -66,6 +66,20 @@ reference:
       - merge_subcell_trees_ordered
       - merge_subcell_trees_ward
       - phylogenetic_tree
+
+
+  - title: "Phenotypic dynamics analysis"
+    desc: "Inferring cellular phenotype dynamics based on inferred cell division books"
+    contents:
+      - compute_entropy_at_depth
+      - compute_entropy_at_depth_alter
+      - compute_entropy_path
+      - compute_entropy_path_alter
+      - compute_entropy_slope
+      - compute_node_depths
+      - getDescendants
+      - getDescendants_iter
+
 
   - title: "Utilities"
     desc: "Utility functions"

@@ -61,6 +61,9 @@ decomposed_subtrees <- decompose_subtrees(bestsubtree, ...)
 # Integration of the sub-cell division trees
 cell_division_tree <- merge_subcell_trees_ward(subtrees_rootbar, decomposed_subtrees)
 ```
+## More
+More info about LineageCast can be found on our [website](https://yuxiaochen11.github.io/LineageCast/). There you can find an API reference and a number of tutorial vignettes that give an introduction on how to use LineageCast most effectively.
+
 
 ## Citation
 
@@ -71,12 +74,10 @@ If you use **LineageCast** in your research, please cite the accompanying paper:
 Or use the following BibTeX entry:
 
 ```bibtex
-@software{Yu2025LineageCast,
+@software{LineageCast,
   author  = {Yu, Xiaochen},
   title   = {LineageCast: Reconstructing cell division history and phenotypic dynamics from single-cell barcode and transcriptomic data},
   year    = {2025},
   url     = {https://github.com/yuxiaochen11/LineageCast},
 }
-
-
-
+```

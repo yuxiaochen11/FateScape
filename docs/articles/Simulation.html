@@ -43,6 +43,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
+<li class="nav-item"><a class="nav-link" href="https://github.com/yuxiaochen11/LineageCast/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -60,7 +61,7 @@
             
             <h4 data-toc-skip class="date">2025-04-02</h4>
       
-
+      <small class="dont-index">Source: <a href="https://github.com/yuxiaochen11/LineageCast/blob/HEAD/vignettes/Simulation.Rmd"><code>vignettes/Simulation.Rmd</code></a></small>
       <div class="d-none name"><code>Simulation.Rmd</code></div>
     </div>
 
@@ -70,7 +71,7 @@
 <h3 id="loading-package-functions">Loading package functions<a class="anchor" aria-label="anchor" href="#loading-package-functions"></a>
 </h3>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://localhost/LineageCast">LineageCast</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yuxiaochen11/LineageCast">LineageCast</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/KlausVigo/phangorn" class="external-link">phangorn</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ms609.github.io/TreeTools/" class="external-link">TreeTools</a></span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -189,13 +190,13 @@
 </h2>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Evaluate the merged tree against the ground truth tree</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Nye Similarity (higher is better): "</span>, <span class="fu">TreeDist</span><span class="fu">::</span><span class="fu"><a href="https://ms609.github.io/TreeDist/reference/NyeSimilarity.html" class="external-link">NyeSimilarity</a></span><span class="op">(</span><span class="va">tree_ct</span>, <span class="va">Tree_Merge</span>, normalize <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Nye Similarity (higher is better): "</span>, <span class="fu">TreeDist</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/TreeDist/man/NyeSimilarity.html" class="external-link">NyeSimilarity</a></span><span class="op">(</span><span class="va">tree_ct</span>, <span class="va">Tree_Merge</span>, normalize <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Nye Similarity (higher is better):  0.4966637</span></span></code></pre>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Tree Distance (lower is better): "</span>, <span class="fu">TreeDist</span><span class="fu">::</span><span class="fu"><a href="https://ms609.github.io/TreeDist/reference/TreeDistance.html" class="external-link">TreeDistance</a></span><span class="op">(</span><span class="va">tree_ct</span>, <span class="va">Tree_Merge</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Tree Distance (lower is better): "</span>, <span class="fu">TreeDist</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/TreeDist/man/TreeDistance.html" class="external-link">TreeDistance</a></span><span class="op">(</span><span class="va">tree_ct</span>, <span class="va">Tree_Merge</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Tree Distance (lower is better):  0.5672668</span></span></code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"RF Distance (lower is better): "</span>, <span class="fu"><a href="https://klausvigo.github.io/phangorn/reference/treedist.html" class="external-link">RF.dist</a></span><span class="op">(</span><span class="va">tree_ct</span>, <span class="va">Tree_Merge</span>, normalize <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"RF Distance (lower is better): "</span>, <span class="fu"><a href="https://rdrr.io/pkg/phangorn/man/treedist.html" class="external-link">RF.dist</a></span><span class="op">(</span><span class="va">tree_ct</span>, <span class="va">Tree_Merge</span>, normalize <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## RF Distance (lower is better):  0.827112</span></span></code></pre>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
