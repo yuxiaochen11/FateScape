@@ -1,8 +1,13 @@
 # FateScape
 
-![Alt text for the image](man/logo.png)
+<h1 style="display: inline-block;">FateScape</h1>
+
+<div style="float: right; margin-left: 15px;">
+  <img src="man/logo.png" alt="FateScape logo" width="100">
+</div>
 
 FateScape leverages multimodal single-cell sequencing to infer cell division trees using a maximum likelihood framework. By combining CRISPR/Cas9-based lineage tracing technology with single-cell transcriptome sequencing data, FateScape can reconstruct cell division history and infer the plasticity and inheritance of cell states.
+
 
 ## Introduction
 
