@@ -5,13 +5,13 @@ date: "2025-04-02"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_knit$set(root.dir = "D:/projects/LineageCast/LineageCast/")
+knitr::opts_knit$set(root.dir = "D:/projects/FateScape/FateScape/")
 knitr::opts_chunk$set(warning = FALSE)
 ```
 
 # Loading package functions 
 ```{r, message = FALSE}
-library(LineageCast)
+library(FateScape)
 library(PATH)
 library(Seurat)
 library(ggplot2)
@@ -140,34 +140,7 @@ subsubtrees <- decompose_subtrees(bestsubtree, state, barcodes, length(state_lin
 Tree_Merge <- merge_subcell_trees_ward(subtrees_rootbar, subsubtrees)
 ```
 
-## plot tree backbone
 
-```{r}
-# Combine root barcodes from subtrees into a single matrix
-barcodes_lineage <- do.call(rbind, subtrees_rootbar)
-rownames(barcodes_lineage) <- names(subtrees_rootbar)
-
-# Compute a Hamming distance matrix between lineage barcodes
-D <- hamming_distance(barcodes_lineage)
-
-# Cluster nodes based on the Hamming distance to generate a backbone tree
-tree_backbone <- nodes_clustering(D)
-
-# Select a node from the backbone tree for further analysis
-#node_name <- "3_2_node_6415"
-node_name <- sample(tree_backbone$tip.label, 1)
-
-# Find the position of the selected node in the backbone tree
-a_positions <- sapply(node_name, function(node) which(tree_backbone$tip.label == node))
-
-# Plot the backbone tree with tip labels; highlight the selected node
-plot(tree_backbone, show.tip.label = FALSE, cex = 0.6)
-
-# Extract a subtree corresponding to the selected node
-subtree <- subsubtrees[[node_name]]
-barcodes_subtree <- barcodes[match(subtree$tip.label, rownames(barcodes)), ]
-# phylogenetic_subtree <- phylogenetic_tree(subtree, N_char, barcodes_subtree, ncells = NULL, Nnodes = NULL, edges = NULL)
-```
 
 # Inference of the plasticity and heritability of cell states.
 
@@ -243,13 +216,13 @@ entropy_path_combined <- do.call(rbind, entropy_path_list)
 
 
 
-```{r entropy-plot, fig.width=10, fig.height=6, out.width='70%', message=FALSE}
+```{r entropy-plot, fig.width=10, fig.height=6, out.width='90%', message=FALSE}
 theme_set(theme_light())
 ggplot(entropy_path_combined, aes(x = depth, y = entropy ))+
        geom_point(color = "#C692C0", alpha = 0.1)+
        stat_smooth(method = 'gam' ,  color = "#7C4296", size = 0.7) +
        #geom_line(color = "#7C4296", size = 0.7)+
-       theme(axis.text.x = element_text(angle =45, vjust =1, hjust =1))+
+       theme(axis.text.x = element_text(angle =0, vjust =1, hjust =1))+
        labs(x ="Depth", y ="Entropy")+
        facet_wrap(~ cell_type, nrow = 1, ncol = 3)+
        theme(axis.text = element_text(color = "black", size = 5.5, family = 'Arial'), 
@@ -273,14 +246,17 @@ entropy_path_list <- lapply(states, function(cell_type) {
   slope_df$sign_label <- factor(sign(slope_df$slope), levels = c(-1, 0, 1),
                         labels = c("neg", "zero", "pos"))
   slope_df <- slope_df[c(1:40),]
+  slope_df$id <- slope_df$id*20
   return(slope_df)
 })
 entropy_slope_combined <- do.call(rbind, entropy_path_list)
+entropy_slope_combined <- entropy_slope_combined[!is.na(entropy_slope_combined['cell_type']),]
+entropy_slope_combined <- entropy_slope_combined[!is.na(entropy_slope_combined['slope']),]
 
 ```
 
 
-```{r entropy-slope-plot, fig.width=10, fig.height=6, out.width='70%', message=FALSE}
+```{r entropy-slope-plot, fig.width=10, fig.height=6, out.width='90%', message=FALSE}
 ggplot(entropy_slope_combined, aes(x = id, y = cell_type)) +
       geom_point(aes(size = abs(slope), color = sign_label), shape = 16) +
       scale_color_manual(values = c("pos" = "#F29537", "neg" = "#90C3DA", "zero" = "grey")) +

@@ -1,32 +1,32 @@
-Package: LineageCast
-Title: LineageCast Reconstructs Cell Division Tree Using Single-cell Transcriptome Data And Lineage Barcode
+Package: FateScape
+Title: FateScape Reconstructs Cell Division Tree Using Single-cell Transcriptome Data And Lineage Barcode
 Version: 1.0
 Authors@R: person(given = "Xiaochen", 
                   family = "Yu", 
                   email = "yuxch8@mail2.sysu.edu.cn", 
                   role = c("aut", "cre"), 
                   comment = c(ORCID = "0009-0006-0859-7077"))
-Description: LineageCast groups cells belonging to the same state lineage into a
+Description: FateScape groups cells belonging to the same state lineage into a
     single group. It reconstructs sub-cell-division trees separately through an
-    iterative process. In the loop, LineageCast first employs Ward’s
+    iterative process. In the loop, FateScape first employs Ward’s
     method to construct an initial tree by clustering observed cells exhibiting
     similar lineage barcodes instead of generating an initial tree randomly.
-    Secondly, LineageCast infers lineage barcodes and cell states of internal cells
-    based on that of observed leaf nodes. Thirdly, LineageCast calculates the
+    Secondly, FateScape infers lineage barcodes and cell states of internal cells
+    based on that of observed leaf nodes. Thirdly, FateScape calculates the
     combined likelihood of the sub-cell-division tree that integrates both mutation
-    and expression data. Fourthly, LineageCast swaps two subtrees sampled according 
+    and expression data. Fourthly, FateScape swaps two subtrees sampled according 
     to a specific probability distribution to update the candidate sub-cell-division tree.
-    Given that LineageCast is a heuristic algorithm without a globally optimal solution, 
+    Given that FateScape is a heuristic algorithm without a globally optimal solution, 
     it iteratively executes the processes of ancestor inference, combined likelihood 
     calculation, and subtree swapping to refine the candidate tree until the
     convergence is achieved. Once all sub-cell division trees are obtained, 
-    LineageCast should drop duplicate cells among all sub-cell-division trees. 
-    For those sub-cell division trees, LineageCast prunes and rearranges subtrees 
+    FateScape should drop duplicate cells among all sub-cell-division trees. 
+    For those sub-cell division trees, FateScape prunes and rearranges subtrees 
     rooted at internal nodes based on lineage barcode similarity of them.
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-URL: https://github.com/yuxiaochen11/LineageCast,
+URL: https://github.com/yuxiaochen11/FateScape,
 Imports: 
     ape,
     DCLEAR,

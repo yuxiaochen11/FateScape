@@ -200,7 +200,7 @@ subtrees_swapping <- function(tree, edges, cell_state_labels, barcodes, state_li
 #' @export
 subtree_refinement <- function(Trees_initial, state_lineages, barcodes_lineages, N_char,
                            state_labels_lineages, lambda1, lambda2, maxIter = 100, repeat_time = 10) {
-  ptm_LineageCast <- proc.time()
+  ptm_FateScape <- proc.time()
   bestsubtreescore <- list()
   bestsubtree <- list()
 
@@ -226,8 +226,8 @@ subtree_refinement <- function(Trees_initial, state_lineages, barcodes_lineages,
     score_all <- c()
     iter_repeat <- repeat_time
     best_tree <- tree
-    best_tree_list_LineageCast <- list()
-    best_score_list_LineageCast <- c()
+    best_tree_list_FateScape <- list()
+    best_score_list_FateScape <- c()
     tree_list <- list()
 
     # Iterative refinement.
@@ -261,8 +261,8 @@ subtree_refinement <- function(Trees_initial, state_lineages, barcodes_lineages,
       if (i %% iter_repeat == 0) {
         # Check for convergence: if the score did not change during the last repeat_time iterations.
         if (length(unique(score_all[(i - iter_repeat + 1):i])) == 1) {
-          best_tree_list_LineageCast[[length(best_tree_list_LineageCast) + 1]] <- best_tree
-          best_score_list_LineageCast <- c(best_score_list_LineageCast, maxscore)
+          best_tree_list_FateScape[[length(best_tree_list_FateScape) + 1]] <- best_tree
+          best_score_list_FateScape <- c(best_score_list_FateScape, maxscore)
           # Reinitialize the tree from the initial one for this lineage.
           tree <- Trees_initial[[lineage_label]]
           tree$edge.length <- rep(1, nrow(tree$edge))
@@ -279,12 +279,12 @@ subtree_refinement <- function(Trees_initial, state_lineages, barcodes_lineages,
       }
     }
 
-    bestsubtreescore[[lineage_label]] <- max(best_score_list_LineageCast)
-    best_index <- match(max(best_score_list_LineageCast), best_score_list_LineageCast)
-    bestsubtree[[lineage_label]] <- best_tree_list_LineageCast[[best_index]]
+    bestsubtreescore[[lineage_label]] <- max(best_score_list_FateScape)
+    best_index <- match(max(best_score_list_FateScape), best_score_list_FateScape)
+    bestsubtree[[lineage_label]] <- best_tree_list_FateScape[[best_index]]
   }
 
-  total_time <- proc.time() - ptm_LineageCast
+  total_time <- proc.time() - ptm_FateScape
   return(list(bestsubtree = bestsubtree, bestsubtreescore = bestsubtreescore, total_time = total_time))
 }
 

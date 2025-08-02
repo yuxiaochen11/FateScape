@@ -1,6 +1,6 @@
-# LineageCast
+# FateScape
 
-LineageCast leverages multimodal single-cell sequencing to infer cell division trees using a maximum likelihood framework. By combining CRISPR/Cas9-based lineage tracing technology with single-cell transcriptome sequencing data, LineageCast can reconstruct cell division history and infer the plasticity and inheritance of cell states.
+FateScape leverages multimodal single-cell sequencing to infer cell division trees using a maximum likelihood framework. By combining CRISPR/Cas9-based lineage tracing technology with single-cell transcriptome sequencing data, FateScape can reconstruct cell division history and infer the plasticity and inheritance of cell states.
 
 ## Introduction
 
@@ -19,7 +19,7 @@ These functions are designed to help researchers analyze single-cell lineage dat
 To install and use these functions, follow these steps:
 
 ``` bash
-devtools::install_github(‘yuxiaochen11/LineageCast')
+devtools::install_github(‘yuxiaochen11/FateScape')
 ```
 
 ##  Quick start
@@ -28,7 +28,7 @@ If you have a object with paired single-cell gene expression and lineage barcode
 
 ``` r
 # Load required libraries
-library(LineageCast)
+library(FateScape)
 library(PATH)
 
 # Load scRNA-seq data
@@ -62,22 +62,22 @@ decomposed_subtrees <- decompose_subtrees(bestsubtree, ...)
 cell_division_tree <- merge_subcell_trees_ward(subtrees_rootbar, decomposed_subtrees)
 ```
 ## More
-More info about LineageCast can be found on our [website](https://yuxiaochen11.github.io/LineageCast/). There you can find an API reference and a number of tutorial vignettes that give an introduction on how to use LineageCast most effectively.
+More info about FateScape can be found on our [website](https://yuxiaochen11.github.io/FateScape/). There you can find an API reference and a number of tutorial vignettes that give an introduction on how to use FateScape most effectively.
 
 
 ## Citation
 
-If you use **LineageCast** in your research, please cite the accompanying paper:
+If you use **FateScape** in your research, please cite the accompanying paper:
 
-> Yu, Xiaochen (2025). _LineageCast: Reconstructing cell division history and phenotypic dynamics from single-cell barcode and transcriptomic data_. GitHub. https://github.com/yuxiaochen11/LineageCast
+> Yu, Xiaochen (2025). _FateScape: Reconstructing cell division history and phenotypic dynamics from single-cell barcode and transcriptomic data_. GitHub. https://github.com/yuxiaochen11/FateScape
 
 Or use the following BibTeX entry:
 
 ```bibtex
-@software{LineageCast,
+@software{FateScape,
   author  = {Yu, Xiaochen},
-  title   = {LineageCast: Reconstructing cell division history and phenotypic dynamics from single-cell barcode and transcriptomic data},
+  title   = {FateScape: Reconstructing cell division history and phenotypic dynamics from single-cell barcode and transcriptomic data},
   year    = {2025},
-  url     = {https://github.com/yuxiaochen11/LineageCast},
+  url     = {https://github.com/yuxiaochen11/FateScape},
 }
 ```

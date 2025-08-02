@@ -5,14 +5,14 @@ date: "2025-04-02"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_knit$set(root.dir = "D:/projects/LineageCast/LineageCast/")
+knitr::opts_knit$set(root.dir = "D:/projects/FateScape/FateScape/")
 knitr::opts_chunk$set(warning = FALSE)
 ```
 
 ## Loading package functions 
 
 ```{r, message=FALSE}
-library(LineageCast)
+library(FateScape)
 library(phangorn)
 library(TreeTools)
 ```
@@ -125,7 +125,7 @@ Tree_Merge <- merge_subcell_trees_ordered(CM, Nodes_rank, Nodes_weight, subsubtr
                                           bind_tree_list = list(), nsubtree = 1)
 
 # Record total processing time
-LineageCast_totaltime <- proc.time() - start_time
+FateScape_totaltime <- proc.time() - start_time
 
 ```
 
