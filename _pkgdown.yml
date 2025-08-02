@@ -1,7 +1,7 @@
 # _pkgdown.yml
 home:
-  title: "LineageCast"
-  tagline: "LineageCast Documentary"
+  title: "FateScape"
+  tagline: "FateScape Documentary"
 
 navbar:
   structure:
@@ -11,7 +11,7 @@ template:
   bootstrap: 5
 
 url:
-  url: https://github.com/yuxiaochen11/LineageCast
+  url: https://github.com/yuxiaochen11/FateScape
 
 build:
   vignettes: true
