@@ -20,11 +20,10 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/C.elegans.html">C.elegans</a></li>
     <li><a class="dropdown-item" href="../articles/Mouse_embroy.html">Mouse_embryo</a></li>
-    <li><a class="dropdown-item" href="../articles/Simulation.html">Simulation</a></li>
   </ul></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/yuxiaochen11/FateScape/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="nav-link" href="https://github.com/yuxiaochen11/FateScape/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul></div>
 
 
@@ -126,22 +125,22 @@
         <dd>Infer ancestral barcodes with time scaling</dd>
       </dl><dl><dt>
 
-          <code><a href="state_transition_likelihood.html">state_transition_likelihood()</a></code>
+          <code><a href="state_score.html">state_score()</a></code>
 
         </dt>
         <dd>Calculate state shift probability for cell states</dd>
       </dl><dl><dt>
 
-          <code><a href="barcode_similarity_likelihood.html">barcode_similarity_likelihood()</a></code>
+          <code><a href="barcode_score.html">barcode_score()</a></code>
 
         </dt>
-        <dd>Calculate barcode shift probability</dd>
+        <dd>Calculate barcode score</dd>
       </dl><dl><dt>
 
-          <code><a href="combined_likelihood.html">combined_likelihood()</a></code>
+          <code><a href="composition_score.html">composition_score()</a></code>
 
         </dt>
-        <dd>Calculate combined tree score based on cell state and barcode shift scores</dd>
+        <dd>Calculate composition tree score based on cell state and barcode shift scores</dd>
       </dl><dl><dt>
 
           <code><a href="nodes_sampling.html">nodes_sampling()</a></code>
@@ -292,9 +291,9 @@
         </dt>
         <dd>Compute a time-scaled phylogenetic tree based on lineage barcodes</dd>
       </dl></div><div class="section level2">
-      <h2 id="phenotypic-dynamics-analysis">Phenotypic dynamics analysis<a class="anchor" aria-label="anchor" href="#phenotypic-dynamics-analysis"></a></h2>
+      <h2 id="lineage-depth-resolved-phenotypic-organization-quantification">Lineage-depth-resolved phenotypic organization quantification<a class="anchor" aria-label="anchor" href="#lineage-depth-resolved-phenotypic-organization-quantification"></a></h2>
 
-      <div class="section-desc"><p>Inferring cellular phenotype dynamics based on inferred cell division books</p></div>
+      <div class="section-desc"><p>Quantify lineage-depth-resolved phenotypic organization on the inferred cell division tree</p></div>
 
 
     </div><div class="section level2">
