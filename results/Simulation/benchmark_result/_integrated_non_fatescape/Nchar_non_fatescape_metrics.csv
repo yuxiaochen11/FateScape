@@ -1,0 +1,190 @@
+parameter_sweep,parameter_sweep_label,parameter_name,parameter_value,replicate_id,method,metric_name,metric_label,metric_value
+Nchar,Number Of Sites,Number of sites,8,rep001,FateScape_slingshot,TreeDistance,Information Based Distance,0.5995
+Nchar,Number Of Sites,Number of sites,8,rep002,FateScape_slingshot,TreeDistance,Information Based Distance,0.5224
+Nchar,Number Of Sites,Number of sites,8,rep003,FateScape_slingshot,TreeDistance,Information Based Distance,0.6132
+Nchar,Number Of Sites,Number of sites,12,rep001,FateScape_slingshot,TreeDistance,Information Based Distance,0.5995
+Nchar,Number Of Sites,Number of sites,12,rep002,FateScape_slingshot,TreeDistance,Information Based Distance,0.5224
+Nchar,Number Of Sites,Number of sites,12,rep003,FateScape_slingshot,TreeDistance,Information Based Distance,0.6132
+Nchar,Number Of Sites,Number of sites,16,rep001,FateScape_slingshot,TreeDistance,Information Based Distance,0.5986
+Nchar,Number Of Sites,Number of sites,16,rep002,FateScape_slingshot,TreeDistance,Information Based Distance,0.5384
+Nchar,Number Of Sites,Number of sites,16,rep003,FateScape_slingshot,TreeDistance,Information Based Distance,0.5199
+Nchar,Number Of Sites,Number of sites,8,rep001,FateScape_monocle,TreeDistance,Information Based Distance,0.6046
+Nchar,Number Of Sites,Number of sites,8,rep002,FateScape_monocle,TreeDistance,Information Based Distance,0.5153
+Nchar,Number Of Sites,Number of sites,8,rep003,FateScape_monocle,TreeDistance,Information Based Distance,0.5852
+Nchar,Number Of Sites,Number of sites,12,rep001,FateScape_monocle,TreeDistance,Information Based Distance,0.6046
+Nchar,Number Of Sites,Number of sites,12,rep002,FateScape_monocle,TreeDistance,Information Based Distance,0.5153
+Nchar,Number Of Sites,Number of sites,12,rep003,FateScape_monocle,TreeDistance,Information Based Distance,0.5852
+Nchar,Number Of Sites,Number of sites,16,rep001,FateScape_monocle,TreeDistance,Information Based Distance,0.5233
+Nchar,Number Of Sites,Number of sites,16,rep002,FateScape_monocle,TreeDistance,Information Based Distance,0.5547
+Nchar,Number Of Sites,Number of sites,16,rep003,FateScape_monocle,TreeDistance,Information Based Distance,0.5766
+Nchar,Number Of Sites,Number of sites,8,rep001,LinRace,TreeDistance,Information Based Distance,0.6708
+Nchar,Number Of Sites,Number of sites,8,rep002,LinRace,TreeDistance,Information Based Distance,0.6017
+Nchar,Number Of Sites,Number of sites,8,rep003,LinRace,TreeDistance,Information Based Distance,0.5634
+Nchar,Number Of Sites,Number of sites,12,rep001,LinRace,TreeDistance,Information Based Distance,0.6708
+Nchar,Number Of Sites,Number of sites,12,rep002,LinRace,TreeDistance,Information Based Distance,0.6017
+Nchar,Number Of Sites,Number of sites,12,rep003,LinRace,TreeDistance,Information Based Distance,0.5634
+Nchar,Number Of Sites,Number of sites,16,rep001,LinRace,TreeDistance,Information Based Distance,0.5651
+Nchar,Number Of Sites,Number of sites,16,rep002,LinRace,TreeDistance,Information Based Distance,0.5942
+Nchar,Number Of Sites,Number of sites,16,rep003,LinRace,TreeDistance,Information Based Distance,0.6226
+Nchar,Number Of Sites,Number of sites,8,rep001,LinTIMaT,TreeDistance,Information Based Distance,0.8324
+Nchar,Number Of Sites,Number of sites,8,rep002,LinTIMaT,TreeDistance,Information Based Distance,0.8319
+Nchar,Number Of Sites,Number of sites,8,rep003,LinTIMaT,TreeDistance,Information Based Distance,0.8444
+Nchar,Number Of Sites,Number of sites,12,rep001,LinTIMaT,TreeDistance,Information Based Distance,0.8324
+Nchar,Number Of Sites,Number of sites,12,rep002,LinTIMaT,TreeDistance,Information Based Distance,0.8319
+Nchar,Number Of Sites,Number of sites,12,rep003,LinTIMaT,TreeDistance,Information Based Distance,0.8444
+Nchar,Number Of Sites,Number of sites,16,rep001,LinTIMaT,TreeDistance,Information Based Distance,0.8284
+Nchar,Number Of Sites,Number of sites,16,rep002,LinTIMaT,TreeDistance,Information Based Distance,0.8381
+Nchar,Number Of Sites,Number of sites,16,rep003,LinTIMaT,TreeDistance,Information Based Distance,0.8504
+Nchar,Number Of Sites,Number of sites,8,rep001,NJ method,TreeDistance,Information Based Distance,0.6679
+Nchar,Number Of Sites,Number of sites,8,rep002,NJ method,TreeDistance,Information Based Distance,0.6355
+Nchar,Number Of Sites,Number of sites,8,rep003,NJ method,TreeDistance,Information Based Distance,0.673
+Nchar,Number Of Sites,Number of sites,12,rep001,NJ method,TreeDistance,Information Based Distance,0.6679
+Nchar,Number Of Sites,Number of sites,12,rep002,NJ method,TreeDistance,Information Based Distance,0.6355
+Nchar,Number Of Sites,Number of sites,12,rep003,NJ method,TreeDistance,Information Based Distance,0.673
+Nchar,Number Of Sites,Number of sites,16,rep001,NJ method,TreeDistance,Information Based Distance,0.6287
+Nchar,Number Of Sites,Number of sites,16,rep002,NJ method,TreeDistance,Information Based Distance,0.6243
+Nchar,Number Of Sites,Number of sites,16,rep003,NJ method,TreeDistance,Information Based Distance,0.6491
+Nchar,Number Of Sites,Number of sites,8,rep001,Cassiopeia,TreeDistance,Information Based Distance,0.5914546
+Nchar,Number Of Sites,Number of sites,8,rep002,Cassiopeia,TreeDistance,Information Based Distance,0.6487219
+Nchar,Number Of Sites,Number of sites,8,rep003,Cassiopeia,TreeDistance,Information Based Distance,0.6751942
+Nchar,Number Of Sites,Number of sites,12,rep001,Cassiopeia,TreeDistance,Information Based Distance,0.5914546
+Nchar,Number Of Sites,Number of sites,12,rep002,Cassiopeia,TreeDistance,Information Based Distance,0.6487219
+Nchar,Number Of Sites,Number of sites,12,rep003,Cassiopeia,TreeDistance,Information Based Distance,0.6751942
+Nchar,Number Of Sites,Number of sites,16,rep001,Cassiopeia,TreeDistance,Information Based Distance,0.5645841
+Nchar,Number Of Sites,Number of sites,16,rep002,Cassiopeia,TreeDistance,Information Based Distance,0.6372004
+Nchar,Number Of Sites,Number of sites,16,rep003,Cassiopeia,TreeDistance,Information Based Distance,0.5544846
+Nchar,Number Of Sites,Number of sites,8,rep001,FateScape_slingshot,Nye,Nye Similarity Score,0.3744
+Nchar,Number Of Sites,Number of sites,8,rep002,FateScape_slingshot,Nye,Nye Similarity Score,0.3766
+Nchar,Number Of Sites,Number of sites,8,rep003,FateScape_slingshot,Nye,Nye Similarity Score,0.3798
+Nchar,Number Of Sites,Number of sites,12,rep001,FateScape_slingshot,Nye,Nye Similarity Score,0.4314
+Nchar,Number Of Sites,Number of sites,12,rep002,FateScape_slingshot,Nye,Nye Similarity Score,0.4522
+Nchar,Number Of Sites,Number of sites,12,rep003,FateScape_slingshot,Nye,Nye Similarity Score,0.4155
+Nchar,Number Of Sites,Number of sites,16,rep001,FateScape_slingshot,Nye,Nye Similarity Score,0.4511
+Nchar,Number Of Sites,Number of sites,16,rep002,FateScape_slingshot,Nye,Nye Similarity Score,0.4552
+Nchar,Number Of Sites,Number of sites,16,rep003,FateScape_slingshot,Nye,Nye Similarity Score,0.4519
+Nchar,Number Of Sites,Number of sites,8,rep001,FateScape_monocle,Nye,Nye Similarity Score,0.3767
+Nchar,Number Of Sites,Number of sites,8,rep002,FateScape_monocle,Nye,Nye Similarity Score,0.3883
+Nchar,Number Of Sites,Number of sites,8,rep003,FateScape_monocle,Nye,Nye Similarity Score,0.3513
+Nchar,Number Of Sites,Number of sites,12,rep001,FateScape_monocle,Nye,Nye Similarity Score,0.4337
+Nchar,Number Of Sites,Number of sites,12,rep002,FateScape_monocle,Nye,Nye Similarity Score,0.4582
+Nchar,Number Of Sites,Number of sites,12,rep003,FateScape_monocle,Nye,Nye Similarity Score,0.4163
+Nchar,Number Of Sites,Number of sites,16,rep001,FateScape_monocle,Nye,Nye Similarity Score,0.4514
+Nchar,Number Of Sites,Number of sites,16,rep002,FateScape_monocle,Nye,Nye Similarity Score,0.4644
+Nchar,Number Of Sites,Number of sites,16,rep003,FateScape_monocle,Nye,Nye Similarity Score,0.4512
+Nchar,Number Of Sites,Number of sites,8,rep001,LinRace,Nye,Nye Similarity Score,0.3276
+Nchar,Number Of Sites,Number of sites,8,rep002,LinRace,Nye,Nye Similarity Score,0.3463
+Nchar,Number Of Sites,Number of sites,8,rep003,LinRace,Nye,Nye Similarity Score,0.3395
+Nchar,Number Of Sites,Number of sites,12,rep001,LinRace,Nye,Nye Similarity Score,0.3533
+Nchar,Number Of Sites,Number of sites,12,rep002,LinRace,Nye,Nye Similarity Score,0.3668
+Nchar,Number Of Sites,Number of sites,12,rep003,LinRace,Nye,Nye Similarity Score,0.36
+Nchar,Number Of Sites,Number of sites,16,rep001,LinRace,Nye,Nye Similarity Score,0.3811
+Nchar,Number Of Sites,Number of sites,16,rep002,LinRace,Nye,Nye Similarity Score,0.3996
+Nchar,Number Of Sites,Number of sites,16,rep003,LinRace,Nye,Nye Similarity Score,0.3545
+Nchar,Number Of Sites,Number of sites,8,rep001,LinTIMaT,Nye,Nye Similarity Score,0.256
+Nchar,Number Of Sites,Number of sites,8,rep002,LinTIMaT,Nye,Nye Similarity Score,0.2815
+Nchar,Number Of Sites,Number of sites,8,rep003,LinTIMaT,Nye,Nye Similarity Score,0.2686
+Nchar,Number Of Sites,Number of sites,12,rep001,LinTIMaT,Nye,Nye Similarity Score,0.281
+Nchar,Number Of Sites,Number of sites,12,rep002,LinTIMaT,Nye,Nye Similarity Score,0.268
+Nchar,Number Of Sites,Number of sites,12,rep003,LinTIMaT,Nye,Nye Similarity Score,0.2808
+Nchar,Number Of Sites,Number of sites,16,rep001,LinTIMaT,Nye,Nye Similarity Score,0.278
+Nchar,Number Of Sites,Number of sites,16,rep002,LinTIMaT,Nye,Nye Similarity Score,0.2784
+Nchar,Number Of Sites,Number of sites,16,rep003,LinTIMaT,Nye,Nye Similarity Score,0.2749
+Nchar,Number Of Sites,Number of sites,8,rep001,NJ method,Nye,Nye Similarity Score,0.3373
+Nchar,Number Of Sites,Number of sites,8,rep002,NJ method,Nye,Nye Similarity Score,0.3358
+Nchar,Number Of Sites,Number of sites,8,rep003,NJ method,Nye,Nye Similarity Score,0.3334
+Nchar,Number Of Sites,Number of sites,12,rep001,NJ method,Nye,Nye Similarity Score,0.3481
+Nchar,Number Of Sites,Number of sites,12,rep002,NJ method,Nye,Nye Similarity Score,0.3684
+Nchar,Number Of Sites,Number of sites,12,rep003,NJ method,Nye,Nye Similarity Score,0.331
+Nchar,Number Of Sites,Number of sites,16,rep001,NJ method,Nye,Nye Similarity Score,0.3713
+Nchar,Number Of Sites,Number of sites,16,rep002,NJ method,Nye,Nye Similarity Score,0.3786
+Nchar,Number Of Sites,Number of sites,16,rep003,NJ method,Nye,Nye Similarity Score,0.3508
+Nchar,Number Of Sites,Number of sites,8,rep001,Cassiopeia,Nye,Nye Similarity Score,0.2646126
+Nchar,Number Of Sites,Number of sites,8,rep002,Cassiopeia,Nye,Nye Similarity Score,0.3201106
+Nchar,Number Of Sites,Number of sites,8,rep003,Cassiopeia,Nye,Nye Similarity Score,0.2922107
+Nchar,Number Of Sites,Number of sites,12,rep001,Cassiopeia,Nye,Nye Similarity Score,0.3416458
+Nchar,Number Of Sites,Number of sites,12,rep002,Cassiopeia,Nye,Nye Similarity Score,0.3084584
+Nchar,Number Of Sites,Number of sites,12,rep003,Cassiopeia,Nye,Nye Similarity Score,0.3321243
+Nchar,Number Of Sites,Number of sites,16,rep001,Cassiopeia,Nye,Nye Similarity Score,0.4420811
+Nchar,Number Of Sites,Number of sites,16,rep002,Cassiopeia,Nye,Nye Similarity Score,0.362197
+Nchar,Number Of Sites,Number of sites,16,rep003,Cassiopeia,Nye,Nye Similarity Score,0.4512572
+Nchar,Number Of Sites,Number of sites,8,rep001,FateScape_slingshot,RF_normalized,RF Distance,0.9177
+Nchar,Number Of Sites,Number of sites,8,rep002,FateScape_slingshot,RF_normalized,RF Distance,0.9304
+Nchar,Number Of Sites,Number of sites,8,rep003,FateScape_slingshot,RF_normalized,RF Distance,0.9098
+Nchar,Number Of Sites,Number of sites,12,rep001,FateScape_slingshot,RF_normalized,RF Distance,0.8785
+Nchar,Number Of Sites,Number of sites,12,rep002,FateScape_slingshot,RF_normalized,RF Distance,0.8765
+Nchar,Number Of Sites,Number of sites,12,rep003,FateScape_slingshot,RF_normalized,RF Distance,0.8922
+Nchar,Number Of Sites,Number of sites,16,rep001,FateScape_slingshot,RF_normalized,RF Distance,0.8638
+Nchar,Number Of Sites,Number of sites,16,rep002,FateScape_slingshot,RF_normalized,RF Distance,0.8726
+Nchar,Number Of Sites,Number of sites,16,rep003,FateScape_slingshot,RF_normalized,RF Distance,0.8589
+Nchar,Number Of Sites,Number of sites,8,rep001,FateScape_monocle,RF_normalized,RF Distance,0.9167
+Nchar,Number Of Sites,Number of sites,8,rep002,FateScape_monocle,RF_normalized,RF Distance,0.8908
+Nchar,Number Of Sites,Number of sites,8,rep003,FateScape_monocle,RF_normalized,RF Distance,0.9236
+Nchar,Number Of Sites,Number of sites,12,rep001,FateScape_monocle,RF_normalized,RF Distance,0.8726
+Nchar,Number Of Sites,Number of sites,12,rep002,FateScape_monocle,RF_normalized,RF Distance,0.8563
+Nchar,Number Of Sites,Number of sites,12,rep003,FateScape_monocle,RF_normalized,RF Distance,0.8971
+Nchar,Number Of Sites,Number of sites,16,rep001,FateScape_monocle,RF_normalized,RF Distance,0.8716
+Nchar,Number Of Sites,Number of sites,16,rep002,FateScape_monocle,RF_normalized,RF Distance,0.8736
+Nchar,Number Of Sites,Number of sites,16,rep003,FateScape_monocle,RF_normalized,RF Distance,0.8619
+Nchar,Number Of Sites,Number of sites,8,rep001,LinRace,RF_normalized,RF Distance,0.9608
+Nchar,Number Of Sites,Number of sites,8,rep002,LinRace,RF_normalized,RF Distance,0.9549
+Nchar,Number Of Sites,Number of sites,8,rep003,LinRace,RF_normalized,RF Distance,0.9529
+Nchar,Number Of Sites,Number of sites,12,rep001,LinRace,RF_normalized,RF Distance,0.9431
+Nchar,Number Of Sites,Number of sites,12,rep002,LinRace,RF_normalized,RF Distance,0.9588
+Nchar,Number Of Sites,Number of sites,12,rep003,LinRace,RF_normalized,RF Distance,0.948
+Nchar,Number Of Sites,Number of sites,16,rep001,LinRace,RF_normalized,RF Distance,0.9353
+Nchar,Number Of Sites,Number of sites,16,rep002,LinRace,RF_normalized,RF Distance,0.9236
+Nchar,Number Of Sites,Number of sites,16,rep003,LinRace,RF_normalized,RF Distance,0.9529
+Nchar,Number Of Sites,Number of sites,8,rep001,LinTIMaT,RF_normalized,RF Distance,0.9755
+Nchar,Number Of Sites,Number of sites,8,rep002,LinTIMaT,RF_normalized,RF Distance,0.9559
+Nchar,Number Of Sites,Number of sites,8,rep003,LinTIMaT,RF_normalized,RF Distance,0.9657
+Nchar,Number Of Sites,Number of sites,12,rep001,LinTIMaT,RF_normalized,RF Distance,0.949
+Nchar,Number Of Sites,Number of sites,12,rep002,LinTIMaT,RF_normalized,RF Distance,0.9657
+Nchar,Number Of Sites,Number of sites,12,rep003,LinTIMaT,RF_normalized,RF Distance,0.9571
+Nchar,Number Of Sites,Number of sites,16,rep001,LinTIMaT,RF_normalized,RF Distance,0.9569
+Nchar,Number Of Sites,Number of sites,16,rep002,LinTIMaT,RF_normalized,RF Distance,0.95
+Nchar,Number Of Sites,Number of sites,16,rep003,LinTIMaT,RF_normalized,RF Distance,0.9481
+Nchar,Number Of Sites,Number of sites,8,rep001,NJ method,RF_normalized,RF Distance,0.952
+Nchar,Number Of Sites,Number of sites,8,rep002,NJ method,RF_normalized,RF Distance,0.949
+Nchar,Number Of Sites,Number of sites,8,rep003,NJ method,RF_normalized,RF Distance,0.9666
+Nchar,Number Of Sites,Number of sites,12,rep001,NJ method,RF_normalized,RF Distance,0.9471
+Nchar,Number Of Sites,Number of sites,12,rep002,NJ method,RF_normalized,RF Distance,0.9412
+Nchar,Number Of Sites,Number of sites,12,rep003,NJ method,RF_normalized,RF Distance,0.9371
+Nchar,Number Of Sites,Number of sites,16,rep001,NJ method,RF_normalized,RF Distance,0.9441
+Nchar,Number Of Sites,Number of sites,16,rep002,NJ method,RF_normalized,RF Distance,0.9335
+Nchar,Number Of Sites,Number of sites,16,rep003,NJ method,RF_normalized,RF Distance,0.9471
+Nchar,Number Of Sites,Number of sites,8,rep001,Cassiopeia,RF_normalized,RF Distance,0.9674691
+Nchar,Number Of Sites,Number of sites,8,rep002,Cassiopeia,RF_normalized,RF Distance,0.9331652
+Nchar,Number Of Sites,Number of sites,8,rep003,Cassiopeia,RF_normalized,RF Distance,0.9528362
+Nchar,Number Of Sites,Number of sites,12,rep001,Cassiopeia,RF_normalized,RF Distance,0.9350092
+Nchar,Number Of Sites,Number of sites,12,rep002,Cassiopeia,RF_normalized,RF Distance,0.9354839
+Nchar,Number Of Sites,Number of sites,12,rep003,Cassiopeia,RF_normalized,RF Distance,0.9377289
+Nchar,Number Of Sites,Number of sites,16,rep001,Cassiopeia,RF_normalized,RF Distance,0.8799788
+Nchar,Number Of Sites,Number of sites,16,rep002,Cassiopeia,RF_normalized,RF Distance,0.9413068
+Nchar,Number Of Sites,Number of sites,16,rep003,Cassiopeia,RF_normalized,RF Distance,0.8690046
+Nchar,Number Of Sites,Number of sites,12,rep001,LAML,Nye,Nye Similarity Score,0.243291236
+Nchar,Number Of Sites,Number of sites,12,rep002,LAML,Nye,Nye Similarity Score,0.28276365
+Nchar,Number Of Sites,Number of sites,12,rep003,LAML,Nye,Nye Similarity Score,0.240041034
+Nchar,Number Of Sites,Number of sites,16,rep001,LAML,Nye,Nye Similarity Score,0.293234585
+Nchar,Number Of Sites,Number of sites,16,rep002,LAML,Nye,Nye Similarity Score,0.306749052
+Nchar,Number Of Sites,Number of sites,16,rep003,LAML,Nye,Nye Similarity Score,0.280733792
+Nchar,Number Of Sites,Number of sites,8,rep001,LAML,Nye,Nye Similarity Score,0.259600279
+Nchar,Number Of Sites,Number of sites,8,rep002,LAML,Nye,Nye Similarity Score,0.27666865
+Nchar,Number Of Sites,Number of sites,8,rep003,LAML,Nye,Nye Similarity Score,0.249119921
+Nchar,Number Of Sites,Number of sites,12,rep001,LAML,TreeDistance,Information Based Distance,0.82059077
+Nchar,Number Of Sites,Number of sites,12,rep002,LAML,TreeDistance,Information Based Distance,0.775838896
+Nchar,Number Of Sites,Number of sites,12,rep003,LAML,TreeDistance,Information Based Distance,0.82079174
+Nchar,Number Of Sites,Number of sites,16,rep001,LAML,TreeDistance,Information Based Distance,0.770400411
+Nchar,Number Of Sites,Number of sites,16,rep002,LAML,TreeDistance,Information Based Distance,0.694061811
+Nchar,Number Of Sites,Number of sites,16,rep003,LAML,TreeDistance,Information Based Distance,0.7513261
+Nchar,Number Of Sites,Number of sites,8,rep001,LAML,TreeDistance,Information Based Distance,0.803573034
+Nchar,Number Of Sites,Number of sites,8,rep002,LAML,TreeDistance,Information Based Distance,0.789837976
+Nchar,Number Of Sites,Number of sites,8,rep003,LAML,TreeDistance,Information Based Distance,0.836567911
+Nchar,Number Of Sites,Number of sites,12,rep001,LAML,RF_normalized,RF Distance,0.990205681
+Nchar,Number Of Sites,Number of sites,12,rep002,LAML,RF_normalized,RF Distance,0.977473066
+Nchar,Number Of Sites,Number of sites,12,rep003,LAML,RF_normalized,RF Distance,0.993143976
+Nchar,Number Of Sites,Number of sites,16,rep001,LAML,RF_normalized,RF Distance,0.971596474
+Nchar,Number Of Sites,Number of sites,16,rep002,LAML,RF_normalized,RF Distance,0.967678746
+Nchar,Number Of Sites,Number of sites,16,rep003,LAML,RF_normalized,RF Distance,0.971596474
+Nchar,Number Of Sites,Number of sites,8,rep001,LAML,RF_normalized,RF Distance,0.983349657
+Nchar,Number Of Sites,Number of sites,8,rep002,LAML,RF_normalized,RF Distance,0.975514202
+Nchar,Number Of Sites,Number of sites,8,rep003,LAML,RF_normalized,RF Distance,0.983349657

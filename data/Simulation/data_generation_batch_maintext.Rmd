@@ -1,0 +1,1019 @@
+---
+title: "Revision canonical simulation data generation"
+output: html_document
+date: "`r Sys.Date()`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = TRUE, warning = TRUE)
+options(stringsAsFactors = FALSE)
+```
+
+# Purpose
+
+This Rmd starts from the original TedSim-based `data_generation.Rmd` logic and converts it into a batch data-generation pipeline for the Genome Research revision.
+
+This version generates **only the canonical synthetic datasets corresponding to the results already reported in the original manuscript and Supplementary Material**:
+
+- main Fig. 3 mutation-rate benchmark;
+- main Fig. 3 stochastic-dropout benchmark;
+- Supplemental Fig. S3 target-site-number benchmark;
+- Supplemental Fig. S3 sample-size benchmark;
+- Supplemental Fig. S4 no-dropout benchmark.
+
+It does **not** generate new reviewer-response experiments such as LAML, TiDeTree/TideTree, ablation, runtime, or hyperparameter-sensitivity datasets. Those should be added later as separate pools, after the original-result datasets are regenerated and verified.
+
+It also does **not** generate the C. elegans semi-synthetic benchmark, because that analysis requires the real C. elegans expression matrix and the known C. elegans lineage tree rather than the generic TedSim state-tree generator used here.
+
+The output remains method-agnostic: every simulated case is saved once under `data/input/simulated/<pool>/<case_id>/`, and downstream converters should translate the canonical files into algorithm-specific formats for FateScape, LinRace, LinTIMaT, NJ, Cassiopeia, LAML, or other methods.
+
+# User settings
+
+```{r user-settings}
+# =========================
+# Main switches
+# =========================
+library(FateScape)
+RUN_GENERATION <- TRUE
+
+# Use "1:2" for smoke test; use "all" after inspection.
+CASE_INDICES <- "all"
+
+
+OUT_ROOT <- "D:/input"
+
+# Default rerun behavior:
+# - SKIP_EXISTING_CASES = TRUE prevents reruns from touching completed case folders.
+# - Set SKIP_EXISTING_CASES = FALSE and OVERWRITE_CASES = TRUE only when you intentionally want regeneration.
+SKIP_EXISTING_CASES <- TRUE
+OVERWRITE_CASES <- FALSE
+STOP_ON_ERROR <- FALSE
+
+# =========================
+# Local package paths
+# =========================
+
+# Your modified TedSim path.
+TEDSIM_LOCAL_PATH <- "D:/Downloads/TedSim"
+
+# Optional FateScape package path, used only if you want to call its imputation function.
+# If unavailable, the script will still generate barcode_observed and use it as barcode_imputed_fatescape.
+FATESCAPE_LOCAL_PATH <- NULL
+# FATESCAPE_LOCAL_PATH <- "D:/projects/FateScape/FateScape"
+
+# =========================
+# Simulation grid switches
+# =========================
+# These switches correspond only to the original manuscript figures.
+# New revision experiments, such as LAML, TiDeTree/TideTree, ablation, runtime,
+# and hyperparameter sensitivity, should be generated in separate scripts/pools.
+
+INCLUDE_MAIN_FIG3_MUTATION <- TRUE
+INCLUDE_MAIN_FIG3_DROPOUT <- TRUE
+INCLUDE_FIGS3_TARGET_SITES <- TRUE
+INCLUDE_FIGS3_SAMPLE_SIZE <- TRUE
+INCLUDE_FIGS4_NO_DROPOUT <- TRUE
+
+# =========================
+# Canonical defaults inferred from the original manuscript/SI and this generator
+# =========================
+# The original manuscript/SI explicitly reports:
+# - mutation-rate levels: 0.1, 0.2, 0.3
+# - stochastic-dropout levels: 0.1, 0.2, 0.3
+# - sample-size levels: 512, 1024, 2048
+# - target-site levels: 8, 12, 16
+# - no-dropout mutation-rate levels: 0.05, 0.1, 0.2
+# - heritable dropout fixed at 0.05, except for the no-dropout benchmark
+# - asymmetric division probability fixed at 0.8
+#
+# Non-varying default values used to make one-factor-at-a-time datasets:
+DEFAULT_NCELLS <- 1024
+DEFAULT_N_CHAR <- 12
+DEFAULT_MU <- 0.2
+DEFAULT_P_DS <- 0.2
+DEFAULT_P_D <- 0.05
+NO_DROPOUT_P_DS <- 0
+NO_DROPOUT_P_D <- 0
+
+# The manuscript says "independent simulation replicates" but does not state the number.
+# The batch-generation code uses 10 replicates by default; change this only if you
+# confirm that the original plotting data used another replicate count.
+N_REPLICATES <- 3
+
+# If TRUE, use True2ObservedCounts when available. Otherwise save true counts as expression.
+SIMULATE_OBSERVED_COUNTS <- FALSE
+
+# Number of retries for TedSim::SimulateCIFs when a random state walk fails.
+SIMULATE_CIFS_RETRIES <- 3
+MAX_WALK_CANDIDATES <- c(3)
+
+GLOBAL_SEED <- 319
+```
+
+# Load packages
+
+```{r load-packages}
+if (!requireNamespace("ape", quietly = TRUE)) stop("Please install ape.")
+library(ape)
+
+if (!requireNamespace("devtools", quietly = TRUE)) {
+  stop("Please install devtools first: install.packages('devtools')")
+}
+
+if (!is.null(TEDSIM_LOCAL_PATH) && dir.exists(TEDSIM_LOCAL_PATH)) {
+  message("Loading local TedSim from: ", TEDSIM_LOCAL_PATH)
+  devtools::load_all(TEDSIM_LOCAL_PATH, quiet = TRUE)
+} else {
+  message("Loading installed TedSim package.")
+  library(TedSim)
+}
+
+if (!is.null(FATESCAPE_LOCAL_PATH) && dir.exists(FATESCAPE_LOCAL_PATH)) {
+  message("Loading local FateScape from: ", FATESCAPE_LOCAL_PATH)
+  devtools::load_all(FATESCAPE_LOCAL_PATH, quiet = TRUE)
+}
+
+message("R working directory: ", normalizePath(getwd(), winslash = "/", mustWork = FALSE))
+OUT_ROOT <- normalizePath(OUT_ROOT, winslash = "/", mustWork = FALSE)
+message("Absolute OUT_ROOT: ", OUT_ROOT)
+dir.create(OUT_ROOT, recursive = TRUE, showWarnings = FALSE)
+dir.create(file.path(OUT_ROOT, "_manifests"), recursive = TRUE, showWarnings = FALSE)
+```
+
+# Helper functions
+
+```{r helper-functions}
+p_tag <- function(x) {
+  gsub("\\.", "p", as.character(x))
+}
+
+parse_case_indices <- function(case_indices, n_cases) {
+  if (identical(case_indices, "all")) {
+    return(seq_len(n_cases))
+  }
+  if (grepl(":", case_indices)) {
+    parts <- strsplit(case_indices, ":", fixed = TRUE)[[1]]
+    return(seq.int(as.integer(parts[1]), as.integer(parts[2])))
+  }
+  as.integer(strsplit(case_indices, ",")[[1]])
+}
+
+rbind_fill_base <- function(x, y) {
+  # Base-R equivalent of dplyr::bind_rows for robust batch manifests.
+  if (is.null(x) || nrow(x) == 0) return(y)
+  if (is.null(y) || nrow(y) == 0) return(x)
+
+  all_cols <- union(names(x), names(y))
+  for (nm in setdiff(all_cols, names(x))) x[[nm]] <- NA
+  for (nm in setdiff(all_cols, names(y))) y[[nm]] <- NA
+
+  rbind(x[, all_cols, drop = FALSE], y[, all_cols, drop = FALSE])
+}
+
+safe_write_csv <- function(x, file, row.names = FALSE) {
+  dir.create(dirname(file), recursive = TRUE, showWarnings = FALSE)
+  message("Writing CSV: ", normalizePath(file, winslash = "/", mustWork = FALSE))
+  utils::write.csv(x, file = file, row.names = row.names, quote = FALSE)
+  if (!file.exists(file)) stop("Failed to write file: ", file)
+  invisible(file)
+}
+
+safe_write_tsv <- function(x, file, row.names = FALSE) {
+  dir.create(dirname(file), recursive = TRUE, showWarnings = FALSE)
+  message("Writing TSV: ", normalizePath(file, winslash = "/", mustWork = FALSE))
+  utils::write.table(x, file = file, sep = "\t", row.names = row.names,
+                     col.names = TRUE, quote = FALSE, na = "NA")
+  if (!file.exists(file)) stop("Failed to write file: ", file)
+  invisible(file)
+}
+
+safe_write_tree <- function(tree, file) {
+  dir.create(dirname(file), recursive = TRUE, showWarnings = FALSE)
+  message("Writing tree: ", normalizePath(file, winslash = "/", mustWork = FALSE))
+  ape::write.tree(tree, file = file)
+  if (!file.exists(file)) stop("Failed to write tree: ", file)
+  invisible(file)
+}
+
+safe_save_rds <- function(x, file) {
+  dir.create(dirname(file), recursive = TRUE, showWarnings = FALSE)
+  message("Writing RDS: ", normalizePath(file, winslash = "/", mustWork = FALSE))
+  saveRDS(x, file = file)
+  if (!file.exists(file)) stop("Failed to write RDS: ", file)
+  invisible(file)
+}
+
+standardize_barcode_matrix <- function(x, cell_ids = NULL, prefix = "S") {
+  x <- as.data.frame(x, check.names = FALSE)
+  x[] <- lapply(x, function(z) {
+    suppressWarnings(as.integer(as.character(z)))
+  })
+  x <- as.matrix(x)
+  storage.mode(x) <- "integer"
+  colnames(x) <- paste0(prefix, seq_len(ncol(x)))
+  if (!is.null(cell_ids)) rownames(x) <- cell_ids
+  x
+}
+
+is_missing_barcode <- function(x) {
+  is.na(x) | x < 0
+}
+
+add_controlled_stochastic_dropout <- function(barcode_true, p_ds, seed = NULL) {
+  if (!is.null(seed)) set.seed(seed)
+  bc <- barcode_true
+  dropout_type <- matrix("none", nrow = nrow(bc), ncol = ncol(bc),
+                         dimnames = dimnames(bc))
+
+  heritable <- is_missing_barcode(bc)
+  dropout_type[heritable] <- "heritable"
+
+  stochastic_candidates <- !heritable
+  stochastic_mask <- matrix(stats::runif(length(bc)) < p_ds,
+                            nrow = nrow(bc), ncol = ncol(bc),
+                            dimnames = dimnames(bc)) & stochastic_candidates
+
+  bc[stochastic_mask] <- NA_integer_
+  dropout_type[stochastic_mask] <- "stochastic"
+
+  list(barcode_observed = bc, dropout_type = dropout_type)
+}
+
+barcode_qc <- function(barcode_true, params = NULL) {
+  n_mut <- sum(!is.na(barcode_true) & barcode_true > 0)
+  n_wt <- sum(!is.na(barcode_true) & barcode_true == 0)
+  n_missing <- sum(is.na(barcode_true))
+  n_total <- length(barcode_true)
+
+  mutation_fraction <- n_mut / n_total
+  missing_fraction <- n_missing / n_total
+
+  message(
+    "Barcode QC: mutated=", n_mut,
+    ", wildtype=", n_wt,
+    ", missing=", n_missing,
+    ", mutation_fraction=", signif(mutation_fraction, 4),
+    ", missing_fraction=", signif(missing_fraction, 4)
+  )
+
+  if (n_mut == 0) {
+    if (!is.null(params)) print(params)
+    stop("barcode_true contains no mutated entries. This case is invalid.")
+  }
+
+  list(
+    n_mutated_entries_true = n_mut,
+    n_wildtype_entries_true = n_wt,
+    n_missing_entries_true = n_missing,
+    mutation_fraction_true = mutation_fraction,
+    missing_fraction_true = missing_fraction
+  )
+}
+
+make_state_lineages <- function(cell_state_tree) {
+  n_tips <- length(cell_state_tree$tip.label)
+  edge <- cell_state_tree$edge
+  root <- setdiff(edge[, 1], edge[, 2])
+  if (length(root) != 1) stop("State tree must have a unique root.")
+  root <- root[1]
+
+  parent <- setNames(edge[, 1], edge[, 2])
+
+  lineages <- list()
+  for (tip in seq_len(n_tips)) {
+    path <- tip
+    cur <- tip
+    while (as.character(cur) %in% names(parent)) {
+      cur <- parent[as.character(cur)]
+      path <- c(cur, path)
+      if (cur == root) break
+    }
+    lineages[[paste0("L", tip)]] <- as.integer(path)
+  }
+  lineages
+}
+
+state_depths <- function(cell_state_tree) {
+  edge <- cell_state_tree$edge
+  root <- setdiff(edge[, 1], edge[, 2])
+  if (length(root) != 1) stop("State tree must have a unique root.")
+  root <- root[1]
+  all_nodes <- seq_len(length(cell_state_tree$tip.label) + cell_state_tree$Nnode)
+  depth <- rep(NA_integer_, length(all_nodes))
+  names(depth) <- all_nodes
+  depth[as.character(root)] <- 0L
+
+  changed <- TRUE
+  while (changed) {
+    changed <- FALSE
+    for (i in seq_len(nrow(edge))) {
+      p <- edge[i, 1]; c <- edge[i, 2]
+      if (!is.na(depth[as.character(p)]) && is.na(depth[as.character(c)])) {
+        depth[as.character(c)] <- depth[as.character(p)] + 1L
+        changed <- TRUE
+      }
+    }
+  }
+  depth
+}
+
+state_children_map <- function(cell_state_tree) {
+  edge <- cell_state_tree$edge
+  split(edge[, 2], edge[, 1])
+}
+
+is_descendant_or_equal <- function(cell_state_tree, ancestor, node) {
+  if (ancestor == node) return(TRUE)
+  edge <- cell_state_tree$edge
+  parent <- setNames(edge[, 1], edge[, 2])
+  cur <- node
+  while (as.character(cur) %in% names(parent)) {
+    cur <- parent[as.character(cur)]
+    if (cur == ancestor) return(TRUE)
+  }
+  FALSE
+}
+
+state_step_distance <- function(cell_state_tree, ancestor, node) {
+  if (!is_descendant_or_equal(cell_state_tree, ancestor, node)) return(NA_integer_)
+  dep <- state_depths(cell_state_tree)
+  as.integer(dep[as.character(node)] - dep[as.character(ancestor)])
+}
+
+simulate_cifs_retry <- function(
+  ncells, cell_state_tree, p_a, n_CIF, n_diff, step,
+  p_d, Sigma, mu, N_char, max_walk_candidates, SIF_res,
+  unif_on = FALSE, n_retries = 3, seed = 1
+) {
+  last_error <- NULL
+
+  for (attempt in seq_len(n_retries)) {
+    for (mw in max_walk_candidates) {
+      set.seed(seed + attempt - 1L)
+      message("Trying SimulateCIFs: attempt=", attempt,
+              ", seed=", seed + attempt - 1L,
+              ", max_walk=", mw)
+      ans <- tryCatch(
+        {
+          SimulateCIFs(
+            ncells,
+            cell_state_tree,
+            p_a = p_a,
+            n_CIF = n_CIF,
+            n_diff = n_diff,
+            step = step,
+            p_d = p_d,
+            Sigma = Sigma,
+            mu = mu,
+            N_char = N_char,
+            max_walk = mw,
+            SIF_res = SIF_res,
+            unif_on = unif_on
+          )
+        },
+        error = function(e) {
+          last_error <<- conditionMessage(e)
+          message("  SimulateCIFs failed: ", last_error)
+          NULL
+        }
+      )
+      if (!is.null(ans)) {
+        attr(ans, "simulate_attempt") <- attempt
+        attr(ans, "max_walk_used") <- mw
+        attr(ans, "seed_used") <- seed + attempt - 1L
+        return(ans)
+      }
+    }
+  }
+  stop("SimulateCIFs failed after retries. Last error: ", last_error)
+}
+
+#try_fatescape_imputation <- function(barcode_observed, N_char, ncells, r_n) {
+#  if (!exists("imputation_dropout_alter", mode = "function", inherits = TRUE)) {
+#    if (exists("dropout_imputation_alter", mode = "function", inherits = TRUE)) {
+#      f <- get("dropout_imputation_alter", mode = "function", inherits = TRUE)
+#    } else {
+#      warning("No FateScape imputation function found. Returning observed barcode as barcode_imputed.")
+#     return(barcode_observed)
+#   }
+#  } else {
+#    f <- get("imputation_dropout_alter", mode = "function", inherits = TRUE)
+#  }
+
+#  ans <- tryCatch(
+#    f(barcode_observed, N_char, ncells, r_n),
+#    error = function(e) {
+#      warning("FateScape imputation failed: ", conditionMessage(e),
+#              ". Returning observed barcode as barcode_imputed.")
+#      barcode_observed
+#    }
+#  )
+#  ans <- as.matrix(ans)
+#  rownames(ans) <- rownames(barcode_observed)
+#  colnames(ans) <- colnames(barcode_observed)
+#  ans
+#}
+
+make_character_matrix_for_external <- function(barcode, missing_code = -1L) {
+  x <- barcode
+  x[is.na(x)] <- missing_code
+  storage.mode(x) <- "integer"
+  as.data.frame(x, check.names = FALSE)
+}
+```
+
+# Build parameter grid
+
+```{r build-grid}
+make_case_id <- function(pool, ncells, N_char, mu, p_ds, p_d, replicate) {
+  paste0(
+    pool,
+    "_n", sprintf("%04d", ncells),
+    "_char", N_char,
+    "_mu", p_tag(mu),
+    "_sd", p_tag(p_ds),
+    "_hd", p_tag(p_d),
+    "_rep", sprintf("%03d", replicate)
+  )
+}
+
+base_grid <- function(pool, figure, panel, x_variable,
+                      ncells, N_char, mu, p_ds, p_d, replicates) {
+  g <- expand.grid(
+    pool = pool,
+    figure = figure,
+    panel = panel,
+    x_variable = x_variable,
+    ncells = ncells,
+    N_char = N_char,
+    mu = mu,
+    p_ds = p_ds,
+    p_d = p_d,
+    replicate = seq_len(replicates),
+    stringsAsFactors = FALSE
+  )
+  g
+}
+
+grid_list <- list()
+
+# Main Fig. 3A-C: mutation-rate benchmark.
+# Variable: barcode mutation rate mu = 0.1, 0.2, 0.3.
+# Non-varying defaults: n = 1024 cells, 16 target sites, stochastic dropout = 0.2,
+# heritable dropout = 0.05.
+if (INCLUDE_MAIN_FIG3_MUTATION) {
+  grid_list$fig3_mutation <- base_grid(
+    pool = "fig3_mutation",
+    figure = "Fig3",
+    panel = "A-C",
+    x_variable = "mutation_rate",
+    ncells = DEFAULT_NCELLS,
+    N_char = DEFAULT_N_CHAR,
+    mu = c(0.1, 0.2, 0.3),
+    p_ds = DEFAULT_P_DS,
+    p_d = DEFAULT_P_D,
+    replicates = N_REPLICATES
+  )
+}
+
+# Main Fig. 3D-F: stochastic-dropout benchmark.
+# Variable: stochastic dropout p_ds = 0.1, 0.2, 0.3.
+# Non-varying defaults: n = 1024 cells, 16 target sites, mutation rate = 0.2,
+# heritable dropout = 0.05.
+if (INCLUDE_MAIN_FIG3_DROPOUT) {
+  grid_list$fig3_dropout <- base_grid(
+    pool = "fig3_dropout",
+    figure = "Fig3",
+    panel = "D-F",
+    x_variable = "stochastic_dropout_rate",
+    ncells = DEFAULT_NCELLS,
+    N_char = DEFAULT_N_CHAR,
+    mu = DEFAULT_MU,
+    p_ds = c(0.1, 0.2, 0.3),
+    p_d = DEFAULT_P_D,
+    replicates = N_REPLICATES
+  )
+}
+
+# Supplemental Fig. S3A-C: target-site-number benchmark.
+# Caption states that these datasets use 1,024 observed cells and varying target sites.
+# Variable: N_char = 8, 12, 16.
+if (INCLUDE_FIGS3_TARGET_SITES) {
+  grid_list$figs3_target_sites <- base_grid(
+    pool = "figs3_target_sites",
+    figure = "FigS3",
+    panel = "A-C",
+    x_variable = "number_of_target_sites",
+    ncells = 1024,
+    N_char = c(8, 12, 16),
+    mu = DEFAULT_MU,
+    p_ds = DEFAULT_P_DS,
+    p_d = DEFAULT_P_D,
+    replicates = N_REPLICATES
+  )
+}
+
+# Supplemental Fig. S3D-F: sample-size benchmark.
+# Caption states that these datasets use 16 target sites and varying observed cells.
+# Variable: ncells = 512, 1024, 2048.
+if (INCLUDE_FIGS3_SAMPLE_SIZE) {
+  grid_list$figs3_sample_size <- base_grid(
+    pool = "figs3_sample_size",
+    figure = "FigS3",
+    panel = "D-F",
+    x_variable = "number_of_cells",
+    ncells = c(512, 1024, 2048),
+    N_char = 16,
+    mu = DEFAULT_MU,
+    p_ds = DEFAULT_P_DS,
+    p_d = DEFAULT_P_D,
+    replicates = N_REPLICATES
+  )
+}
+
+# Supplemental Fig. S4: no-dropout mutation-rate benchmark.
+# Variable: mutation rate mu = 0.05, 0.1, 0.2.
+# Both stochastic and heritable dropout rates are set to zero.
+if (INCLUDE_FIGS4_NO_DROPOUT) {
+  grid_list$figs4_no_dropout <- base_grid(
+    pool = "figs4_no_dropout",
+    figure = "FigS4",
+    panel = "A-C",
+    x_variable = "mutation_rate_no_dropout",
+    ncells = DEFAULT_NCELLS,
+    N_char = DEFAULT_N_CHAR,
+    mu = c(0.05, 0.1, 0.2),
+    p_ds = NO_DROPOUT_P_DS,
+    p_d = NO_DROPOUT_P_D,
+    replicates = N_REPLICATES
+  )
+}
+
+param_grid <- do.call(rbind, grid_list)
+
+# TedSim / expression-generation parameters used by the original generation logic.
+param_grid$ngenes <- 500
+param_grid$max_walk <- 3
+param_grid$p_a <- 0.8
+param_grid$n_cif <- 30
+param_grid$n_diff <- 20
+param_grid$cif_step <- 1
+param_grid$ge_prob <- 0.3
+param_grid$Sigma <- 0.5
+param_grid$N_ms <- 10
+param_grid$r_n <- ceiling(param_grid$N_char * 0.7)
+param_grid$seed <- GLOBAL_SEED + seq_len(nrow(param_grid)) * 1000L
+
+param_grid$case_id <- mapply(
+  make_case_id,
+  pool = param_grid$pool,
+  ncells = param_grid$ncells,
+  N_char = param_grid$N_char,
+  mu = param_grid$mu,
+  p_ds = param_grid$p_ds,
+  p_d = param_grid$p_d,
+  replicate = param_grid$replicate
+)
+
+param_grid <- param_grid[!duplicated(param_grid$case_id), ]
+param_grid$case_index <- seq_len(nrow(param_grid))
+
+planned_file <- file.path(OUT_ROOT, "_manifests", "planned_cases.csv")
+safe_write_csv(param_grid, planned_file, row.names = FALSE)
+
+message("Total planned cases: ", nrow(param_grid))
+print(table(param_grid$pool))
+print(param_grid[, c("case_index", "case_id", "figure", "panel", "x_variable",
+                     "ncells", "N_char", "mu", "p_ds", "p_d", "replicate")])
+head(param_grid)
+```
+
+# One-case generator
+
+```{r one-case-generator}
+rename_tree_tips_to_cells <- function(tree, ncells) {
+  # TedSim often uses t1, t2, ...; normalize to cell_1, cell_2, ...
+  if (length(tree$tip.label) < ncells) {
+    stop("Ground-truth tree has fewer tips than ncells.")
+  }
+  tree$tip.label[seq_len(ncells)] <- paste0("cell_", seq_len(ncells))
+  tree
+}
+
+generate_one_case <- function(params, out_root = OUT_ROOT) {
+  params <- as.list(params)
+  case_dir <- file.path(out_root, params$pool, params$case_id)
+  case_manifest_file <- file.path(case_dir, "manifest.csv")
+
+  if (dir.exists(case_dir)) {
+    if (isTRUE(SKIP_EXISTING_CASES)) {
+      message("\n[Skip existing] ", params$case_id)
+      message("Existing output: ", normalizePath(case_dir, winslash = "/", mustWork = FALSE))
+
+      if (file.exists(case_manifest_file)) {
+        manifest <- read.csv(case_manifest_file, stringsAsFactors = FALSE)
+        manifest$generation_status <- "skipped_existing"
+        return(manifest)
+      }
+
+      return(data.frame(
+        case_id = params$case_id,
+        case_index = params$case_index,
+        pool = params$pool,
+        figure = params$figure,
+        panel = params$panel,
+        x_variable = params$x_variable,
+        ncells = params$ncells,
+        N_char = params$N_char,
+        mu = params$mu,
+        p_ds = params$p_ds,
+        p_d = params$p_d,
+        replicate = params$replicate,
+        seed = params$seed,
+        case_dir = normalizePath(case_dir, winslash = "/", mustWork = FALSE),
+        generation_status = "skipped_existing_no_manifest",
+        warning = "Case directory exists but manifest.csv was not found; no files were overwritten.",
+        stringsAsFactors = FALSE
+      ))
+    }
+
+    if (isTRUE(OVERWRITE_CASES)) {
+      message("\n[Overwrite existing] ", params$case_id)
+      unlink(case_dir, recursive = TRUE, force = TRUE)
+    } else {
+      stop(
+        "Case directory already exists: ", case_dir,
+        ". Set SKIP_EXISTING_CASES <- TRUE to skip it, or OVERWRITE_CASES <- TRUE to regenerate it."
+      )
+    }
+  }
+
+  dir.create(case_dir, recursive = TRUE, showWarnings = FALSE)
+
+  message("\n[Generating] ", params$case_id)
+  message("Output: ", normalizePath(case_dir, winslash = "/", mustWork = FALSE))
+
+  # Fixed cell-state tree from the original Rmd.
+  cell_state_tree_text <- "((((((t1:1)n9:1,(t2:1)n10:1)n8:1)n7:1,(((t3:1)n13:1)n12:1)n11:1)n6:1)n5:1)n4;"
+  cell_state_tree <- ape::read.tree(text = cell_state_tree_text)
+  state_lineages <- make_state_lineages(cell_state_tree)
+  s_depth <- state_depths(cell_state_tree)
+  terminal_states <- seq_along(cell_state_tree$tip.label)
+
+  # Generate raw lineage barcodes, cell states, CIFs, and true tree using original TedSim logic.
+  set.seed(params$seed)
+  returnlist <- SIFGenerate(cell_state_tree, params$n_diff, step = params$cif_step)
+
+  cifs <- simulate_cifs_retry(
+    ncells = params$ncells,
+    cell_state_tree = cell_state_tree,
+    p_a = params$p_a,
+    n_CIF = params$n_cif,
+    n_diff = params$n_diff,
+    step = params$cif_step,
+    p_d = params$p_d,
+    Sigma = params$Sigma,
+    mu = params$mu,
+    N_char = params$N_char,
+    max_walk_candidates = unique(c(params$max_walk, MAX_WALK_CANDIDATES)),
+    SIF_res = returnlist,
+    unif_on = FALSE,
+    n_retries = SIMULATE_CIFS_RETRIES,
+    seed = params$seed
+  )
+
+  params$simulate_attempt <- attr(cifs, "simulate_attempt")
+  params$max_walk_used <- attr(cifs, "max_walk_used")
+  params$seed_used <- attr(cifs, "seed_used")
+  params$simulator_backend <- "TedSim_SimulateCIFs"
+
+  barcodes_all <- cifs[[7]]
+
+  # CIF list for leaves. Original code assumes three terminal cell states.
+  n_terminal <- length(cell_state_tree$tip.label)
+  cif_leaves <- vector("list", n_terminal)
+  for (i in seq_len(n_terminal)) {
+    cif_leaves[[i]] <- cifs[[1]][[i]][seq_len(params$ncells), , drop = FALSE]
+  }
+
+  true_counts_res <- CIF2Truecounts(
+    ngenes = params$ngenes,
+    ncif = params$n_cif,
+    ge_prob = params$ge_prob,
+    ncells = params$ncells,
+    cif_res = list(cif_leaves, cifs[[2]])
+  )
+
+  counts_true <- t(true_counts_res[[1]])
+  states_leaves <- cifs[[2]][seq_len(params$ncells), , drop = FALSE]
+
+  cell_ids <- paste0("cell_", states_leaves[, "cellID"])
+  rownames(counts_true) <- cell_ids
+  colnames(counts_true) <- paste0("Gene", seq_len(ncol(counts_true)))
+
+  counts_expr <- counts_true
+  expression_backend <- "TedSim_CIF2Truecounts"
+
+  if (isTRUE(SIMULATE_OBSERVED_COUNTS) && exists("True2ObservedCounts", mode = "function", inherits = TRUE)) {
+    obs_try <- tryCatch(
+      True2ObservedCounts(counts_true),
+      error = function(e) {
+        warning("True2ObservedCounts failed: ", conditionMessage(e), ". Using true counts as expression.")
+        NULL
+      }
+    )
+    if (!is.null(obs_try)) {
+      counts_expr <- obs_try
+      expression_backend <- "TedSim_True2ObservedCounts"
+    }
+  }
+  params$expression_backend <- expression_backend
+
+  # Ground-truth tree.
+  tree_ct <- cifs[[4]]
+  tree_ct <- rename_tree_tips_to_cells(tree_ct, params$ncells)
+
+  # Barcode matrices.
+  barcodes_initial <- barcodes_all[seq_len(params$ncells), , drop = FALSE]
+  barcode_true <- standardize_barcode_matrix(barcodes_initial, cell_ids = cell_ids, prefix = "S")
+
+  qc <- barcode_qc(barcode_true, params)
+  params <- c(params, qc)
+
+  dropout_res <- add_controlled_stochastic_dropout(
+    barcode_true,
+    p_ds = params$p_ds,
+    seed = params$seed + 777L
+  )
+  barcode_observed <- dropout_res$barcode_observed
+  barcode_dropout_type <- dropout_res$dropout_type
+
+
+  # barcode_imputed <- try_fatescape_imputation(
+  #   barcode_observed = barcode_observed,
+  #   N_char = params$N_char,
+  #   ncells = params$ncells,
+  #   r_n = params$r_n
+  # )
+
+
+  # Metadata.
+  state_label <- as.integer(states_leaves[, "cluster"])
+  state_type <- ifelse(state_label %in% terminal_states, "terminal", "internal_or_root")
+  state_depth <- as.integer(s_depth[as.character(state_label)])
+
+  cell_metadata <- data.frame(
+    cell_id = cell_ids,
+    state_label = state_label,
+    state_type = state_type,
+    state_depth = state_depth,
+    ted_parent_state = as.integer(states_leaves[, "parent"]),
+    ted_cluster = as.integer(states_leaves[, "cluster"]),
+    ted_depth = as.integer(states_leaves[, "depth"]),
+    ted_cellID = as.integer(states_leaves[, "cellID"]),
+    stringsAsFactors = FALSE
+  )
+
+  represented_states <- sort(unique(state_label))
+  params$n_sampled_states <- length(represented_states)
+  params$n_sampled_terminal_states <- sum(represented_states %in% terminal_states)
+  params$n_sampled_internal_states <- sum(!(represented_states %in% terminal_states))
+  params$terminal_state_cell_fraction <- mean(state_type == "terminal")
+  params$internal_state_cell_fraction <- mean(state_type == "internal_or_root")
+  params$sampled_states <- paste(represented_states, collapse = ";")
+
+  # Canonical standardized outputs only.
+  # Method-specific inputs should be produced later by converter scripts from these files.
+  expression_file <- file.path(case_dir, "expression.csv")
+  true_counts_file <- file.path(case_dir, "true_counts.csv")
+  barcode_true_file <- file.path(case_dir, "barcode_true.csv")
+  barcode_observed_file <- file.path(case_dir, "barcode_observed.csv")
+  # barcode_imputed_file <- file.path(case_dir, "barcode_imputed_fatescape.csv")
+  barcode_dropout_type_file <- file.path(case_dir, "barcode_dropout_type.csv")
+  metadata_file <- file.path(case_dir, "cell_metadata.csv")
+  true_tree_file <- file.path(case_dir, "true_tree.nwk")
+  state_tree_file <- file.path(case_dir, "state_tree.nwk")
+  state_lineages_file <- file.path(case_dir, "state_lineages.rds")
+
+  safe_write_csv(as.data.frame(counts_expr, check.names = FALSE), expression_file, row.names = TRUE)
+  safe_write_csv(as.data.frame(counts_true, check.names = FALSE), true_counts_file, row.names = TRUE)
+  safe_write_csv(as.data.frame(barcode_true, check.names = FALSE), barcode_true_file, row.names = TRUE)
+  safe_write_csv(as.data.frame(barcode_observed, check.names = FALSE), barcode_observed_file, row.names = TRUE)
+  # safe_write_csv(as.data.frame(barcode_imputed, check.names = FALSE), barcode_imputed_file, row.names = TRUE)
+  safe_write_csv(as.data.frame(barcode_dropout_type, check.names = FALSE), barcode_dropout_type_file, row.names = TRUE)
+  safe_write_csv(cell_metadata, metadata_file, row.names = FALSE)
+  safe_write_tree(tree_ct, true_tree_file)
+  safe_write_tree(cell_state_tree, state_tree_file)
+  safe_save_rds(state_lineages, state_lineages_file)
+
+  # RDS with original TedSim objects.
+  safe_save_rds(
+    list(
+      cifs = cifs,
+      returnlist = returnlist,
+      true_counts_res = true_counts_res,
+      state_lineages = state_lineages,
+      params = params
+    ),
+    file.path(case_dir, "tedsim_objects.rds")
+  )
+
+  params_df <- as.data.frame(params, stringsAsFactors = FALSE)
+  safe_write_csv(params_df, file.path(case_dir, "params.csv"), row.names = FALSE)
+
+  manifest <- data.frame(
+    case_id = params$case_id,
+    case_index = params$case_index,
+    pool = params$pool,
+    figure = params$figure,
+    panel = params$panel,
+    x_variable = params$x_variable,
+    ncells = params$ncells,
+    N_char = params$N_char,
+    mu = params$mu,
+    p_ds = params$p_ds,
+    p_d = params$p_d,
+    replicate = params$replicate,
+    seed = params$seed,
+    seed_used = params$seed_used,
+    max_walk_used = params$max_walk_used,
+    simulate_attempt = params$simulate_attempt,
+    simulator_backend = params$simulator_backend,
+    expression_backend = params$expression_backend,
+    case_dir = normalizePath(case_dir, winslash = "/", mustWork = TRUE),
+    expression_file = normalizePath(expression_file, winslash = "/", mustWork = TRUE),
+    true_counts_file = normalizePath(true_counts_file, winslash = "/", mustWork = TRUE),
+    barcode_true_file = normalizePath(barcode_true_file, winslash = "/", mustWork = TRUE),
+    barcode_observed_file = normalizePath(barcode_observed_file, winslash = "/", mustWork = TRUE),
+    # barcode_imputed_file = normalizePath(barcode_imputed_file, winslash = "/", mustWork = TRUE),
+    barcode_dropout_type_file = normalizePath(barcode_dropout_type_file, winslash = "/", mustWork = TRUE),
+    metadata_file = normalizePath(metadata_file, winslash = "/", mustWork = TRUE),
+    true_tree_file = normalizePath(true_tree_file, winslash = "/", mustWork = TRUE),
+    state_tree_file = normalizePath(state_tree_file, winslash = "/", mustWork = TRUE),
+    state_lineages_file = normalizePath(state_lineages_file, winslash = "/", mustWork = TRUE),
+    params_file = normalizePath(file.path(case_dir, "params.csv"), winslash = "/", mustWork = TRUE),
+    tedsim_objects_file = normalizePath(file.path(case_dir, "tedsim_objects.rds"), winslash = "/", mustWork = TRUE),
+    n_mutated_entries_true = params$n_mutated_entries_true,
+    n_missing_entries_true = params$n_missing_entries_true,
+    mutation_fraction_true = params$mutation_fraction_true,
+    missing_fraction_true = params$missing_fraction_true,
+    n_sampled_states = params$n_sampled_states,
+    n_sampled_terminal_states = params$n_sampled_terminal_states,
+    n_sampled_internal_states = params$n_sampled_internal_states,
+    terminal_state_cell_fraction = params$terminal_state_cell_fraction,
+    internal_state_cell_fraction = params$internal_state_cell_fraction,
+    sampled_states = params$sampled_states,
+    generation_status = "generated",
+    stringsAsFactors = FALSE
+  )
+
+  safe_write_csv(manifest, file.path(case_dir, "manifest.csv"), row.names = FALSE)
+
+  message("[Done] ", params$case_id)
+  manifest
+}
+```
+
+# Batch generation
+
+```{r batch-generation}
+selected_indices <- parse_case_indices(CASE_INDICES, nrow(param_grid))
+selected_indices <- selected_indices[selected_indices >= 1 & selected_indices <= nrow(param_grid)]
+selected_cases <- param_grid[selected_indices, , drop = FALSE]
+
+message("Selected cases: ", nrow(selected_cases))
+print(selected_cases[, c("case_index", "case_id", "pool", "figure", "panel", "x_variable",
+                            "ncells", "N_char", "mu", "p_ds", "p_d", "replicate")])
+
+batch_manifest <- data.frame()
+
+if (isTRUE(RUN_GENERATION)) {
+  for (ii in seq_len(nrow(selected_cases))) {
+    params <- selected_cases[ii, ]
+
+    one <- tryCatch(
+      generate_one_case(params, OUT_ROOT),
+      error = function(e) {
+        msg <- conditionMessage(e)
+        message("[ERROR] ", params$case_id, ": ", msg)
+        if (isTRUE(STOP_ON_ERROR)) stop(e)
+        data.frame(
+          case_id = params$case_id,
+          case_index = params$case_index,
+          pool = params$pool,
+          figure = params$figure,
+          panel = params$panel,
+          x_variable = params$x_variable,
+          ncells = params$ncells,
+          N_char = params$N_char,
+          mu = params$mu,
+          p_ds = params$p_ds,
+          p_d = params$p_d,
+          replicate = params$replicate,
+          seed = params$seed,
+          generation_status = "error",
+          error = msg,
+          stringsAsFactors = FALSE
+        )
+      }
+    )
+
+    batch_manifest <- rbind_fill_base(batch_manifest, one)
+  }
+
+  batch_file <- file.path(
+    OUT_ROOT, "_manifests",
+    paste0("batch_manifest_", format(Sys.time(), "%Y%m%d_%H%M%S"), ".csv")
+  )
+  safe_write_csv(batch_manifest, batch_file, row.names = FALSE)
+  message("Batch manifest written to: ", batch_file)
+} else {
+  message("RUN_GENERATION is FALSE. Only parameter grid was generated.")
+}
+```
+
+# Collect all generated manifests
+
+```{r collect-manifests}
+manifest_files <- list.files(
+  OUT_ROOT,
+  pattern = "^manifest\\.csv$",
+  recursive = TRUE,
+  full.names = TRUE
+)
+
+manifest_files <- manifest_files[!grepl("_manifests", manifest_files)]
+
+if (length(manifest_files) == 0) {
+  message("No generated case manifests found yet.")
+} else {
+  all_manifest <- do.call(
+    rbind,
+    lapply(manifest_files, function(f) {
+      read.csv(f, stringsAsFactors = FALSE)
+    })
+  )
+
+  all_manifest_file <- file.path(OUT_ROOT, "_manifests", "all_cases_manifest.csv")
+  safe_write_csv(all_manifest, all_manifest_file, row.names = FALSE)
+
+  message("All-case manifest written to: ", all_manifest_file)
+  print(table(all_manifest$pool))
+
+  message("First case directory: ", all_manifest$case_dir[1])
+  print(list.files(all_manifest$case_dir[1], recursive = FALSE))
+}
+```
+
+# How to subset canonical cases for downstream revision experiments
+
+```{r downstream-subsets, eval=FALSE}
+manifest <- read.csv(
+  file.path(OUT_ROOT, "_manifests", "all_cases_manifest.csv"),
+  stringsAsFactors = FALSE
+)
+
+# Ablation: use the core 1024-cell cases.
+ablation_cases <- subset(
+  manifest,
+  pool == "core" &
+    ncells == 1024 &
+    N_char == 16 &
+    mu %in% c(0.1, 0.2, 0.3) &
+    p_ds %in% c(0.1, 0.2, 0.3)
+)
+
+# Parameter sensitivity: use main and stress conditions.
+param_cases_main <- subset(
+  manifest,
+  pool == "core" & ncells == 1024 & N_char == 16 &
+    mu == 0.2 & p_ds == 0.2
+)
+
+param_cases_stress <- subset(
+  manifest,
+  pool == "core" & ncells == 1024 & N_char == 16 &
+    mu == 0.1 & p_ds == 0.3
+)
+
+# Runtime: use n=512/1024/2048 core cases and optional n=256 cases.
+runtime_cases <- subset(
+  manifest,
+  pool %in% c("core", "runtime_optional") &
+    N_char == 16 & mu == 0.2 & p_ds == 0.2 &
+    replicate <= 3
+)
+
+# TideTree / TediTree subset. Method-specific input files should be generated later by converters.
+tidetree_cases <- subset(
+  manifest,
+  pool == "core" & ncells == 512 & N_char == 16 & replicate <= 5
+)
+
+# Imputation analysis.
+imputation_cases <- subset(
+  manifest,
+  (pool == "core" & ncells == 1024 & N_char == 16) |
+    pool == "imputation_stress"
+)
+```

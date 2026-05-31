@@ -1,0 +1,13 @@
+n_tips,Nye,TreeDistance,RF_normalized,RF_raw,eval_error,method,grouping_strategy,barcode_source,lambda_barcode,lambda_state,max_iter
+1024,0.431829602724349,0.602919963215896,0.888344760039177,1814,,FateScape-StateGroup,state_cluster_partition,imputed_in_pipeline,0.9,0.1,100
+1024,0.425965524780448,0.628105396013891,0.882468168462292,1802,,FateScape-StateGroup,state_cluster_partition,imputed_in_pipeline,0.9,0.1,100
+1024,0.0456930733065651,0.966309701784539,1,2042,,FateScape-StateGroup,state_cluster_partition,imputed_in_pipeline,0.9,0.1,100
+1024,0.432969223447047,0.613528063368616,0.884427032321254,1806,,FateScape-StateGroup,state_cluster_partition,imputed_in_pipeline,0.9,0.1,100
+1024,0.387305883817014,0.681258613755607,0.907933398628795,1854,,FateScape-StateGroup,state_cluster_partition,imputed_in_pipeline,0.9,0.1,100
+1024,0.410438161410419,0.66583791296951,0.883447600391773,1804,,FateScape-StateGroup,state_cluster_partition,imputed_in_pipeline,0.9,0.1,100
+1024,0.0365626910326447,0.973647634192138,1,2042,,FateScape-StateGroup,state_cluster_partition,imputed_in_pipeline,0.9,0.1,100
+1024,0.37230507107708,0.711110193788184,0.909892262487757,1858,,FateScape-StateGroup,state_cluster_partition,imputed_in_pipeline,0.9,0.1,100
+1024,0.365720850200002,0.736040857842047,0.903036238981391,1844,,FateScape-StateGroup,state_cluster_partition,imputed_in_pipeline,0.9,0.1,100
+1024,0.386724794578398,0.713778610782292,0.894221351616063,1826,,FateScape-StateGroup,state_cluster_partition,imputed_in_pipeline,0.9,0.1,100
+1024,0.369930617878243,0.698096845151789,0.915768854064642,1870,,FateScape-StateGroup,state_cluster_partition,imputed_in_pipeline,0.9,0.1,100
+1024,0.369801179607461,0.71971274534021,0.918707149853085,1876,,FateScape-StateGroup,state_cluster_partition,imputed_in_pipeline,0.9,0.1,100

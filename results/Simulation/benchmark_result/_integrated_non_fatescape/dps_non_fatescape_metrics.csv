@@ -1,0 +1,190 @@
+parameter_sweep,parameter_sweep_label,parameter_name,parameter_value,replicate_id,method,metric_name,metric_label,metric_value
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,FateScape_slingshot,TreeDistance,Information Based Distance,0.49
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,FateScape_slingshot,TreeDistance,Information Based Distance,0.5125
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,FateScape_slingshot,TreeDistance,Information Based Distance,0.5144
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,FateScape_slingshot,TreeDistance,Information Based Distance,0.5995
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,FateScape_slingshot,TreeDistance,Information Based Distance,0.5224
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,FateScape_slingshot,TreeDistance,Information Based Distance,0.6132
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,FateScape_slingshot,TreeDistance,Information Based Distance,0.6903
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,FateScape_slingshot,TreeDistance,Information Based Distance,0.6519
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,FateScape_slingshot,TreeDistance,Information Based Distance,0.6065
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,FateScape_monocle,TreeDistance,Information Based Distance,0.4277
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,FateScape_monocle,TreeDistance,Information Based Distance,0.5029
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,FateScape_monocle,TreeDistance,Information Based Distance,0.5126
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,FateScape_monocle,TreeDistance,Information Based Distance,0.6046
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,FateScape_monocle,TreeDistance,Information Based Distance,0.5153
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,FateScape_monocle,TreeDistance,Information Based Distance,0.5852
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,FateScape_monocle,TreeDistance,Information Based Distance,0.7046
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,FateScape_monocle,TreeDistance,Information Based Distance,0.621
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,FateScape_monocle,TreeDistance,Information Based Distance,0.6225
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,LinRace,TreeDistance,Information Based Distance,0.4698
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,LinRace,TreeDistance,Information Based Distance,0.5531
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,LinRace,TreeDistance,Information Based Distance,0.4736
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,LinRace,TreeDistance,Information Based Distance,0.6708
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,LinRace,TreeDistance,Information Based Distance,0.6017
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,LinRace,TreeDistance,Information Based Distance,0.5634
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,LinRace,TreeDistance,Information Based Distance,0.6818
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,LinRace,TreeDistance,Information Based Distance,0.7014
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,LinRace,TreeDistance,Information Based Distance,0.7025
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,LinTIMaT,TreeDistance,Information Based Distance,0.8098
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,LinTIMaT,TreeDistance,Information Based Distance,0.7947
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,LinTIMaT,TreeDistance,Information Based Distance,0.7847
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,LinTIMaT,TreeDistance,Information Based Distance,0.8324
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,LinTIMaT,TreeDistance,Information Based Distance,0.8319
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,LinTIMaT,TreeDistance,Information Based Distance,0.8444
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,LinTIMaT,TreeDistance,Information Based Distance,0.8432
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,LinTIMaT,TreeDistance,Information Based Distance,0.8787
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,LinTIMaT,TreeDistance,Information Based Distance,0.8525
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,NJ method,TreeDistance,Information Based Distance,0.4903
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,NJ method,TreeDistance,Information Based Distance,0.6035
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,NJ method,TreeDistance,Information Based Distance,0.5521
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,NJ method,TreeDistance,Information Based Distance,0.6679
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,NJ method,TreeDistance,Information Based Distance,0.6355
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,NJ method,TreeDistance,Information Based Distance,0.673
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,NJ method,TreeDistance,Information Based Distance,0.7303
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,NJ method,TreeDistance,Information Based Distance,0.6886
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,NJ method,TreeDistance,Information Based Distance,0.72
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,Cassiopeia,TreeDistance,Information Based Distance,0.6013289
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,Cassiopeia,TreeDistance,Information Based Distance,0.6303317
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,Cassiopeia,TreeDistance,Information Based Distance,0.6200076
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,Cassiopeia,TreeDistance,Information Based Distance,0.5914546
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,Cassiopeia,TreeDistance,Information Based Distance,0.6487219
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,Cassiopeia,TreeDistance,Information Based Distance,0.6751942
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,Cassiopeia,TreeDistance,Information Based Distance,0.638194
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,Cassiopeia,TreeDistance,Information Based Distance,0.6463905
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,Cassiopeia,TreeDistance,Information Based Distance,0.7045582
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,FateScape_slingshot,Nye,Nye Similarity Score,0.5212
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,FateScape_slingshot,Nye,Nye Similarity Score,0.4445
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,FateScape_slingshot,Nye,Nye Similarity Score,0.4836
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,FateScape_slingshot,Nye,Nye Similarity Score,0.4314
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,FateScape_slingshot,Nye,Nye Similarity Score,0.4522
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,FateScape_slingshot,Nye,Nye Similarity Score,0.4155
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,FateScape_slingshot,Nye,Nye Similarity Score,0.3281
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,FateScape_slingshot,Nye,Nye Similarity Score,0.3832
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,FateScape_slingshot,Nye,Nye Similarity Score,0.3863
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,FateScape_monocle,Nye,Nye Similarity Score,0.5361
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,FateScape_monocle,Nye,Nye Similarity Score,0.4591
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,FateScape_monocle,Nye,Nye Similarity Score,0.4878
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,FateScape_monocle,Nye,Nye Similarity Score,0.4337
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,FateScape_monocle,Nye,Nye Similarity Score,0.4582
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,FateScape_monocle,Nye,Nye Similarity Score,0.4163
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,FateScape_monocle,Nye,Nye Similarity Score,0.3195
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,FateScape_monocle,Nye,Nye Similarity Score,0.389
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,FateScape_monocle,Nye,Nye Similarity Score,0.3811
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,LinRace,Nye,Nye Similarity Score,0.4562
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,LinRace,Nye,Nye Similarity Score,0.3911
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,LinRace,Nye,Nye Similarity Score,0.4329
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,LinRace,Nye,Nye Similarity Score,0.3533
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,LinRace,Nye,Nye Similarity Score,0.3668
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,LinRace,Nye,Nye Similarity Score,0.36
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,LinRace,Nye,Nye Similarity Score,0.295
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,LinRace,Nye,Nye Similarity Score,0.3054
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,LinRace,Nye,Nye Similarity Score,0.2881
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,LinTIMaT,Nye,Nye Similarity Score,0.3201
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,LinTIMaT,Nye,Nye Similarity Score,0.3236
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,LinTIMaT,Nye,Nye Similarity Score,0.3219
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,LinTIMaT,Nye,Nye Similarity Score,0.281
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,LinTIMaT,Nye,Nye Similarity Score,0.268
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,LinTIMaT,Nye,Nye Similarity Score,0.2808
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,LinTIMaT,Nye,Nye Similarity Score,0.2781
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,LinTIMaT,Nye,Nye Similarity Score,0.2558
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,LinTIMaT,Nye,Nye Similarity Score,0.2594
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,NJ method,Nye,Nye Similarity Score,0.4406
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,NJ method,Nye,Nye Similarity Score,0.3734
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,NJ method,Nye,Nye Similarity Score,0.4242
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,NJ method,Nye,Nye Similarity Score,0.3481
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,NJ method,Nye,Nye Similarity Score,0.3684
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,NJ method,Nye,Nye Similarity Score,0.331
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,NJ method,Nye,Nye Similarity Score,0.2888
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,NJ method,Nye,Nye Similarity Score,0.3259
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,NJ method,Nye,Nye Similarity Score,0.3042
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,Cassiopeia,Nye,Nye Similarity Score,0.3960229
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,Cassiopeia,Nye,Nye Similarity Score,0.3801488
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,Cassiopeia,Nye,Nye Similarity Score,0.374656
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,Cassiopeia,Nye,Nye Similarity Score,0.3416458
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,Cassiopeia,Nye,Nye Similarity Score,0.3084584
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,Cassiopeia,Nye,Nye Similarity Score,0.3321243
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,Cassiopeia,Nye,Nye Similarity Score,0.3361204
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,Cassiopeia,Nye,Nye Similarity Score,0.3377992
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,Cassiopeia,Nye,Nye Similarity Score,0.2933438
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,FateScape_slingshot,RF_normalized,RF Distance,0.808
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,FateScape_slingshot,RF_normalized,RF Distance,0.8519
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,FateScape_slingshot,RF_normalized,RF Distance,0.8376
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,FateScape_slingshot,RF_normalized,RF Distance,0.8785
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,FateScape_slingshot,RF_normalized,RF Distance,0.8765
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,FateScape_slingshot,RF_normalized,RF Distance,0.8922
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,FateScape_slingshot,RF_normalized,RF Distance,0.9422
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,FateScape_slingshot,RF_normalized,RF Distance,0.9059
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,FateScape_slingshot,RF_normalized,RF Distance,0.9118
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,FateScape_monocle,RF_normalized,RF Distance,0.8109
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,FateScape_monocle,RF_normalized,RF Distance,0.8498
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,FateScape_monocle,RF_normalized,RF Distance,0.8296
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,FateScape_monocle,RF_normalized,RF Distance,0.8726
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,FateScape_monocle,RF_normalized,RF Distance,0.8563
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,FateScape_monocle,RF_normalized,RF Distance,0.8971
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,FateScape_monocle,RF_normalized,RF Distance,0.9578
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,FateScape_monocle,RF_normalized,RF Distance,0.9108
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,FateScape_monocle,RF_normalized,RF Distance,0.9147
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,LinRace,RF_normalized,RF Distance,0.8912
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,LinRace,RF_normalized,RF Distance,0.9285
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,LinRace,RF_normalized,RF Distance,0.8992
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,LinRace,RF_normalized,RF Distance,0.9431
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,LinRace,RF_normalized,RF Distance,0.9588
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,LinRace,RF_normalized,RF Distance,0.948
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,LinRace,RF_normalized,RF Distance,0.9775
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,LinRace,RF_normalized,RF Distance,0.9647
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,LinRace,RF_normalized,RF Distance,0.9764
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,LinTIMaT,RF_normalized,RF Distance,0.9236
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,LinTIMaT,RF_normalized,RF Distance,0.9226
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,LinTIMaT,RF_normalized,RF Distance,0.9314
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,LinTIMaT,RF_normalized,RF Distance,0.949
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,LinTIMaT,RF_normalized,RF Distance,0.9657
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,LinTIMaT,RF_normalized,RF Distance,0.9571
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,LinTIMaT,RF_normalized,RF Distance,0.9804
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,LinTIMaT,RF_normalized,RF Distance,0.9559
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,LinTIMaT,RF_normalized,RF Distance,0.9745
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,NJ method,RF_normalized,RF Distance,0.8756
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,NJ method,RF_normalized,RF Distance,0.9382
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,NJ method,RF_normalized,RF Distance,0.8795
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,NJ method,RF_normalized,RF Distance,0.9471
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,NJ method,RF_normalized,RF Distance,0.9412
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,NJ method,RF_normalized,RF Distance,0.9371
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,NJ method,RF_normalized,RF Distance,0.9804
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,NJ method,RF_normalized,RF Distance,0.9559
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,NJ method,RF_normalized,RF Distance,0.9745
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,Cassiopeia,RF_normalized,RF Distance,0.8787129
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,Cassiopeia,RF_normalized,RF Distance,0.8970588
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,Cassiopeia,RF_normalized,RF Distance,0.8858934
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,Cassiopeia,RF_normalized,RF Distance,0.9350092
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,Cassiopeia,RF_normalized,RF Distance,0.9354839
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,Cassiopeia,RF_normalized,RF Distance,0.9377289
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,Cassiopeia,RF_normalized,RF Distance,0.9365079
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,Cassiopeia,RF_normalized,RF Distance,0.9543058
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,Cassiopeia,RF_normalized,RF Distance,0.9585308
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,LAML,Nye,Nye Similarity Score,0.390468403
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,LAML,Nye,Nye Similarity Score,0.346280991
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,LAML,Nye,Nye Similarity Score,0.384183025
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,LAML,Nye,Nye Similarity Score,0.24609351
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,LAML,Nye,Nye Similarity Score,0.299738868
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,LAML,Nye,Nye Similarity Score,0.288688262
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,LAML,Nye,Nye Similarity Score,0.256422365
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,LAML,Nye,Nye Similarity Score,0.268054225
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,LAML,Nye,Nye Similarity Score,0.246349076
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,LAML,TreeDistance,Information Based Distance,0.640237578
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,LAML,TreeDistance,Information Based Distance,0.694607497
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,LAML,TreeDistance,Information Based Distance,0.641686034
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,LAML,TreeDistance,Information Based Distance,0.823737078
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,LAML,TreeDistance,Information Based Distance,0.757493931
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,LAML,TreeDistance,Information Based Distance,0.763355052
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,LAML,TreeDistance,Information Based Distance,0.820849342
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,LAML,TreeDistance,Information Based Distance,0.809826061
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,LAML,TreeDistance,Information Based Distance,0.839830802
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,LAML,RF_normalized,RF Distance,0.910871694
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,LAML,RF_normalized,RF Distance,0.938295788
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,LAML,RF_normalized,RF Distance,0.916748286
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,LAML,RF_normalized,RF Distance,0.991185113
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,LAML,RF_normalized,RF Distance,0.96963761
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,LAML,RF_normalized,RF Distance,0.976493634
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,LAML,RF_normalized,RF Distance,0.986287953
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,LAML,RF_normalized,RF Distance,0.976493634
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,LAML,RF_normalized,RF Distance,0.987267385

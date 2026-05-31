@@ -1,0 +1,28 @@
+parameter_sweep,parameter_sweep_label,parameter_name,parameter_value,replicate_id,method,metric_name,metric_label,metric_value
+mu,Mutation Rate,Mutation rate,0.1,rep001,FateScape,TreeDistance,Information Based Distance,0.5467
+mu,Mutation Rate,Mutation rate,0.1,rep002,FateScape,TreeDistance,Information Based Distance,0.5155
+mu,Mutation Rate,Mutation rate,0.1,rep003,FateScape,TreeDistance,Information Based Distance,0.4981
+mu,Mutation Rate,Mutation rate,0.2,rep001,FateScape,TreeDistance,Information Based Distance,0.5143
+mu,Mutation Rate,Mutation rate,0.2,rep002,FateScape,TreeDistance,Information Based Distance,0.4871
+mu,Mutation Rate,Mutation rate,0.2,rep003,FateScape,TreeDistance,Information Based Distance,0.562
+mu,Mutation Rate,Mutation rate,0.3,rep001,FateScape,TreeDistance,Information Based Distance,0.6289
+mu,Mutation Rate,Mutation rate,0.3,rep002,FateScape,TreeDistance,Information Based Distance,0.5304
+mu,Mutation Rate,Mutation rate,0.3,rep003,FateScape,TreeDistance,Information Based Distance,0.5908
+mu,Mutation Rate,Mutation rate,0.1,rep001,FateScape,Nye,Nye Similarity Score,0.4747
+mu,Mutation Rate,Mutation rate,0.1,rep002,FateScape,Nye,Nye Similarity Score,0.5003
+mu,Mutation Rate,Mutation rate,0.1,rep003,FateScape,Nye,Nye Similarity Score,0.4893
+mu,Mutation Rate,Mutation rate,0.2,rep001,FateScape,Nye,Nye Similarity Score,0.4808
+mu,Mutation Rate,Mutation rate,0.2,rep002,FateScape,Nye,Nye Similarity Score,0.4795
+mu,Mutation Rate,Mutation rate,0.2,rep003,FateScape,Nye,Nye Similarity Score,0.437
+mu,Mutation Rate,Mutation rate,0.3,rep001,FateScape,Nye,Nye Similarity Score,0.3706
+mu,Mutation Rate,Mutation rate,0.3,rep002,FateScape,Nye,Nye Similarity Score,0.4552
+mu,Mutation Rate,Mutation rate,0.3,rep003,FateScape,Nye,Nye Similarity Score,0.3795
+mu,Mutation Rate,Mutation rate,0.1,rep001,FateScape,RF_normalized,RF Distance,0.8491
+mu,Mutation Rate,Mutation rate,0.1,rep002,FateScape,RF_normalized,RF Distance,0.8452
+mu,Mutation Rate,Mutation rate,0.1,rep003,FateScape,RF_normalized,RF Distance,0.8619
+mu,Mutation Rate,Mutation rate,0.2,rep001,FateScape,RF_normalized,RF Distance,0.8423
+mu,Mutation Rate,Mutation rate,0.2,rep002,FateScape,RF_normalized,RF Distance,0.855
+mu,Mutation Rate,Mutation rate,0.2,rep003,FateScape,RF_normalized,RF Distance,0.8863
+mu,Mutation Rate,Mutation rate,0.3,rep001,FateScape,RF_normalized,RF Distance,0.9167
+mu,Mutation Rate,Mutation rate,0.3,rep002,FateScape,RF_normalized,RF Distance,0.8814
+mu,Mutation Rate,Mutation rate,0.3,rep003,FateScape,RF_normalized,RF Distance,0.9352

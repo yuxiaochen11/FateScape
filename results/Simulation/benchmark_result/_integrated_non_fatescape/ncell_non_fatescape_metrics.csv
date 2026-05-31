@@ -1,0 +1,190 @@
+parameter_sweep,parameter_sweep_label,parameter_name,parameter_value,replicate_id,method,metric_name,metric_label,metric_value
+ncell,Number Of Cells,Number of cells,512,rep001,FateScape_slingshot,TreeDistance,Information Based Distance,0.5578
+ncell,Number Of Cells,Number of cells,512,rep002,FateScape_slingshot,TreeDistance,Information Based Distance,0.5607
+ncell,Number Of Cells,Number of cells,512,rep003,FateScape_slingshot,TreeDistance,Information Based Distance,0.5645
+ncell,Number Of Cells,Number of cells,1024,rep001,FateScape_slingshot,TreeDistance,Information Based Distance,0.5995
+ncell,Number Of Cells,Number of cells,1024,rep002,FateScape_slingshot,TreeDistance,Information Based Distance,0.5224
+ncell,Number Of Cells,Number of cells,1024,rep003,FateScape_slingshot,TreeDistance,Information Based Distance,0.6132
+ncell,Number Of Cells,Number of cells,2048,rep001,FateScape_slingshot,TreeDistance,Information Based Distance,0.6111
+ncell,Number Of Cells,Number of cells,2048,rep002,FateScape_slingshot,TreeDistance,Information Based Distance,0.5572
+ncell,Number Of Cells,Number of cells,2048,rep003,FateScape_slingshot,TreeDistance,Information Based Distance,0.5618
+ncell,Number Of Cells,Number of cells,512,rep001,FateScape_monocle,TreeDistance,Information Based Distance,0.5541
+ncell,Number Of Cells,Number of cells,512,rep002,FateScape_monocle,TreeDistance,Information Based Distance,0.5834
+ncell,Number Of Cells,Number of cells,512,rep003,FateScape_monocle,TreeDistance,Information Based Distance,0.5843
+ncell,Number Of Cells,Number of cells,1024,rep001,FateScape_monocle,TreeDistance,Information Based Distance,0.6046
+ncell,Number Of Cells,Number of cells,1024,rep002,FateScape_monocle,TreeDistance,Information Based Distance,0.5153
+ncell,Number Of Cells,Number of cells,1024,rep003,FateScape_monocle,TreeDistance,Information Based Distance,0.5852
+ncell,Number Of Cells,Number of cells,2048,rep001,FateScape_monocle,TreeDistance,Information Based Distance,0.5593
+ncell,Number Of Cells,Number of cells,2048,rep002,FateScape_monocle,TreeDistance,Information Based Distance,0.5635
+ncell,Number Of Cells,Number of cells,2048,rep003,FateScape_monocle,TreeDistance,Information Based Distance,0.5841
+ncell,Number Of Cells,Number of cells,512,rep001,LinRace,TreeDistance,Information Based Distance,0.5833
+ncell,Number Of Cells,Number of cells,512,rep002,LinRace,TreeDistance,Information Based Distance,0.5986
+ncell,Number Of Cells,Number of cells,512,rep003,LinRace,TreeDistance,Information Based Distance,0.633
+ncell,Number Of Cells,Number of cells,1024,rep001,LinRace,TreeDistance,Information Based Distance,0.6708
+ncell,Number Of Cells,Number of cells,1024,rep002,LinRace,TreeDistance,Information Based Distance,0.6017
+ncell,Number Of Cells,Number of cells,1024,rep003,LinRace,TreeDistance,Information Based Distance,0.5634
+ncell,Number Of Cells,Number of cells,2048,rep001,LinRace,TreeDistance,Information Based Distance,0.637
+ncell,Number Of Cells,Number of cells,2048,rep002,LinRace,TreeDistance,Information Based Distance,0.6232
+ncell,Number Of Cells,Number of cells,2048,rep003,LinRace,TreeDistance,Information Based Distance,0.6401
+ncell,Number Of Cells,Number of cells,512,rep001,LinTIMaT,TreeDistance,Information Based Distance,0.8073
+ncell,Number Of Cells,Number of cells,512,rep002,LinTIMaT,TreeDistance,Information Based Distance,0.7773
+ncell,Number Of Cells,Number of cells,512,rep003,LinTIMaT,TreeDistance,Information Based Distance,0.8271
+ncell,Number Of Cells,Number of cells,1024,rep001,LinTIMaT,TreeDistance,Information Based Distance,0.8324
+ncell,Number Of Cells,Number of cells,1024,rep002,LinTIMaT,TreeDistance,Information Based Distance,0.8319
+ncell,Number Of Cells,Number of cells,1024,rep003,LinTIMaT,TreeDistance,Information Based Distance,0.8444
+ncell,Number Of Cells,Number of cells,2048,rep001,LinTIMaT,TreeDistance,Information Based Distance,0.8048
+ncell,Number Of Cells,Number of cells,2048,rep002,LinTIMaT,TreeDistance,Information Based Distance,0.8587
+ncell,Number Of Cells,Number of cells,2048,rep003,LinTIMaT,TreeDistance,Information Based Distance,0.8552
+ncell,Number Of Cells,Number of cells,512,rep001,NJ method,TreeDistance,Information Based Distance,0.5932
+ncell,Number Of Cells,Number of cells,512,rep002,NJ method,TreeDistance,Information Based Distance,0.6681
+ncell,Number Of Cells,Number of cells,512,rep003,NJ method,TreeDistance,Information Based Distance,0.5716
+ncell,Number Of Cells,Number of cells,1024,rep001,NJ method,TreeDistance,Information Based Distance,0.6679
+ncell,Number Of Cells,Number of cells,1024,rep002,NJ method,TreeDistance,Information Based Distance,0.6355
+ncell,Number Of Cells,Number of cells,1024,rep003,NJ method,TreeDistance,Information Based Distance,0.673
+ncell,Number Of Cells,Number of cells,2048,rep001,NJ method,TreeDistance,Information Based Distance,0.6565
+ncell,Number Of Cells,Number of cells,2048,rep002,NJ method,TreeDistance,Information Based Distance,0.6958
+ncell,Number Of Cells,Number of cells,2048,rep003,NJ method,TreeDistance,Information Based Distance,0.6509
+ncell,Number Of Cells,Number of cells,512,rep001,Cassiopeia,TreeDistance,Information Based Distance,0.6107966
+ncell,Number Of Cells,Number of cells,512,rep002,Cassiopeia,TreeDistance,Information Based Distance,0.6448579
+ncell,Number Of Cells,Number of cells,512,rep003,Cassiopeia,TreeDistance,Information Based Distance,0.6083997
+ncell,Number Of Cells,Number of cells,1024,rep001,Cassiopeia,TreeDistance,Information Based Distance,0.5914546
+ncell,Number Of Cells,Number of cells,1024,rep002,Cassiopeia,TreeDistance,Information Based Distance,0.6487219
+ncell,Number Of Cells,Number of cells,1024,rep003,Cassiopeia,TreeDistance,Information Based Distance,0.6751942
+ncell,Number Of Cells,Number of cells,2048,rep001,Cassiopeia,TreeDistance,Information Based Distance,0.7796867
+ncell,Number Of Cells,Number of cells,2048,rep002,Cassiopeia,TreeDistance,Information Based Distance,0.6700382
+ncell,Number Of Cells,Number of cells,2048,rep003,Cassiopeia,TreeDistance,Information Based Distance,0.6339588
+ncell,Number Of Cells,Number of cells,512,rep001,FateScape_slingshot,Nye,Nye Similarity Score,0.4855
+ncell,Number Of Cells,Number of cells,512,rep002,FateScape_slingshot,Nye,Nye Similarity Score,0.4608
+ncell,Number Of Cells,Number of cells,512,rep003,FateScape_slingshot,Nye,Nye Similarity Score,0.4734
+ncell,Number Of Cells,Number of cells,1024,rep001,FateScape_slingshot,Nye,Nye Similarity Score,0.4314
+ncell,Number Of Cells,Number of cells,1024,rep002,FateScape_slingshot,Nye,Nye Similarity Score,0.4522
+ncell,Number Of Cells,Number of cells,1024,rep003,FateScape_slingshot,Nye,Nye Similarity Score,0.4155
+ncell,Number Of Cells,Number of cells,2048,rep001,FateScape_slingshot,Nye,Nye Similarity Score,0.4172
+ncell,Number Of Cells,Number of cells,2048,rep002,FateScape_slingshot,Nye,Nye Similarity Score,0.4159
+ncell,Number Of Cells,Number of cells,2048,rep003,FateScape_slingshot,Nye,Nye Similarity Score,0.3667
+ncell,Number Of Cells,Number of cells,512,rep001,FateScape_monocle,Nye,Nye Similarity Score,0.4875
+ncell,Number Of Cells,Number of cells,512,rep002,FateScape_monocle,Nye,Nye Similarity Score,0.4558
+ncell,Number Of Cells,Number of cells,512,rep003,FateScape_monocle,Nye,Nye Similarity Score,0.4655
+ncell,Number Of Cells,Number of cells,1024,rep001,FateScape_monocle,Nye,Nye Similarity Score,0.4337
+ncell,Number Of Cells,Number of cells,1024,rep002,FateScape_monocle,Nye,Nye Similarity Score,0.4582
+ncell,Number Of Cells,Number of cells,1024,rep003,FateScape_monocle,Nye,Nye Similarity Score,0.4163
+ncell,Number Of Cells,Number of cells,2048,rep001,FateScape_monocle,Nye,Nye Similarity Score,0.4215
+ncell,Number Of Cells,Number of cells,2048,rep002,FateScape_monocle,Nye,Nye Similarity Score,0.4138
+ncell,Number Of Cells,Number of cells,2048,rep003,FateScape_monocle,Nye,Nye Similarity Score,0.3549
+ncell,Number Of Cells,Number of cells,512,rep001,LinRace,Nye,Nye Similarity Score,0.4028
+ncell,Number Of Cells,Number of cells,512,rep002,LinRace,Nye,Nye Similarity Score,0.3641
+ncell,Number Of Cells,Number of cells,512,rep003,LinRace,Nye,Nye Similarity Score,0.3801
+ncell,Number Of Cells,Number of cells,1024,rep001,LinRace,Nye,Nye Similarity Score,0.3533
+ncell,Number Of Cells,Number of cells,1024,rep002,LinRace,Nye,Nye Similarity Score,0.3668
+ncell,Number Of Cells,Number of cells,1024,rep003,LinRace,Nye,Nye Similarity Score,0.36
+ncell,Number Of Cells,Number of cells,2048,rep001,LinRace,Nye,Nye Similarity Score,0.3378
+ncell,Number Of Cells,Number of cells,2048,rep002,LinRace,Nye,Nye Similarity Score,0.3347
+ncell,Number Of Cells,Number of cells,2048,rep003,LinRace,Nye,Nye Similarity Score,0.3201
+ncell,Number Of Cells,Number of cells,512,rep001,LinTIMaT,Nye,Nye Similarity Score,0.3002
+ncell,Number Of Cells,Number of cells,512,rep002,LinTIMaT,Nye,Nye Similarity Score,0.2871
+ncell,Number Of Cells,Number of cells,512,rep003,LinTIMaT,Nye,Nye Similarity Score,0.2519
+ncell,Number Of Cells,Number of cells,1024,rep001,LinTIMaT,Nye,Nye Similarity Score,0.281
+ncell,Number Of Cells,Number of cells,1024,rep002,LinTIMaT,Nye,Nye Similarity Score,0.268
+ncell,Number Of Cells,Number of cells,1024,rep003,LinTIMaT,Nye,Nye Similarity Score,0.2808
+ncell,Number Of Cells,Number of cells,2048,rep001,LinTIMaT,Nye,Nye Similarity Score,0.3093
+ncell,Number Of Cells,Number of cells,2048,rep002,LinTIMaT,Nye,Nye Similarity Score,0.279
+ncell,Number Of Cells,Number of cells,2048,rep003,LinTIMaT,Nye,Nye Similarity Score,0.2899
+ncell,Number Of Cells,Number of cells,512,rep001,NJ method,Nye,Nye Similarity Score,0.4048
+ncell,Number Of Cells,Number of cells,512,rep002,NJ method,Nye,Nye Similarity Score,0.3521
+ncell,Number Of Cells,Number of cells,512,rep003,NJ method,Nye,Nye Similarity Score,0.4183
+ncell,Number Of Cells,Number of cells,1024,rep001,NJ method,Nye,Nye Similarity Score,0.3481
+ncell,Number Of Cells,Number of cells,1024,rep002,NJ method,Nye,Nye Similarity Score,0.3684
+ncell,Number Of Cells,Number of cells,1024,rep003,NJ method,Nye,Nye Similarity Score,0.331
+ncell,Number Of Cells,Number of cells,2048,rep001,NJ method,Nye,Nye Similarity Score,0.3555
+ncell,Number Of Cells,Number of cells,2048,rep002,NJ method,Nye,Nye Similarity Score,0.3262
+ncell,Number Of Cells,Number of cells,2048,rep003,NJ method,Nye,Nye Similarity Score,0.3188
+ncell,Number Of Cells,Number of cells,512,rep001,Cassiopeia,Nye,Nye Similarity Score,0.427185
+ncell,Number Of Cells,Number of cells,512,rep002,Cassiopeia,Nye,Nye Similarity Score,0.3557757
+ncell,Number Of Cells,Number of cells,512,rep003,Cassiopeia,Nye,Nye Similarity Score,0.335539
+ncell,Number Of Cells,Number of cells,1024,rep001,Cassiopeia,Nye,Nye Similarity Score,0.3416458
+ncell,Number Of Cells,Number of cells,1024,rep002,Cassiopeia,Nye,Nye Similarity Score,0.3084584
+ncell,Number Of Cells,Number of cells,1024,rep003,Cassiopeia,Nye,Nye Similarity Score,0.3321243
+ncell,Number Of Cells,Number of cells,2048,rep001,Cassiopeia,Nye,Nye Similarity Score,0.1545912
+ncell,Number Of Cells,Number of cells,2048,rep002,Cassiopeia,Nye,Nye Similarity Score,0.2968023
+ncell,Number Of Cells,Number of cells,2048,rep003,Cassiopeia,Nye,Nye Similarity Score,0.277809
+ncell,Number Of Cells,Number of cells,512,rep001,FateScape_slingshot,RF_normalized,RF Distance,0.833
+ncell,Number Of Cells,Number of cells,512,rep002,FateScape_slingshot,RF_normalized,RF Distance,0.8546
+ncell,Number Of Cells,Number of cells,512,rep003,FateScape_slingshot,RF_normalized,RF Distance,0.8585
+ncell,Number Of Cells,Number of cells,1024,rep001,FateScape_slingshot,RF_normalized,RF Distance,0.8785
+ncell,Number Of Cells,Number of cells,1024,rep002,FateScape_slingshot,RF_normalized,RF Distance,0.8765
+ncell,Number Of Cells,Number of cells,1024,rep003,FateScape_slingshot,RF_normalized,RF Distance,0.8922
+ncell,Number Of Cells,Number of cells,2048,rep001,FateScape_slingshot,RF_normalized,RF Distance,0.8948
+ncell,Number Of Cells,Number of cells,2048,rep002,FateScape_slingshot,RF_normalized,RF Distance,0.9036
+ncell,Number Of Cells,Number of cells,2048,rep003,FateScape_slingshot,RF_normalized,RF Distance,0.9229
+ncell,Number Of Cells,Number of cells,512,rep001,FateScape_monocle,RF_normalized,RF Distance,0.833
+ncell,Number Of Cells,Number of cells,512,rep002,FateScape_monocle,RF_normalized,RF Distance,0.8565
+ncell,Number Of Cells,Number of cells,512,rep003,FateScape_monocle,RF_normalized,RF Distance,0.8546
+ncell,Number Of Cells,Number of cells,1024,rep001,FateScape_monocle,RF_normalized,RF Distance,0.8726
+ncell,Number Of Cells,Number of cells,1024,rep002,FateScape_monocle,RF_normalized,RF Distance,0.8563
+ncell,Number Of Cells,Number of cells,1024,rep003,FateScape_monocle,RF_normalized,RF Distance,0.8971
+ncell,Number Of Cells,Number of cells,2048,rep001,FateScape_monocle,RF_normalized,RF Distance,0.8987
+ncell,Number Of Cells,Number of cells,2048,rep002,FateScape_monocle,RF_normalized,RF Distance,0.9036
+ncell,Number Of Cells,Number of cells,2048,rep003,FateScape_monocle,RF_normalized,RF Distance,0.9286
+ncell,Number Of Cells,Number of cells,512,rep001,LinRace,RF_normalized,RF Distance,0.9292
+ncell,Number Of Cells,Number of cells,512,rep002,LinRace,RF_normalized,RF Distance,0.943
+ncell,Number Of Cells,Number of cells,512,rep003,LinRace,RF_normalized,RF Distance,0.9332
+ncell,Number Of Cells,Number of cells,1024,rep001,LinRace,RF_normalized,RF Distance,0.9431
+ncell,Number Of Cells,Number of cells,1024,rep002,LinRace,RF_normalized,RF Distance,0.9588
+ncell,Number Of Cells,Number of cells,1024,rep003,LinRace,RF_normalized,RF Distance,0.948
+ncell,Number Of Cells,Number of cells,2048,rep001,LinRace,RF_normalized,RF Distance,0.9623
+ncell,Number Of Cells,Number of cells,2048,rep002,LinRace,RF_normalized,RF Distance,0.9677
+ncell,Number Of Cells,Number of cells,2048,rep003,LinRace,RF_normalized,RF Distance,0.9594
+ncell,Number Of Cells,Number of cells,512,rep001,LinTIMaT,RF_normalized,RF Distance,0.9489
+ncell,Number Of Cells,Number of cells,512,rep002,LinTIMaT,RF_normalized,RF Distance,0.9705
+ncell,Number Of Cells,Number of cells,512,rep003,LinTIMaT,RF_normalized,RF Distance,0.9823
+ncell,Number Of Cells,Number of cells,1024,rep001,LinTIMaT,RF_normalized,RF Distance,0.949
+ncell,Number Of Cells,Number of cells,1024,rep002,LinTIMaT,RF_normalized,RF Distance,0.9657
+ncell,Number Of Cells,Number of cells,1024,rep003,LinTIMaT,RF_normalized,RF Distance,0.9571
+ncell,Number Of Cells,Number of cells,2048,rep001,LinTIMaT,RF_normalized,RF Distance,0.9442
+ncell,Number Of Cells,Number of cells,2048,rep002,LinTIMaT,RF_normalized,RF Distance,0.9452
+ncell,Number Of Cells,Number of cells,2048,rep003,LinTIMaT,RF_normalized,RF Distance,0.9354
+ncell,Number Of Cells,Number of cells,512,rep001,NJ method,RF_normalized,RF Distance,0.9371
+ncell,Number Of Cells,Number of cells,512,rep002,NJ method,RF_normalized,RF Distance,0.9705
+ncell,Number Of Cells,Number of cells,512,rep003,NJ method,RF_normalized,RF Distance,0.9214
+ncell,Number Of Cells,Number of cells,1024,rep001,NJ method,RF_normalized,RF Distance,0.9471
+ncell,Number Of Cells,Number of cells,1024,rep002,NJ method,RF_normalized,RF Distance,0.9412
+ncell,Number Of Cells,Number of cells,1024,rep003,NJ method,RF_normalized,RF Distance,0.9371
+ncell,Number Of Cells,Number of cells,2048,rep001,NJ method,RF_normalized,RF Distance,0.9447
+ncell,Number Of Cells,Number of cells,2048,rep002,NJ method,RF_normalized,RF Distance,0.9613
+ncell,Number Of Cells,Number of cells,2048,rep003,NJ method,RF_normalized,RF Distance,0.9657
+ncell,Number Of Cells,Number of cells,512,rep001,Cassiopeia,RF_normalized,RF Distance,0.8803987
+ncell,Number Of Cells,Number of cells,512,rep002,Cassiopeia,RF_normalized,RF Distance,0.9206731
+ncell,Number Of Cells,Number of cells,512,rep003,Cassiopeia,RF_normalized,RF Distance,0.9395466
+ncell,Number Of Cells,Number of cells,1024,rep001,Cassiopeia,RF_normalized,RF Distance,0.9350092
+ncell,Number Of Cells,Number of cells,1024,rep002,Cassiopeia,RF_normalized,RF Distance,0.9354839
+ncell,Number Of Cells,Number of cells,1024,rep003,Cassiopeia,RF_normalized,RF Distance,0.9377289
+ncell,Number Of Cells,Number of cells,2048,rep001,Cassiopeia,RF_normalized,RF Distance,0.9827721
+ncell,Number Of Cells,Number of cells,2048,rep002,Cassiopeia,RF_normalized,RF Distance,0.9418386
+ncell,Number Of Cells,Number of cells,2048,rep003,Cassiopeia,RF_normalized,RF Distance,0.9593023
+ncell,Number Of Cells,Number of cells,512,rep001,LAML,Nye,Nye Similarity Score,0.35245433
+ncell,Number Of Cells,Number of cells,512,rep002,LAML,Nye,Nye Similarity Score,0.360024555
+ncell,Number Of Cells,Number of cells,512,rep003,LAML,Nye,Nye Similarity Score,0.358204959
+ncell,Number Of Cells,Number of cells,1024,rep001,LAML,Nye,Nye Similarity Score,0.325592768
+ncell,Number Of Cells,Number of cells,1024,rep002,LAML,Nye,Nye Similarity Score,0.290708111
+ncell,Number Of Cells,Number of cells,1024,rep003,LAML,Nye,Nye Similarity Score,0.303892277
+ncell,Number Of Cells,Number of cells,2048,rep001,LAML,Nye,Nye Similarity Score,0.279025036
+ncell,Number Of Cells,Number of cells,2048,rep002,LAML,Nye,Nye Similarity Score,0.268200465
+ncell,Number Of Cells,Number of cells,2048,rep003,LAML,Nye,Nye Similarity Score,0.302051799
+ncell,Number Of Cells,Number of cells,512,rep001,LAML,TreeDistance,Information Based Distance,0.67661049
+ncell,Number Of Cells,Number of cells,512,rep002,LAML,TreeDistance,Information Based Distance,0.621933071
+ncell,Number Of Cells,Number of cells,512,rep003,LAML,TreeDistance,Information Based Distance,0.674963857
+ncell,Number Of Cells,Number of cells,1024,rep001,LAML,TreeDistance,Information Based Distance,0.695394705
+ncell,Number Of Cells,Number of cells,1024,rep002,LAML,TreeDistance,Information Based Distance,0.745035804
+ncell,Number Of Cells,Number of cells,1024,rep003,LAML,TreeDistance,Information Based Distance,0.704681555
+ncell,Number Of Cells,Number of cells,2048,rep001,LAML,TreeDistance,Information Based Distance,0.742558054
+ncell,Number Of Cells,Number of cells,2048,rep002,LAML,TreeDistance,Information Based Distance,0.755036235
+ncell,Number Of Cells,Number of cells,2048,rep003,LAML,TreeDistance,Information Based Distance,0.721954489
+ncell,Number Of Cells,Number of cells,512,rep001,LAML,RF_normalized,RF Distance,0.94891945
+ncell,Number Of Cells,Number of cells,512,rep002,LAML,RF_normalized,RF Distance,0.95481336
+ncell,Number Of Cells,Number of cells,512,rep003,LAML,RF_normalized,RF Distance,0.944990177
+ncell,Number Of Cells,Number of cells,1024,rep001,LAML,RF_normalized,RF Distance,0.964740451
+ncell,Number Of Cells,Number of cells,1024,rep002,LAML,RF_normalized,RF Distance,0.973555338
+ncell,Number Of Cells,Number of cells,1024,rep003,LAML,RF_normalized,RF Distance,0.96963761
+ncell,Number Of Cells,Number of cells,2048,rep001,LAML,RF_normalized,RF Distance,0.975550122
+ncell,Number Of Cells,Number of cells,2048,rep002,LAML,RF_normalized,RF Distance,0.978484108
+ncell,Number Of Cells,Number of cells,2048,rep003,LAML,RF_normalized,RF Distance,0.971149144

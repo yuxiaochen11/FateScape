@@ -1,0 +1,28 @@
+parameter_sweep,parameter_sweep_label,parameter_name,parameter_value,replicate_id,method,metric_name,metric_label,metric_value
+Nchar,Number Of Sites,Number of sites,8,rep001,FateScape,TreeDistance,Information Based Distance,0.634
+Nchar,Number Of Sites,Number of sites,8,rep002,FateScape,TreeDistance,Information Based Distance,0.5834
+Nchar,Number Of Sites,Number of sites,8,rep003,FateScape,TreeDistance,Information Based Distance,0.6384
+Nchar,Number Of Sites,Number of sites,12,rep001,FateScape,TreeDistance,Information Based Distance,0.5143
+Nchar,Number Of Sites,Number of sites,12,rep002,FateScape,TreeDistance,Information Based Distance,0.4871
+Nchar,Number Of Sites,Number of sites,12,rep003,FateScape,TreeDistance,Information Based Distance,0.562
+Nchar,Number Of Sites,Number of sites,16,rep001,FateScape,TreeDistance,Information Based Distance,0.5194
+Nchar,Number Of Sites,Number of sites,16,rep002,FateScape,TreeDistance,Information Based Distance,0.4871
+Nchar,Number Of Sites,Number of sites,16,rep003,FateScape,TreeDistance,Information Based Distance,0.5464
+Nchar,Number Of Sites,Number of sites,8,rep001,FateScape,Nye,Nye Similarity Score,0.4001
+Nchar,Number Of Sites,Number of sites,8,rep002,FateScape,Nye,Nye Similarity Score,0.394
+Nchar,Number Of Sites,Number of sites,8,rep003,FateScape,Nye,Nye Similarity Score,0.3898
+Nchar,Number Of Sites,Number of sites,12,rep001,FateScape,Nye,Nye Similarity Score,0.4808
+Nchar,Number Of Sites,Number of sites,12,rep002,FateScape,Nye,Nye Similarity Score,0.4795
+Nchar,Number Of Sites,Number of sites,12,rep003,FateScape,Nye,Nye Similarity Score,0.437
+Nchar,Number Of Sites,Number of sites,16,rep001,FateScape,Nye,Nye Similarity Score,0.4572
+Nchar,Number Of Sites,Number of sites,16,rep002,FateScape,Nye,Nye Similarity Score,0.4931
+Nchar,Number Of Sites,Number of sites,16,rep003,FateScape,Nye,Nye Similarity Score,0.4405
+Nchar,Number Of Sites,Number of sites,8,rep001,FateScape,RF_normalized,RF Distance,0.9138
+Nchar,Number Of Sites,Number of sites,8,rep002,FateScape,RF_normalized,RF Distance,0.9187
+Nchar,Number Of Sites,Number of sites,8,rep003,FateScape,RF_normalized,RF Distance,0.9128
+Nchar,Number Of Sites,Number of sites,12,rep001,FateScape,RF_normalized,RF Distance,0.8423
+Nchar,Number Of Sites,Number of sites,12,rep002,FateScape,RF_normalized,RF Distance,0.855
+Nchar,Number Of Sites,Number of sites,12,rep003,FateScape,RF_normalized,RF Distance,0.8863
+Nchar,Number Of Sites,Number of sites,16,rep001,FateScape,RF_normalized,RF Distance,0.8893
+Nchar,Number Of Sites,Number of sites,16,rep002,FateScape,RF_normalized,RF Distance,0.8354
+Nchar,Number Of Sites,Number of sites,16,rep003,FateScape,RF_normalized,RF Distance,0.8805

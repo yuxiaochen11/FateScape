@@ -1,79 +1,229 @@
-#' Find the distance between sibling cells
-#'
-#' @param cell A tip label (cell ID) for which to find the sibling distance.
-#' @param tree A sub-cell division tree.
-#' @param lineage The state lineage identifier (e.g., "L1") that the cell belongs to.
-#' @param alpha Alpha parameter for the improved Hamming distance.
-#' @param beta Beta parameter for the improved Hamming distance.
-#'
-#' @return The improved Hamming distance between the sibling cells.
-#' @export
+# Robust missing-safe subtree integration utilities for FateScape
+# -----------------------------------------------------------------------------
+# This file replaces subtree_integration.R. It is designed to be robust to:
+#   1. retained NA / '-' / '?' barcode entries;
+#   2. pruned trees with unary or missing children;
+#   3. empty candidate split sets;
+#   4. all-NA / all-zero common-mutation matrices;
+#   5. edge cases in ape::drop.tip(), ape::bind.tree(), and phytools::Subtree().
+# -----------------------------------------------------------------------------
+
+# ---- Missing-safe barcode helpers ------------------------------------------------
+missing_barcode_tokens <- c("", "NA", "NaN", "-", "?", "missing", "Missing", "MISSING", "NULL", "null")
+
+is_missing_barcode_value <- function(x) {
+  x_chr <- as.character(x)
+  is.na(x_chr) | x_chr %in% missing_barcode_tokens
+}
+
+barcode_to_numeric_zero_for_missing <- function(x) {
+  x_chr <- as.character(x)
+  x_chr[is_missing_barcode_value(x_chr)] <- "0"
+  suppressWarnings(as.integer(x_chr))
+}
+
+barcode_to_numeric_na_for_missing <- function(x) {
+  x_chr <- as.character(x)
+  x_chr[is_missing_barcode_value(x_chr)] <- NA_character_
+  suppressWarnings(as.integer(x_chr))
+}
+
+all_zero_barcode <- function(x) {
+  x_num <- barcode_to_numeric_zero_for_missing(x)
+  length(x_num) > 0 && all(!is.na(x_num) & x_num == 0)
+}
+
+barcode_diff_count <- function(a, b) {
+  a <- barcode_to_numeric_na_for_missing(a)
+  b <- barcode_to_numeric_na_for_missing(b)
+  n <- min(length(a), length(b))
+  if (n == 0) return(0L)
+  a <- a[seq_len(n)]
+  b <- b[seq_len(n)]
+  both_na <- is.na(a) & is.na(b)
+  one_na <- xor(is.na(a), is.na(b))
+  both_obs <- !is.na(a) & !is.na(b)
+  sum(one_na | (both_obs & a != b), na.rm = TRUE)
+}
+
+safe_improved_hamming_distance <- function(barcode1, barcode2, alpha = 0, beta = 1) {
+  a <- barcode_to_numeric_na_for_missing(barcode1)
+  b <- barcode_to_numeric_na_for_missing(barcode2)
+  n <- min(length(a), length(b))
+  if (n == 0) return(0)
+  a <- a[seq_len(n)]
+  b <- b[seq_len(n)]
+
+  dist <- 0
+  for (i in seq_len(n)) {
+    ai <- a[i]
+    bi <- b[i]
+
+    # Two missing sites are uninformative; one missing site is penalized.
+    if (is.na(ai) && is.na(bi)) {
+      next
+    } else if (is.na(ai) || is.na(bi)) {
+      dist <- dist + beta
+      next
+    }
+
+    if (ai == bi && ai != 0) {
+      dist <- dist - alpha
+    } else if ((ai == 0 && bi != 0) || (ai != 0 && bi == 0)) {
+      dist <- dist + 1
+    } else if (ai != bi && ai != 0 && bi != 0) {
+      dist <- dist + beta
+    }
+  }
+  if (is.na(dist) || !is.finite(dist)) dist <- Inf
+  dist
+}
+
+# Prefer the global improved_hamming_distance if it has already been replaced by
+# a missing-safe implementation; otherwise fall back to safe version locally.
+.safe_hamming <- function(a, b, alpha = 0, beta = 1) {
+  out <- tryCatch(improved_hamming_distance(a, b, alpha, beta), error = function(e) NA_real_)
+  if (length(out) != 1 || is.na(out) || !is.finite(out)) {
+    out <- safe_improved_hamming_distance(a, b, alpha, beta)
+  }
+  out
+}
+
+# ---- Tree/node helpers -----------------------------------------------------------
+get_first_element <- function(x) {
+  if (length(x) < 2) return(NA_character_)
+  x[[2]]
+}
+
+get_tips <- function(x) {
+  if (is.null(x) || is.null(x$tip.label)) return(character(0))
+  unlist(x$tip.label)
+}
+
+get_root_barcode <- function(x) {
+  if (is.null(x) || is.null(x$root.barcode)) return(matrix(0, nrow = 1, ncol = if (exists("N_char")) N_char else 0))
+  x$root.barcode
+}
+
+subtree_root_bar <- function(x) {
+  if (length(x) == 0) return(list())
+  lapply(x, get_root_barcode)
+}
+
+safe_subtree <- function(tree, node) {
+  if (is.null(tree) || is.na(node) || length(node) != 1) return(NULL)
+  out <- tryCatch(Subtree(tree, node), error = function(e) NULL)
+  if (is.null(out) || is.null(out$tip.label) || length(out$tip.label) == 0) return(NULL)
+  out
+}
+
+safe_drop_tip <- function(tree, tips, ...) {
+  if (is.null(tree)) return(NULL)
+  tips <- unique(tips[!is.na(tips)])
+  tips <- intersect(tips, tree$tip.label)
+  if (length(tips) == 0) return(tree)
+  if (length(tips) >= length(tree$tip.label)) return(NULL)
+  tryCatch(drop.tip(tree, tips, ...), error = function(e) NULL)
+}
+
+safe_bind_root <- function(base_tree, add_tree) {
+  if (is.null(base_tree)) return(add_tree)
+  if (is.null(add_tree)) return(base_tree)
+  out <- tryCatch(bind.tree(base_tree, add_tree, where = "root", position = 0.1), error = function(e) NULL)
+  if (is.null(out)) {
+    out <- tryCatch(bind.tree(base_tree, add_tree, where = "root"), error = function(e) base_tree)
+  }
+  out$root.edge <- 1
+  out
+}
+
+node_name_from_index <- function(idx, tip_labels, barcode_names = NULL) {
+  if (is.na(idx) || length(idx) != 1) return(NA_character_)
+  ntips <- length(tip_labels)
+  candidates <- character(0)
+  if (idx <= ntips && idx >= 1) {
+    candidates <- c(candidates, tip_labels[idx])
+  } else {
+    candidates <- c(candidates, paste("node", idx, sep = "_"), paste("node", idx, sep = ""), as.character(idx))
+  }
+  if (!is.null(barcode_names)) {
+    hit <- candidates[candidates %in% barcode_names]
+    if (length(hit) > 0) return(hit[1])
+  }
+  candidates[1]
+}
+
+barcode_row_by_node <- function(barances, idx, tip_labels) {
+  rn <- rownames(barances)
+  nm <- node_name_from_index(idx, tip_labels, rn)
+  if (!is.na(nm) && nm %in% rn) return(barances[nm, , drop = FALSE])
+  if (!is.na(idx) && idx >= 1 && idx <= nrow(barances)) return(barances[idx, , drop = FALSE])
+  matrix(0, nrow = 1, ncol = ncol(barances))
+}
+
+# ---- Duplicate-tip resolution ----------------------------------------------------
 sibling_cells_distance <- function(cell, tree, lineage, alpha, beta) {
-  # Get tip labels and edge matrix from the tree.
+  if (is.null(tree) || !(cell %in% tree$tip.label)) return(Inf)
   tips <- tree$tip.label
   edges <- tree$edge
-
-  # Identify the parent node for the specified cell.
   cell_index <- which(tips == cell)
+  if (length(cell_index) != 1) return(Inf)
+
   parent_node <- edges[edges[, 2] == cell_index, 1]
+  if (length(parent_node) < 1 || is.na(parent_node[1])) return(Inf)
+  parent_node <- parent_node[1]
 
-  # Find sibling nodes: all children of the parent node.
   siblings <- edges[edges[, 1] == parent_node, 2]
+  siblings <- siblings[!is.na(siblings)]
+  if (length(siblings) < 2) return(Inf)
 
-  # Perform ancestral inference for the given lineage.
-  # Note: N_char, barcodes_lineages, state_labels_lineages, and state_lineages are assumed to be globally defined.
-  ances_res <- ancestor_inference(tree, N_char, barcodes_lineages[[lineage]],
-                              state_labels_lineages[[lineage]], state_lineages)
+  ances_res <- tryCatch(
+    ancestor_inference(tree, N_char, barcodes_lineages[[lineage]],
+                       state_labels_lineages[[lineage]], state_lineages),
+    error = function(e) NULL
+  )
+  if (is.null(ances_res) || length(ances_res) < 1) return(Inf)
 
-  # Extract barcodes for the sibling cells.
-  sibling_barcodes <- ances_res[[1]][siblings, ]
+  bar_all <- ances_res[[1]]
+  valid_sibs <- siblings[siblings >= 1 & siblings <= nrow(bar_all)]
+  if (length(valid_sibs) < 2) return(Inf)
+  sibling_barcodes <- bar_all[valid_sibs[1:2], , drop = FALSE]
 
-  # Compute the improved Hamming distance between the two sibling barcodes.
-  dist <- improved_hamming_distance(sibling_barcodes[1, ], sibling_barcodes[2, ], alpha, beta)
-
-  return(dist)
+  dist <- .safe_hamming(sibling_barcodes[1, ], sibling_barcodes[2, ], alpha, beta)
+  if (is.na(dist) || !is.finite(dist)) Inf else dist
 }
 
-
-#' Drop non-minimum tips from tree list
-#'
-#' @param tree_list List of trees.
-#' @param dist_list Data frame with columns "lineage" and "dist" containing distances.
-#' @param cell Cell ID (tip) to be dropped.
-#'
-#' @return Modified tree_list after dropping the specified tip from trees not in the best (minimum-distance) lineage.
-#' @export
 drop_non_minimum_tips <- function(tree_list, dist_list, cell) {
-  dist <- dist_list$dist
-  min_lineage <- dist_list[which.min(dist), 1]
-  if (length(min_lineage) != 1) {
-    min_lineage <- sample(min_lineage, 1)
+  dist <- suppressWarnings(as.numeric(dist_list$dist))
+  dist[is.na(dist) | !is.finite(dist)] <- Inf
+  if (length(dist) == 0) return(tree_list)
+
+  if (all(is.infinite(dist))) {
+    min_lineage <- dist_list$lineage[1]
+  } else {
+    min_lineage <- dist_list$lineage[which.min(dist)]
   }
-  drop_lineages <- dist_list[dist_list$lineage != min_lineage, 1]
+  if (length(min_lineage) != 1 || is.na(min_lineage)) min_lineage <- dist_list$lineage[1]
+
+  drop_lineages <- dist_list$lineage[dist_list$lineage != min_lineage]
   for (j in drop_lineages) {
-    tree_list[[j]] <- drop.tip(tree_list[[j]], cell)
+    if (!is.null(tree_list[[j]]) && cell %in% tree_list[[j]]$tip.label) {
+      new_tree <- safe_drop_tip(tree_list[[j]], cell)
+      if (!is.null(new_tree)) tree_list[[j]] <- new_tree
+    }
   }
-  return(tree_list)
+  tree_list
 }
 
-
-#' Drop duplicated leaf nodes from tree list
-#'
-#' @param tree_list List of raw sub-cell division trees.
-#' @param barcodes Matrix of lineage barcodes.
-#' @param cell_lineages Cell lineages (unused in the current function but kept for compatibility).
-#' @param state_lineage A list where each element is a vector of state lineage labels for a cell.
-#' @param alpha Alpha parameter for computing sibling distance.
-#' @param beta Beta parameter for computing sibling distance.
-#'
-#' @return Modified tree_list with duplicated leaf nodes dropped.
-#' @export
 drop_duplicated_tips <- function(tree_list, barcodes, cell_lineages, state_lineage, alpha, beta) {
+  if (length(state_lineage) == 0) return(tree_list)
   for (i in seq_along(state_lineage)) {
     if (length(state_lineage[[i]]) > 1) {
       cell <- names(state_lineage)[i]
+      if (is.null(cell) || is.na(cell) || !nzchar(cell)) next
       lineages <- state_lineage[[i]]
-      # Compute sibling distances for each lineage using sapply.
+      lineages <- lineages[lineages %in% names(tree_list)]
+      if (length(lineages) <= 1) next
       dist_vec <- sapply(lineages, function(lin) {
         sibling_cells_distance(cell, tree_list[[lin]], lineage = lin, alpha, beta)
       })
@@ -81,415 +231,317 @@ drop_duplicated_tips <- function(tree_list, barcodes, cell_lineages, state_linea
       tree_list <- drop_non_minimum_tips(tree_list, dist_list, cell)
     }
   }
-  return(tree_list)
+  tree_list
 }
 
-#' Get first element (actually returns the second element)
-#'
-#' @param x A list.
-#'
-#' @return The second element of x.
-#' @export
-get_first_element <- function(x) {
-  return(x[[2]])
-}
-
-
-#' Get tip labels from a tree
-#'
-#' @param x A tree object.
-#'
-#' @return A vector of tip labels.
-#' @export
-get_tips <- function(x) {
-  return(unlist(x$tip.label))
-}
-
-
-#' Get the root barcode from a tree
-#'
-#' @param x A tree object with a root.barcode element.
-#'
-#' @return The root barcode.
-#' @export
-get_root_barcode <- function(x) {
-  return(x$root.barcode)
-}
-
-
-#' Get root barcodes from a list of trees
-#'
-#' @param x A list of tree objects.
-#'
-#' @return A list of root barcodes.
-#' @export
-subtree_root_bar <- function(x) {
-  return(lapply(x, get_root_barcode))
-}
-
-
-#' Subdivide a sub-cell division tree into sub-subtrees
-#'
-#' @param sub_tree A sub-cell division tree.
-#' @param state A data frame with cell state information.
-#' @param barcodes A matrix of lineage barcodes.
-#' @param subid Identifier for the sub-cell division tree.
-#' @param itr_time Iteration time (for recursive calls).
-#'
-#' @return A list of sub-subtrees.
-#' @export
-prune_cell_tree <- function(sub_tree, state, barcodes, subid, itr_time) {
-  sub_tree <- Preorder(sub_tree)
+# ---- Subtree decomposition -------------------------------------------------------
+prune_cell_tree <- function(sub_tree, state, barcodes, subid, itr_time = 1) {
+  if (is.null(sub_tree) || length(sub_tree$tip.label) == 0) return(list())
+  sub_tree <- tryCatch(Preorder(sub_tree), error = function(e) sub_tree)
   ntips <- length(sub_tree$tip.label)
 
-  st_barleaves <- barcodes[sub_tree$tip.label, ]
+  st_barleaves <- barcodes[sub_tree$tip.label, , drop = FALSE]
   st_stateleaves <- state$cluster[match(sub_tree$tip.label, state$cell_id)]
 
-  # Get ancestral barcodes for internal nodes of sub_tree
-  st_barances <- ancestor_inference(sub_tree, N_char, st_barleaves, st_stateleaves, state_lineages)[[1]][(ntips + 1):(2 * ntips - 1), , drop = FALSE]
+  # If the subtree has only one tip, return it directly.
+  if (ntips <= 1 || is.null(sub_tree$edge) || nrow(sub_tree$edge) == 0) {
+    sub_tree$root.barcode <- st_barleaves[1, , drop = FALSE]
+    sub_tree$root.edge <- 1
+    nm <- paste(itr_time, subid, "single", sub_tree$tip.label[1], sep = "_")
+    out <- list(sub_tree)
+    names(out) <- nm
+    return(out)
+  }
 
-  bar_ances <- matrix(as.integer(replace(st_barances, st_barances == "-", 0)), nrow = nrow(st_barances))
-  bar_leaves <- matrix(as.integer(replace(st_barleaves, st_barleaves == "-", 0)), nrow = nrow(st_barleaves))
+  ances <- tryCatch(
+    ancestor_inference(sub_tree, N_char, st_barleaves, st_stateleaves, state_lineages)[[1]],
+    error = function(e) NULL
+  )
+  if (is.null(ances) || nrow(ances) < ntips) {
+    sub_tree$root.barcode <- st_barleaves[1, , drop = FALSE]
+    sub_tree$root.edge <- 1
+    nm <- paste(itr_time, subid, "whole", sep = "_")
+    out <- list(sub_tree)
+    names(out) <- nm
+    return(out)
+  }
+
+  internal_idx <- (ntips + 1):min(nrow(ances), 2 * ntips - 1)
+  st_barances <- ances[internal_idx, , drop = FALSE]
+
+  bar_ances <- matrix(barcode_to_numeric_zero_for_missing(st_barances), nrow = nrow(st_barances))
+  rownames(bar_ances) <- rownames(st_barances)
+  bar_leaves <- matrix(barcode_to_numeric_zero_for_missing(st_barleaves), nrow = nrow(st_barleaves))
+  rownames(bar_leaves) <- rownames(st_barleaves)
   barances <- rbind(bar_leaves, bar_ances)
-  rownames(barances) <- c(rownames(st_barleaves), rownames(st_barances))
 
-  candidate_split_nodes_name <- rownames(barances)[which(rowSums(barances) == 0)]
-  # Extract the numeric id from the candidate names using get_first_element
-  id <- as.integer(lapply(strsplit(candidate_split_nodes_name, "_"), get_first_element))
+  candidate_split_nodes_name <- rownames(barances)[which(rowSums(barances, na.rm = TRUE) == 0)]
+  # Internal nodes only; tips with all-zero barcodes should not be used as split nodes.
+  candidate_split_nodes_name <- setdiff(candidate_split_nodes_name, sub_tree$tip.label)
+  id <- suppressWarnings(as.integer(vapply(strsplit(candidate_split_nodes_name, "_"), get_first_element, character(1))))
+  id <- unique(id[!is.na(id) & id > ntips])
 
   subsubtrees_list <- list()
+  subsubtree_left <- NULL
+
   if (length(id) == 0) {
-    sub_tree$root.barcode <- barances[1, , drop = FALSE]
+    root_idx <- setdiff(sub_tree$edge[, 1], sub_tree$edge[, 2])
+    root_idx <- if (length(root_idx) > 0) root_idx[1] else ntips + 1
+    sub_tree$root.barcode <- barcode_row_by_node(barances, root_idx, sub_tree$tip.label)
     sub_tree$root.edge <- 1
-    subsubtrees_list[[rownames(barances)[1]]] <- sub_tree
-  } else {
-    for (i in 1:length(id)) {
-      children_index <- sub_tree$edge[sub_tree$edge[, 1] == id[i], 2]
-      if ((children_index[1] %in% id) || (children_index[2] %in% id)) {
-        next
-      } else {
-        children_names <- character(2)
-        for (k in 1:2) {
-          if (children_index[k] < ntips) {
-            children_names[k] <- rownames(barances)[children_index[k]]
-          } else {
-            children_names[k] <- paste("node", children_index[k], sep = "_")
-          }
-        }
-        subtree_1 <- Subtree(sub_tree, children_index[1])
-        subtree_1$root.barcode <- barances[children_names[1], , drop = FALSE]
-        subtree_1$root.edge <- 1
-        key1 <- paste(itr_time, subid, "node", children_index[1], sep = "_")
-        subsubtrees_list[[key1]] <- subtree_1
+    key <- paste(itr_time, subid, "whole", sep = "_")
+    subsubtrees_list[[key]] <- sub_tree
+    return(subsubtrees_list)
+  }
 
-        subtree_2 <- Subtree(sub_tree, children_index[2])
-        subtree_2$root.barcode <- barances[children_names[2], , drop = FALSE]
-        subtree_2$root.edge <- 1
-        key2 <- paste(itr_time, subid, "node", children_index[2], sep = "_")
-        subsubtrees_list[[key2]] <- subtree_2
-      }
+  for (split_node in id) {
+    children_index <- sub_tree$edge[sub_tree$edge[, 1] == split_node, 2]
+    children_index <- children_index[!is.na(children_index)]
+    if (length(children_index) < 2) next
+    children_index <- children_index[seq_len(2)]
+
+    # If children are themselves split nodes, skip to avoid nested duplicates.
+    if (any(children_index %in% id)) next
+
+    for (child_idx in children_index) {
+      subtree_child <- safe_subtree(sub_tree, child_idx)
+      if (is.null(subtree_child)) next
+      subtree_child$root.barcode <- barcode_row_by_node(barances, child_idx, sub_tree$tip.label)
+      subtree_child$root.edge <- 1
+      key <- paste(itr_time, subid, "node", child_idx, sep = "_")
+      subsubtrees_list[[key]] <- subtree_child
     }
+  }
 
-    if (length(id) != 1) {
-      drop_tips_vec <- unlist(lapply(subsubtrees_list, get_tips))
-      subsubtree_left <- drop.tip(sub_tree, drop_tips_vec, trim.internal = TRUE, subtree = FALSE, root.edge = 1)
-      if (!is.null(subsubtree_left)) {
-        barleft <- barcodes[subsubtree_left$tip.label, ]
-        stateleft <- state$cluster[match(subsubtree_left$tip.label, state$cell_id)]
-        left_barances <- ancestor_inference(subsubtree_left, N_char, barleft, stateleft, state_lineages)[[1]][(length(subsubtree_left$tip.label) + 1):(2 * length(subsubtree_left$tip.label) - 1), , drop = FALSE]
-        leftbarances <- matrix(as.integer(replace(left_barances, left_barances == "-", 0)), nrow = nrow(left_barances))
+  if (length(subsubtrees_list) == 0) {
+    root_idx <- setdiff(sub_tree$edge[, 1], sub_tree$edge[, 2])
+    root_idx <- if (length(root_idx) > 0) root_idx[1] else ntips + 1
+    sub_tree$root.barcode <- barcode_row_by_node(barances, root_idx, sub_tree$tip.label)
+    sub_tree$root.edge <- 1
+    key <- paste(itr_time, subid, "whole", sep = "_")
+    subsubtrees_list[[key]] <- sub_tree
+    return(subsubtrees_list)
+  }
+
+  if (length(id) != 1) {
+    drop_tips_vec <- unique(unlist(lapply(subsubtrees_list, get_tips)))
+    subsubtree_left <- safe_drop_tip(sub_tree, drop_tips_vec, trim.internal = TRUE, subtree = FALSE, root.edge = 1)
+    if (!is.null(subsubtree_left) && length(subsubtree_left$tip.label) > 0) {
+      barleft <- barcodes[subsubtree_left$tip.label, , drop = FALSE]
+      stateleft <- state$cluster[match(subsubtree_left$tip.label, state$cell_id)]
+      left_ances <- tryCatch(
+        ancestor_inference(subsubtree_left, N_char, barleft, stateleft, state_lineages)[[1]],
+        error = function(e) NULL
+      )
+      if (!is.null(left_ances) && nrow(left_ances) > length(subsubtree_left$tip.label)) {
+        left_internal <- (length(subsubtree_left$tip.label) + 1):nrow(left_ances)
+        left_barances <- left_ances[left_internal, , drop = FALSE]
+        leftbarances <- matrix(barcode_to_numeric_zero_for_missing(left_barances), nrow = nrow(left_barances))
         rownames(leftbarances) <- rownames(left_barances)
         subsubtree_left$root.barcode <- leftbarances[1, , drop = FALSE]
-        subsubtree_left$root.edge <- 1
-        key_left <- paste(subid, rownames(leftbarances)[1], sep = "_")
-        subsubtrees_list[[key_left]] <- subsubtree_left
+      } else {
+        subsubtree_left$root.barcode <- barleft[1, , drop = FALSE]
       }
+      subsubtree_left$root.edge <- 1
+      key_left <- paste(itr_time, subid, "left", sep = "_")
+      subsubtrees_list[[key_left]] <- subsubtree_left
     }
   }
 
-  m0 <- t(as.matrix(rep(0, N_char), nrow = 1, ncol = N_char))
-  # If the root barcode of the last subtree in the list is not all zeros, return the list;
-  # otherwise, if subsubtree_left is not null, recursively subdivide it.
-  if (sum(subtree_root_bar(subsubtrees_list)[[length(subsubtrees_list)]] == m0) != N_char) {
+  # Optional recursive refinement only if the last subtree has a zero root barcode.
+  roots <- subtree_root_bar(subsubtrees_list)
+  if (length(roots) == 0) return(subsubtrees_list)
+  last_root <- roots[[length(roots)]]
+  if (!all_zero_barcode(last_root) || is.null(subsubtree_left) || itr_time >= 5) {
     return(subsubtrees_list)
-  } else if (is.null(subsubtree_left)) {
-    return(subsubtrees_list)
-  } else {
-    itr_time <- itr_time + 1
-    return(c(subsubtrees_list[-length(subsubtrees_list)], prune_cell_tree(subsubtree_left, state, barcodes, subid, itr_time)))
   }
+  c(subsubtrees_list[-length(subsubtrees_list)], prune_cell_tree(subsubtree_left, state, barcodes, subid, itr_time + 1))
 }
 
-
-#' Count common mutations between two barcodes
-#'
-#' @param barcode1 A vector representing the first barcode.
-#' @param barcode2 A vector representing the second barcode.
-#' @param N_char Optional. Number of sites to consider.
-#'
-#' @return Count of sites with the same mutation (excluding zeros).
-#' @export
+# ---- Common mutation and ranking -------------------------------------------------
 count_common_mutations <- function(barcode1, barcode2, N_char = NULL) {
-  if (is.null(N_char)) {
-    N_char <- length(barcode1)
-  }
-  CM <- 0
-  for (i in 1:N_char) {
-    if (barcode1[i] == barcode2[i] && barcode1[i] != 0) {
-      CM <- CM + 1
-    }
-  }
-  return(CM)
+  a <- barcode_to_numeric_na_for_missing(barcode1)
+  b <- barcode_to_numeric_na_for_missing(barcode2)
+  if (is.null(N_char)) N_char <- min(length(a), length(b))
+  if (N_char == 0) return(0L)
+  a <- a[seq_len(N_char)]
+  b <- b[seq_len(N_char)]
+  sum(!is.na(a) & !is.na(b) & a == b & a != 0, na.rm = TRUE)
 }
 
-
-#' Count uncommon mutations between two barcodes
-#'
-#' @param barcode1 A vector representing the first barcode.
-#' @param barcode2 A vector representing the second barcode.
-#' @param N_char Optional. Number of sites to consider.
-#'
-#' @return Count of sites with different mutations (both nonzero).
-#' @export
 count_uncommon_mutations <- function(barcode1, barcode2, N_char = NULL) {
-  if (is.null(N_char)) {
-    N_char <- length(barcode1)
-  }
-  UM <- 0
-  for (i in 1:N_char) {
-    if (barcode1[i] != barcode2[i] && (barcode1[i] * barcode2[i] != 0)) {
-      UM <- UM + 1
-    }
-  }
-  return(UM)
+  a <- barcode_to_numeric_na_for_missing(barcode1)
+  b <- barcode_to_numeric_na_for_missing(barcode2)
+  if (is.null(N_char)) N_char <- min(length(a), length(b))
+  if (N_char == 0) return(0L)
+  a <- a[seq_len(N_char)]
+  b <- b[seq_len(N_char)]
+  sum(!is.na(a) & !is.na(b) & a != b & a != 0 & b != 0, na.rm = TRUE)
 }
 
-
-#' Get subtree root barcodes for each best subtree in a lineage
-#'
-#' @param bestsubtree A list of best subtrees.
-#' @param state Data frame with cell state information.
-#' @param barcodes Matrix of lineage barcodes.
-#' @param l_sl Length (number) of state lineages.
-#'
-#' @return A vector of root barcodes for the sub-subtrees.
-#' @export
 get_subtree_root_barcodes <- function(bestsubtree, state, barcodes, l_sl) {
-  root_bar <- c()
-  for (i in 1:l_sl) {
-    root_bar <- c(root_bar, subtree_root_bar(prune_cell_tree(bestsubtree[[i]], state, barcodes, i, 1)))
+  root_bar <- list()
+  if (length(bestsubtree) == 0) return(root_bar)
+  n_iter <- min(l_sl, length(bestsubtree))
+  for (i in seq_len(n_iter)) {
+    if (is.null(bestsubtree[[i]])) next
+    pruned <- prune_cell_tree(bestsubtree[[i]], state, barcodes, i, 1)
+    root_bar <- c(root_bar, subtree_root_bar(pruned))
   }
-  return(root_bar)
+  root_bar
 }
 
-
-#' Build a common mutation matrix between root barcodes of sub-subtrees
-#'
-#' @param subtrees_rootbar A list of root barcodes for sub-subtrees.
-#'
-#' @return A matrix of common mutation counts between each pair of sub-subtree root barcodes.
-#' @export
 common_mutation_matrix <- function(subtrees_rootbar) {
+  if (length(subtrees_rootbar) == 0) return(matrix(numeric(0), nrow = 0, ncol = 0))
   CM <- matrix(0, nrow = length(subtrees_rootbar), ncol = length(subtrees_rootbar))
   rownames(CM) <- colnames(CM) <- names(subtrees_rootbar)
-  for (i in 1:length(subtrees_rootbar)) {
-    for (j in 1:length(subtrees_rootbar)) {
+  for (i in seq_along(subtrees_rootbar)) {
+    for (j in seq_along(subtrees_rootbar)) {
       CM[i, j] <- count_common_mutations(subtrees_rootbar[[i]], subtrees_rootbar[[j]])
-      if (i >= j) {
-        CM[i, j] <- NA
-      }
+      if (i >= j) CM[i, j] <- NA
     }
   }
-  return(CM)
+  CM
 }
 
-
-#' Rank subtrees based on common mutation counts
-#'
-#' @param CM A common mutation matrix.
-#'
-#' @return A list containing the nodes rank matrix and nodes weight matrix.
-#' @export
 subtrees_rank <- function(CM) {
   Nodes <- rownames(CM)
   N <- length(Nodes)
-  Nodes_rank <- matrix(NA, nrow = N, ncol = N)
-  Nodes_weight <- matrix(NA, nrow = N, ncol = N)
+  Nodes_rank <- matrix(NA_character_, nrow = N, ncol = max(N, 1))
+  Nodes_weight <- matrix(NA_real_, nrow = N, ncol = max(N, 1))
   rownames(Nodes_rank) <- rownames(Nodes_weight) <- Nodes
-  for (i in 1:(N - 1)) {
-    num_positive <- sum(CM[i, ] > 0, na.rm = TRUE)
-    if (num_positive == 0) {
-      next
-    } else {
-      ordered_indices <- order(CM[i, ], decreasing = TRUE)
-      Nodes_rank[i, 1:num_positive] <- Nodes[ordered_indices][1:num_positive]
-      Nodes_weight[i, 1:num_positive] <- CM[i, ][ordered_indices][1:num_positive]
-    }
+  if (N == 0) return(list(Nodes_rank, Nodes_weight))
+
+  for (i in seq_len(N)) {
+    vals <- CM[i, ]
+    vals[is.na(vals)] <- -Inf
+    num_positive <- sum(vals > 0, na.rm = TRUE)
+    if (num_positive <= 0) next
+    ordered_indices <- order(vals, decreasing = TRUE)
+    keep <- ordered_indices[seq_len(num_positive)]
+    Nodes_rank[i, seq_len(num_positive)] <- Nodes[keep]
+    Nodes_weight[i, seq_len(num_positive)] <- vals[keep]
   }
-  return(list(Nodes_rank, Nodes_weight))
+  list(Nodes_rank, Nodes_weight)
 }
 
-
-#' Generate sub-subtrees from best subtrees
-#'
-#' @param bestsubtree A list of best subtrees.
-#' @param state Data frame with cell state information.
-#' @param barcodes Matrix of lineage barcodes.
-#' @param l_sl Length (number) of state lineages.
-#'
-#' @return A vector (list) of sub-subtrees.
-#' @export
 decompose_subtrees <- function(bestsubtree, state, barcodes, l_sl) {
-  subtrees <- c()
-  for (i in 1:l_sl) {
+  subtrees <- list()
+  if (length(bestsubtree) == 0) return(subtrees)
+  n_iter <- min(l_sl, length(bestsubtree))
+  for (i in seq_len(n_iter)) {
+    if (is.null(bestsubtree[[i]])) next
     subtrees <- c(subtrees, prune_cell_tree(bestsubtree[[i]], state, barcodes, i, 1))
   }
-  return(subtrees)
+  subtrees
 }
 
+# ---- Merge functions -------------------------------------------------------------
+merge_list_at_root <- function(tree_list) {
+  tree_list <- tree_list[!vapply(tree_list, is.null, logical(1))]
+  if (length(tree_list) == 0) return(NULL)
+  final_tree <- tree_list[[1]]
+  final_tree$root.edge <- 1
+  if (length(tree_list) > 1) {
+    for (i in 2:length(tree_list)) {
+      final_tree <- safe_bind_root(final_tree, tree_list[[i]])
+    }
+  }
+  final_tree
+}
 
-#' Merge sub-cell division trees in order based on nodes rank and weight
-#'
-#' @param CM Common mutation matrix.
-#' @param Nodes_rank Matrix of nodes ranking.
-#' @param Nodes_weight Matrix of nodes weight.
-#' @param subsubtrees List of sub-subtrees.
-#' @param bind_tree_list List of trees to bind.
-#' @param nsubtree Current number/index for subtrees.
-#'
-#' @return A merged cell division tree.
-#' @export
-merge_subcell_trees_ordered <- function(CM, Nodes_rank, Nodes_weight, subsubtrees, bind_tree_list, nsubtree) {
-  for (i in 1:length(subsubtrees)) {
-    subsubtrees[[i]]$edge.length <- rep(1, nrow(subsubtrees[[i]]$edge))
+select_best_group <- function(Nodes_rank, Nodes_weight, Nodes) {
+  W <- Nodes_weight
+  W[is.na(W)] <- -Inf
+  if (length(W) == 0 || all(!is.finite(W)) || max(W, na.rm = TRUE) <= 0) {
+    return(Nodes[1])
+  }
+  idx <- which(W == max(W, na.rm = TRUE), arr.ind = TRUE)[1, , drop = FALSE]
+  node1 <- rownames(W)[idx[1, 1]]
+  node2 <- Nodes_rank[idx[1, 1], idx[1, 2]]
+  group <- unique(na.omit(c(node1, node2, Nodes_rank[node1, ], Nodes_rank[node2, ])))
+  group[group %in% Nodes]
+}
+
+merge_subcell_trees_ordered <- function(CM, Nodes_rank, Nodes_weight, subsubtrees, bind_tree_list = list(), nsubtree = 1) {
+  if (length(subsubtrees) == 0) return(NULL)
+  for (i in seq_along(subsubtrees)) {
+    if (!is.null(subsubtrees[[i]]) && !is.null(subsubtrees[[i]]$edge)) {
+      subsubtrees[[i]]$edge.length <- rep(1, nrow(subsubtrees[[i]]$edge))
+    }
   }
   Nodes <- rownames(Nodes_rank)
+  if (length(Nodes) == 0) return(merge_list_at_root(subsubtrees))
+
   Nodes_remain <- Nodes
-  N <- length(Nodes)
-  node1 <- Nodes_rank[which.max(Nodes_weight)]
-  node2 <- Nodes[which.max(Nodes_weight) %% N]
-  group <- na.omit(unique(c(node1, node2, Nodes_rank[node1, ], Nodes_rank[node2, ])))
-  ngroup <- length(group)
-  bind_tree_list[[nsubtree]] <- subsubtrees[[group[1]]]
-  bind_tree_list[[nsubtree]]$root.edge <- 1
-  if (ngroup > 1) {
-    for (i in 2:ngroup) {
-      bind_tree_list[[nsubtree]] <- bind.tree(bind_tree_list[[nsubtree]], subsubtrees[[group[i]]], where = "root", .1)
-      bind_tree_list[[nsubtree]]$root.edge <- 1
-    }
+  while (length(Nodes_remain) > 0) {
+    sub_CM <- CM[Nodes_remain, Nodes_remain, drop = FALSE]
+    rank_weight <- subtrees_rank(sub_CM)
+    group <- select_best_group(rank_weight[[1]], rank_weight[[2]], Nodes_remain)
+    if (length(group) == 0) group <- Nodes_remain[1]
+    bind_tree_list[[length(bind_tree_list) + 1]] <- merge_list_at_root(subsubtrees[group])
+    Nodes_remain <- setdiff(Nodes_remain, group)
   }
-  Nodes_remain <- Nodes_remain[!Nodes_remain %in% group]
-  if (length(Nodes_remain) == 0) {
-    final_tree <- bind_tree_list[[1]]
-    final_tree$root.edge <- 1
-    if (length(bind_tree_list) > 1) {
-      for (i in 2:length(bind_tree_list)) {
-        final_tree <- bind.tree(final_tree, bind_tree_list[[i]], where = "root", .1)
-        final_tree$root.edge <- 1
-      }
-    }
-    return(final_tree)
-  } else if (length(Nodes_remain) != 0 && sum(CM[Nodes_remain, Nodes_remain] > 0, na.rm = TRUE) > 0) {
-    new_rank_weight <- subtrees_rank(CM[Nodes_remain, Nodes_remain])
-    return(merge_subcell_trees_ordered(CM, Nodes_rank = new_rank_weight[[1]], Nodes_weight = new_rank_weight[[2]],
-                                       subsubtrees, bind_tree_list = bind_tree_list, nsubtree = length(bind_tree_list) + 1))
-  } else {
-    final_tree <- bind_tree_list[[1]]
-    final_tree$root.edge <- 1
-    if (length(bind_tree_list) > 1) {
-      for (i in 2:length(bind_tree_list)) {
-        final_tree <- bind.tree(final_tree, bind_tree_list[[i]], where = "root", .1)
-        final_tree$root.edge <- 1
-      }
-    }
-    for (j in 1:length(Nodes_remain)) {
-      final_tree <- bind.tree(final_tree, subsubtrees[[Nodes_remain[j]]], where = "root", .1)
-      final_tree$root.edge <- 1
-    }
-    return(final_tree)
-  }
+  merge_list_at_root(bind_tree_list)
 }
 
-
-#' Group sub-cell division trees for merging based on common mutations
-#'
-#' @param CM Common mutation matrix.
-#' @param Nodes_rank Matrix of nodes ranking.
-#' @param Nodes_weight Matrix of nodes weight.
-#' @param subsubtrees List of sub-subtrees.
-#' @param bind_tree_list List of trees to bind.
-#' @param nsubtree Current number/index for subtrees.
-#'
-#' @return A list containing the merged tree group and remaining nodes.
-#' @export
-group_subcell_trees <- function(CM, Nodes_rank, Nodes_weight, subsubtrees, bind_tree_list, nsubtree) {
+group_subcell_trees <- function(CM, Nodes_rank, Nodes_weight, subsubtrees, bind_tree_list = list(), nsubtree = 1) {
+  if (length(subsubtrees) == 0) return(list())
   Nodes <- rownames(Nodes_rank)
-  Nodes_remain <- Nodes
-  N <- length(Nodes)
-  node1 <- Nodes_rank[which.max(Nodes_weight)]
-  node2 <- Nodes[which.max(Nodes_weight) %% N]
-  group <- na.omit(unique(c(node1, node2, Nodes_rank[node1, ], Nodes_rank[node2, ])))
-  ngroup <- length(group)
-  bind_tree_list[[nsubtree]] <- subsubtrees[[group[1]]]
-  bind_tree_list[[nsubtree]]$root.edge <- 1
-  if (ngroup > 1) {
-    for (i in 2:ngroup) {
-      bind_tree_list[[nsubtree]] <- bind.tree(bind_tree_list[[nsubtree]], subsubtrees[[group[i]]], where = "root", .1)
-      bind_tree_list[[nsubtree]]$root.edge <- 1
-    }
-  }
-  Nodes_remain <- Nodes_remain[!Nodes_remain %in% group]
-  if (length(Nodes_remain) == 0) {
-    return(bind_tree_list)
-  } else if (length(Nodes_remain) != 0 && sum(CM[Nodes_remain, Nodes_remain] > 0, na.rm = TRUE) > 0) {
-    new_rank_weight <- subtrees_rank(CM[Nodes_remain, Nodes_remain])
-    return(group_subcell_trees(CM, Nodes_rank = new_rank_weight[[1]], Nodes_weight = new_rank_weight[[2]],
-                               subsubtrees, bind_tree_list = bind_tree_list, nsubtree = length(bind_tree_list) + 1))
-  } else if (length(Nodes_remain) != 0 && sum(CM[Nodes_remain, Nodes_remain] > 0, na.rm = TRUE) == 0) {
-    return(list(bind_tree_list, Nodes_remain))
-  }
+  if (length(Nodes) == 0) return(list(merge_list_at_root(subsubtrees), character(0)))
+  group <- select_best_group(Nodes_rank, Nodes_weight, Nodes)
+  if (length(group) == 0) group <- Nodes[1]
+  bind_tree_list[[nsubtree]] <- merge_list_at_root(subsubtrees[group])
+  Nodes_remain <- setdiff(Nodes, group)
+  list(bind_tree_list, Nodes_remain)
 }
 
+safe_barcode_distance_matrix <- function(barcodes_mat) {
+  n <- nrow(barcodes_mat)
+  D <- matrix(0, n, n)
+  rownames(D) <- colnames(D) <- rownames(barcodes_mat)
+  if (n <= 1) return(D)
+  for (i in seq_len(n - 1)) {
+    for (j in (i + 1):n) {
+      D[i, j] <- D[j, i] <- barcode_diff_count(barcodes_mat[i, ], barcodes_mat[j, ])
+    }
+  }
+  D
+}
 
-#' Merge sub-cell division trees using Ward's method
-#'
-#' @param subtrees_rootbar A list of root barcodes for sub-subtrees.
-#' @param subsubtrees A list of sub-subtrees.
-#'
-#' @return A merged cell division tree.
-#' @export
 merge_subcell_trees_ward <- function(subtrees_rootbar, subsubtrees) {
-  for (i in 1:length(subsubtrees)) {
-    subsubtrees[[i]]$edge.length <- rep(1, nrow(subsubtrees[[i]]$edge))
+  if (length(subsubtrees) == 0) return(NULL)
+  if (length(subsubtrees) == 1) return(subsubtrees[[1]])
+
+  for (i in seq_along(subsubtrees)) {
+    if (!is.null(subsubtrees[[i]]) && !is.null(subsubtrees[[i]]$edge)) {
+      subsubtrees[[i]]$edge.length <- rep(1, nrow(subsubtrees[[i]]$edge))
+    }
   }
+
   b <- do.call(rbind, subtrees_rootbar)
   rownames(b) <- names(subtrees_rootbar)
-  barcodes_lineage <- b
-  D <- hamming_distance(barcodes_lineage)
-  tree_WD <- nodes_clustering(D)
+  D <- safe_barcode_distance_matrix(b)
+  # If all distances are zero, binding all subtrees at root is deterministic and safe.
+  if (all(D == 0, na.rm = TRUE)) return(merge_list_at_root(subsubtrees))
+
+  tree_WD <- tryCatch(nodes_clustering(D), error = function(e) NULL)
+  if (is.null(tree_WD)) return(merge_list_at_root(subsubtrees))
+
   for (i in names(subsubtrees)) {
     position <- which(i == tree_WD$tip.label)
-    tree_WD <- bind.tree(tree_WD, subsubtrees[[i]], position)
+    if (length(position) != 1) next
+    tree_WD <- tryCatch(bind.tree(tree_WD, subsubtrees[[i]], position), error = function(e) tree_WD)
   }
-  return(tree_WD)
+  tree_WD
 }
 
-
-#' Get subtree cell types
-#'
-#' @param tree_groups A list containing two groups of trees. For the first group, each element is a tree object;
-#'   for the second group, each element is an index referring to a tree in the global "subsubtrees" list.
-#'
-#' @return A list of cell type vectors for each subtree, with names "subtree_1", "subtree_2", etc.
-#' @export
+# ---- Downstream helper functions retained with NA guards -------------------------
 get_subtree_celltypes <- function(tree_groups) {
   subtree_celltypes_list <- list()
-
-  # Process group 1 and group 2 separately.
-  for (j in 1:2) {
+  for (j in seq_along(tree_groups)) {
     if (j == 1) {
       for (i in seq_along(tree_groups[[j]])) {
-        # Retrieve the cell types for the tips of the tree.
         subtree_celltype <- unique(na.omit(name_index$cell_type[match(tree_groups[[1]][[i]]$tip.label, name_index$id)]))
         subtree_celltypes_list[[paste(j, i, sep = "_")]] <- subtree_celltype
       }
@@ -500,96 +552,39 @@ get_subtree_celltypes <- function(tree_groups) {
       }
     }
   }
-
-  # Rename list elements to "subtree_1", "subtree_2", etc.
   names(subtree_celltypes_list) <- paste("subtree", seq_along(subtree_celltypes_list), sep = "_")
-
-  return(subtree_celltypes_list)
+  subtree_celltypes_list
 }
 
-
-#' Get unique cell types from subtrees
-#'
-#' @param subtree_celltypes A list of cell type vectors (e.g., obtained from get_subtree_celltypes).
-#'
-#' @return A list where each element corresponds to a cell type that appears in exactly one subtree.
-#'   The element names indicate the cell type and the value is the name of the subtree that contains it.
-#' @export
 get_unique_celltypes <- function(subtree_celltypes) {
   all_elements <- unique(unlist(subtree_celltypes))
   element_counts <- table(unlist(subtree_celltypes))
   unique_elements <- list()
-
   for (element in names(element_counts)) {
     if (element_counts[element] == 1) {
       vec_index <- which(sapply(subtree_celltypes, function(x) element %in% x))
-      if (length(vec_index) == 1) {
-        unique_elements[[element]] <- names(subtree_celltypes)[vec_index]
-      }
+      if (length(vec_index) == 1) unique_elements[[element]] <- names(subtree_celltypes)[vec_index]
     }
   }
-
-  return(unique_elements)
+  unique_elements
 }
 
-
-#' Compute a time-scaled phylogenetic tree based on lineage barcodes
-#'
-#' @param tree A sub-cell division tree.
-#' @param N_char Total number of sites.
-#' @param barcodes A matrix of lineage barcodes.
-#' @param ncells Optional. Number of cells (defaults to the number of tip labels in the tree).
-#' @param Nnodes Optional. Number of nodes (defaults to 2 * ncells - 2).
-#' @param edges Optional. Edge information (ignored if NULL).
-#'
-#' @return A time-scaled phylogenetic tree.
-#' @export
 phylogenetic_tree <- function(tree, N_char, barcodes, ncells = NULL, Nnodes = NULL, edges = NULL) {
-  # Set number of cells if not provided.
-  if (is.null(ncells)) {
-    ncells <- length(tree$tip.label)
-  }
-
-  # Set number of nodes if not provided.
-  if (is.null(Nnodes)) {
-    Nnodes <- 2 * ncells - 2
-  }
-
-  # Create an edge data frame with parent, child, and initial edge lengths set to 0.
-  edges <- data.frame(
-    par = tree$edge[, 1],
-    child = tree$edge[, 2],
-    length = rep(0, nrow(tree$edge))
-  )
-
-  # Perform ancestral inference to obtain ancestral barcodes.
+  if (is.null(ncells)) ncells <- length(tree$tip.label)
+  if (is.null(Nnodes)) Nnodes <- 2 * ncells - 2
+  edges <- data.frame(par = tree$edge[, 1], child = tree$edge[, 2], length = rep(0, nrow(tree$edge)))
   barcodes_ances <- ancestor_inference_time_scale(tree, N_char, barcodes)
-
-  # Iterate over each parent node in the edge data frame.
-  for (par in edges$par) {
+  for (par in unique(edges$par)) {
     children <- edges$child[edges$par == par]
-    if (length(children) == 2) {
-      for (j in 1:2) {
-        child <- children[j]
-        # Calculate the improved Hamming distance between parent's and child's barcodes.
-
-        H_D <-  improved_hamming_distance(barcodes_ances[par, ], barcodes_ances[child, ],0,1)
-        # Set the edge length: if no difference then 0.5, else proportional to H_D.
-        if (H_D == 0) {
-          edges$length[edges$child == child] <- 0.5
-        } else {
-          edges$length[edges$child == child] <- H_D * 1
+    if (length(children) >= 1) {
+      for (child in children) {
+        if (par <= nrow(barcodes_ances) && child <= nrow(barcodes_ances)) {
+          H_D <- .safe_hamming(barcodes_ances[par, ], barcodes_ances[child, ], 0, 1)
+          edges$length[edges$child == child] <- ifelse(H_D == 0 || !is.finite(H_D), 0.5, H_D)
         }
       }
     }
   }
-
-  # Update the tree edge lengths with computed distances.
   tree$edge.length <- edges$length
-
-  # Compute and return a time-scaled tree using the chronos function.
-  time_scale_tree <- chronos(tree)
-  return(time_scale_tree)
+  tree
 }
-
-

@@ -1,0 +1,946 @@
+parameter_sweep,parameter_sweep_label,parameter_name,parameter_value,replicate_id,method,metric_name,metric_label,metric_value
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep001,FateScape_slingshot,TreeDistance,Information Based Distance,0.4891
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep002,FateScape_slingshot,TreeDistance,Information Based Distance,0.5668
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep003,FateScape_slingshot,TreeDistance,Information Based Distance,0.4729
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep001,FateScape_slingshot,TreeDistance,Information Based Distance,0.4402
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep002,FateScape_slingshot,TreeDistance,Information Based Distance,0.3664
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep003,FateScape_slingshot,TreeDistance,Information Based Distance,0.4507
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep001,FateScape_slingshot,TreeDistance,Information Based Distance,0.4768
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep002,FateScape_slingshot,TreeDistance,Information Based Distance,0.4963
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep003,FateScape_slingshot,TreeDistance,Information Based Distance,0.4309
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep001,FateScape_monocle,TreeDistance,Information Based Distance,0.4913
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep002,FateScape_monocle,TreeDistance,Information Based Distance,0.5061
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep003,FateScape_monocle,TreeDistance,Information Based Distance,0.4777
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep001,FateScape_monocle,TreeDistance,Information Based Distance,0.4042
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep002,FateScape_monocle,TreeDistance,Information Based Distance,0.3585
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep003,FateScape_monocle,TreeDistance,Information Based Distance,0.3662
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep001,FateScape_monocle,TreeDistance,Information Based Distance,0.4553
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep002,FateScape_monocle,TreeDistance,Information Based Distance,0.5209
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep003,FateScape_monocle,TreeDistance,Information Based Distance,0.4382
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep001,LinRace,TreeDistance,Information Based Distance,0.5029
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep002,LinRace,TreeDistance,Information Based Distance,0.4996
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep003,LinRace,TreeDistance,Information Based Distance,0.4919
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep001,LinRace,TreeDistance,Information Based Distance,0.3911
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep002,LinRace,TreeDistance,Information Based Distance,0.3919
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep003,LinRace,TreeDistance,Information Based Distance,0.3844
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep001,LinRace,TreeDistance,Information Based Distance,0.3691
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep002,LinRace,TreeDistance,Information Based Distance,0.398
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep003,LinRace,TreeDistance,Information Based Distance,0.4072
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep001,LinTIMaT,TreeDistance,Information Based Distance,0.6645978
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep002,LinTIMaT,TreeDistance,Information Based Distance,0.6888446
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep003,LinTIMaT,TreeDistance,Information Based Distance,0.7287267
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep001,LinTIMaT,TreeDistance,Information Based Distance,0.6861663
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep002,LinTIMaT,TreeDistance,Information Based Distance,0.5934479
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep003,LinTIMaT,TreeDistance,Information Based Distance,0.6179869
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep001,LinTIMaT,TreeDistance,Information Based Distance,0.7373239
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep002,LinTIMaT,TreeDistance,Information Based Distance,0.6246088
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep003,LinTIMaT,TreeDistance,Information Based Distance,0.6146935
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep001,NJ method,TreeDistance,Information Based Distance,0.5226
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep002,NJ method,TreeDistance,Information Based Distance,0.4736
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep003,NJ method,TreeDistance,Information Based Distance,0.4877
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep001,NJ method,TreeDistance,Information Based Distance,0.4354
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep002,NJ method,TreeDistance,Information Based Distance,0.3707
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep003,NJ method,TreeDistance,Information Based Distance,0.411
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep001,NJ method,TreeDistance,Information Based Distance,0.3841
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep002,NJ method,TreeDistance,Information Based Distance,0.3788
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep003,NJ method,TreeDistance,Information Based Distance,0.4225
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep001,Cassiopeia,TreeDistance,Information Based Distance,0.4763059
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep002,Cassiopeia,TreeDistance,Information Based Distance,0.4655346
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep003,Cassiopeia,TreeDistance,Information Based Distance,0.5227699
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep001,Cassiopeia,TreeDistance,Information Based Distance,0.4570988
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep002,Cassiopeia,TreeDistance,Information Based Distance,0.4681117
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep003,Cassiopeia,TreeDistance,Information Based Distance,0.4806356
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep001,Cassiopeia,TreeDistance,Information Based Distance,0.5233653
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep002,Cassiopeia,TreeDistance,Information Based Distance,0.4842361
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep003,Cassiopeia,TreeDistance,Information Based Distance,0.5031711
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep001,FateScape_slingshot,Nye,Nye Similarity Score,0.5591
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep002,FateScape_slingshot,Nye,Nye Similarity Score,0.5951
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep003,FateScape_slingshot,Nye,Nye Similarity Score,0.6003
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep001,FateScape_slingshot,Nye,Nye Similarity Score,0.6579
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep002,FateScape_slingshot,Nye,Nye Similarity Score,0.6534
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep003,FateScape_slingshot,Nye,Nye Similarity Score,0.654
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep001,FateScape_slingshot,Nye,Nye Similarity Score,0.5706
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep002,FateScape_slingshot,Nye,Nye Similarity Score,0.5918
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep003,FateScape_slingshot,Nye,Nye Similarity Score,0.6006
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep001,FateScape_monocle,Nye,Nye Similarity Score,0.5598
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep002,FateScape_monocle,Nye,Nye Similarity Score,0.5309
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep003,FateScape_monocle,Nye,Nye Similarity Score,0.6075
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep001,FateScape_monocle,Nye,Nye Similarity Score,0.6669
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep002,FateScape_monocle,Nye,Nye Similarity Score,0.654
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep003,FateScape_monocle,Nye,Nye Similarity Score,0.6933
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep001,FateScape_monocle,Nye,Nye Similarity Score,0.592
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep002,FateScape_monocle,Nye,Nye Similarity Score,0.5731
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep003,FateScape_monocle,Nye,Nye Similarity Score,0.6075
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep001,LinRace,Nye,Nye Similarity Score,0.5338
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep002,LinRace,Nye,Nye Similarity Score,0.598
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep003,LinRace,Nye,Nye Similarity Score,0.5907
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep001,LinRace,Nye,Nye Similarity Score,0.6575
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep002,LinRace,Nye,Nye Similarity Score,0.6366
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep003,LinRace,Nye,Nye Similarity Score,0.6603
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep001,LinRace,Nye,Nye Similarity Score,0.5781
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep002,LinRace,Nye,Nye Similarity Score,0.5889
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep003,LinRace,Nye,Nye Similarity Score,0.5752
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep001,LinTIMaT,Nye,Nye Similarity Score,0.4614728
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep002,LinTIMaT,Nye,Nye Similarity Score,0.436701
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep003,LinTIMaT,Nye,Nye Similarity Score,0.4099607
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep001,LinTIMaT,Nye,Nye Similarity Score,0.4645244
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep002,LinTIMaT,Nye,Nye Similarity Score,0.4961061
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep003,LinTIMaT,Nye,Nye Similarity Score,0.4836416
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep001,LinTIMaT,Nye,Nye Similarity Score,0.4221243
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep002,LinTIMaT,Nye,Nye Similarity Score,0.4890901
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep003,LinTIMaT,Nye,Nye Similarity Score,0.4631965
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep001,NJ method,Nye,Nye Similarity Score,0.5606
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep002,NJ method,Nye,Nye Similarity Score,0.6164
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep003,NJ method,Nye,Nye Similarity Score,0.6016
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep001,NJ method,Nye,Nye Similarity Score,0.6648
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep002,NJ method,Nye,Nye Similarity Score,0.6504
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep003,NJ method,Nye,Nye Similarity Score,0.6668
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep001,NJ method,Nye,Nye Similarity Score,0.6079
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep002,NJ method,Nye,Nye Similarity Score,0.6188
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep003,NJ method,Nye,Nye Similarity Score,0.5925
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep001,Cassiopeia,Nye,Nye Similarity Score,0.5308465
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep002,Cassiopeia,Nye,Nye Similarity Score,0.4794743
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep003,Cassiopeia,Nye,Nye Similarity Score,0.4873691
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep001,Cassiopeia,Nye,Nye Similarity Score,0.580254
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep002,Cassiopeia,Nye,Nye Similarity Score,0.5732642
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep003,Cassiopeia,Nye,Nye Similarity Score,0.5178156
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep001,Cassiopeia,Nye,Nye Similarity Score,0.4897168
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep002,Cassiopeia,Nye,Nye Similarity Score,0.4815487
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep003,Cassiopeia,Nye,Nye Similarity Score,0.4363169
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep001,FateScape_slingshot,RF_normalized,RF Distance,0.7316
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep002,FateScape_slingshot,RF_normalized,RF Distance,0.6571
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep003,FateScape_slingshot,RF_normalized,RF Distance,0.6336
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep001,FateScape_slingshot,RF_normalized,RF Distance,0.5905
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep002,FateScape_slingshot,RF_normalized,RF Distance,0.6037
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep003,FateScape_slingshot,RF_normalized,RF Distance,0.5911
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep001,FateScape_slingshot,RF_normalized,RF Distance,0.714
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep002,FateScape_slingshot,RF_normalized,RF Distance,0.719
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep003,FateScape_slingshot,RF_normalized,RF Distance,0.6817
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep001,FateScape_monocle,RF_normalized,RF Distance,0.7233
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep002,FateScape_monocle,RF_normalized,RF Distance,0.7318
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep003,FateScape_monocle,RF_normalized,RF Distance,0.6703
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep001,FateScape_monocle,RF_normalized,RF Distance,0.5975
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep002,FateScape_monocle,RF_normalized,RF Distance,0.6279
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep003,FateScape_monocle,RF_normalized,RF Distance,0.5573
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep001,FateScape_monocle,RF_normalized,RF Distance,0.6903
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep002,FateScape_monocle,RF_normalized,RF Distance,0.705
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep003,FateScape_monocle,RF_normalized,RF Distance,0.6704
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep001,LinRace,RF_normalized,RF Distance,0.7825
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep002,LinRace,RF_normalized,RF Distance,0.6729
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep003,LinRace,RF_normalized,RF Distance,0.6895
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep001,LinRace,RF_normalized,RF Distance,0.6004
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep002,LinRace,RF_normalized,RF Distance,0.6444
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep003,LinRace,RF_normalized,RF Distance,0.6034
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep001,LinRace,RF_normalized,RF Distance,0.7218
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep002,LinRace,RF_normalized,RF Distance,0.7101
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep003,LinRace,RF_normalized,RF Distance,0.716
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep001,LinTIMaT,RF_normalized,RF Distance,0.7972576
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep002,LinTIMaT,RF_normalized,RF Distance,0.841332
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep003,LinTIMaT,RF_normalized,RF Distance,0.841332
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep001,LinTIMaT,RF_normalized,RF Distance,0.8109696
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep002,LinTIMaT,RF_normalized,RF Distance,0.7864838
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep003,LinTIMaT,RF_normalized,RF Distance,0.8148874
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep001,LinTIMaT,RF_normalized,RF Distance,0.8325171
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep002,LinTIMaT,RF_normalized,RF Distance,0.8129285
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep003,LinTIMaT,RF_normalized,RF Distance,0.8305583
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep001,NJ method,RF_normalized,RF Distance,0.7228
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep002,NJ method,RF_normalized,RF Distance,0.6489
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep003,NJ method,RF_normalized,RF Distance,0.664
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep001,NJ method,RF_normalized,RF Distance,0.5769
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep002,NJ method,RF_normalized,RF Distance,0.6268
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep003,NJ method,RF_normalized,RF Distance,0.5857
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep001,NJ method,RF_normalized,RF Distance,0.6572
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep002,NJ method,RF_normalized,RF Distance,0.6601
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep003,NJ method,RF_normalized,RF Distance,0.6809
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep001,Cassiopeia,RF_normalized,RF Distance,0.6647473
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep002,Cassiopeia,RF_normalized,RF Distance,0.7154255
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep003,Cassiopeia,RF_normalized,RF Distance,0.7222947
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep001,Cassiopeia,RF_normalized,RF Distance,0.6197441
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep002,Cassiopeia,RF_normalized,RF Distance,0.6269745
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep003,Cassiopeia,RF_normalized,RF Distance,0.709434
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep001,Cassiopeia,RF_normalized,RF Distance,0.7404389
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep002,Cassiopeia,RF_normalized,RF Distance,0.7311475
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep003,Cassiopeia,RF_normalized,RF Distance,0.7846764
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,FateScape_slingshot,TreeDistance,Information Based Distance,0.49
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,FateScape_slingshot,TreeDistance,Information Based Distance,0.5125
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,FateScape_slingshot,TreeDistance,Information Based Distance,0.5144
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,FateScape_slingshot,TreeDistance,Information Based Distance,0.5995
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,FateScape_slingshot,TreeDistance,Information Based Distance,0.5224
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,FateScape_slingshot,TreeDistance,Information Based Distance,0.6132
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,FateScape_slingshot,TreeDistance,Information Based Distance,0.6903
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,FateScape_slingshot,TreeDistance,Information Based Distance,0.6519
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,FateScape_slingshot,TreeDistance,Information Based Distance,0.6065
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,FateScape_monocle,TreeDistance,Information Based Distance,0.4277
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,FateScape_monocle,TreeDistance,Information Based Distance,0.5029
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,FateScape_monocle,TreeDistance,Information Based Distance,0.5126
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,FateScape_monocle,TreeDistance,Information Based Distance,0.6046
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,FateScape_monocle,TreeDistance,Information Based Distance,0.5153
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,FateScape_monocle,TreeDistance,Information Based Distance,0.5852
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,FateScape_monocle,TreeDistance,Information Based Distance,0.7046
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,FateScape_monocle,TreeDistance,Information Based Distance,0.621
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,FateScape_monocle,TreeDistance,Information Based Distance,0.6225
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,LinRace,TreeDistance,Information Based Distance,0.4698
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,LinRace,TreeDistance,Information Based Distance,0.5531
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,LinRace,TreeDistance,Information Based Distance,0.4736
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,LinRace,TreeDistance,Information Based Distance,0.6708
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,LinRace,TreeDistance,Information Based Distance,0.6017
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,LinRace,TreeDistance,Information Based Distance,0.5634
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,LinRace,TreeDistance,Information Based Distance,0.6818
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,LinRace,TreeDistance,Information Based Distance,0.7014
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,LinRace,TreeDistance,Information Based Distance,0.7025
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,LinTIMaT,TreeDistance,Information Based Distance,0.8098
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,LinTIMaT,TreeDistance,Information Based Distance,0.7947
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,LinTIMaT,TreeDistance,Information Based Distance,0.7847
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,LinTIMaT,TreeDistance,Information Based Distance,0.8324
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,LinTIMaT,TreeDistance,Information Based Distance,0.8319
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,LinTIMaT,TreeDistance,Information Based Distance,0.8444
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,LinTIMaT,TreeDistance,Information Based Distance,0.8432
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,LinTIMaT,TreeDistance,Information Based Distance,0.8787
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,LinTIMaT,TreeDistance,Information Based Distance,0.8525
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,NJ method,TreeDistance,Information Based Distance,0.4903
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,NJ method,TreeDistance,Information Based Distance,0.6035
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,NJ method,TreeDistance,Information Based Distance,0.5521
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,NJ method,TreeDistance,Information Based Distance,0.6679
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,NJ method,TreeDistance,Information Based Distance,0.6355
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,NJ method,TreeDistance,Information Based Distance,0.673
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,NJ method,TreeDistance,Information Based Distance,0.7303
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,NJ method,TreeDistance,Information Based Distance,0.6886
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,NJ method,TreeDistance,Information Based Distance,0.72
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,Cassiopeia,TreeDistance,Information Based Distance,0.6013289
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,Cassiopeia,TreeDistance,Information Based Distance,0.6303317
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,Cassiopeia,TreeDistance,Information Based Distance,0.6200076
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,Cassiopeia,TreeDistance,Information Based Distance,0.5914546
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,Cassiopeia,TreeDistance,Information Based Distance,0.6487219
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,Cassiopeia,TreeDistance,Information Based Distance,0.6751942
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,Cassiopeia,TreeDistance,Information Based Distance,0.638194
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,Cassiopeia,TreeDistance,Information Based Distance,0.6463905
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,Cassiopeia,TreeDistance,Information Based Distance,0.7045582
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,FateScape_slingshot,Nye,Nye Similarity Score,0.5212
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,FateScape_slingshot,Nye,Nye Similarity Score,0.4445
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,FateScape_slingshot,Nye,Nye Similarity Score,0.4836
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,FateScape_slingshot,Nye,Nye Similarity Score,0.4314
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,FateScape_slingshot,Nye,Nye Similarity Score,0.4522
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,FateScape_slingshot,Nye,Nye Similarity Score,0.4155
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,FateScape_slingshot,Nye,Nye Similarity Score,0.3281
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,FateScape_slingshot,Nye,Nye Similarity Score,0.3832
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,FateScape_slingshot,Nye,Nye Similarity Score,0.3863
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,FateScape_monocle,Nye,Nye Similarity Score,0.5361
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,FateScape_monocle,Nye,Nye Similarity Score,0.4591
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,FateScape_monocle,Nye,Nye Similarity Score,0.4878
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,FateScape_monocle,Nye,Nye Similarity Score,0.4337
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,FateScape_monocle,Nye,Nye Similarity Score,0.4582
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,FateScape_monocle,Nye,Nye Similarity Score,0.4163
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,FateScape_monocle,Nye,Nye Similarity Score,0.3195
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,FateScape_monocle,Nye,Nye Similarity Score,0.389
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,FateScape_monocle,Nye,Nye Similarity Score,0.3811
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,LinRace,Nye,Nye Similarity Score,0.4562
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,LinRace,Nye,Nye Similarity Score,0.3911
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,LinRace,Nye,Nye Similarity Score,0.4329
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,LinRace,Nye,Nye Similarity Score,0.3533
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,LinRace,Nye,Nye Similarity Score,0.3668
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,LinRace,Nye,Nye Similarity Score,0.36
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,LinRace,Nye,Nye Similarity Score,0.295
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,LinRace,Nye,Nye Similarity Score,0.3054
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,LinRace,Nye,Nye Similarity Score,0.2881
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,LinTIMaT,Nye,Nye Similarity Score,0.3201
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,LinTIMaT,Nye,Nye Similarity Score,0.3236
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,LinTIMaT,Nye,Nye Similarity Score,0.3219
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,LinTIMaT,Nye,Nye Similarity Score,0.281
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,LinTIMaT,Nye,Nye Similarity Score,0.268
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,LinTIMaT,Nye,Nye Similarity Score,0.2808
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,LinTIMaT,Nye,Nye Similarity Score,0.2781
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,LinTIMaT,Nye,Nye Similarity Score,0.2558
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,LinTIMaT,Nye,Nye Similarity Score,0.2594
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,NJ method,Nye,Nye Similarity Score,0.4406
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,NJ method,Nye,Nye Similarity Score,0.3734
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,NJ method,Nye,Nye Similarity Score,0.4242
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,NJ method,Nye,Nye Similarity Score,0.3481
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,NJ method,Nye,Nye Similarity Score,0.3684
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,NJ method,Nye,Nye Similarity Score,0.331
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,NJ method,Nye,Nye Similarity Score,0.2888
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,NJ method,Nye,Nye Similarity Score,0.3259
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,NJ method,Nye,Nye Similarity Score,0.3042
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,Cassiopeia,Nye,Nye Similarity Score,0.3960229
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,Cassiopeia,Nye,Nye Similarity Score,0.3801488
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,Cassiopeia,Nye,Nye Similarity Score,0.374656
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,Cassiopeia,Nye,Nye Similarity Score,0.3416458
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,Cassiopeia,Nye,Nye Similarity Score,0.3084584
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,Cassiopeia,Nye,Nye Similarity Score,0.3321243
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,Cassiopeia,Nye,Nye Similarity Score,0.3361204
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,Cassiopeia,Nye,Nye Similarity Score,0.3377992
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,Cassiopeia,Nye,Nye Similarity Score,0.2933438
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,FateScape_slingshot,RF_normalized,RF Distance,0.808
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,FateScape_slingshot,RF_normalized,RF Distance,0.8519
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,FateScape_slingshot,RF_normalized,RF Distance,0.8376
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,FateScape_slingshot,RF_normalized,RF Distance,0.8785
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,FateScape_slingshot,RF_normalized,RF Distance,0.8765
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,FateScape_slingshot,RF_normalized,RF Distance,0.8922
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,FateScape_slingshot,RF_normalized,RF Distance,0.9422
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,FateScape_slingshot,RF_normalized,RF Distance,0.9059
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,FateScape_slingshot,RF_normalized,RF Distance,0.9118
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,FateScape_monocle,RF_normalized,RF Distance,0.8109
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,FateScape_monocle,RF_normalized,RF Distance,0.8498
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,FateScape_monocle,RF_normalized,RF Distance,0.8296
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,FateScape_monocle,RF_normalized,RF Distance,0.8726
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,FateScape_monocle,RF_normalized,RF Distance,0.8563
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,FateScape_monocle,RF_normalized,RF Distance,0.8971
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,FateScape_monocle,RF_normalized,RF Distance,0.9578
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,FateScape_monocle,RF_normalized,RF Distance,0.9108
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,FateScape_monocle,RF_normalized,RF Distance,0.9147
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,LinRace,RF_normalized,RF Distance,0.8912
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,LinRace,RF_normalized,RF Distance,0.9285
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,LinRace,RF_normalized,RF Distance,0.8992
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,LinRace,RF_normalized,RF Distance,0.9431
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,LinRace,RF_normalized,RF Distance,0.9588
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,LinRace,RF_normalized,RF Distance,0.948
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,LinRace,RF_normalized,RF Distance,0.9775
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,LinRace,RF_normalized,RF Distance,0.9647
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,LinRace,RF_normalized,RF Distance,0.9764
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,LinTIMaT,RF_normalized,RF Distance,0.9236
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,LinTIMaT,RF_normalized,RF Distance,0.9226
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,LinTIMaT,RF_normalized,RF Distance,0.9314
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,LinTIMaT,RF_normalized,RF Distance,0.949
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,LinTIMaT,RF_normalized,RF Distance,0.9657
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,LinTIMaT,RF_normalized,RF Distance,0.9571
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,LinTIMaT,RF_normalized,RF Distance,0.9804
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,LinTIMaT,RF_normalized,RF Distance,0.9559
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,LinTIMaT,RF_normalized,RF Distance,0.9745
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,NJ method,RF_normalized,RF Distance,0.8756
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,NJ method,RF_normalized,RF Distance,0.9382
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,NJ method,RF_normalized,RF Distance,0.8795
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,NJ method,RF_normalized,RF Distance,0.9471
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,NJ method,RF_normalized,RF Distance,0.9412
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,NJ method,RF_normalized,RF Distance,0.9371
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,NJ method,RF_normalized,RF Distance,0.9804
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,NJ method,RF_normalized,RF Distance,0.9559
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,NJ method,RF_normalized,RF Distance,0.9745
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,Cassiopeia,RF_normalized,RF Distance,0.8787129
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,Cassiopeia,RF_normalized,RF Distance,0.8970588
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,Cassiopeia,RF_normalized,RF Distance,0.8858934
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,Cassiopeia,RF_normalized,RF Distance,0.9350092
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,Cassiopeia,RF_normalized,RF Distance,0.9354839
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,Cassiopeia,RF_normalized,RF Distance,0.9377289
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,Cassiopeia,RF_normalized,RF Distance,0.9365079
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,Cassiopeia,RF_normalized,RF Distance,0.9543058
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,Cassiopeia,RF_normalized,RF Distance,0.9585308
+mu,Mutation Rate,Mutation rate,0.1,rep001,FateScape_slingshot,TreeDistance,Information Based Distance,0.5608
+mu,Mutation Rate,Mutation rate,0.1,rep002,FateScape_slingshot,TreeDistance,Information Based Distance,0.5346
+mu,Mutation Rate,Mutation rate,0.1,rep003,FateScape_slingshot,TreeDistance,Information Based Distance,0.5594
+mu,Mutation Rate,Mutation rate,0.2,rep001,FateScape_slingshot,TreeDistance,Information Based Distance,0.5995
+mu,Mutation Rate,Mutation rate,0.2,rep002,FateScape_slingshot,TreeDistance,Information Based Distance,0.5224
+mu,Mutation Rate,Mutation rate,0.2,rep003,FateScape_slingshot,TreeDistance,Information Based Distance,0.6132
+mu,Mutation Rate,Mutation rate,0.3,rep001,FateScape_slingshot,TreeDistance,Information Based Distance,0.6396
+mu,Mutation Rate,Mutation rate,0.3,rep002,FateScape_slingshot,TreeDistance,Information Based Distance,0.5816
+mu,Mutation Rate,Mutation rate,0.3,rep003,FateScape_slingshot,TreeDistance,Information Based Distance,0.6042
+mu,Mutation Rate,Mutation rate,0.1,rep001,FateScape_monocle,TreeDistance,Information Based Distance,0.6195
+mu,Mutation Rate,Mutation rate,0.1,rep002,FateScape_monocle,TreeDistance,Information Based Distance,0.6036
+mu,Mutation Rate,Mutation rate,0.1,rep003,FateScape_monocle,TreeDistance,Information Based Distance,0.5554
+mu,Mutation Rate,Mutation rate,0.2,rep001,FateScape_monocle,TreeDistance,Information Based Distance,0.6046
+mu,Mutation Rate,Mutation rate,0.2,rep002,FateScape_monocle,TreeDistance,Information Based Distance,0.5153
+mu,Mutation Rate,Mutation rate,0.2,rep003,FateScape_monocle,TreeDistance,Information Based Distance,0.5852
+mu,Mutation Rate,Mutation rate,0.3,rep001,FateScape_monocle,TreeDistance,Information Based Distance,0.635
+mu,Mutation Rate,Mutation rate,0.3,rep002,FateScape_monocle,TreeDistance,Information Based Distance,0.5811
+mu,Mutation Rate,Mutation rate,0.3,rep003,FateScape_monocle,TreeDistance,Information Based Distance,0.5878
+mu,Mutation Rate,Mutation rate,0.1,rep001,LinRace,TreeDistance,Information Based Distance,0.6853
+mu,Mutation Rate,Mutation rate,0.1,rep002,LinRace,TreeDistance,Information Based Distance,0.6715
+mu,Mutation Rate,Mutation rate,0.1,rep003,LinRace,TreeDistance,Information Based Distance,0.6067
+mu,Mutation Rate,Mutation rate,0.2,rep001,LinRace,TreeDistance,Information Based Distance,0.6708
+mu,Mutation Rate,Mutation rate,0.2,rep002,LinRace,TreeDistance,Information Based Distance,0.6017
+mu,Mutation Rate,Mutation rate,0.2,rep003,LinRace,TreeDistance,Information Based Distance,0.5634
+mu,Mutation Rate,Mutation rate,0.3,rep001,LinRace,TreeDistance,Information Based Distance,0.6939
+mu,Mutation Rate,Mutation rate,0.3,rep002,LinRace,TreeDistance,Information Based Distance,0.5814
+mu,Mutation Rate,Mutation rate,0.3,rep003,LinRace,TreeDistance,Information Based Distance,0.6623
+mu,Mutation Rate,Mutation rate,0.1,rep001,LinTIMaT,TreeDistance,Information Based Distance,0.8268
+mu,Mutation Rate,Mutation rate,0.1,rep002,LinTIMaT,TreeDistance,Information Based Distance,0.8008
+mu,Mutation Rate,Mutation rate,0.1,rep003,LinTIMaT,TreeDistance,Information Based Distance,0.848
+mu,Mutation Rate,Mutation rate,0.2,rep001,LinTIMaT,TreeDistance,Information Based Distance,0.8324
+mu,Mutation Rate,Mutation rate,0.2,rep002,LinTIMaT,TreeDistance,Information Based Distance,0.8319
+mu,Mutation Rate,Mutation rate,0.2,rep003,LinTIMaT,TreeDistance,Information Based Distance,0.8444
+mu,Mutation Rate,Mutation rate,0.3,rep001,LinTIMaT,TreeDistance,Information Based Distance,0.8504
+mu,Mutation Rate,Mutation rate,0.3,rep002,LinTIMaT,TreeDistance,Information Based Distance,0.8293
+mu,Mutation Rate,Mutation rate,0.3,rep003,LinTIMaT,TreeDistance,Information Based Distance,0.7908
+mu,Mutation Rate,Mutation rate,0.1,rep001,NJ method,TreeDistance,Information Based Distance,0.606
+mu,Mutation Rate,Mutation rate,0.1,rep002,NJ method,TreeDistance,Information Based Distance,0.5683
+mu,Mutation Rate,Mutation rate,0.1,rep003,NJ method,TreeDistance,Information Based Distance,0.5877
+mu,Mutation Rate,Mutation rate,0.2,rep001,NJ method,TreeDistance,Information Based Distance,0.6679
+mu,Mutation Rate,Mutation rate,0.2,rep002,NJ method,TreeDistance,Information Based Distance,0.6355
+mu,Mutation Rate,Mutation rate,0.2,rep003,NJ method,TreeDistance,Information Based Distance,0.673
+mu,Mutation Rate,Mutation rate,0.3,rep001,NJ method,TreeDistance,Information Based Distance,0.6534
+mu,Mutation Rate,Mutation rate,0.3,rep002,NJ method,TreeDistance,Information Based Distance,0.6323
+mu,Mutation Rate,Mutation rate,0.3,rep003,NJ method,TreeDistance,Information Based Distance,0.6997
+mu,Mutation Rate,Mutation rate,0.1,rep001,Cassiopeia,TreeDistance,Information Based Distance,0.6044755
+mu,Mutation Rate,Mutation rate,0.1,rep002,Cassiopeia,TreeDistance,Information Based Distance,0.5884079
+mu,Mutation Rate,Mutation rate,0.1,rep003,Cassiopeia,TreeDistance,Information Based Distance,0.60204
+mu,Mutation Rate,Mutation rate,0.2,rep001,Cassiopeia,TreeDistance,Information Based Distance,0.5914546
+mu,Mutation Rate,Mutation rate,0.2,rep002,Cassiopeia,TreeDistance,Information Based Distance,0.6487219
+mu,Mutation Rate,Mutation rate,0.2,rep003,Cassiopeia,TreeDistance,Information Based Distance,0.6751942
+mu,Mutation Rate,Mutation rate,0.3,rep001,Cassiopeia,TreeDistance,Information Based Distance,0.6385407
+mu,Mutation Rate,Mutation rate,0.3,rep002,Cassiopeia,TreeDistance,Information Based Distance,0.6350228
+mu,Mutation Rate,Mutation rate,0.3,rep003,Cassiopeia,TreeDistance,Information Based Distance,0.6564568
+mu,Mutation Rate,Mutation rate,0.1,rep001,FateScape_slingshot,Nye,Nye Similarity Score,0.4571
+mu,Mutation Rate,Mutation rate,0.1,rep002,FateScape_slingshot,Nye,Nye Similarity Score,0.4934
+mu,Mutation Rate,Mutation rate,0.1,rep003,FateScape_slingshot,Nye,Nye Similarity Score,0.4677
+mu,Mutation Rate,Mutation rate,0.2,rep001,FateScape_slingshot,Nye,Nye Similarity Score,0.4314
+mu,Mutation Rate,Mutation rate,0.2,rep002,FateScape_slingshot,Nye,Nye Similarity Score,0.4522
+mu,Mutation Rate,Mutation rate,0.2,rep003,FateScape_slingshot,Nye,Nye Similarity Score,0.4155
+mu,Mutation Rate,Mutation rate,0.3,rep001,FateScape_slingshot,Nye,Nye Similarity Score,0.3693
+mu,Mutation Rate,Mutation rate,0.3,rep002,FateScape_slingshot,Nye,Nye Similarity Score,0.4169
+mu,Mutation Rate,Mutation rate,0.3,rep003,FateScape_slingshot,Nye,Nye Similarity Score,0.3907
+mu,Mutation Rate,Mutation rate,0.1,rep001,FateScape_monocle,Nye,Nye Similarity Score,0.4297
+mu,Mutation Rate,Mutation rate,0.1,rep002,FateScape_monocle,Nye,Nye Similarity Score,0.4426
+mu,Mutation Rate,Mutation rate,0.1,rep003,FateScape_monocle,Nye,Nye Similarity Score,0.4723
+mu,Mutation Rate,Mutation rate,0.2,rep001,FateScape_monocle,Nye,Nye Similarity Score,0.4337
+mu,Mutation Rate,Mutation rate,0.2,rep002,FateScape_monocle,Nye,Nye Similarity Score,0.4582
+mu,Mutation Rate,Mutation rate,0.2,rep003,FateScape_monocle,Nye,Nye Similarity Score,0.4163
+mu,Mutation Rate,Mutation rate,0.3,rep001,FateScape_monocle,Nye,Nye Similarity Score,0.3681
+mu,Mutation Rate,Mutation rate,0.3,rep002,FateScape_monocle,Nye,Nye Similarity Score,0.4163
+mu,Mutation Rate,Mutation rate,0.3,rep003,FateScape_monocle,Nye,Nye Similarity Score,0.3894
+mu,Mutation Rate,Mutation rate,0.1,rep001,LinRace,Nye,Nye Similarity Score,0.3358
+mu,Mutation Rate,Mutation rate,0.1,rep002,LinRace,Nye,Nye Similarity Score,0.3573
+mu,Mutation Rate,Mutation rate,0.1,rep003,LinRace,Nye,Nye Similarity Score,0.3599
+mu,Mutation Rate,Mutation rate,0.2,rep001,LinRace,Nye,Nye Similarity Score,0.3533
+mu,Mutation Rate,Mutation rate,0.2,rep002,LinRace,Nye,Nye Similarity Score,0.3668
+mu,Mutation Rate,Mutation rate,0.2,rep003,LinRace,Nye,Nye Similarity Score,0.36
+mu,Mutation Rate,Mutation rate,0.3,rep001,LinRace,Nye,Nye Similarity Score,0.3062
+mu,Mutation Rate,Mutation rate,0.3,rep002,LinRace,Nye,Nye Similarity Score,0.3585
+mu,Mutation Rate,Mutation rate,0.3,rep003,LinRace,Nye,Nye Similarity Score,0.3058
+mu,Mutation Rate,Mutation rate,0.1,rep001,LinTIMaT,Nye,Nye Similarity Score,0.2834
+mu,Mutation Rate,Mutation rate,0.1,rep002,LinTIMaT,Nye,Nye Similarity Score,0.2929
+mu,Mutation Rate,Mutation rate,0.1,rep003,LinTIMaT,Nye,Nye Similarity Score,0.2714
+mu,Mutation Rate,Mutation rate,0.2,rep001,LinTIMaT,Nye,Nye Similarity Score,0.281
+mu,Mutation Rate,Mutation rate,0.2,rep002,LinTIMaT,Nye,Nye Similarity Score,0.268
+mu,Mutation Rate,Mutation rate,0.2,rep003,LinTIMaT,Nye,Nye Similarity Score,0.2808
+mu,Mutation Rate,Mutation rate,0.3,rep001,LinTIMaT,Nye,Nye Similarity Score,0.2494
+mu,Mutation Rate,Mutation rate,0.3,rep002,LinTIMaT,Nye,Nye Similarity Score,0.2947
+mu,Mutation Rate,Mutation rate,0.3,rep003,LinTIMaT,Nye,Nye Similarity Score,0.3005
+mu,Mutation Rate,Mutation rate,0.1,rep001,NJ method,Nye,Nye Similarity Score,0.4154
+mu,Mutation Rate,Mutation rate,0.1,rep002,NJ method,Nye,Nye Similarity Score,0.436
+mu,Mutation Rate,Mutation rate,0.1,rep003,NJ method,Nye,Nye Similarity Score,0.4071
+mu,Mutation Rate,Mutation rate,0.2,rep001,NJ method,Nye,Nye Similarity Score,0.3481
+mu,Mutation Rate,Mutation rate,0.2,rep002,NJ method,Nye,Nye Similarity Score,0.3684
+mu,Mutation Rate,Mutation rate,0.2,rep003,NJ method,Nye,Nye Similarity Score,0.331
+mu,Mutation Rate,Mutation rate,0.3,rep001,NJ method,Nye,Nye Similarity Score,0.306
+mu,Mutation Rate,Mutation rate,0.3,rep002,NJ method,Nye,Nye Similarity Score,0.3316
+mu,Mutation Rate,Mutation rate,0.3,rep003,NJ method,Nye,Nye Similarity Score,0.301
+mu,Mutation Rate,Mutation rate,0.1,rep001,Cassiopeia,Nye,Nye Similarity Score,0.3873767
+mu,Mutation Rate,Mutation rate,0.1,rep002,Cassiopeia,Nye,Nye Similarity Score,0.3964397
+mu,Mutation Rate,Mutation rate,0.1,rep003,Cassiopeia,Nye,Nye Similarity Score,0.3825995
+mu,Mutation Rate,Mutation rate,0.2,rep001,Cassiopeia,Nye,Nye Similarity Score,0.3416458
+mu,Mutation Rate,Mutation rate,0.2,rep002,Cassiopeia,Nye,Nye Similarity Score,0.3084584
+mu,Mutation Rate,Mutation rate,0.2,rep003,Cassiopeia,Nye,Nye Similarity Score,0.3321243
+mu,Mutation Rate,Mutation rate,0.3,rep001,Cassiopeia,Nye,Nye Similarity Score,0.2498152
+mu,Mutation Rate,Mutation rate,0.3,rep002,Cassiopeia,Nye,Nye Similarity Score,0.3281908
+mu,Mutation Rate,Mutation rate,0.3,rep003,Cassiopeia,Nye,Nye Similarity Score,0.2787871
+mu,Mutation Rate,Mutation rate,0.1,rep001,FateScape_slingshot,RF_normalized,RF Distance,0.8677
+mu,Mutation Rate,Mutation rate,0.1,rep002,FateScape_slingshot,RF_normalized,RF Distance,0.8413
+mu,Mutation Rate,Mutation rate,0.1,rep003,FateScape_slingshot,RF_normalized,RF Distance,0.8472
+mu,Mutation Rate,Mutation rate,0.2,rep001,FateScape_slingshot,RF_normalized,RF Distance,0.8785
+mu,Mutation Rate,Mutation rate,0.2,rep002,FateScape_slingshot,RF_normalized,RF Distance,0.8765
+mu,Mutation Rate,Mutation rate,0.2,rep003,FateScape_slingshot,RF_normalized,RF Distance,0.8922
+mu,Mutation Rate,Mutation rate,0.3,rep001,FateScape_slingshot,RF_normalized,RF Distance,0.9157
+mu,Mutation Rate,Mutation rate,0.3,rep002,FateScape_slingshot,RF_normalized,RF Distance,0.8922
+mu,Mutation Rate,Mutation rate,0.3,rep003,FateScape_slingshot,RF_normalized,RF Distance,0.9108
+mu,Mutation Rate,Mutation rate,0.1,rep001,FateScape_monocle,RF_normalized,RF Distance,0.862
+mu,Mutation Rate,Mutation rate,0.1,rep002,FateScape_monocle,RF_normalized,RF Distance,0.8697
+mu,Mutation Rate,Mutation rate,0.1,rep003,FateScape_monocle,RF_normalized,RF Distance,0.8442
+mu,Mutation Rate,Mutation rate,0.2,rep001,FateScape_monocle,RF_normalized,RF Distance,0.8726
+mu,Mutation Rate,Mutation rate,0.2,rep002,FateScape_monocle,RF_normalized,RF Distance,0.8563
+mu,Mutation Rate,Mutation rate,0.2,rep003,FateScape_monocle,RF_normalized,RF Distance,0.8971
+mu,Mutation Rate,Mutation rate,0.3,rep001,FateScape_monocle,RF_normalized,RF Distance,0.9206
+mu,Mutation Rate,Mutation rate,0.3,rep002,FateScape_monocle,RF_normalized,RF Distance,0.8893
+mu,Mutation Rate,Mutation rate,0.3,rep003,FateScape_monocle,RF_normalized,RF Distance,0.9177
+mu,Mutation Rate,Mutation rate,0.1,rep001,LinRace,RF_normalized,RF Distance,0.949
+mu,Mutation Rate,Mutation rate,0.1,rep002,LinRace,RF_normalized,RF Distance,0.9422
+mu,Mutation Rate,Mutation rate,0.1,rep003,LinRace,RF_normalized,RF Distance,0.9539
+mu,Mutation Rate,Mutation rate,0.2,rep001,LinRace,RF_normalized,RF Distance,0.9431
+mu,Mutation Rate,Mutation rate,0.2,rep002,LinRace,RF_normalized,RF Distance,0.9588
+mu,Mutation Rate,Mutation rate,0.2,rep003,LinRace,RF_normalized,RF Distance,0.948
+mu,Mutation Rate,Mutation rate,0.3,rep001,LinRace,RF_normalized,RF Distance,0.9608
+mu,Mutation Rate,Mutation rate,0.3,rep002,LinRace,RF_normalized,RF Distance,0.9612
+mu,Mutation Rate,Mutation rate,0.3,rep003,LinRace,RF_normalized,RF Distance,0.9698
+mu,Mutation Rate,Mutation rate,0.1,rep001,LinTIMaT,RF_normalized,RF Distance,0.945
+mu,Mutation Rate,Mutation rate,0.1,rep002,LinTIMaT,RF_normalized,RF Distance,0.9471
+mu,Mutation Rate,Mutation rate,0.1,rep003,LinTIMaT,RF_normalized,RF Distance,0.949
+mu,Mutation Rate,Mutation rate,0.2,rep001,LinTIMaT,RF_normalized,RF Distance,0.949
+mu,Mutation Rate,Mutation rate,0.2,rep002,LinTIMaT,RF_normalized,RF Distance,0.9657
+mu,Mutation Rate,Mutation rate,0.2,rep003,LinTIMaT,RF_normalized,RF Distance,0.9571
+mu,Mutation Rate,Mutation rate,0.3,rep001,LinTIMaT,RF_normalized,RF Distance,0.949
+mu,Mutation Rate,Mutation rate,0.3,rep002,LinTIMaT,RF_normalized,RF Distance,0.9706
+mu,Mutation Rate,Mutation rate,0.3,rep003,LinTIMaT,RF_normalized,RF Distance,0.9392
+mu,Mutation Rate,Mutation rate,0.1,rep001,NJ method,RF_normalized,RF Distance,0.9449
+mu,Mutation Rate,Mutation rate,0.1,rep002,NJ method,RF_normalized,RF Distance,0.8912
+mu,Mutation Rate,Mutation rate,0.1,rep003,NJ method,RF_normalized,RF Distance,0.9157
+mu,Mutation Rate,Mutation rate,0.2,rep001,NJ method,RF_normalized,RF Distance,0.9471
+mu,Mutation Rate,Mutation rate,0.2,rep002,NJ method,RF_normalized,RF Distance,0.9412
+mu,Mutation Rate,Mutation rate,0.2,rep003,NJ method,RF_normalized,RF Distance,0.9371
+mu,Mutation Rate,Mutation rate,0.3,rep001,NJ method,RF_normalized,RF Distance,0.9745
+mu,Mutation Rate,Mutation rate,0.3,rep002,NJ method,RF_normalized,RF Distance,0.9627
+mu,Mutation Rate,Mutation rate,0.3,rep003,NJ method,RF_normalized,RF Distance,0.9701
+mu,Mutation Rate,Mutation rate,0.1,rep001,Cassiopeia,RF_normalized,RF Distance,0.8785671
+mu,Mutation Rate,Mutation rate,0.1,rep002,Cassiopeia,RF_normalized,RF Distance,0.8831406
+mu,Mutation Rate,Mutation rate,0.1,rep003,Cassiopeia,RF_normalized,RF Distance,0.8915296
+mu,Mutation Rate,Mutation rate,0.2,rep001,Cassiopeia,RF_normalized,RF Distance,0.9350092
+mu,Mutation Rate,Mutation rate,0.2,rep002,Cassiopeia,RF_normalized,RF Distance,0.9354839
+mu,Mutation Rate,Mutation rate,0.2,rep003,Cassiopeia,RF_normalized,RF Distance,0.9377289
+mu,Mutation Rate,Mutation rate,0.3,rep001,Cassiopeia,RF_normalized,RF Distance,0.9711538
+mu,Mutation Rate,Mutation rate,0.3,rep002,Cassiopeia,RF_normalized,RF Distance,0.9374609
+mu,Mutation Rate,Mutation rate,0.3,rep003,Cassiopeia,RF_normalized,RF Distance,0.9541284
+ncell,Number Of Cells,Number of cells,512,rep001,FateScape_slingshot,TreeDistance,Information Based Distance,0.5578
+ncell,Number Of Cells,Number of cells,512,rep002,FateScape_slingshot,TreeDistance,Information Based Distance,0.5607
+ncell,Number Of Cells,Number of cells,512,rep003,FateScape_slingshot,TreeDistance,Information Based Distance,0.5645
+ncell,Number Of Cells,Number of cells,1024,rep001,FateScape_slingshot,TreeDistance,Information Based Distance,0.5995
+ncell,Number Of Cells,Number of cells,1024,rep002,FateScape_slingshot,TreeDistance,Information Based Distance,0.5224
+ncell,Number Of Cells,Number of cells,1024,rep003,FateScape_slingshot,TreeDistance,Information Based Distance,0.6132
+ncell,Number Of Cells,Number of cells,2048,rep001,FateScape_slingshot,TreeDistance,Information Based Distance,0.6111
+ncell,Number Of Cells,Number of cells,2048,rep002,FateScape_slingshot,TreeDistance,Information Based Distance,0.5572
+ncell,Number Of Cells,Number of cells,2048,rep003,FateScape_slingshot,TreeDistance,Information Based Distance,0.5618
+ncell,Number Of Cells,Number of cells,512,rep001,FateScape_monocle,TreeDistance,Information Based Distance,0.5541
+ncell,Number Of Cells,Number of cells,512,rep002,FateScape_monocle,TreeDistance,Information Based Distance,0.5834
+ncell,Number Of Cells,Number of cells,512,rep003,FateScape_monocle,TreeDistance,Information Based Distance,0.5843
+ncell,Number Of Cells,Number of cells,1024,rep001,FateScape_monocle,TreeDistance,Information Based Distance,0.6046
+ncell,Number Of Cells,Number of cells,1024,rep002,FateScape_monocle,TreeDistance,Information Based Distance,0.5153
+ncell,Number Of Cells,Number of cells,1024,rep003,FateScape_monocle,TreeDistance,Information Based Distance,0.5852
+ncell,Number Of Cells,Number of cells,2048,rep001,FateScape_monocle,TreeDistance,Information Based Distance,0.5593
+ncell,Number Of Cells,Number of cells,2048,rep002,FateScape_monocle,TreeDistance,Information Based Distance,0.5635
+ncell,Number Of Cells,Number of cells,2048,rep003,FateScape_monocle,TreeDistance,Information Based Distance,0.5841
+ncell,Number Of Cells,Number of cells,512,rep001,LinRace,TreeDistance,Information Based Distance,0.5833
+ncell,Number Of Cells,Number of cells,512,rep002,LinRace,TreeDistance,Information Based Distance,0.5986
+ncell,Number Of Cells,Number of cells,512,rep003,LinRace,TreeDistance,Information Based Distance,0.633
+ncell,Number Of Cells,Number of cells,1024,rep001,LinRace,TreeDistance,Information Based Distance,0.6708
+ncell,Number Of Cells,Number of cells,1024,rep002,LinRace,TreeDistance,Information Based Distance,0.6017
+ncell,Number Of Cells,Number of cells,1024,rep003,LinRace,TreeDistance,Information Based Distance,0.5634
+ncell,Number Of Cells,Number of cells,2048,rep001,LinRace,TreeDistance,Information Based Distance,0.637
+ncell,Number Of Cells,Number of cells,2048,rep002,LinRace,TreeDistance,Information Based Distance,0.6232
+ncell,Number Of Cells,Number of cells,2048,rep003,LinRace,TreeDistance,Information Based Distance,0.6401
+ncell,Number Of Cells,Number of cells,512,rep001,LinTIMaT,TreeDistance,Information Based Distance,0.8073
+ncell,Number Of Cells,Number of cells,512,rep002,LinTIMaT,TreeDistance,Information Based Distance,0.7773
+ncell,Number Of Cells,Number of cells,512,rep003,LinTIMaT,TreeDistance,Information Based Distance,0.8271
+ncell,Number Of Cells,Number of cells,1024,rep001,LinTIMaT,TreeDistance,Information Based Distance,0.8324
+ncell,Number Of Cells,Number of cells,1024,rep002,LinTIMaT,TreeDistance,Information Based Distance,0.8319
+ncell,Number Of Cells,Number of cells,1024,rep003,LinTIMaT,TreeDistance,Information Based Distance,0.8444
+ncell,Number Of Cells,Number of cells,2048,rep001,LinTIMaT,TreeDistance,Information Based Distance,0.8048
+ncell,Number Of Cells,Number of cells,2048,rep002,LinTIMaT,TreeDistance,Information Based Distance,0.8587
+ncell,Number Of Cells,Number of cells,2048,rep003,LinTIMaT,TreeDistance,Information Based Distance,0.8552
+ncell,Number Of Cells,Number of cells,512,rep001,NJ method,TreeDistance,Information Based Distance,0.5932
+ncell,Number Of Cells,Number of cells,512,rep002,NJ method,TreeDistance,Information Based Distance,0.6681
+ncell,Number Of Cells,Number of cells,512,rep003,NJ method,TreeDistance,Information Based Distance,0.5716
+ncell,Number Of Cells,Number of cells,1024,rep001,NJ method,TreeDistance,Information Based Distance,0.6679
+ncell,Number Of Cells,Number of cells,1024,rep002,NJ method,TreeDistance,Information Based Distance,0.6355
+ncell,Number Of Cells,Number of cells,1024,rep003,NJ method,TreeDistance,Information Based Distance,0.673
+ncell,Number Of Cells,Number of cells,2048,rep001,NJ method,TreeDistance,Information Based Distance,0.6565
+ncell,Number Of Cells,Number of cells,2048,rep002,NJ method,TreeDistance,Information Based Distance,0.6958
+ncell,Number Of Cells,Number of cells,2048,rep003,NJ method,TreeDistance,Information Based Distance,0.6509
+ncell,Number Of Cells,Number of cells,512,rep001,Cassiopeia,TreeDistance,Information Based Distance,0.6107966
+ncell,Number Of Cells,Number of cells,512,rep002,Cassiopeia,TreeDistance,Information Based Distance,0.6448579
+ncell,Number Of Cells,Number of cells,512,rep003,Cassiopeia,TreeDistance,Information Based Distance,0.6083997
+ncell,Number Of Cells,Number of cells,1024,rep001,Cassiopeia,TreeDistance,Information Based Distance,0.5914546
+ncell,Number Of Cells,Number of cells,1024,rep002,Cassiopeia,TreeDistance,Information Based Distance,0.6487219
+ncell,Number Of Cells,Number of cells,1024,rep003,Cassiopeia,TreeDistance,Information Based Distance,0.6751942
+ncell,Number Of Cells,Number of cells,2048,rep001,Cassiopeia,TreeDistance,Information Based Distance,0.7796867
+ncell,Number Of Cells,Number of cells,2048,rep002,Cassiopeia,TreeDistance,Information Based Distance,0.6700382
+ncell,Number Of Cells,Number of cells,2048,rep003,Cassiopeia,TreeDistance,Information Based Distance,0.6339588
+ncell,Number Of Cells,Number of cells,512,rep001,FateScape_slingshot,Nye,Nye Similarity Score,0.4855
+ncell,Number Of Cells,Number of cells,512,rep002,FateScape_slingshot,Nye,Nye Similarity Score,0.4608
+ncell,Number Of Cells,Number of cells,512,rep003,FateScape_slingshot,Nye,Nye Similarity Score,0.4734
+ncell,Number Of Cells,Number of cells,1024,rep001,FateScape_slingshot,Nye,Nye Similarity Score,0.4314
+ncell,Number Of Cells,Number of cells,1024,rep002,FateScape_slingshot,Nye,Nye Similarity Score,0.4522
+ncell,Number Of Cells,Number of cells,1024,rep003,FateScape_slingshot,Nye,Nye Similarity Score,0.4155
+ncell,Number Of Cells,Number of cells,2048,rep001,FateScape_slingshot,Nye,Nye Similarity Score,0.4172
+ncell,Number Of Cells,Number of cells,2048,rep002,FateScape_slingshot,Nye,Nye Similarity Score,0.4159
+ncell,Number Of Cells,Number of cells,2048,rep003,FateScape_slingshot,Nye,Nye Similarity Score,0.3667
+ncell,Number Of Cells,Number of cells,512,rep001,FateScape_monocle,Nye,Nye Similarity Score,0.4875
+ncell,Number Of Cells,Number of cells,512,rep002,FateScape_monocle,Nye,Nye Similarity Score,0.4558
+ncell,Number Of Cells,Number of cells,512,rep003,FateScape_monocle,Nye,Nye Similarity Score,0.4655
+ncell,Number Of Cells,Number of cells,1024,rep001,FateScape_monocle,Nye,Nye Similarity Score,0.4337
+ncell,Number Of Cells,Number of cells,1024,rep002,FateScape_monocle,Nye,Nye Similarity Score,0.4582
+ncell,Number Of Cells,Number of cells,1024,rep003,FateScape_monocle,Nye,Nye Similarity Score,0.4163
+ncell,Number Of Cells,Number of cells,2048,rep001,FateScape_monocle,Nye,Nye Similarity Score,0.4215
+ncell,Number Of Cells,Number of cells,2048,rep002,FateScape_monocle,Nye,Nye Similarity Score,0.4138
+ncell,Number Of Cells,Number of cells,2048,rep003,FateScape_monocle,Nye,Nye Similarity Score,0.3549
+ncell,Number Of Cells,Number of cells,512,rep001,LinRace,Nye,Nye Similarity Score,0.4028
+ncell,Number Of Cells,Number of cells,512,rep002,LinRace,Nye,Nye Similarity Score,0.3641
+ncell,Number Of Cells,Number of cells,512,rep003,LinRace,Nye,Nye Similarity Score,0.3801
+ncell,Number Of Cells,Number of cells,1024,rep001,LinRace,Nye,Nye Similarity Score,0.3533
+ncell,Number Of Cells,Number of cells,1024,rep002,LinRace,Nye,Nye Similarity Score,0.3668
+ncell,Number Of Cells,Number of cells,1024,rep003,LinRace,Nye,Nye Similarity Score,0.36
+ncell,Number Of Cells,Number of cells,2048,rep001,LinRace,Nye,Nye Similarity Score,0.3378
+ncell,Number Of Cells,Number of cells,2048,rep002,LinRace,Nye,Nye Similarity Score,0.3347
+ncell,Number Of Cells,Number of cells,2048,rep003,LinRace,Nye,Nye Similarity Score,0.3201
+ncell,Number Of Cells,Number of cells,512,rep001,LinTIMaT,Nye,Nye Similarity Score,0.3002
+ncell,Number Of Cells,Number of cells,512,rep002,LinTIMaT,Nye,Nye Similarity Score,0.2871
+ncell,Number Of Cells,Number of cells,512,rep003,LinTIMaT,Nye,Nye Similarity Score,0.2519
+ncell,Number Of Cells,Number of cells,1024,rep001,LinTIMaT,Nye,Nye Similarity Score,0.281
+ncell,Number Of Cells,Number of cells,1024,rep002,LinTIMaT,Nye,Nye Similarity Score,0.268
+ncell,Number Of Cells,Number of cells,1024,rep003,LinTIMaT,Nye,Nye Similarity Score,0.2808
+ncell,Number Of Cells,Number of cells,2048,rep001,LinTIMaT,Nye,Nye Similarity Score,0.3093
+ncell,Number Of Cells,Number of cells,2048,rep002,LinTIMaT,Nye,Nye Similarity Score,0.279
+ncell,Number Of Cells,Number of cells,2048,rep003,LinTIMaT,Nye,Nye Similarity Score,0.2899
+ncell,Number Of Cells,Number of cells,512,rep001,NJ method,Nye,Nye Similarity Score,0.4048
+ncell,Number Of Cells,Number of cells,512,rep002,NJ method,Nye,Nye Similarity Score,0.3521
+ncell,Number Of Cells,Number of cells,512,rep003,NJ method,Nye,Nye Similarity Score,0.4183
+ncell,Number Of Cells,Number of cells,1024,rep001,NJ method,Nye,Nye Similarity Score,0.3481
+ncell,Number Of Cells,Number of cells,1024,rep002,NJ method,Nye,Nye Similarity Score,0.3684
+ncell,Number Of Cells,Number of cells,1024,rep003,NJ method,Nye,Nye Similarity Score,0.331
+ncell,Number Of Cells,Number of cells,2048,rep001,NJ method,Nye,Nye Similarity Score,0.3555
+ncell,Number Of Cells,Number of cells,2048,rep002,NJ method,Nye,Nye Similarity Score,0.3262
+ncell,Number Of Cells,Number of cells,2048,rep003,NJ method,Nye,Nye Similarity Score,0.3188
+ncell,Number Of Cells,Number of cells,512,rep001,Cassiopeia,Nye,Nye Similarity Score,0.427185
+ncell,Number Of Cells,Number of cells,512,rep002,Cassiopeia,Nye,Nye Similarity Score,0.3557757
+ncell,Number Of Cells,Number of cells,512,rep003,Cassiopeia,Nye,Nye Similarity Score,0.335539
+ncell,Number Of Cells,Number of cells,1024,rep001,Cassiopeia,Nye,Nye Similarity Score,0.3416458
+ncell,Number Of Cells,Number of cells,1024,rep002,Cassiopeia,Nye,Nye Similarity Score,0.3084584
+ncell,Number Of Cells,Number of cells,1024,rep003,Cassiopeia,Nye,Nye Similarity Score,0.3321243
+ncell,Number Of Cells,Number of cells,2048,rep001,Cassiopeia,Nye,Nye Similarity Score,0.1545912
+ncell,Number Of Cells,Number of cells,2048,rep002,Cassiopeia,Nye,Nye Similarity Score,0.2968023
+ncell,Number Of Cells,Number of cells,2048,rep003,Cassiopeia,Nye,Nye Similarity Score,0.277809
+ncell,Number Of Cells,Number of cells,512,rep001,FateScape_slingshot,RF_normalized,RF Distance,0.833
+ncell,Number Of Cells,Number of cells,512,rep002,FateScape_slingshot,RF_normalized,RF Distance,0.8546
+ncell,Number Of Cells,Number of cells,512,rep003,FateScape_slingshot,RF_normalized,RF Distance,0.8585
+ncell,Number Of Cells,Number of cells,1024,rep001,FateScape_slingshot,RF_normalized,RF Distance,0.8785
+ncell,Number Of Cells,Number of cells,1024,rep002,FateScape_slingshot,RF_normalized,RF Distance,0.8765
+ncell,Number Of Cells,Number of cells,1024,rep003,FateScape_slingshot,RF_normalized,RF Distance,0.8922
+ncell,Number Of Cells,Number of cells,2048,rep001,FateScape_slingshot,RF_normalized,RF Distance,0.8948
+ncell,Number Of Cells,Number of cells,2048,rep002,FateScape_slingshot,RF_normalized,RF Distance,0.9036
+ncell,Number Of Cells,Number of cells,2048,rep003,FateScape_slingshot,RF_normalized,RF Distance,0.9229
+ncell,Number Of Cells,Number of cells,512,rep001,FateScape_monocle,RF_normalized,RF Distance,0.833
+ncell,Number Of Cells,Number of cells,512,rep002,FateScape_monocle,RF_normalized,RF Distance,0.8565
+ncell,Number Of Cells,Number of cells,512,rep003,FateScape_monocle,RF_normalized,RF Distance,0.8546
+ncell,Number Of Cells,Number of cells,1024,rep001,FateScape_monocle,RF_normalized,RF Distance,0.8726
+ncell,Number Of Cells,Number of cells,1024,rep002,FateScape_monocle,RF_normalized,RF Distance,0.8563
+ncell,Number Of Cells,Number of cells,1024,rep003,FateScape_monocle,RF_normalized,RF Distance,0.8971
+ncell,Number Of Cells,Number of cells,2048,rep001,FateScape_monocle,RF_normalized,RF Distance,0.8987
+ncell,Number Of Cells,Number of cells,2048,rep002,FateScape_monocle,RF_normalized,RF Distance,0.9036
+ncell,Number Of Cells,Number of cells,2048,rep003,FateScape_monocle,RF_normalized,RF Distance,0.9286
+ncell,Number Of Cells,Number of cells,512,rep001,LinRace,RF_normalized,RF Distance,0.9292
+ncell,Number Of Cells,Number of cells,512,rep002,LinRace,RF_normalized,RF Distance,0.943
+ncell,Number Of Cells,Number of cells,512,rep003,LinRace,RF_normalized,RF Distance,0.9332
+ncell,Number Of Cells,Number of cells,1024,rep001,LinRace,RF_normalized,RF Distance,0.9431
+ncell,Number Of Cells,Number of cells,1024,rep002,LinRace,RF_normalized,RF Distance,0.9588
+ncell,Number Of Cells,Number of cells,1024,rep003,LinRace,RF_normalized,RF Distance,0.948
+ncell,Number Of Cells,Number of cells,2048,rep001,LinRace,RF_normalized,RF Distance,0.9623
+ncell,Number Of Cells,Number of cells,2048,rep002,LinRace,RF_normalized,RF Distance,0.9677
+ncell,Number Of Cells,Number of cells,2048,rep003,LinRace,RF_normalized,RF Distance,0.9594
+ncell,Number Of Cells,Number of cells,512,rep001,LinTIMaT,RF_normalized,RF Distance,0.9489
+ncell,Number Of Cells,Number of cells,512,rep002,LinTIMaT,RF_normalized,RF Distance,0.9705
+ncell,Number Of Cells,Number of cells,512,rep003,LinTIMaT,RF_normalized,RF Distance,0.9823
+ncell,Number Of Cells,Number of cells,1024,rep001,LinTIMaT,RF_normalized,RF Distance,0.949
+ncell,Number Of Cells,Number of cells,1024,rep002,LinTIMaT,RF_normalized,RF Distance,0.9657
+ncell,Number Of Cells,Number of cells,1024,rep003,LinTIMaT,RF_normalized,RF Distance,0.9571
+ncell,Number Of Cells,Number of cells,2048,rep001,LinTIMaT,RF_normalized,RF Distance,0.9442
+ncell,Number Of Cells,Number of cells,2048,rep002,LinTIMaT,RF_normalized,RF Distance,0.9452
+ncell,Number Of Cells,Number of cells,2048,rep003,LinTIMaT,RF_normalized,RF Distance,0.9354
+ncell,Number Of Cells,Number of cells,512,rep001,NJ method,RF_normalized,RF Distance,0.9371
+ncell,Number Of Cells,Number of cells,512,rep002,NJ method,RF_normalized,RF Distance,0.9705
+ncell,Number Of Cells,Number of cells,512,rep003,NJ method,RF_normalized,RF Distance,0.9214
+ncell,Number Of Cells,Number of cells,1024,rep001,NJ method,RF_normalized,RF Distance,0.9471
+ncell,Number Of Cells,Number of cells,1024,rep002,NJ method,RF_normalized,RF Distance,0.9412
+ncell,Number Of Cells,Number of cells,1024,rep003,NJ method,RF_normalized,RF Distance,0.9371
+ncell,Number Of Cells,Number of cells,2048,rep001,NJ method,RF_normalized,RF Distance,0.9447
+ncell,Number Of Cells,Number of cells,2048,rep002,NJ method,RF_normalized,RF Distance,0.9613
+ncell,Number Of Cells,Number of cells,2048,rep003,NJ method,RF_normalized,RF Distance,0.9657
+ncell,Number Of Cells,Number of cells,512,rep001,Cassiopeia,RF_normalized,RF Distance,0.8803987
+ncell,Number Of Cells,Number of cells,512,rep002,Cassiopeia,RF_normalized,RF Distance,0.9206731
+ncell,Number Of Cells,Number of cells,512,rep003,Cassiopeia,RF_normalized,RF Distance,0.9395466
+ncell,Number Of Cells,Number of cells,1024,rep001,Cassiopeia,RF_normalized,RF Distance,0.9350092
+ncell,Number Of Cells,Number of cells,1024,rep002,Cassiopeia,RF_normalized,RF Distance,0.9354839
+ncell,Number Of Cells,Number of cells,1024,rep003,Cassiopeia,RF_normalized,RF Distance,0.9377289
+ncell,Number Of Cells,Number of cells,2048,rep001,Cassiopeia,RF_normalized,RF Distance,0.9827721
+ncell,Number Of Cells,Number of cells,2048,rep002,Cassiopeia,RF_normalized,RF Distance,0.9418386
+ncell,Number Of Cells,Number of cells,2048,rep003,Cassiopeia,RF_normalized,RF Distance,0.9593023
+Nchar,Number Of Sites,Number of sites,8,rep001,FateScape_slingshot,TreeDistance,Information Based Distance,0.5995
+Nchar,Number Of Sites,Number of sites,8,rep002,FateScape_slingshot,TreeDistance,Information Based Distance,0.5224
+Nchar,Number Of Sites,Number of sites,8,rep003,FateScape_slingshot,TreeDistance,Information Based Distance,0.6132
+Nchar,Number Of Sites,Number of sites,12,rep001,FateScape_slingshot,TreeDistance,Information Based Distance,0.5995
+Nchar,Number Of Sites,Number of sites,12,rep002,FateScape_slingshot,TreeDistance,Information Based Distance,0.5224
+Nchar,Number Of Sites,Number of sites,12,rep003,FateScape_slingshot,TreeDistance,Information Based Distance,0.6132
+Nchar,Number Of Sites,Number of sites,16,rep001,FateScape_slingshot,TreeDistance,Information Based Distance,0.5986
+Nchar,Number Of Sites,Number of sites,16,rep002,FateScape_slingshot,TreeDistance,Information Based Distance,0.5384
+Nchar,Number Of Sites,Number of sites,16,rep003,FateScape_slingshot,TreeDistance,Information Based Distance,0.5199
+Nchar,Number Of Sites,Number of sites,8,rep001,FateScape_monocle,TreeDistance,Information Based Distance,0.6046
+Nchar,Number Of Sites,Number of sites,8,rep002,FateScape_monocle,TreeDistance,Information Based Distance,0.5153
+Nchar,Number Of Sites,Number of sites,8,rep003,FateScape_monocle,TreeDistance,Information Based Distance,0.5852
+Nchar,Number Of Sites,Number of sites,12,rep001,FateScape_monocle,TreeDistance,Information Based Distance,0.6046
+Nchar,Number Of Sites,Number of sites,12,rep002,FateScape_monocle,TreeDistance,Information Based Distance,0.5153
+Nchar,Number Of Sites,Number of sites,12,rep003,FateScape_monocle,TreeDistance,Information Based Distance,0.5852
+Nchar,Number Of Sites,Number of sites,16,rep001,FateScape_monocle,TreeDistance,Information Based Distance,0.5233
+Nchar,Number Of Sites,Number of sites,16,rep002,FateScape_monocle,TreeDistance,Information Based Distance,0.5547
+Nchar,Number Of Sites,Number of sites,16,rep003,FateScape_monocle,TreeDistance,Information Based Distance,0.5766
+Nchar,Number Of Sites,Number of sites,8,rep001,LinRace,TreeDistance,Information Based Distance,0.6708
+Nchar,Number Of Sites,Number of sites,8,rep002,LinRace,TreeDistance,Information Based Distance,0.6017
+Nchar,Number Of Sites,Number of sites,8,rep003,LinRace,TreeDistance,Information Based Distance,0.5634
+Nchar,Number Of Sites,Number of sites,12,rep001,LinRace,TreeDistance,Information Based Distance,0.6708
+Nchar,Number Of Sites,Number of sites,12,rep002,LinRace,TreeDistance,Information Based Distance,0.6017
+Nchar,Number Of Sites,Number of sites,12,rep003,LinRace,TreeDistance,Information Based Distance,0.5634
+Nchar,Number Of Sites,Number of sites,16,rep001,LinRace,TreeDistance,Information Based Distance,0.5651
+Nchar,Number Of Sites,Number of sites,16,rep002,LinRace,TreeDistance,Information Based Distance,0.5942
+Nchar,Number Of Sites,Number of sites,16,rep003,LinRace,TreeDistance,Information Based Distance,0.6226
+Nchar,Number Of Sites,Number of sites,8,rep001,LinTIMaT,TreeDistance,Information Based Distance,0.8324
+Nchar,Number Of Sites,Number of sites,8,rep002,LinTIMaT,TreeDistance,Information Based Distance,0.8319
+Nchar,Number Of Sites,Number of sites,8,rep003,LinTIMaT,TreeDistance,Information Based Distance,0.8444
+Nchar,Number Of Sites,Number of sites,12,rep001,LinTIMaT,TreeDistance,Information Based Distance,0.8324
+Nchar,Number Of Sites,Number of sites,12,rep002,LinTIMaT,TreeDistance,Information Based Distance,0.8319
+Nchar,Number Of Sites,Number of sites,12,rep003,LinTIMaT,TreeDistance,Information Based Distance,0.8444
+Nchar,Number Of Sites,Number of sites,16,rep001,LinTIMaT,TreeDistance,Information Based Distance,0.8284
+Nchar,Number Of Sites,Number of sites,16,rep002,LinTIMaT,TreeDistance,Information Based Distance,0.8381
+Nchar,Number Of Sites,Number of sites,16,rep003,LinTIMaT,TreeDistance,Information Based Distance,0.8504
+Nchar,Number Of Sites,Number of sites,8,rep001,NJ method,TreeDistance,Information Based Distance,0.6679
+Nchar,Number Of Sites,Number of sites,8,rep002,NJ method,TreeDistance,Information Based Distance,0.6355
+Nchar,Number Of Sites,Number of sites,8,rep003,NJ method,TreeDistance,Information Based Distance,0.673
+Nchar,Number Of Sites,Number of sites,12,rep001,NJ method,TreeDistance,Information Based Distance,0.6679
+Nchar,Number Of Sites,Number of sites,12,rep002,NJ method,TreeDistance,Information Based Distance,0.6355
+Nchar,Number Of Sites,Number of sites,12,rep003,NJ method,TreeDistance,Information Based Distance,0.673
+Nchar,Number Of Sites,Number of sites,16,rep001,NJ method,TreeDistance,Information Based Distance,0.6287
+Nchar,Number Of Sites,Number of sites,16,rep002,NJ method,TreeDistance,Information Based Distance,0.6243
+Nchar,Number Of Sites,Number of sites,16,rep003,NJ method,TreeDistance,Information Based Distance,0.6491
+Nchar,Number Of Sites,Number of sites,8,rep001,Cassiopeia,TreeDistance,Information Based Distance,0.5914546
+Nchar,Number Of Sites,Number of sites,8,rep002,Cassiopeia,TreeDistance,Information Based Distance,0.6487219
+Nchar,Number Of Sites,Number of sites,8,rep003,Cassiopeia,TreeDistance,Information Based Distance,0.6751942
+Nchar,Number Of Sites,Number of sites,12,rep001,Cassiopeia,TreeDistance,Information Based Distance,0.5914546
+Nchar,Number Of Sites,Number of sites,12,rep002,Cassiopeia,TreeDistance,Information Based Distance,0.6487219
+Nchar,Number Of Sites,Number of sites,12,rep003,Cassiopeia,TreeDistance,Information Based Distance,0.6751942
+Nchar,Number Of Sites,Number of sites,16,rep001,Cassiopeia,TreeDistance,Information Based Distance,0.5645841
+Nchar,Number Of Sites,Number of sites,16,rep002,Cassiopeia,TreeDistance,Information Based Distance,0.6372004
+Nchar,Number Of Sites,Number of sites,16,rep003,Cassiopeia,TreeDistance,Information Based Distance,0.5544846
+Nchar,Number Of Sites,Number of sites,8,rep001,FateScape_slingshot,Nye,Nye Similarity Score,0.3744
+Nchar,Number Of Sites,Number of sites,8,rep002,FateScape_slingshot,Nye,Nye Similarity Score,0.3766
+Nchar,Number Of Sites,Number of sites,8,rep003,FateScape_slingshot,Nye,Nye Similarity Score,0.3798
+Nchar,Number Of Sites,Number of sites,12,rep001,FateScape_slingshot,Nye,Nye Similarity Score,0.4314
+Nchar,Number Of Sites,Number of sites,12,rep002,FateScape_slingshot,Nye,Nye Similarity Score,0.4522
+Nchar,Number Of Sites,Number of sites,12,rep003,FateScape_slingshot,Nye,Nye Similarity Score,0.4155
+Nchar,Number Of Sites,Number of sites,16,rep001,FateScape_slingshot,Nye,Nye Similarity Score,0.4511
+Nchar,Number Of Sites,Number of sites,16,rep002,FateScape_slingshot,Nye,Nye Similarity Score,0.4552
+Nchar,Number Of Sites,Number of sites,16,rep003,FateScape_slingshot,Nye,Nye Similarity Score,0.4519
+Nchar,Number Of Sites,Number of sites,8,rep001,FateScape_monocle,Nye,Nye Similarity Score,0.3767
+Nchar,Number Of Sites,Number of sites,8,rep002,FateScape_monocle,Nye,Nye Similarity Score,0.3883
+Nchar,Number Of Sites,Number of sites,8,rep003,FateScape_monocle,Nye,Nye Similarity Score,0.3513
+Nchar,Number Of Sites,Number of sites,12,rep001,FateScape_monocle,Nye,Nye Similarity Score,0.4337
+Nchar,Number Of Sites,Number of sites,12,rep002,FateScape_monocle,Nye,Nye Similarity Score,0.4582
+Nchar,Number Of Sites,Number of sites,12,rep003,FateScape_monocle,Nye,Nye Similarity Score,0.4163
+Nchar,Number Of Sites,Number of sites,16,rep001,FateScape_monocle,Nye,Nye Similarity Score,0.4514
+Nchar,Number Of Sites,Number of sites,16,rep002,FateScape_monocle,Nye,Nye Similarity Score,0.4644
+Nchar,Number Of Sites,Number of sites,16,rep003,FateScape_monocle,Nye,Nye Similarity Score,0.4512
+Nchar,Number Of Sites,Number of sites,8,rep001,LinRace,Nye,Nye Similarity Score,0.3276
+Nchar,Number Of Sites,Number of sites,8,rep002,LinRace,Nye,Nye Similarity Score,0.3463
+Nchar,Number Of Sites,Number of sites,8,rep003,LinRace,Nye,Nye Similarity Score,0.3395
+Nchar,Number Of Sites,Number of sites,12,rep001,LinRace,Nye,Nye Similarity Score,0.3533
+Nchar,Number Of Sites,Number of sites,12,rep002,LinRace,Nye,Nye Similarity Score,0.3668
+Nchar,Number Of Sites,Number of sites,12,rep003,LinRace,Nye,Nye Similarity Score,0.36
+Nchar,Number Of Sites,Number of sites,16,rep001,LinRace,Nye,Nye Similarity Score,0.3811
+Nchar,Number Of Sites,Number of sites,16,rep002,LinRace,Nye,Nye Similarity Score,0.3996
+Nchar,Number Of Sites,Number of sites,16,rep003,LinRace,Nye,Nye Similarity Score,0.3545
+Nchar,Number Of Sites,Number of sites,8,rep001,LinTIMaT,Nye,Nye Similarity Score,0.256
+Nchar,Number Of Sites,Number of sites,8,rep002,LinTIMaT,Nye,Nye Similarity Score,0.2815
+Nchar,Number Of Sites,Number of sites,8,rep003,LinTIMaT,Nye,Nye Similarity Score,0.2686
+Nchar,Number Of Sites,Number of sites,12,rep001,LinTIMaT,Nye,Nye Similarity Score,0.281
+Nchar,Number Of Sites,Number of sites,12,rep002,LinTIMaT,Nye,Nye Similarity Score,0.268
+Nchar,Number Of Sites,Number of sites,12,rep003,LinTIMaT,Nye,Nye Similarity Score,0.2808
+Nchar,Number Of Sites,Number of sites,16,rep001,LinTIMaT,Nye,Nye Similarity Score,0.278
+Nchar,Number Of Sites,Number of sites,16,rep002,LinTIMaT,Nye,Nye Similarity Score,0.2784
+Nchar,Number Of Sites,Number of sites,16,rep003,LinTIMaT,Nye,Nye Similarity Score,0.2749
+Nchar,Number Of Sites,Number of sites,8,rep001,NJ method,Nye,Nye Similarity Score,0.3373
+Nchar,Number Of Sites,Number of sites,8,rep002,NJ method,Nye,Nye Similarity Score,0.3358
+Nchar,Number Of Sites,Number of sites,8,rep003,NJ method,Nye,Nye Similarity Score,0.3334
+Nchar,Number Of Sites,Number of sites,12,rep001,NJ method,Nye,Nye Similarity Score,0.3481
+Nchar,Number Of Sites,Number of sites,12,rep002,NJ method,Nye,Nye Similarity Score,0.3684
+Nchar,Number Of Sites,Number of sites,12,rep003,NJ method,Nye,Nye Similarity Score,0.331
+Nchar,Number Of Sites,Number of sites,16,rep001,NJ method,Nye,Nye Similarity Score,0.3713
+Nchar,Number Of Sites,Number of sites,16,rep002,NJ method,Nye,Nye Similarity Score,0.3786
+Nchar,Number Of Sites,Number of sites,16,rep003,NJ method,Nye,Nye Similarity Score,0.3508
+Nchar,Number Of Sites,Number of sites,8,rep001,Cassiopeia,Nye,Nye Similarity Score,0.2646126
+Nchar,Number Of Sites,Number of sites,8,rep002,Cassiopeia,Nye,Nye Similarity Score,0.3201106
+Nchar,Number Of Sites,Number of sites,8,rep003,Cassiopeia,Nye,Nye Similarity Score,0.2922107
+Nchar,Number Of Sites,Number of sites,12,rep001,Cassiopeia,Nye,Nye Similarity Score,0.3416458
+Nchar,Number Of Sites,Number of sites,12,rep002,Cassiopeia,Nye,Nye Similarity Score,0.3084584
+Nchar,Number Of Sites,Number of sites,12,rep003,Cassiopeia,Nye,Nye Similarity Score,0.3321243
+Nchar,Number Of Sites,Number of sites,16,rep001,Cassiopeia,Nye,Nye Similarity Score,0.4420811
+Nchar,Number Of Sites,Number of sites,16,rep002,Cassiopeia,Nye,Nye Similarity Score,0.362197
+Nchar,Number Of Sites,Number of sites,16,rep003,Cassiopeia,Nye,Nye Similarity Score,0.4512572
+Nchar,Number Of Sites,Number of sites,8,rep001,FateScape_slingshot,RF_normalized,RF Distance,0.9177
+Nchar,Number Of Sites,Number of sites,8,rep002,FateScape_slingshot,RF_normalized,RF Distance,0.9304
+Nchar,Number Of Sites,Number of sites,8,rep003,FateScape_slingshot,RF_normalized,RF Distance,0.9098
+Nchar,Number Of Sites,Number of sites,12,rep001,FateScape_slingshot,RF_normalized,RF Distance,0.8785
+Nchar,Number Of Sites,Number of sites,12,rep002,FateScape_slingshot,RF_normalized,RF Distance,0.8765
+Nchar,Number Of Sites,Number of sites,12,rep003,FateScape_slingshot,RF_normalized,RF Distance,0.8922
+Nchar,Number Of Sites,Number of sites,16,rep001,FateScape_slingshot,RF_normalized,RF Distance,0.8638
+Nchar,Number Of Sites,Number of sites,16,rep002,FateScape_slingshot,RF_normalized,RF Distance,0.8726
+Nchar,Number Of Sites,Number of sites,16,rep003,FateScape_slingshot,RF_normalized,RF Distance,0.8589
+Nchar,Number Of Sites,Number of sites,8,rep001,FateScape_monocle,RF_normalized,RF Distance,0.9167
+Nchar,Number Of Sites,Number of sites,8,rep002,FateScape_monocle,RF_normalized,RF Distance,0.8908
+Nchar,Number Of Sites,Number of sites,8,rep003,FateScape_monocle,RF_normalized,RF Distance,0.9236
+Nchar,Number Of Sites,Number of sites,12,rep001,FateScape_monocle,RF_normalized,RF Distance,0.8726
+Nchar,Number Of Sites,Number of sites,12,rep002,FateScape_monocle,RF_normalized,RF Distance,0.8563
+Nchar,Number Of Sites,Number of sites,12,rep003,FateScape_monocle,RF_normalized,RF Distance,0.8971
+Nchar,Number Of Sites,Number of sites,16,rep001,FateScape_monocle,RF_normalized,RF Distance,0.8716
+Nchar,Number Of Sites,Number of sites,16,rep002,FateScape_monocle,RF_normalized,RF Distance,0.8736
+Nchar,Number Of Sites,Number of sites,16,rep003,FateScape_monocle,RF_normalized,RF Distance,0.8619
+Nchar,Number Of Sites,Number of sites,8,rep001,LinRace,RF_normalized,RF Distance,0.9608
+Nchar,Number Of Sites,Number of sites,8,rep002,LinRace,RF_normalized,RF Distance,0.9549
+Nchar,Number Of Sites,Number of sites,8,rep003,LinRace,RF_normalized,RF Distance,0.9529
+Nchar,Number Of Sites,Number of sites,12,rep001,LinRace,RF_normalized,RF Distance,0.9431
+Nchar,Number Of Sites,Number of sites,12,rep002,LinRace,RF_normalized,RF Distance,0.9588
+Nchar,Number Of Sites,Number of sites,12,rep003,LinRace,RF_normalized,RF Distance,0.948
+Nchar,Number Of Sites,Number of sites,16,rep001,LinRace,RF_normalized,RF Distance,0.9353
+Nchar,Number Of Sites,Number of sites,16,rep002,LinRace,RF_normalized,RF Distance,0.9236
+Nchar,Number Of Sites,Number of sites,16,rep003,LinRace,RF_normalized,RF Distance,0.9529
+Nchar,Number Of Sites,Number of sites,8,rep001,LinTIMaT,RF_normalized,RF Distance,0.9755
+Nchar,Number Of Sites,Number of sites,8,rep002,LinTIMaT,RF_normalized,RF Distance,0.9559
+Nchar,Number Of Sites,Number of sites,8,rep003,LinTIMaT,RF_normalized,RF Distance,0.9657
+Nchar,Number Of Sites,Number of sites,12,rep001,LinTIMaT,RF_normalized,RF Distance,0.949
+Nchar,Number Of Sites,Number of sites,12,rep002,LinTIMaT,RF_normalized,RF Distance,0.9657
+Nchar,Number Of Sites,Number of sites,12,rep003,LinTIMaT,RF_normalized,RF Distance,0.9571
+Nchar,Number Of Sites,Number of sites,16,rep001,LinTIMaT,RF_normalized,RF Distance,0.9569
+Nchar,Number Of Sites,Number of sites,16,rep002,LinTIMaT,RF_normalized,RF Distance,0.95
+Nchar,Number Of Sites,Number of sites,16,rep003,LinTIMaT,RF_normalized,RF Distance,0.9481
+Nchar,Number Of Sites,Number of sites,8,rep001,NJ method,RF_normalized,RF Distance,0.952
+Nchar,Number Of Sites,Number of sites,8,rep002,NJ method,RF_normalized,RF Distance,0.949
+Nchar,Number Of Sites,Number of sites,8,rep003,NJ method,RF_normalized,RF Distance,0.9666
+Nchar,Number Of Sites,Number of sites,12,rep001,NJ method,RF_normalized,RF Distance,0.9471
+Nchar,Number Of Sites,Number of sites,12,rep002,NJ method,RF_normalized,RF Distance,0.9412
+Nchar,Number Of Sites,Number of sites,12,rep003,NJ method,RF_normalized,RF Distance,0.9371
+Nchar,Number Of Sites,Number of sites,16,rep001,NJ method,RF_normalized,RF Distance,0.9441
+Nchar,Number Of Sites,Number of sites,16,rep002,NJ method,RF_normalized,RF Distance,0.9335
+Nchar,Number Of Sites,Number of sites,16,rep003,NJ method,RF_normalized,RF Distance,0.9471
+Nchar,Number Of Sites,Number of sites,8,rep001,Cassiopeia,RF_normalized,RF Distance,0.9674691
+Nchar,Number Of Sites,Number of sites,8,rep002,Cassiopeia,RF_normalized,RF Distance,0.9331652
+Nchar,Number Of Sites,Number of sites,8,rep003,Cassiopeia,RF_normalized,RF Distance,0.9528362
+Nchar,Number Of Sites,Number of sites,12,rep001,Cassiopeia,RF_normalized,RF Distance,0.9350092
+Nchar,Number Of Sites,Number of sites,12,rep002,Cassiopeia,RF_normalized,RF Distance,0.9354839
+Nchar,Number Of Sites,Number of sites,12,rep003,Cassiopeia,RF_normalized,RF Distance,0.9377289
+Nchar,Number Of Sites,Number of sites,16,rep001,Cassiopeia,RF_normalized,RF Distance,0.8799788
+Nchar,Number Of Sites,Number of sites,16,rep002,Cassiopeia,RF_normalized,RF Distance,0.9413068
+Nchar,Number Of Sites,Number of sites,16,rep003,Cassiopeia,RF_normalized,RF Distance,0.8690046
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,LAML,Nye,Nye Similarity Score,0.390468403
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,LAML,Nye,Nye Similarity Score,0.346280991
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,LAML,Nye,Nye Similarity Score,0.384183025
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,LAML,Nye,Nye Similarity Score,0.24609351
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,LAML,Nye,Nye Similarity Score,0.299738868
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,LAML,Nye,Nye Similarity Score,0.288688262
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,LAML,Nye,Nye Similarity Score,0.256422365
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,LAML,Nye,Nye Similarity Score,0.268054225
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,LAML,Nye,Nye Similarity Score,0.246349076
+mu,Mutation Rate,Mutation rate,0.1,rep001,LAML,Nye,Nye Similarity Score,0.254426065
+mu,Mutation Rate,Mutation rate,0.1,rep002,LAML,Nye,Nye Similarity Score,0.293659206
+mu,Mutation Rate,Mutation rate,0.1,rep003,LAML,Nye,Nye Similarity Score,0.296402023
+mu,Mutation Rate,Mutation rate,0.2,rep001,LAML,Nye,Nye Similarity Score,0.31674019
+mu,Mutation Rate,Mutation rate,0.2,rep002,LAML,Nye,Nye Similarity Score,0.295491028
+mu,Mutation Rate,Mutation rate,0.2,rep003,LAML,Nye,Nye Similarity Score,0.292146068
+mu,Mutation Rate,Mutation rate,0.3,rep001,LAML,Nye,Nye Similarity Score,0.252358252
+mu,Mutation Rate,Mutation rate,0.3,rep002,LAML,Nye,Nye Similarity Score,0.248922336
+mu,Mutation Rate,Mutation rate,0.3,rep003,LAML,Nye,Nye Similarity Score,0.218269006
+ncell,Number Of Cells,Number of cells,512,rep001,LAML,Nye,Nye Similarity Score,0.35245433
+ncell,Number Of Cells,Number of cells,512,rep002,LAML,Nye,Nye Similarity Score,0.360024555
+ncell,Number Of Cells,Number of cells,512,rep003,LAML,Nye,Nye Similarity Score,0.358204959
+ncell,Number Of Cells,Number of cells,1024,rep001,LAML,Nye,Nye Similarity Score,0.325592768
+ncell,Number Of Cells,Number of cells,1024,rep002,LAML,Nye,Nye Similarity Score,0.290708111
+ncell,Number Of Cells,Number of cells,1024,rep003,LAML,Nye,Nye Similarity Score,0.303892277
+ncell,Number Of Cells,Number of cells,2048,rep001,LAML,Nye,Nye Similarity Score,0.279025036
+ncell,Number Of Cells,Number of cells,2048,rep002,LAML,Nye,Nye Similarity Score,0.268200465
+ncell,Number Of Cells,Number of cells,2048,rep003,LAML,Nye,Nye Similarity Score,0.302051799
+Nchar,Number Of Sites,Number of sites,12,rep001,LAML,Nye,Nye Similarity Score,0.243291236
+Nchar,Number Of Sites,Number of sites,12,rep002,LAML,Nye,Nye Similarity Score,0.28276365
+Nchar,Number Of Sites,Number of sites,12,rep003,LAML,Nye,Nye Similarity Score,0.240041034
+Nchar,Number Of Sites,Number of sites,16,rep001,LAML,Nye,Nye Similarity Score,0.293234585
+Nchar,Number Of Sites,Number of sites,16,rep002,LAML,Nye,Nye Similarity Score,0.306749052
+Nchar,Number Of Sites,Number of sites,16,rep003,LAML,Nye,Nye Similarity Score,0.280733792
+Nchar,Number Of Sites,Number of sites,8,rep001,LAML,Nye,Nye Similarity Score,0.259600279
+Nchar,Number Of Sites,Number of sites,8,rep002,LAML,Nye,Nye Similarity Score,0.27666865
+Nchar,Number Of Sites,Number of sites,8,rep003,LAML,Nye,Nye Similarity Score,0.249119921
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep001,LAML,Nye,Nye Similarity Score,0.597500979
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep002,LAML,Nye,Nye Similarity Score,0.585665227
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep003,LAML,Nye,Nye Similarity Score,0.608256747
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep001,LAML,Nye,Nye Similarity Score,0.660349806
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep002,LAML,Nye,Nye Similarity Score,0.634824371
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep003,LAML,Nye,Nye Similarity Score,0.653515
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep001,LAML,Nye,Nye Similarity Score,0.597816735
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep002,LAML,Nye,Nye Similarity Score,0.581981152
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep003,LAML,Nye,Nye Similarity Score,0.617606262
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,LAML,TreeDistance,Information Based Distance,0.640237578
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,LAML,TreeDistance,Information Based Distance,0.694607497
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,LAML,TreeDistance,Information Based Distance,0.641686034
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,LAML,TreeDistance,Information Based Distance,0.823737078
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,LAML,TreeDistance,Information Based Distance,0.757493931
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,LAML,TreeDistance,Information Based Distance,0.763355052
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,LAML,TreeDistance,Information Based Distance,0.820849342
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,LAML,TreeDistance,Information Based Distance,0.809826061
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,LAML,TreeDistance,Information Based Distance,0.839830802
+mu,Mutation Rate,Mutation rate,0.1,rep001,LAML,TreeDistance,Information Based Distance,0.81236491
+mu,Mutation Rate,Mutation rate,0.1,rep002,LAML,TreeDistance,Information Based Distance,0.782431469
+mu,Mutation Rate,Mutation rate,0.1,rep003,LAML,TreeDistance,Information Based Distance,0.76638643
+mu,Mutation Rate,Mutation rate,0.2,rep001,LAML,TreeDistance,Information Based Distance,0.712256549
+mu,Mutation Rate,Mutation rate,0.2,rep002,LAML,TreeDistance,Information Based Distance,0.736951251
+mu,Mutation Rate,Mutation rate,0.2,rep003,LAML,TreeDistance,Information Based Distance,0.755777743
+mu,Mutation Rate,Mutation rate,0.3,rep001,LAML,TreeDistance,Information Based Distance,0.779534131
+mu,Mutation Rate,Mutation rate,0.3,rep002,LAML,TreeDistance,Information Based Distance,0.778501047
+mu,Mutation Rate,Mutation rate,0.3,rep003,LAML,TreeDistance,Information Based Distance,0.827666586
+ncell,Number Of Cells,Number of cells,512,rep001,LAML,TreeDistance,Information Based Distance,0.67661049
+ncell,Number Of Cells,Number of cells,512,rep002,LAML,TreeDistance,Information Based Distance,0.621933071
+ncell,Number Of Cells,Number of cells,512,rep003,LAML,TreeDistance,Information Based Distance,0.674963857
+ncell,Number Of Cells,Number of cells,1024,rep001,LAML,TreeDistance,Information Based Distance,0.695394705
+ncell,Number Of Cells,Number of cells,1024,rep002,LAML,TreeDistance,Information Based Distance,0.745035804
+ncell,Number Of Cells,Number of cells,1024,rep003,LAML,TreeDistance,Information Based Distance,0.704681555
+ncell,Number Of Cells,Number of cells,2048,rep001,LAML,TreeDistance,Information Based Distance,0.742558054
+ncell,Number Of Cells,Number of cells,2048,rep002,LAML,TreeDistance,Information Based Distance,0.755036235
+ncell,Number Of Cells,Number of cells,2048,rep003,LAML,TreeDistance,Information Based Distance,0.721954489
+Nchar,Number Of Sites,Number of sites,12,rep001,LAML,TreeDistance,Information Based Distance,0.82059077
+Nchar,Number Of Sites,Number of sites,12,rep002,LAML,TreeDistance,Information Based Distance,0.775838896
+Nchar,Number Of Sites,Number of sites,12,rep003,LAML,TreeDistance,Information Based Distance,0.82079174
+Nchar,Number Of Sites,Number of sites,16,rep001,LAML,TreeDistance,Information Based Distance,0.770400411
+Nchar,Number Of Sites,Number of sites,16,rep002,LAML,TreeDistance,Information Based Distance,0.694061811
+Nchar,Number Of Sites,Number of sites,16,rep003,LAML,TreeDistance,Information Based Distance,0.7513261
+Nchar,Number Of Sites,Number of sites,8,rep001,LAML,TreeDistance,Information Based Distance,0.803573034
+Nchar,Number Of Sites,Number of sites,8,rep002,LAML,TreeDistance,Information Based Distance,0.789837976
+Nchar,Number Of Sites,Number of sites,8,rep003,LAML,TreeDistance,Information Based Distance,0.836567911
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep001,LAML,TreeDistance,Information Based Distance,0.481868241
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep002,LAML,TreeDistance,Information Based Distance,0.539591402
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep003,LAML,TreeDistance,Information Based Distance,0.498737869
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep001,LAML,TreeDistance,Information Based Distance,0.428368617
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep002,LAML,TreeDistance,Information Based Distance,0.432941411
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep003,LAML,TreeDistance,Information Based Distance,0.356557282
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep001,LAML,TreeDistance,Information Based Distance,0.452978918
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep002,LAML,TreeDistance,Information Based Distance,0.440792976
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep003,LAML,TreeDistance,Information Based Distance,0.38428479
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep001,LAML,RF_normalized,RF Distance,0.910871694
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep002,LAML,RF_normalized,RF Distance,0.938295788
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.1,rep003,LAML,RF_normalized,RF Distance,0.916748286
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep001,LAML,RF_normalized,RF Distance,0.991185113
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep002,LAML,RF_normalized,RF Distance,0.96963761
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.2,rep003,LAML,RF_normalized,RF Distance,0.976493634
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep001,LAML,RF_normalized,RF Distance,0.986287953
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep002,LAML,RF_normalized,RF Distance,0.976493634
+dps,Stochastic Dropout Rate,Stochastic dropout rate,0.3,rep003,LAML,RF_normalized,RF Distance,0.987267385
+mu,Mutation Rate,Mutation rate,0.1,rep001,LAML,RF_normalized,RF Distance,0.981390793
+mu,Mutation Rate,Mutation rate,0.1,rep002,LAML,RF_normalized,RF Distance,0.960822723
+mu,Mutation Rate,Mutation rate,0.1,rep003,LAML,RF_normalized,RF Distance,0.968658178
+mu,Mutation Rate,Mutation rate,0.2,rep001,LAML,RF_normalized,RF Distance,0.963761019
+mu,Mutation Rate,Mutation rate,0.2,rep002,LAML,RF_normalized,RF Distance,0.967678746
+mu,Mutation Rate,Mutation rate,0.2,rep003,LAML,RF_normalized,RF Distance,0.970617042
+mu,Mutation Rate,Mutation rate,0.3,rep001,LAML,RF_normalized,RF Distance,0.993143976
+mu,Mutation Rate,Mutation rate,0.3,rep002,LAML,RF_normalized,RF Distance,0.990205681
+mu,Mutation Rate,Mutation rate,0.3,rep003,LAML,RF_normalized,RF Distance,0.992164545
+ncell,Number Of Cells,Number of cells,512,rep001,LAML,RF_normalized,RF Distance,0.94891945
+ncell,Number Of Cells,Number of cells,512,rep002,LAML,RF_normalized,RF Distance,0.95481336
+ncell,Number Of Cells,Number of cells,512,rep003,LAML,RF_normalized,RF Distance,0.944990177
+ncell,Number Of Cells,Number of cells,1024,rep001,LAML,RF_normalized,RF Distance,0.964740451
+ncell,Number Of Cells,Number of cells,1024,rep002,LAML,RF_normalized,RF Distance,0.973555338
+ncell,Number Of Cells,Number of cells,1024,rep003,LAML,RF_normalized,RF Distance,0.96963761
+ncell,Number Of Cells,Number of cells,2048,rep001,LAML,RF_normalized,RF Distance,0.975550122
+ncell,Number Of Cells,Number of cells,2048,rep002,LAML,RF_normalized,RF Distance,0.978484108
+ncell,Number Of Cells,Number of cells,2048,rep003,LAML,RF_normalized,RF Distance,0.971149144
+Nchar,Number Of Sites,Number of sites,12,rep001,LAML,RF_normalized,RF Distance,0.990205681
+Nchar,Number Of Sites,Number of sites,12,rep002,LAML,RF_normalized,RF Distance,0.977473066
+Nchar,Number Of Sites,Number of sites,12,rep003,LAML,RF_normalized,RF Distance,0.993143976
+Nchar,Number Of Sites,Number of sites,16,rep001,LAML,RF_normalized,RF Distance,0.971596474
+Nchar,Number Of Sites,Number of sites,16,rep002,LAML,RF_normalized,RF Distance,0.967678746
+Nchar,Number Of Sites,Number of sites,16,rep003,LAML,RF_normalized,RF Distance,0.971596474
+Nchar,Number Of Sites,Number of sites,8,rep001,LAML,RF_normalized,RF Distance,0.983349657
+Nchar,Number Of Sites,Number of sites,8,rep002,LAML,RF_normalized,RF Distance,0.975514202
+Nchar,Number Of Sites,Number of sites,8,rep003,LAML,RF_normalized,RF Distance,0.983349657
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep001,LAML,RF_normalized,RF Distance,0.673849167
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep002,LAML,RF_normalized,RF Distance,0.675808031
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep003,LAML,RF_normalized,RF Distance,0.649363369
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep001,LAML,RF_normalized,RF Distance,0.595494613
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep002,LAML,RF_normalized,RF Distance,0.638589618
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep003,LAML,RF_normalized,RF Distance,0.596474045
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep001,LAML,RF_normalized,RF Distance,0.66503428
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep002,LAML,RF_normalized,RF Distance,0.689520078
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep003,LAML,RF_normalized,RF Distance,0.651322233

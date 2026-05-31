@@ -22,48 +22,102 @@ hamming_distance<- function(barcodes) {
 }
 
 
+
+#' Check whether a barcode entry is missing/dropout
+#'
+#' @param x A scalar barcode entry.
+#' @return TRUE if x is NA, empty, or a dropout symbol.
+#' @keywords internal
+is_missing_barcode_entry <- function(x) {
+  if (length(x) == 0L) return(TRUE)
+  if (is.na(x)) return(TRUE)
+  x_chr <- trimws(as.character(x))
+  x_chr %in% c("", "NA", "NaN", "-", "?", "missing", "Missing", "MISSING")
+}
+
+#' Convert a barcode entry to numeric allele safely
+#'
+#' @param x A scalar barcode entry.
+#' @return Numeric allele value, or NA_real_ for missing/non-convertible values.
+#' @keywords internal
+barcode_entry_numeric <- function(x) {
+  if (is_missing_barcode_entry(x)) return(NA_real_)
+  suppressWarnings(as.numeric(as.character(x)))
+}
+
 #' Calculate improved Hamming distance between two lineage barcodes
+#'
+#' Missing-safe version. Missing entries (NA, "-", "?", empty strings)
+#' are treated as unknown/dropout states. Two missing entries do not add
+#' distance, whereas one missing and one observed entry adds beta.
 #'
 #' @param barcode1 A vector representing the first lineage barcode.
 #' @param barcode2 A vector representing the second lineage barcode.
-#' @param alpha A positive number; if two sites have the same mutation, the total distance is reduced by alpha.
-#' @param beta A number greater than 1; if two sites have different mutations, the total distance is increased by beta.
-#' @param N_char Optional. The number of sites to consider; defaults to the length of barcode1.
+#' @param alpha A positive number; if two sites have the same nonzero mutation,
+#'   the total distance is reduced by alpha.
+#' @param beta A number greater than 1; if two sites have different mutations or
+#'   one site is missing and the other observed, the total distance is increased.
+#' @param N_char Optional. Number of sites to consider.
 #'
-#' @return The improved Hamming distance.
+#' @return A finite improved Hamming distance.
 #' @export
- improved_hamming_distance <- function(barcode1, barcode2, alpha, beta, N_char = NULL) {
+improved_hamming_distance <- function(barcode1, barcode2, alpha, beta, N_char = NULL) {
   if (is.null(N_char)) {
-    N_char <- length(barcode1)
+    N_char <- min(length(barcode1), length(barcode2))
+  }
+  if (length(barcode1) < N_char || length(barcode2) < N_char) {
+    stop("barcode1 and barcode2 must have at least N_char entries.")
   }
 
   dist <- 0
 
-  for (i in 1:N_char) {
-    # If the sites have the same mutation and are not '0', reduce the distance by alpha.
-    if (barcode1[i] == barcode2[i] && barcode1[i] != 0) {
-      dist <- dist - alpha
+  for (i in seq_len(N_char)) {
+    b1_missing <- is_missing_barcode_entry(barcode1[i])
+    b2_missing <- is_missing_barcode_entry(barcode2[i])
 
-      # If both sites are not dropouts ('-')
-    } else if (barcode1[i] != "-" && barcode2[i] != "-") {
-      # If mutations differ and one of them is 0 when converted to numeric, add 1.
-      if (barcode1[i] != barcode2[i] && (as.numeric(barcode1[i]) * as.numeric(barcode2[i]) == 0)) {
-        dist <- dist + 1
+    # Both missing: unknown in both cells; do not create artificial distance.
+    if (b1_missing && b2_missing) {
+      next
+    }
 
-        # If mutations differ and both are non-zero when converted to numeric, add beta.
-      } else if (barcode1[i] != barcode2[i] && (as.numeric(barcode1[i]) * as.numeric(barcode2[i]) != 0)) {
+    # One missing and one observed: penalize as an uncertain difference.
+    if (xor(b1_missing, b2_missing)) {
+      dist <- dist + beta
+      next
+    }
+
+    b1 <- barcode_entry_numeric(barcode1[i])
+    b2 <- barcode_entry_numeric(barcode2[i])
+
+    # If non-numeric but non-missing values occur, compare as strings.
+    if (is.na(b1) || is.na(b2)) {
+      s1 <- as.character(barcode1[i])
+      s2 <- as.character(barcode2[i])
+      if (identical(s1, s2) && !s1 %in% c("0", "0.0")) {
+        dist <- dist - alpha
+      } else if (!identical(s1, s2)) {
         dist <- dist + beta
       }
+      next
+    }
 
-      # If either site is a dropout ('-'), add beta.
-    } else if (barcode1[i] == "-" || barcode2[i] == "-") {
+    # Same nonzero mutation supports shared ancestry.
+    if (b1 == b2 && b1 != 0) {
+      dist <- dist - alpha
+    } else if (b1 != b2 && (b1 == 0 || b2 == 0)) {
+      # Wild-type versus mutation.
+      dist <- dist + 1
+    } else if (b1 != b2 && b1 != 0 && b2 != 0) {
+      # Conflicting nonzero mutations.
       dist <- dist + beta
     }
   }
 
+  if (is.na(dist) || !is.finite(dist)) {
+    stop("improved_hamming_distance produced a non-finite value; check barcode encoding.")
+  }
   return(dist)
 }
-
 
 
 #' Define Hamming distance between lineage barcodes with dropout (For imputation)
@@ -190,5 +244,90 @@ find_node_depth <- function(tree, node, ncells) {
   return(depth)
 }
 
+
+# FateScape missing-safe hotfix
+# Source this file AFTER all FateScape R/*.R files have been sourced.
+# It overrides barcode distance functions that fail when barcode entries contain NA.
+
+missing_barcode_tokens <- c(NA_character_, "", "NA", "NaN", "nan", "?", "-", "-1")
+
+is_missing_barcode_entry <- function(x) {
+  x_chr <- as.character(x)
+  is.na(x_chr) | x_chr %in% c("", "NA", "NaN", "nan", "?", "-", "-1")
+}
+
+barcode_entry_numeric <- function(x) {
+  if (is_missing_barcode_entry(x)) return(NA_real_)
+  suppressWarnings(as.numeric(as.character(x)))
+}
+
+improved_hamming_distance <- function(barcode1, barcode2, alpha, beta, N_char = NULL) {
+  if (is.null(N_char)) {
+    N_char <- min(length(barcode1), length(barcode2))
+  }
+  if (length(barcode1) < N_char || length(barcode2) < N_char) {
+    stop("barcode1 and barcode2 must have at least N_char entries.")
+  }
+
+  dist <- 0
+  for (i in seq_len(N_char)) {
+    b1_missing <- is_missing_barcode_entry(barcode1[i])
+    b2_missing <- is_missing_barcode_entry(barcode2[i])
+
+    if (b1_missing && b2_missing) {
+      next
+    }
+    if (xor(b1_missing, b2_missing)) {
+      dist <- dist + beta
+      next
+    }
+
+    b1 <- barcode_entry_numeric(barcode1[i])
+    b2 <- barcode_entry_numeric(barcode2[i])
+
+    if (is.na(b1) || is.na(b2)) {
+      s1 <- as.character(barcode1[i])
+      s2 <- as.character(barcode2[i])
+      if (identical(s1, s2) && !s1 %in% c("0", "0.0")) {
+        dist <- dist - alpha
+      } else if (!identical(s1, s2)) {
+        dist <- dist + beta
+      }
+      next
+    }
+
+    if (b1 == b2 && b1 != 0) {
+      dist <- dist - alpha
+    } else if (b1 != b2 && (b1 == 0 || b2 == 0)) {
+      dist <- dist + 1
+    } else if (b1 != b2 && b1 != 0 && b2 != 0) {
+      dist <- dist + beta
+    }
+  }
+
+  if (is.na(dist) || !is.finite(dist)) {
+    stop("improved_hamming_distance produced a non-finite value; check barcode encoding.")
+  }
+  dist
+}
+
+barcode_to_numeric_na_for_missing <- function(x) {
+  x_chr <- as.character(x)
+  x_chr[is_missing_barcode_entry(x_chr)] <- NA_character_
+  suppressWarnings(as.integer(as.numeric(x_chr)))
+}
+
+barcode_to_numeric_zero_for_missing <- function(x) {
+  x_chr <- as.character(x)
+  x_chr[is_missing_barcode_entry(x_chr)] <- "0"
+  suppressWarnings(as.integer(as.numeric(x_chr)))
+}
+
+safe_improved_hamming_distance <- function(barcode1, barcode2, alpha = 0, beta = 1) {
+  improved_hamming_distance(barcode1, barcode2, alpha, beta)
+}
+
+.message <- "Loaded FateScape missing-safe hotfix: improved_hamming_distance now handles NA/?/-/-1 missing barcodes."
+message(.message)
 
 

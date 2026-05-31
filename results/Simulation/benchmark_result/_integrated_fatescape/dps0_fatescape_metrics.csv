@@ -1,0 +1,28 @@
+parameter_sweep,parameter_sweep_label,parameter_name,parameter_value,replicate_id,method,metric_name,metric_label,metric_value
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep001,FateScape,TreeDistance,Information Based Distance,0.4899
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep002,FateScape,TreeDistance,Information Based Distance,0.4652
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep003,FateScape,TreeDistance,Information Based Distance,0.4202
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep001,FateScape,TreeDistance,Information Based Distance,0.3651
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep002,FateScape,TreeDistance,Information Based Distance,0.3647
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep003,FateScape,TreeDistance,Information Based Distance,0.3504
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep001,FateScape,TreeDistance,Information Based Distance,0.3573
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep002,FateScape,TreeDistance,Information Based Distance,0.3149
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep003,FateScape,TreeDistance,Information Based Distance,0.4206
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep001,FateScape,Nye,Nye Similarity Score,0.5611
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep002,FateScape,Nye,Nye Similarity Score,0.6205
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep003,FateScape,Nye,Nye Similarity Score,0.6138
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep001,FateScape,Nye,Nye Similarity Score,0.6822
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep002,FateScape,Nye,Nye Similarity Score,0.6571
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep003,FateScape,Nye,Nye Similarity Score,0.6967
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep001,FateScape,Nye,Nye Similarity Score,0.6067
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep002,FateScape,Nye,Nye Similarity Score,0.6361
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep003,FateScape,Nye,Nye Similarity Score,0.6014
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep001,FateScape,RF_normalized,RF Distance,0.7289
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep002,FateScape,RF_normalized,RF Distance,0.6571
+dps0,No Dropout Mutation Rate,Mutation rate,0.05,rep003,FateScape,RF_normalized,RF Distance,0.6787
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep001,FateScape,RF_normalized,RF Distance,0.5719
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep002,FateScape,RF_normalized,RF Distance,0.6278
+dps0,No Dropout Mutation Rate,Mutation rate,0.1,rep003,FateScape,RF_normalized,RF Distance,0.5573
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep001,FateScape,RF_normalized,RF Distance,0.6689
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep002,FateScape,RF_normalized,RF Distance,0.6571
+dps0,No Dropout Mutation Rate,Mutation rate,0.2,rep003,FateScape,RF_normalized,RF Distance,0.6767

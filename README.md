@@ -4,7 +4,7 @@
   <img src="man/logo.png" alt="FateScape logo" width="150">
 </div>
 
-FateScape leverages multimodal single-cell sequencing to infer cell division trees using a maximum likelihood framework. By combining CRISPR/Cas9-based lineage tracing technology with single-cell transcriptome sequencing data, FateScape can reconstruct cell division history and infer the plasticity and inheritance of cell states.
+FateScape leverages multimodal single-cell sequencing to infer cell division trees using a statistical framework. By combining CRISPR/Cas9-based lineage tracing technology with single-cell transcriptome sequencing data, FateScape can reconstruct cell division history and quantify lineage-depth-resolved state dispersion, lineage confinement, and tree-based associations among cell states.
 
 
 ## Introduction
@@ -13,9 +13,9 @@ This repository provides a comprehensive suite of R functions for reconstructing
 
 -   Refine lineage barcodes by addressing stochastic dropout issues.
 -   Construct sub-cell division trees along different state lineages.
--   Optimize sub-cell division trees using a maximum likelihood framework combined with subtree exchanges.
+-   Optimize sub-cell division trees by a tree score maximization combined with subtree swapping.
 -   Integrate sub-cell division trees into a complete cell division tree.
--   Infer the plasticity and heritability of cell states.
+-   Quantify lineage-depth-resolved phenotypic organization.
 
 These functions are designed to help researchers analyze single-cell lineage data, explore cell lineage evolution, and gain insights into cell division patterns.
 
@@ -74,15 +74,15 @@ More info about FateScape can be found on our [website](https://yuxiaochen11.git
 
 If you use **FateScape** in your research, please cite the accompanying paper:
 
-> Yu, Xiaochen (2025). _FateScape: Reconstructing cell division history and phenotypic dynamics from single-cell barcode and transcriptomic data_. GitHub. https://github.com/yuxiaochen11/FateScape
+> Yu, Xiaochen (2026). Decoding cell division history and lineage-depth-resolved phenotypic organization from single-cell barcode and transcriptomic data. GitHub. https://github.com/yuxiaochen11/FateScape
 
 Or use the following BibTeX entry:
 
 ```bibtex
 @software{FateScape,
   author  = {Yu, Xiaochen},
-  title   = {FateScape: Reconstructing cell division history and phenotypic dynamics from single-cell barcode and transcriptomic data},
-  year    = {2025},
+  title   = {Decoding cell division history and lineage-depth-resolved phenotypic organization from single-cell barcode and transcriptomic data},
+  year    = {2026},
   url     = {https://github.com/yuxiaochen11/FateScape},
 }
 ```

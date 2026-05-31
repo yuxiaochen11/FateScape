@@ -1,0 +1,4 @@
+ncells,mean,sd,n,time_type,source_column
+512,44.46,15.64,1,Inference Time,mean_inference_time_sec
+1024,106.37,3.74,1,Inference Time,mean_inference_time_sec
+2048,253.36,10.75,1,Inference Time,mean_inference_time_sec

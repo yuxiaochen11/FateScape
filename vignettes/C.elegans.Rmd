@@ -30,8 +30,11 @@ library(mclust, quietly = TRUE)
 ## Load Tree Graph and Metadata
 
 ```{r}
-graph <- read_graph("data/C.elegans/cell_lineage_tree.gml", format = "gml")
-MetaData <- read.csv("data/C.elegans/MetaData.csv")
+graph <- igraph::read_graph(
+     "D:/projects/lineage tracing/FateScape/FateScape/data/C.elegans/cell_lineage_tree.gml",
+     format = "gml"
+ )
+MetaData <- read.csv("D:/projects/lineage tracing/FateScape/FateScape/data/C.elegans/MetaData.csv")
 ```
 
 ## Extract Tip Labels and Edges
