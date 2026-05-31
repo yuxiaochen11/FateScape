@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>LineageCast • FateScape</title>
+<title>FateScape • FateScape</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="LineageCast">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="FateScape">
 <meta name="description" content="FateScape groups cells belonging to the same state lineage into a single group. It reconstructs sub-cell-division trees separately through an iterative process. In the loop, FateScape first employs Ward’s method to construct an initial tree by clustering observed cells exhibiting similar lineage barcodes instead of generating an initial tree randomly. Secondly, FateScape infers lineage barcodes and cell states of internal cells based on that of observed leaf nodes. Thirdly, FateScape calculates the combined likelihood of the sub-cell-division tree that integrates both mutation and expression data. Fourthly, FateScape swaps two subtrees sampled according to a specific probability distribution to update the candidate sub-cell-division tree. Given that FateScape is a heuristic algorithm without a globally optimal solution, it iteratively executes the processes of ancestor inference, combined likelihood calculation, and subtree swapping to refine the candidate tree until the convergence is achieved. Once all sub-cell division trees are obtained, FateScape should drop duplicate cells among all sub-cell-division trees. For those sub-cell division trees, FateScape prunes and rearranges subtrees rooted at internal nodes based on lineage barcode similarity of them.">
 <meta property="og:description" content="FateScape groups cells belonging to the same state lineage into a single group. It reconstructs sub-cell-division trees separately through an iterative process. In the loop, FateScape first employs Ward’s method to construct an initial tree by clustering observed cells exhibiting similar lineage barcodes instead of generating an initial tree randomly. Secondly, FateScape infers lineage barcodes and cell states of internal cells based on that of observed leaf nodes. Thirdly, FateScape calculates the combined likelihood of the sub-cell-division tree that integrates both mutation and expression data. Fourthly, FateScape swaps two subtrees sampled according to a specific probability distribution to update the candidate sub-cell-division tree. Given that FateScape is a heuristic algorithm without a globally optimal solution, it iteratively executes the processes of ancestor inference, combined likelihood calculation, and subtree swapping to refine the candidate tree until the convergence is achieved. Once all sub-cell division trees are obtained, FateScape should drop duplicate cells among all sub-cell-division trees. For those sub-cell division trees, FateScape prunes and rearranges subtrees rooted at internal nodes based on lineage barcode similarity of them.">
 </head>
@@ -37,7 +37,6 @@
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="articles/C.elegans.html">C.elegans</a></li>
     <li><a class="dropdown-item" href="articles/Mouse_embroy.html">Mouse_embryo</a></li>
-    <li><a class="dropdown-item" href="articles/Simulation.html">Simulation</a></li>
   </ul>
 </li>
       </ul>
@@ -45,7 +44,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/yuxiaochen11/FateScape/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="nav-link" href="https://github.com/yuxiaochen11/FateScape/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -56,7 +55,10 @@
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header"><h1 id="fatescape">FateScape<a class="anchor" aria-label="anchor" href="#fatescape"></a>
 </h1></div>
-<p>FateScape leverages multimodal single-cell sequencing to infer cell division trees using a maximum likelihood framework. By combining CRISPR/Cas9-based lineage tracing technology with single-cell transcriptome sequencing data, FateScape can reconstruct cell division history and infer the plasticity and inheritance of cell states.</p>
+<div style="float: right; margin-left: 15px;">
+<p><img src="man/logo.png" alt="FateScape logo" width="150"></p>
+</div>
+<p>FateScape leverages multimodal single-cell sequencing to infer cell division trees using a statistical framework. By combining CRISPR/Cas9-based lineage tracing technology with single-cell transcriptome sequencing data, FateScape can reconstruct cell division history and quantify lineage-depth-resolved state dispersion, lineage confinement, and tree-based associations among cell states.</p>
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
@@ -64,9 +66,9 @@
 <ul>
 <li>Refine lineage barcodes by addressing stochastic dropout issues.</li>
 <li>Construct sub-cell division trees along different state lineages.</li>
-<li>Optimize sub-cell division trees using a maximum likelihood framework combined with subtree exchanges.</li>
+<li>Optimize sub-cell division trees by a tree score maximization combined with subtree swapping.</li>
 <li>Integrate sub-cell division trees into a complete cell division tree.</li>
-<li>Infer the plasticity and heritability of cell states.</li>
+<li>Quantify lineage-depth-resolved phenotypic organization.</li>
 </ul>
 <p>These functions are designed to help researchers analyze single-cell lineage data, explore cell lineage evolution, and gain insights into cell division patterns.</p>
 </div>
@@ -82,7 +84,7 @@
 <p>If you have a object with paired single-cell gene expression and lineage barcodes data, you can start right away with inferring the regulatory network:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load required libraries</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yuxiaochen11/FateScape" class="external-link">FateScape</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yuxiaochen11/FateScape">FateScape</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">PATH</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Load scRNA-seq data</span></span>
@@ -125,13 +127,13 @@
 </h2>
 <p>If you use <strong>FateScape</strong> in your research, please cite the accompanying paper:</p>
 <blockquote>
-<p>Yu, Xiaochen (2025). <em>FateScape: Reconstructing cell division history and phenotypic dynamics from single-cell barcode and transcriptomic data</em>. GitHub. <a href="https://github.com/yuxiaochen11/FateScape" class="external-link uri">https://github.com/yuxiaochen11/FateScape</a></p>
+<p>Yu, Xiaochen (2026). Decoding cell division history and lineage-depth-resolved phenotypic organization from single-cell barcode and transcriptomic data. GitHub. <a href="https://github.com/yuxiaochen11/FateScape" class="uri">https://github.com/yuxiaochen11/FateScape</a></p>
 </blockquote>
 <p>Or use the following BibTeX entry:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co">@software{FateScape,</span></span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="co">  author  = {Yu, Xiaochen},</span></span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="co">  title   = {FateScape: Reconstructing cell division history and phenotypic dynamics from single-cell barcode and transcriptomic data},</span></span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co">  year    = {2025},</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="co">  title   = {Decoding cell division history and lineage-depth-resolved phenotypic organization from single-cell barcode and transcriptomic data},</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co">  year    = {2026},</span></span>
 <span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co">  url     = {https://github.com/yuxiaochen11/FateScape},</span></span>
 <span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="co">}</span></span></code></pre></div>
 </div>
@@ -139,7 +141,7 @@
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/yuxiaochen11/FateScape/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/yuxiaochen11/FateScape/">Browse source code</a></li>
 </ul>
 </div>
 
