@@ -47,7 +47,7 @@ barcode_shared_count <- function(x, y) {
 #' @param state_lineages List of state lineages.
 #'
 #' @return Score of cell state shifts.
-state_transition_likelihood <- function(tree, edges, barcodes, cell_state_labels, state_lineages) {
+state_score <- function(tree, edges, barcodes, cell_state_labels, state_lineages) {
   max_step <- max(sapply(state_lineages, length))
   shift_state_prob <- data.frame(step = 0:max_step, prob = rep(0, max_step + 1))
 
@@ -92,7 +92,7 @@ state_transition_likelihood <- function(tree, edges, barcodes, cell_state_labels
 }
 
 # Backward-compatible alias with clearer naming.
-state_continuity_score <- state_transition_likelihood
+state_continuity_score <- state_score
 
 #' Calculate barcode shift score
 #'
@@ -102,7 +102,7 @@ state_continuity_score <- state_transition_likelihood
 #' @param barcodes Lineage barcodes.
 #'
 #' @return Score of barcode shifts.
-barcode_similarity_likelihood <- function(tree, N_char, edges, barcodes) {
+barcode_score <- function(tree, N_char, edges, barcodes) {
   barcode_dist <- data.frame(diff_sites = 0:N_char, prob = rep(0, N_char + 1))
   parent_nodes <- unique(edges[, 1])
 
@@ -148,13 +148,12 @@ barcode_similarity_likelihood <- function(tree, N_char, edges, barcodes) {
 }
 
 # Backward-compatible alias with clearer naming.
-barcode_consistency_score <- barcode_similarity_likelihood
+barcode_consistency_score <- barcode_score
 
 #' Calculate combined tree score based on cell state and barcode scores
 #'
 #' This function is retained under its original name for backward compatibility.
-#' It computes a composite tree score rather than a fully specified statistical
-#' likelihood.
+#' It computes a composite tree score.
 #'
 #' @param tree Sub-cell division tree.
 #' @param barcodes Lineage barcodes.
@@ -167,7 +166,7 @@ barcode_consistency_score <- barcode_similarity_likelihood
 #' @param lambda_2 Weight for the barcode score.
 #'
 #' @return Composite score of cell state and barcode shifts.
-combined_likelihood <- function(tree, barcodes, N_char, cell_state_labels, state_lineages,
+composition_score <- function(tree, barcodes, N_char, cell_state_labels, state_lineages,
                                 state_score = NULL, barcode_score = NULL,
                                 lambda_1 = lambda1, lambda_2 = lambda2) {
   ances_res <- ancestor_inference(tree, N_char, barcodes, cell_state_labels, state_lineages)
@@ -176,10 +175,10 @@ combined_likelihood <- function(tree, barcodes, N_char, cell_state_labels, state
   edges <- tree$edge
 
   if (is.null(state_score)) {
-    state_score <- state_transition_likelihood(tree, edges, barcodes, cell_state_labels, state_lineages)
+    state_score <- state_score(tree, edges, barcodes, cell_state_labels, state_lineages)
   }
   if (is.null(barcode_score)) {
-    barcode_score <- barcode_similarity_likelihood(tree, N_char, edges, barcodes1)
+    barcode_score <- barcode_score(tree, N_char, edges, barcodes1)
   }
 
   Score <- lambda_1 * state_score + lambda_2 * barcode_score
@@ -187,4 +186,4 @@ combined_likelihood <- function(tree, barcodes, N_char, cell_state_labels, state
 }
 
 # Clearer alias for revised manuscript/code.
-combined_tree_score <- combined_likelihood
+combined_tree_score <- composition_score

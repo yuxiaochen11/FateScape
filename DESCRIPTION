@@ -13,7 +13,7 @@ Description: FateScape groups cells belonging to the same state lineage into a
     similar lineage barcodes instead of generating an initial tree randomly.
     Secondly, FateScape infers lineage barcodes and cell states of internal cells
     based on that of observed leaf nodes. Thirdly, FateScape calculates the
-    combined likelihood of the sub-cell-division tree that integrates both mutation
+    composite tree score of the sub-cell-division tree that integrates both mutation
     and expression data. Fourthly, FateScape swaps two subtrees sampled according 
     to a specific probability distribution to update the candidate sub-cell-division tree.
     Given that FateScape is a heuristic algorithm without a globally optimal solution, 

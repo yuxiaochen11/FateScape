@@ -5,7 +5,7 @@ date: "2025-04-02"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_knit$set(root.dir = "D:/projects/FateScape/FateScape/")
+#knitr::opts_knit$set(root.dir = "D:/projects/FateScape/FateScape/")
 knitr::opts_chunk$set(warning = FALSE)
 ```
 
@@ -31,10 +31,10 @@ library(mclust, quietly = TRUE)
 
 ```{r}
 graph <- igraph::read_graph(
-     "D:/projects/lineage tracing/FateScape/FateScape/data/C.elegans/cell_lineage_tree.gml",
+     "data/C.elegans/cell_lineage_tree.gml",
      format = "gml"
  )
-MetaData <- read.csv("D:/projects/lineage tracing/FateScape/FateScape/data/C.elegans/MetaData.csv")
+MetaData <- read.csv("data/C.elegans/MetaData.csv")
 ```
 
 ## Extract Tip Labels and Edges
