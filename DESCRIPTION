@@ -1,5 +1,5 @@
 Package: FateScape
-Title: FateScape Reconstructs Cell Division Tree Using Single-cell Transcriptome Data And Lineage Barcode
+Title: Decoding cell division history and lineage-depth-resolved phenotypic organization from single-cell barcode and transcriptomic data
 Version: 1.0
 Authors@R: person(given = "Xiaochen", 
                   family = "Yu", 

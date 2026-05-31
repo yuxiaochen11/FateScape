@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   C.elegans: C.elegans.html
   Mouse_embroy: Mouse_embroy.html
-last_built: 2026-05-31T07:37Z
+last_built: 2026-05-31T08:51Z
 urls:
   reference: https://github.com/yuxiaochen11/FateScape/reference
   article: https://github.com/yuxiaochen11/FateScape/articles
