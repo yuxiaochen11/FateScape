@@ -1,7 +1,7 @@
 # FateScape
 
 <div style="float: right; margin-left: 15px;">
-  <img src="man/logo.png" alt="FateScape logo" width="150">
+  <img src="logo.png" alt="FateScape logo" width="150">
 </div>
 
 FateScape leverages multimodal single-cell sequencing to infer cell division trees using a statistical framework. By combining CRISPR/Cas9-based lineage tracing technology with single-cell transcriptome sequencing data, FateScape can reconstruct cell division history and quantify lineage-depth-resolved state dispersion, lineage confinement, and tree-based associations among cell states.
@@ -13,7 +13,7 @@ This repository provides a comprehensive suite of R functions for reconstructing
 
 -   Refine lineage barcodes by addressing stochastic dropout issues.
 -   Construct sub-cell division trees along different state lineages.
--   Optimize sub-cell division trees by a tree score maximization combined with subtree swapping.
+-   Optimize sub-cell division trees by tree score maximization combined with subtree swapping.
 -   Integrate sub-cell division trees into a complete cell division tree.
 -   Quantify lineage-depth-resolved phenotypic organization.
 
