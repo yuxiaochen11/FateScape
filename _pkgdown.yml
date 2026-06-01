@@ -38,7 +38,7 @@ reference:
       - ancestor_inference_time_scale
       - state_score
       - barcode_score
-      - composition_score
+      - composite_score
       - nodes_sampling
       - subtrees_swapping
       - subtree_refinement

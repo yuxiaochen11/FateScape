@@ -237,7 +237,7 @@ subtree_refinement <- function(Trees_initial, state_lineages, barcodes_lineages,
     tree <- Trees_initial[[lineage_label]]
     tree$edge.length <- rep(1, nrow(tree$edge))
 
-    score <- composition_score(
+    score <- composite_score(
       tree = tree,
       barcodes = barcodes_lineages[[lineage_label]],
       N_char = N_char,
@@ -272,7 +272,7 @@ subtree_refinement <- function(Trees_initial, state_lineages, barcodes_lineages,
       tree_new <- subtrees_swapping(tree, tree$edge, cell_state_labels, barcodes, state_lineages,
                                     tree_renew_prob = renew_prob)
 
-      score <- composition_score(
+      score <- composite_score(
         tree_new,
         barcodes_lineages[[lineage_label]],
         N_char = N_char,
@@ -320,7 +320,7 @@ subtree_refinement <- function(Trees_initial, state_lineages, barcodes_lineages,
 
           tree <- Trees_initial[[lineage_label]]
           tree$edge.length <- rep(1, nrow(tree$edge))
-          score <- composition_score(
+          score <- composite_score(
             tree,
             barcodes_lineages[[lineage_label]],
             N_char,

@@ -166,7 +166,7 @@ barcode_consistency_score <- barcode_score
 #' @param lambda_2 Weight for the barcode score.
 #'
 #' @return Composite score of cell state and barcode shifts.
-composition_score <- function(tree, barcodes, N_char, cell_state_labels, state_lineages,
+composite_score <- function(tree, barcodes, N_char, cell_state_labels, state_lineages,
                                 state_score = NULL, barcode_score = NULL,
                                 lambda_1 = lambda1, lambda_2 = lambda2) {
   ances_res <- ancestor_inference(tree, N_char, barcodes, cell_state_labels, state_lineages)
@@ -186,4 +186,4 @@ composition_score <- function(tree, barcodes, N_char, cell_state_labels, state_l
 }
 
 # Clearer alias for revised manuscript/code.
-combined_tree_score <- composition_score
+combined_tree_score <- composite_score
